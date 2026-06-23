@@ -1,0 +1,7 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 16 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Timeline">
+<rect id="Rectangle 2" x="8" y="151" width="8" height="8" transform="rotate(45 8 151)" fill="var(--fill-0, black)"/>
+<line id="Line 1" x1="7.5" y1="145" x2="7.49999" y2="25" stroke="var(--stroke-0, black)"/>
+<rect id="Rectangle 1" x="8" y="7" width="8" height="8" transform="rotate(45 8 7)" fill="var(--fill-0, black)"/>
+</g>
+</svg>

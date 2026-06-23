@@ -7,140 +7,280 @@
   margin: 0 auto;
 }
 
+/* ── Heading ─────────────────────────────────────────────────── */
+
 .heading {
-  font-size: clamp(48px, 7vw, 96px);
+  font-family: 'Inter Tight', sans-serif;
   font-weight: 500;
-  letter-spacing: -0.03em;
+  font-size: 96px;
   line-height: 1;
+  letter-spacing: -2.88px;
   color: var(--color-black);
-  margin-bottom: 40px;
+  white-space: nowrap;
+  padding: 10px;
+  margin: 0 0 0 -10px; /* compensate padding so text aligns with container edge */
 }
 
-.jobs {
+/* ── Desktop Companies ───────────────────────────────────────── */
+
+.desktopCompanies {
   display: flex;
   flex-direction: column;
-}
-
-.jobWrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.divider {
-  border: none;
   border-top: 1px solid var(--color-divider);
-  margin: 0;
 }
 
-.jobBlock {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 48px;
-  padding: 32px 0;
-  align-items: start;
-}
-
-.timeline {
+.companyRow {
   display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.positionRow {
-  display: grid;
-  grid-template-columns: 24px 1fr;
-  gap: 20px;
-  align-items: start;
-}
-
-.timelineMarker {
-  display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 24px;
   align-items: center;
-  padding-top: 4px;
+  padding: 24px 16px;
+  border-bottom: 1px solid var(--color-divider);
 }
 
-.diamond {
-  display: block;
-  width: 10px;
-  height: 10px;
-  background: var(--color-black);
-  transform: rotate(45deg);
+.experienceBody {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.timelineImg {
+  width: 16px;
+  height: 250px;
   flex-shrink: 0;
 }
 
-.connector {
-  display: block;
-  width: 1px;
-  height: 80px;
-  background: var(--color-black);
-  margin: 6px 0;
+.positions {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
-.positionContent {
-  padding-bottom: 32px;
-}
+.position {}
 
 .positionTitle {
-  font-size: clamp(16px, 1.4vw, 20px);
+  font-family: 'Inter Tight', sans-serif;
   font-weight: 500;
-  letter-spacing: -0.4px;
+  font-size: 20px;
+  line-height: 1.45;
   color: var(--color-black);
-  line-height: 1.4;
-  margin-bottom: 10px;
+  margin: 0 0 8px;
 }
 
 .positionDesc {
-  font-size: clamp(14px, 1.1vw, 16px);
+  font-family: 'Inter Tight', sans-serif;
   font-weight: 400;
-  letter-spacing: -0.3px;
+  font-size: 16px;
+  line-height: 1.5;
   color: var(--color-black);
-  line-height: 1.6;
-  max-width: 860px;
+  margin: 0;
 }
 
-.companyBadge {
-  display: flex;
+.companyLogo {
+  width: 144px;
+  height: 100px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* ── Mobile Companies (hidden on desktop) ────────────────────── */
+
+.mobileCompanies {
+  display: none;
+}
+
+/* ── LinkedIn Link ───────────────────────────────────────────── */
+
+.linkedinLink {
+  display: inline-flex;
+  flex-direction: column;
   align-items: flex-start;
-  padding-top: 6px;
+  overflow: clip;
+  padding: 4px 0;
+  margin-top: 48px;
+  text-decoration: none;
+  color: var(--color-black);
 }
 
-.companyName {
-  font-size: clamp(14px, 1.1vw, 16px);
+.linkedinText {
+  font-family: 'Inter Tight', sans-serif;
   font-weight: 500;
-  letter-spacing: -0.3px;
-  color: var(--color-muted);
+  font-size: 24px;
+  line-height: 1.25;
+  color: var(--color-black);
   white-space: nowrap;
 }
 
-.extra {
-  margin-top: 48px;
-  padding-top: 32px;
-  font-size: clamp(16px, 1.4vw, 20px);
-  font-weight: 500;
-  letter-spacing: -0.4px;
-  line-height: 1.6;
-  color: var(--color-black);
+.hyperlineDecor {
+  display: block;
+  height: 0;
+  position: relative;
+  overflow: visible;
 }
 
-.linkedinLink {
-  color: var(--color-black);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: opacity var(--transition);
+.hyperlineImg {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.linkedinLink:hover {
-  opacity: 0.5;
-}
+/* ── Mobile ──────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
-  .jobBlock {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .section {
+    padding: 0 24px 80px;
   }
 
-  .companyBadge {
-    padding-top: 0;
+  .heading {
+    font-size: 36px;
+    letter-spacing: -0.54px;
+    line-height: 1.15;
+    white-space: normal;
+    padding: 0;
+    margin: 0 0 16px;
+  }
+
+  .desktopCompanies {
+    display: none;
+  }
+
+  /* Accordion container */
+  .mobileCompanies {
+    display: block;
+    border-top: 1px solid var(--color-divider);
+  }
+
+  .mobileCompany {
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .mobileCompany:last-child {
+    border-bottom: none;
+  }
+
+  /* Clickable header — full width button */
+  .mobileHeader {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 16px 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    text-align: left;
+    color: inherit;
+  }
+
+  /* Left side: position titles */
+  .mobilePositions {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mobileTitleSenior {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-black);
+  }
+
+  .mobileTitleJunior {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-black);
+  }
+
+  /* Logos — visible only in open header, left-aligned, per-brand sizing */
+  .mobileLogo3ph {
+    width: 200px;
+    height: auto;
+    max-height: 56px;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .mobileLogoSciensa {
+    width: 168px;
+    height: auto;
+    max-height: 56px;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .mobileLogoNetfarma {
+  width: 152px;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: left center;
+}
+
+  /* Chevron — isolated top-right, direct child of button */
+  .chevron {
+    display: block;
+    flex-shrink: 0;
+    color: var(--color-black);
+  }
+
+  .chevronOpen {
+    transform: rotate(180deg);
+  }
+
+  /* Expanded content — hidden by default */
+  .mobileContent {
+    display: none;
+    padding-bottom: 16px;
+  }
+
+  .mobileContentOpen {
+    display: block;
+  }
+
+  .mobilePositionExpanded {
+    padding-top: 16px;
+  }
+
+  .mobilePositionExpanded + .mobilePositionExpanded {
+    padding-top: 24px;
+  }
+
+  .mobileExpandedTitle {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--color-black);
+    margin: 0 0 6px;
+  }
+
+  .mobileExpandedDesc {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-black);
+    margin: 0;
+  }
+
+  .linkedinLink {
+    margin-top: 32px;
+  }
+
+  .linkedinText {
+    font-size: 16px;
   }
 }
