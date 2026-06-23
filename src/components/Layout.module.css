@@ -1,0 +1,17 @@
+.pageBackground {
+  background: var(--color-black);
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background: var(--color-white);
+  border-radius: 0 0 64px 64px;
+}
+
+@media (max-width: 768px) {
+  .main {
+    border-radius: 0 0 32px 32px;
+  }
+}

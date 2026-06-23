@@ -13,7 +13,7 @@
 /*   CTA:         page left=48  → css left=0,    page top=311             */
 
 .section {
-  padding-bottom: 224px;
+  padding-bottom: 96px;
   overflow: hidden; /* contain right-side elements at sub-1440px viewports */
 }
 
