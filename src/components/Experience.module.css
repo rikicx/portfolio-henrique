@@ -1,0 +1,146 @@
+.section {
+  padding: 0 var(--page-padding) 120px;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--color-black);
+  margin-bottom: 40px;
+}
+
+.jobs {
+  display: flex;
+  flex-direction: column;
+}
+
+.jobWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-divider);
+  margin: 0;
+}
+
+.jobBlock {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  padding: 32px 0;
+  align-items: start;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.positionRow {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.timelineMarker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.diamond {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: var(--color-black);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.connector {
+  display: block;
+  width: 1px;
+  height: 80px;
+  background: var(--color-black);
+  margin: 6px 0;
+}
+
+.positionContent {
+  padding-bottom: 32px;
+}
+
+.positionTitle {
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 500;
+  letter-spacing: -0.4px;
+  color: var(--color-black);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.positionDesc {
+  font-size: clamp(14px, 1.1vw, 16px);
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  color: var(--color-black);
+  line-height: 1.6;
+  max-width: 860px;
+}
+
+.companyBadge {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 6px;
+}
+
+.companyName {
+  font-size: clamp(14px, 1.1vw, 16px);
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.extra {
+  margin-top: 48px;
+  padding-top: 32px;
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 500;
+  letter-spacing: -0.4px;
+  line-height: 1.6;
+  color: var(--color-black);
+}
+
+.linkedinLink {
+  color: var(--color-black);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity var(--transition);
+}
+
+.linkedinLink:hover {
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .jobBlock {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .companyBadge {
+    padding-top: 0;
+  }
+}

@@ -1,0 +1,58 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-black: #1a1a1a;
+  --color-white: #ffffff;
+  --color-bg: #ffffff;
+  --color-surface: #efefef;
+  --color-border: #d7d7d7;
+  --color-divider: #d9d9d9;
+  --color-muted: #6d6d6d;
+  --color-placeholder: #d9d9d9;
+
+  --font-family: 'Inter Tight', sans-serif;
+
+  --radius-card: 16px;
+  --radius-pill: 60px;
+
+  --shadow-card: 0 0 12px 0 rgba(0, 0, 0, 0.1);
+  --shadow-nav: 0 4px 12px 0 rgba(0, 0, 0, 0.1);
+
+  --max-width: 1360px;
+  --page-padding: clamp(24px, 4vw, 44px);
+
+  --transition: 0.2s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-family);
+  cursor: pointer;
+  border: none;
+  background: none;
+}

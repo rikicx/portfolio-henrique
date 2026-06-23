@@ -1,0 +1,140 @@
+.section {
+  padding: 80px var(--page-padding) 80px;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* ── Left: dark photo panel ── */
+
+.imageCol {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  min-height: 520px;
+}
+
+.photoPlaceholder {
+  position: absolute;
+  inset: 0;
+  background: #1a1a1a;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to left,
+    rgba(17, 17, 17, 0.15) 0%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+}
+
+.headingWrapper {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
+}
+
+.heading {
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--color-white);
+  line-height: 1;
+}
+
+/* ── Right: method content ── */
+
+.contentCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.methodPlaceholder {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  background: var(--color-placeholder);
+  border-radius: var(--radius-card);
+  flex-shrink: 0;
+}
+
+.methodTitle {
+  font-size: clamp(28px, 3.3vw, 48px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--color-black);
+}
+
+.bio {
+  font-size: clamp(15px, 1.7vw, 24px);
+  font-weight: 300;
+  letter-spacing: -0.4px;
+  line-height: 1.55;
+  color: var(--color-black);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.btnPrimary,
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  height: 64px;
+  padding: 0 33px;
+  font-size: clamp(16px, 1.7vw, 24px);
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  border-radius: var(--radius-pill);
+  transition: opacity var(--transition);
+  white-space: nowrap;
+}
+
+.btnPrimary {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.btnPrimary:hover {
+  opacity: 0.75;
+}
+
+.btnSecondary {
+  background: var(--color-muted);
+  color: var(--color-white);
+}
+
+.btnSecondary:hover {
+  opacity: 0.75;
+}
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .imageCol {
+    min-height: 340px;
+  }
+}
+
+@media (max-width: 600px) {
+  .btnPrimary,
+  .btnSecondary {
+    height: 52px;
+    font-size: 16px;
+  }
+}
