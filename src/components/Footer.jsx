@@ -1,27 +1,34 @@
 import styles from './Footer.module.css'
+import photoUrl from '../media/henrique-footer.png'
 
 export default function Footer() {
   return (
     <footer id="contato" className={styles.footer}>
       <div className={styles.inner}>
-        <div className={styles.identity}>
-          <div className={styles.avatarPlaceholder} aria-label="Foto de Henrique M. Silva" />
-          <div>
-            <p className={styles.identityName}>Henrique M. Silva</p>
-            <p className={styles.identityRole}>Design Leader &amp; Product Strategist</p>
+        <div className={styles.profileCta}>
+          <div className={styles.profile}>
+            <img
+              src={photoUrl}
+              alt="Foto de Henrique M. Silva"
+              className={styles.photo}
+              width="159"
+              height="159"
+            />
+            <div className={styles.profileText}>
+              <p className={styles.name}>Henrique M. Silva</p>
+              <p className={styles.role}>Design Leader &amp; Product Strategist</p>
+            </div>
+          </div>
+
+          <div className={styles.cta}>
+            <h2 className={styles.ctaHeading}>
+              Tem um desafio complexo para resolver?
+            </h2>
+            <a href="mailto:contato@henriquemsilva.com" className={styles.ctaBtn}>
+              Vamos conversar →
+            </a>
           </div>
         </div>
-
-        <div className={styles.cta}>
-          <h2 className={styles.ctaHeading}>
-            Tem um desafio complexo para resolver?
-          </h2>
-          <a href="mailto:contato@henriquemsilva.com" className={styles.ctaBtn}>
-            Vamos conversar →
-          </a>
-        </div>
-
-        <hr className={styles.divider} />
 
         <nav className={styles.links} aria-label="Links de contato">
           <a
@@ -32,22 +39,20 @@ export default function Footer() {
           >
             LinkedIn ↗
           </a>
-          <span className={styles.dot} aria-hidden="true">·</span>
+          <span className={styles.dot} aria-hidden="true" />
           <a href="mailto:contato@henriquemsilva.com" className={styles.link}>
             E-mail ↗
           </a>
-          <span className={styles.dot} aria-hidden="true">·</span>
-          <a
-            href="#"
-            className={styles.link}
-            aria-label="Currículo (em breve)"
-          >
+          <span className={styles.dot} aria-hidden="true" />
+          <a href="#" className={styles.link} aria-label="Currículo (em breve)">
             Currículo ↗
           </a>
         </nav>
 
+        <hr className={styles.divider} />
+
         <p className={styles.copyright}>
-          © 2026 Henrique M. Silva — São Paulo, Brasil
+          © 2026 Henrique M. Silva - São Paulo, Brasil
         </p>
       </div>
     </footer>

@@ -1,98 +1,139 @@
-.wrapper {
+.header {
   position: sticky;
-  top: 20px;
+  top: 0;
   z-index: 100;
-  display: flex;
-  justify-content: center;
-  padding: 0 var(--page-padding);
-  pointer-events: none;
+  background: var(--color-white);
+  width: 100%;
 }
 
-.nav {
-  pointer-events: all;
+.inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
   max-width: var(--max-width);
-  height: 72px;
-  padding: 0 32px;
-  background: var(--color-white);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-nav);
+  margin: 0 auto;
+  padding: 16px 48px;
 }
 
-.logo {
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: -0.3px;
-  color: var(--color-black);
+/* Three equal-flex areas matching the Figma left/center/right layout */
+.leftArea {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.centerArea {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightArea {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: flex-start;
   transition: opacity var(--transition);
 }
 
-.logo:hover {
+.brand:hover {
   opacity: 0.6;
 }
 
-.links {
-  display: flex;
-  gap: 32px;
-  list-style: none;
+.brand img {
+  display: block;
+  width: 46px;
+  height: 74px;
 }
 
+/* Nav links — Label/L: 24px, 500, lh 1.25 */
 .link {
-  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px;
+  font-size: 24px;
   font-weight: 500;
-  letter-spacing: -0.3px;
+  line-height: 1.25;
   color: var(--color-black);
+  white-space: nowrap;
   transition: opacity var(--transition);
+  text-decoration: none;
 }
 
 .link:hover {
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
-.cta {
+.linkActive {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+/* CTA button — Label/M: 16px, 500, lh 1.25; px-24 py-14; black pill */
+.ctaBtn {
   display: inline-flex;
   align-items: center;
-  height: 52px;
-  padding: 0 28px;
+  padding: 14px 24px;
   background: var(--color-black);
   color: var(--color-white);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
-  letter-spacing: -0.3px;
+  line-height: 1.25;
   border-radius: var(--radius-pill);
-  transition: opacity var(--transition);
   white-space: nowrap;
+  text-decoration: none;
+  transition: opacity var(--transition);
 }
 
-.cta:hover {
+.ctaBtn:hover {
   opacity: 0.75;
 }
 
+/* Hamburger — hidden on desktop; open state not yet defined in Figma, disabled */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-black);
+  border-radius: 2px;
+}
+
+/* Mobile — 390px reference, navbar height 88px */
 @media (max-width: 768px) {
-  .wrapper {
-    top: 12px;
+  .inner {
+    padding: 16px 24px;
+    min-height: 88px;
   }
 
-  .nav {
-    height: 60px;
-    padding: 0 20px;
+  .brand img {
+    width: 29px;
+    height: 47px;
   }
 
-  .links {
+  .centerArea {
     display: none;
   }
 
-  .cta {
-    height: 44px;
-    padding: 0 20px;
-    font-size: 15px;
+  .ctaBtn {
+    display: none;
   }
 
-  .logo {
-    font-size: 18px;
+  .hamburger {
+    display: flex;
   }
 }

@@ -5,7 +5,8 @@
 }
 
 :root {
-  --color-black: #1a1a1a;
+  /* Colors — from Figma variable defaults */
+  --color-black: #000000;
   --color-white: #ffffff;
   --color-bg: #ffffff;
   --color-surface: #efefef;
@@ -14,16 +15,21 @@
   --color-muted: #6d6d6d;
   --color-placeholder: #d9d9d9;
 
+  /* Typography */
   --font-family: 'Inter Tight', sans-serif;
 
+  /* Radii — from Figma radius tokens */
+  --radius-8: 8px;
   --radius-card: 16px;
-  --radius-pill: 60px;
+  --radius-pill: 999px;
 
+  /* Shadows */
   --shadow-card: 0 0 12px 0 rgba(0, 0, 0, 0.1);
-  --shadow-nav: 0 4px 12px 0 rgba(0, 0, 0, 0.1);
 
-  --max-width: 1360px;
-  --page-padding: clamp(24px, 4vw, 44px);
+  /* Layout */
+  --max-width: 1440px;
+  --page-padding-desktop: 48px;
+  --page-padding: clamp(24px, 4vw, 48px);
 
   --transition: 0.2s ease;
 }
@@ -55,4 +61,16 @@ button {
   cursor: pointer;
   border: none;
   background: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-black);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
