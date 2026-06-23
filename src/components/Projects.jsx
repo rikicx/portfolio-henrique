@@ -1,33 +1,58 @@
+import { Link } from 'react-router-dom'
 import styles from './Projects.module.css'
+import qiImg from '../media/card-qi-platform.png'
+import gerdauImg from '../media/card-gerdau-storeroom.png'
+import emrBgImg from '../media/card-emr-bg.png'
+import emrOverlayImg from '../media/card-emr-overlay.jpg'
 
+// Desktop order: QI Platform → Gerdau Storeroom → EMR Integration (Figma left=48/510/972)
+// Mobile order:  Gerdau → QI → EMR (via CSS nth-child order override)
 const projects = [
   {
-    id: 1,
-    name: 'QI Platform',
-    category: 'Healthcare',
-    role: 'Product Strategy Lead',
+    slug: 'qi-platform',
+    title: 'QI Platform',
+    category: 'Saúde · Head of Design',
+    images: [{ src: qiImg, alt: 'QI Platform — plataforma de dados clínicos' }],
   },
   {
-    id: 2,
-    name: 'EMR Integration',
-    category: 'Healthcare',
-    role: 'Product Strategy Lead',
+    slug: 'gerdau-storeroom',
+    title: 'Gerdau Storeroom',
+    category: 'Indústria · Product Designer',
+    images: [{ src: gerdauImg, alt: 'Gerdau Storeroom — gestão de almoxarifado' }],
   },
   {
-    id: 3,
-    name: 'Gerdau Storeroom',
-    category: 'Industry',
-    role: 'Product Designer',
+    slug: 'emr-integration',
+    title: 'EMR Integration',
+    category: 'Saúde · Head of Design',
+    images: [
+      { src: emrBgImg, alt: 'EMR Integration — integração de prontuários' },
+      { src: emrOverlayImg, alt: '' },
+    ],
   },
 ]
 
 function ProjectCard({ project }) {
   return (
     <article className={styles.card}>
-      <div className={styles.image} role="img" aria-label={`Preview do projeto ${project.name}`} />
-      <div className={styles.info}>
-        <h3 className={styles.name}>{project.name}</h3>
-        <p className={styles.meta}>{project.category} · {project.role}</p>
+      {project.images.map((img, i) => (
+        <img
+          key={i}
+          src={img.src}
+          alt={img.alt}
+          className={styles.cardImg}
+          aria-hidden={i > 0 ? 'true' : undefined}
+        />
+      ))}
+      <div className={styles.overlay} aria-hidden="true" />
+      <div className={styles.content}>
+        <div className={styles.textBlock}>
+          <p className={styles.category}>{project.category}</p>
+          <h3 className={styles.cardTitle}>{project.title}</h3>
+        </div>
+        <Link to={`/trabalhos/${project.slug}`} className={styles.link}>
+          <span>Ver Projeto</span>
+          <span aria-hidden="true">→</span>
+        </Link>
       </div>
     </article>
   )
@@ -36,13 +61,13 @@ function ProjectCard({ project }) {
 export default function Projects() {
   return (
     <section id="projetos" className={styles.section}>
-      <div className={styles.container}>
-        <h2 className={styles.heading}>Projetos Selecionados</h2>
-        <div className={styles.grid}>
-          {projects.map((p) => (
-            <ProjectCard key={p.id} project={p} />
-          ))}
-        </div>
+      <div className={styles.titleWrapper}>
+        <h2 className={styles.heading}>Projetos selecionados</h2>
+      </div>
+      <div className={styles.rail}>
+        {projects.map((p) => (
+          <ProjectCard key={p.slug} project={p} />
+        ))}
       </div>
     </section>
   )

@@ -1,81 +1,198 @@
+/* ─── Desktop: 1440px reference (Figma 130:208) ─────────────────────── */
+/* SectionTitle: page left=32px. Cards: page left=48px. Title is 16px left of cards. */
+/* Cards: 420×480px, gap 42px. 3×420+2×42+2×48=1440px content budget.     */
+/* Stats provides 120px bottom spacing → no section padding-top needed.     */
+/* After cards (page y=1732) to Quote (y=1972): padding-bottom=240px.       */
+
 .section {
-  padding: 40px var(--page-padding) 100px;
+  padding-bottom: 240px;
 }
 
-.container {
-  max-width: var(--max-width);
+/* Same max-width/margin pattern as Hero and Stats. */
+.titleWrapper {
+  max-width: 1440px;
   margin: 0 auto;
+  padding: 0 48px;
+  box-sizing: border-box;
 }
 
+/* Display/XL: 96px, 500, lh 1, ls -2.88px. SectionTitle has p-[10px] in Figma.
+   margin-left: -16px moves title left edge to 48-16=32px from page edge (Figma: left=32). */
 .heading {
-  font-size: clamp(48px, 7vw, 96px);
+  font-size: 96px;
   font-weight: 500;
-  letter-spacing: -0.03em;
   line-height: 1;
+  letter-spacing: -2.88px;
   color: var(--color-black);
-  margin-bottom: 40px;
+  margin-left: -16px;
+  padding: 10px;
+  white-space: nowrap;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+/* Rail: flex row, centered. margin-top: 24px = gap from title to cards.
+   Title div bottom (y=1228) + 24px gap = cards at y=1252 (Figma). */
+.rail {
+  max-width: 1440px;
+  margin: 24px auto 0;
+  padding: 0 48px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  gap: 42px;
 }
 
+/* Project Card: 420×480px, radius 16px. Position relative for image/overlay stacking. */
 .card {
-  display: flex;
-  flex-direction: column;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
+  position: relative;
+  flex: 0 0 420px;
+  height: 480px;
+  border-radius: 16px;
   overflow: hidden;
-  transition: transform var(--transition), box-shadow var(--transition);
-  cursor: pointer;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
-
-.image {
+/* Full-bleed images — stacked via absolute; EMR uses two (bg + overlay). */
+.cardImg {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  background: var(--color-placeholder);
-  border-radius: var(--radius-card) var(--radius-card) 0 0;
+  height: 100%;
+  object-fit: cover;
+  max-width: none;
+  display: block;
+  pointer-events: none;
 }
 
-.info {
-  padding: 20px 24px 24px;
+/* Gradient: transparent at 3% top → rgba(0,0,0,0.75) at bottom (Figma overlay). */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 3%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+/* Content: bottom=33px, sides=32px. Figma: bottom-[33px] left-[32px] right-[32px]. */
+.content {
+  position: absolute;
+  bottom: 33px;
+  left: 32px;
+  right: 32px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 24px;
+  color: var(--color-white);
+  overflow: hidden;
 }
 
-.name {
-  font-size: clamp(24px, 3.3vw, 48px);
+/* Text block: category + title. gap 12px (Figma: gap-[12px]). */
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Label/S: 14px, 500, lh 1.25 */
+.category {
+  font-size: 14px;
   font-weight: 500;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  color: var(--color-black);
+  line-height: 1.25;
+  color: var(--color-white);
 }
 
-.meta {
-  font-size: clamp(13px, 1.4vw, 20px);
-  font-weight: 400;
-  letter-spacing: -0.3px;
-  color: var(--color-black);
+/* Heading/H2: 36px, 500, lh 1.15, ls -0.54px */
+.cardTitle {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.54px;
+  color: var(--color-white);
 }
 
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: 1fr 1fr;
+/* Label/M: 16px, 500, lh 1.25. gap-[8px] between "Ver Projeto" and "→". */
+.link {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-white);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* ─── Mobile: 390px reference (Figma 417:2598) ─────────────────────── */
+/* Title: left-aligned at 24px, 36px font.                                 */
+/* Slider: overflow-x auto, snap, padding-inline 24px, gap 16px.          */
+/* Card: 342×360px. Order: Gerdau(2nd in data)→first, QI(1st)→second, EMR(3rd)→third. */
+
+@media (max-width: 768px) {
+  .section {
+    padding-bottom: 40px;
   }
-}
 
-@media (max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr;
+  .titleWrapper {
+    padding: 0 24px;
+    margin-bottom: 8px;
+  }
+
+  /* Heading/H2: 36px on mobile. Reset desktop margin-left offset and padding. */
+  .heading {
+    font-size: 36px;
+    letter-spacing: -0.54px;
+    line-height: 1.15;
+    margin-left: 0;
+    padding: 0;
+    white-space: normal;
+  }
+
+  /* Horizontal slider: edge-to-edge, scroll-snap. Hide scrollbar chrome only. */
+  .rail {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    padding-inline: 24px;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Card: 342×360px. scroll-snap-align center so first card snaps at x=24. */
+  .card {
+    flex: 0 0 342px;
+    height: 360px;
+    scroll-snap-align: center;
+  }
+
+  /* Mobile order differs from desktop:
+     data[0]=QI(→ order 1), data[1]=Gerdau(→ order 0), data[2]=EMR(→ order 2) */
+  .card:nth-child(1) { order: 1; }
+  .card:nth-child(2) { order: 0; }
+  .card:nth-child(3) { order: 2; }
+
+  /* Mobile card content: tighter gaps. */
+  .content {
+    gap: 16px;
+  }
+
+  .textBlock {
+    gap: 8px;
+  }
+
+  /* Heading/H3: 24px Regular on mobile cards (Figma: text-[24px] leading-[1.25] tracking-[-0.24px]). */
+  .cardTitle {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.24px;
+  }
+
+  /* Link: 14px on mobile (Figma: text-[14px]), gap 6px. */
+  .link {
+    font-size: 14px;
+    gap: 6px;
   }
 }

@@ -1,107 +1,214 @@
+/* ─── Desktop: 1440px reference (Figma 130:208) ─────────────────────── */
+/* Section: page y=1972 → page y=2571 (About) = 599px total.              */
+/* All elements positioned absolutely within the 1440px inner container.  */
+/* Projects provides 240px bottom gap → no section padding-top needed.    */
+/*                                                                         */
+/* Figma page coords → CSS from content area (inner padding 48px L/R):    */
+/*   Open quote:  page left=48  → css left=0,    page top=0  (103×86px)   */
+/*   Quote text:  page left=175 → css left=127,  page top=0  (852px wide) */
+/*   Close quote: page left=947 → css left=899,  page top=99 (103×86px)   */
+/*   Author:      page left=1171→ css left=1123, page top=198             */
+/*   Divider:     page left=48  → css left=0,    page top=222 (1116px)    */
+/*   Description: page left=48  → css left=0,    page top=239 (671px)     */
+/*   CTA:         page left=48  → css left=0,    page top=311             */
+
 .section {
-  padding: 80px var(--page-padding) 80px;
+  padding-bottom: 224px;
+  overflow: hidden; /* contain right-side elements at sub-1440px viewports */
 }
 
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-}
-
-.quoteBlock {
+/* Positioning context for all absolutely placed children.
+   height: 375px = CTA button bottom (top=311 + py-17×2 + font-24×lh-1.25=64 = 375). */
+.inner {
   position: relative;
-  padding: 0 0 0 8px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  box-sizing: border-box;
+  height: 375px;
 }
 
-.openQuote,
-.closeQuote {
-  font-size: clamp(80px, 11vw, 160px);
-  font-weight: 500;
-  color: var(--color-black);
-  line-height: 0.8;
+/* Opening quote mark: top-left corner, 103×86px. */
+.quoteOpen {
+  position: absolute;
+  left: 48px;
+  top: 0;
+  width: 103px;
+  height: 86px;
   display: block;
 }
 
-.openQuote {
-  margin-bottom: 8px;
-}
-
-.closeQuote {
-  text-align: right;
-  margin-top: 8px;
-}
-
-.text {
-  font-size: clamp(32px, 5.5vw, 80px);
+/* Frase: Display/L 72px, 500, lh:1, ls:-0.72px. left=127px (175-48). Width=852px.
+   blockquote default margins removed. */
+.quoteText {
+  position: absolute;
+  left: 175px;
+  top: 0;
+  width: 852px;
+  margin: 0;
+  padding: 0;
+  font-size: 72px;
   font-weight: 500;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  line-height: 1;
+  letter-spacing: -0.72px;
   color: var(--color-black);
-  max-width: 900px;
-  padding: 0 16px;
 }
 
-.footer {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-  padding-left: 8px;
-  padding-top: 32px;
-  border-top: 1px solid var(--color-divider);
+/* Closing quote mark: 103×86px at left=899 (947-48), top=99. */
+.quoteClose {
+  position: absolute;
+  left: 947px;
+  top: 99px;
+  width: 103px;
+  height: 86px;
+  display: block;
 }
 
-.meta {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 660px;
+/* Author: 32px, 500, lh:1.5 (48/32), ls:-1.44px, #b6b6b6. left=1123 (1171-48), top=198. */
+.author {
+  position: absolute;
+  left: 1171px;
+  top: 198px;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -1.44px;
+  color: #b6b6b6;
+  white-space: nowrap;
+  margin: 0;
 }
 
+/* Divider: 1px solid black. left=0, top=222, width=1116px. Reset hr browser defaults. */
+.divider {
+  position: absolute;
+  left: 48px;
+  top: 222px;
+  width: 1116px;
+  height: 1px;
+  background: var(--color-black);
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Description: 24px, 500, lh:28px, ls:-0.6px, #1a1a1a. left=0, top=239, w=671px. */
 .description {
-  font-size: clamp(16px, 1.7vw, 24px);
+  position: absolute;
+  left: 48px;
+  top: 239px;
+  width: 671px;
+  font-size: 24px;
   font-weight: 500;
-  letter-spacing: -0.4px;
-  line-height: 1.4;
-  color: var(--color-black);
+  line-height: 28px;
+  letter-spacing: -0.6px;
+  color: #1a1a1a;
+  margin: 0;
 }
 
+/* CTA: Button/L, px-32 py-17, 24px Medium, black pill. left=0, top=311. */
 .cta {
+  position: absolute;
+  left: 48px;
+  top: 311px;
   display: inline-flex;
   align-items: center;
-  height: 64px;
-  padding: 0 33px;
+  padding: 17px 32px;
   background: var(--color-black);
   color: var(--color-white);
-  font-size: clamp(18px, 1.7vw, 24px);
+  font-size: 24px;
   font-weight: 500;
-  letter-spacing: -0.3px;
+  line-height: 1.25;
   border-radius: var(--radius-pill);
-  transition: opacity var(--transition);
-  align-self: flex-start;
-}
-
-.cta:hover {
-  opacity: 0.75;
-}
-
-.author {
-  font-size: clamp(18px, 2.2vw, 32px);
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  color: #b6b6b6;
+  text-decoration: none;
   white-space: nowrap;
 }
 
+/* ─── Mobile: 390px reference (Figma 417:2598) ─────────────────────── */
+/* Section: page y=1622. Projects slider ends y=1537, Projects pb=40px → gap=85px → pt=45px. */
+/* Mobile inner height: 421px (CTA top=373 + btn-h=48).                   */
+/* Padding-bottom: 96px (About mobile page y=2139; 2139-1622-421=96).     */
+/*                                                                          */
+/* Figma mobile coords → CSS from content area (inner padding 24px L/R):  */
+/*   Open quote:  page left=24  → css left=0,   top=0   (62×52px)         */
+/*   Quote text:  page left=24  → css left=0,   top=64  (342px wide)      */
+/*   Close quote: page left=304 → css left=280, top=187 (62×52px)         */
+/*   Divider:     page left=24  → css left=0,   top=211 (273px)           */
+/*   Author:      page left=24  → css left=0,   top=217 (20px/500/lh:1.45)*/
+/*   Description: page left=23  → css left=0,   top=262 (336px)           */
+/*   CTA:         page left=24  → css left=0,   top=373 (Button/M)        */
+
 @media (max-width: 768px) {
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
+  .section {
+    padding-top: 45px;
+    padding-bottom: 96px;
   }
 
+  .inner {
+    width: calc(100% - 48px);
+    max-width: none;
+    margin: 0 auto;
+    padding: 0;
+    height: 421px;
+  }
+
+  /* Opening quote: 62×52px. Resets desktop 103×86. */
+  .quoteOpen {
+    width: 62px;
+    height: 52px;
+    top: 0;
+    left: 0;
+  }
+
+  /* Frase: 36px, 500, lh:1.15, ls:-0.54px, w=342. Resets desktop left=127, size=72px. */
+  .quoteText {
+    left: 0;
+    top: 64px;
+    width: 100%;
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.54px;
+  }
+
+  /* Closing quote: 62×52px at left=280 (304-24), top=187. Resets desktop left=899. */
+  .quoteClose {
+    left: auto;
+    right: 0;
+    top: 187px;
+    width: 62px;
+    height: 52px;
+  }
+
+  /* Divider: left=0, top=211, width=273px. Resets desktop width=1116px, top=222. */
+  .divider {
+    left: 0;
+    top: 211px;
+    width: calc(100% - 69px);
+  }
+
+  /* Author: 20px, 500, lh:1.45, #b6b6b6, left=0, top=217. Resets desktop left=1123, 32px. */
   .author {
-    align-self: flex-end;
+    left: 0;
+    top: 217px;
+    font-size: 20px;
+    line-height: 1.45;
+    letter-spacing: 0;
+  }
+
+  /* Description: 20px, 500, lh:1.45, #1a1a1a, w=336, top=262. Resets desktop 24px. */
+  .description {
+    left: 0;
+    top: 262px;
+    width: 100%;
+    font-size: 20px;
+    line-height: 1.45;
+    letter-spacing: 0;
+  }
+
+  /* CTA: Button/M, px-24 py-14, 16px, top=373. Resets desktop px-32 py-17, 24px. */
+  .cta {
+    left: 0;
+    top: 373px;
+    padding: 14px 24px;
+    font-size: 16px;
   }
 }

@@ -1,102 +1,207 @@
+/* ─── Desktop: 1440px reference (Figma frame 130:208) ─────────────────── */
+/* Navbar height: 106px (logo 74px + 16px top + 16px bottom padding).    */
+/* Photo page coords: left=831, top=138 → hero: left=831, top=32.        */
+/* Name page coords: top=259 → hero: top=153. Photo-to-name gap=121.     */
+
 .section {
-  padding: 120px var(--page-padding) 80px;
+  overflow: hidden;
+  position: relative;
 }
 
-.container {
-  max-width: var(--max-width);
+.inner {
+  max-width: 1440px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: start;
-  gap: 40px;
+  position: relative;
+  padding-bottom: 140px;
 }
 
-.content {
+/* Display/XXL: 320px, 500, lh 0.88, ls -8px. Hero top offset = 259-106 = 153px. */
+.name {
+  display: block;
+  font-size: 320px;
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -8px;
+  color: var(--color-black);
+  white-space: nowrap;
+  padding-top: 153px;
+  padding-left: 99px;
+  position: relative;
+  z-index: 0;
+}
+
+/* Photo: Figma left=831, top=138. Hero top = 138-106 = 32px. */
+.photoWrapper {
+  position: absolute;
+  left: 831px;
+  top: 32px;
+  width: 530px;
+  height: 652px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Image clip values from Figma: h=109.45%, left=-16.53%, top=-4.26%, w=134.53% */
+.photo {
+  position: absolute;
+  height: 109.45%;
+  left: -16.53%;
+  top: -4.26%;
+  width: 134.53%;
+  max-width: none;
+  display: block;
+}
+
+/* Text stack: left=120px, gap=16px. Subtitle page top=549 → hero=443.        */
+/* Name ends at 153+320*0.88=434.6 → textStack padding-top: 8px → 442.6 ≈ 443 */
+.textStack {
+  position: relative;
+  z-index: 2;
+  padding-left: 120px;
+  padding-top: 8px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 16px;
 }
 
-.name {
-  font-size: clamp(72px, 11vw, 158px);
+/* H1: 48px, 500, lh 1.1, ls -1.44px. Figma w=822px. */
+.subtitle {
+  font-size: 48px;
   font-weight: 500;
-  line-height: 1.03;
-  letter-spacing: -0.02em;
+  line-height: 1.1;
+  letter-spacing: -1.44px;
   color: var(--color-black);
+  max-width: 822px;
 }
 
-.title {
-  font-size: clamp(22px, 2.8vw, 40px);
+/* Body/L: 20px, 500, lh 1.45. Figma w=684px. */
+.body {
+  font-size: 20px;
   font-weight: 500;
-  letter-spacing: -0.3px;
+  line-height: 1.45;
   color: var(--color-black);
-  margin-top: 8px;
+  max-width: 684px;
 }
 
-.tagline {
-  font-size: clamp(16px, 1.7vw, 24px);
-  font-weight: 500;
-  line-height: 1.4;
-  letter-spacing: -0.3px;
-  color: var(--color-black);
-  max-width: 520px;
-}
-
+/* Button/L: 24px, 500, px-32 py-17, black pill. */
 .cta {
   display: inline-flex;
   align-items: center;
-  height: 64px;
-  padding: 0 33px;
+  padding: 17px 32px;
   background: var(--color-black);
   color: var(--color-white);
-  font-size: clamp(18px, 1.7vw, 24px);
+  font-size: 24px;
   font-weight: 500;
-  letter-spacing: -0.3px;
+  line-height: 1.25;
   border-radius: var(--radius-pill);
-  margin-top: 16px;
-  transition: opacity var(--transition);
+  text-decoration: none;
   white-space: nowrap;
+  width: fit-content;
+  margin-top: 8px;
+  transition: opacity var(--transition);
 }
 
 .cta:hover {
   opacity: 0.75;
 }
 
-.photoWrapper {
-  flex-shrink: 0;
-}
-
-.photoPlaceholder {
-  width: clamp(260px, 37vw, 534px);
-  /* Figma: 534 × 653 → aspect-ratio 534/653 ≈ 0.818 */
-  aspect-ratio: 534 / 653;
-  background: #888;
-  border-radius: var(--radius-card);
-}
-
-@media (max-width: 1024px) {
-  .container {
-    grid-template-columns: 1fr;
-  }
-
-  .photoWrapper {
-    order: -1;
-  }
-
-  .photoPlaceholder {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-  }
-}
+/* ─── Mobile: 390px reference (Figma frame 417:2598) ─────────────────── */
+/* Navbar=88px. All positions relative to hero section top (after navbar). */
+/* Elements use position:absolute matching Figma's independent placement.  */
+/*                                                                          */
+/* Name:  page top=139 → hero top=51.  Centered via translateX(-50%).      */
+/* Photo: page top=199 → hero top=111. Figma w=335 h=412. Centered.        */
+/*        Photo bottom=111+412=523px.                                       */
+/* Text:  textStack at 527px (photo bottom 523 + 4px gap).                 */
+/*        Body gap=8px (Figma 606→674=68px, subtitle~60px → 68-60=8).      */
+/*        Button gap=18px (Figma 674→752=78px, body~60px → 78-60=18).      */
+/* Height: stats page top=864 → hero=864-88=776px.                         */
 
 @media (max-width: 768px) {
-  .section {
-    padding: 100px var(--page-padding) 60px;
+  /* Positioning context. min-height keeps hero tall enough for all elements. */
+  .inner {
+    position: relative;
+    min-height: 776px;
+    padding-bottom: 0;
+    overflow: hidden;
   }
 
+  /* Mobile/Display Hero: 96px, 500, lh 1, ls -3.84px.
+     Centered via left:50% + translateX(-50%) — works at any viewport width.
+     z-index 0: behind photo. Resets desktop padding/position. */
+  .name {
+    position: absolute;
+    top: 51px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 0;
+    padding-left: 0;
+    font-size: 96px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -3.84px;
+    z-index: 0;
+  }
+
+  /* Photo: absolute, z-index 2 (in front of name).
+     Exact Figma dimensions 335×412 preserve aspect ratio without distortion.
+     Centered via left:50% + translateX(-50%). Photo bottom = 111+412 = 523px.
+     Resets desktop left=831px, top=32px, width=530px, height=652px. */
+  .photoWrapper {
+    position: absolute;
+    top: 111px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 335px;
+    height: 412px;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  /* TextStack: absolute column, centered. Starts 4px after photo bottom (523+4=527px).
+     Resets desktop padding-left=120px, padding-top=8px, gap=16px, position=relative. */
+  .textStack {
+    position: absolute;
+    top: 527px;
+    left: 0;
+    right: 0;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    max-width: none;
+    z-index: 1;
+  }
+
+  /* Subtitle/H3: 24px, 500, lh 1.25, centered, max-w 250px.
+     Resets desktop letter-spacing=-1.44px, max-width=822px. */
+  .subtitle {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: center;
+    max-width: 250px;
+  }
+
+  /* Body/S: 14px, 500, lh 1.45, centered, max-w 342px.
+     margin-top 8px matches Figma gap (68px total − subtitle ~60px = 8px). */
+  .body {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.45;
+    text-align: center;
+    max-width: 342px;
+    margin-top: 8px;
+  }
+
+  /* Button/M: 16px, px-24 py-14.
+     margin-top 18px matches Figma gap (78px total − body ~60px = 18px).
+     Resets desktop padding=17px 32px, font-size=24px, margin-top=8px. */
   .cta {
-    height: 52px;
-    font-size: 18px;
+    font-size: 16px;
+    padding: 14px 24px;
+    margin-top: 18px;
   }
 }
