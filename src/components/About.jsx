@@ -1,51 +1,54 @@
 import styles from './About.module.css'
+import arrowLink from '../media/arrow-link.svg'
+import henriqueWorking from '../media/henrique-working.png'
 
 export default function About() {
   return (
     <section id="sobre" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.imageCol}>
-          <div className={styles.photoPlaceholder} aria-label="Foto de Henrique trabalhando" />
+          <img
+            src={henriqueWorking}
+            alt="Henrique Silva trabalhando"
+            className={styles.photo}
+          />
           <div className={styles.overlay} />
-          <div className={styles.headingWrapper}>
-            <h2 className={styles.heading}>Sobre mim</h2>
+          <div className={styles.overlayContent}>
+            <h2 className={styles.overlayHeading}>Sobre mim</h2>
+            <a href="/sobre" className={styles.saibaMaisLink}>
+              <img src={arrowLink} alt="" aria-hidden="true" className={styles.arrowIcon} />
+              <span>Saiba mais</span>
+            </a>
           </div>
         </div>
 
         <div className={styles.contentCol}>
-          <div
-            className={styles.methodPlaceholder}
-            role="img"
-            aria-label="Visual do método — em breve"
-          />
-          <h3 className={styles.methodTitle}>Método</h3>
-          <p className={styles.bio}>
-            Atuo na interseção entre design, negócio e tecnologia.
-          </p>
-          <p className={styles.bio}>
-            Ao longo da minha trajetória, liderei iniciativas em saúde, consultoria e produtos
-            digitais complexos, ajudando times a transformar cenários ambíguos em decisões mais
-            claras, prioridades mais objetivas e experiências melhores.
-          </p>
-          <p className={styles.bio}>
-            Minha abordagem combina estratégia, colaboração com stakeholders e capacidade de
-            execução.
-          </p>
+          <div className={styles.methBlock}>
+            <h3 className={styles.methodTitle}>Método</h3>
+            <p className={styles.highlight}>
+              Meu trabalho é dar clareza a problemas complexos.
+            </p>
+            <p className={`${styles.body} ${styles.bodyDesktop}`}>
+              Conecto necessidades dos usuários, objetivos de negócio e viabilidade técnica para
+              orientar decisões, estruturar experiências e acompanhar as soluções da descoberta
+              à implementação e evolução.
+            </p>
+            <p className={`${styles.body} ${styles.bodyMobile}`}>
+              Conecto usuários, negócio e tecnologia para orientar decisões, desenhar experiências
+              e acompanhar sua evolução do primeiro entendimento ao produto em operação e escala.
+            </p>
+          </div>
           <div className={styles.actions}>
-            <a
-              href="#"
-              className={styles.btnSecondary}
-              aria-label="Ver Currículo (em breve)"
-            >
+            <a href="#" className={styles.btn}>
               Ver Currículo →
             </a>
             <a
               href="https://linkedin.com/in/"
-              className={styles.btnPrimary}
+              className={styles.btn}
               target="_blank"
               rel="noopener noreferrer"
             >
-              LinkedIn→
+              LinkedIn →
             </a>
           </div>
         </div>
