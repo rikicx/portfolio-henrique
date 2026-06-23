@@ -11,7 +11,7 @@
   align-items: center;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 16px 48px;
+  padding: 12px 48px;
 }
 
 /* Three equal-flex areas matching the Figma left/center/right layout */
@@ -26,6 +26,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 24px;
 }
 
 .rightArea {
@@ -55,7 +56,7 @@
 .link {
   display: inline-flex;
   align-items: center;
-  padding: 8px;
+  padding: 8px 0;
   font-size: 24px;
   font-weight: 500;
   line-height: 1.25;
