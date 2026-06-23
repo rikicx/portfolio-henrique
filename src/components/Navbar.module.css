@@ -11,7 +11,7 @@
   align-items: center;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 12px 48px;
+  padding: 14px 48px;
 }
 
 /* Three equal-flex areas matching the Figma left/center/right layout */
@@ -26,7 +26,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: 32px;
 }
 
 .rightArea {
@@ -48,16 +48,16 @@
 
 .brand img {
   display: block;
-  width: 46px;
-  height: 74px;
+  width: auto;
+  height: 54px;
 }
 
 /* Nav links — Label/L: 24px, 500, lh 1.25 */
 .link {
   display: inline-flex;
   align-items: center;
-  padding: 8px 0;
-  font-size: 24px;
+  padding: 6px 0;
+  font-size: 18px;
   font-weight: 500;
   line-height: 1.25;
   color: var(--color-black);
