@@ -4,6 +4,7 @@ import Stats from '../components/Stats'
 import Projects from '../components/Projects'
 import Quote from '../components/Quote'
 import About from '../components/About'
+import Skills from '../components/Skills'
 import Experience from '../components/Experience'
 
 export default function HomePage() {
@@ -14,6 +15,7 @@ export default function HomePage() {
       <Projects />
       <Quote />
       <About />
+      <Skills />
       <Experience />
     </Layout>
   )

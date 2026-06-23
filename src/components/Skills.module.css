@@ -1,0 +1,157 @@
+/* ── Section ── */
+
+.section {
+  padding: 80px 0;
+  background: var(--color-bg);
+}
+
+.sectionTitle {
+  padding-left: 32px;
+  font-size: 96px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -2.88px;
+  color: var(--color-black);
+  margin-bottom: 16px;
+}
+
+.mobileBr {
+  display: none;
+}
+
+/* ── Card ── */
+
+.card {
+  margin: 0 48px;
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  padding: 32px 268px 32px 48px;
+}
+
+/* ── Items list ── */
+
+.items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+/* ── Icon ── */
+
+.iconWrapper {
+  width: 50px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.icon {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 50px;
+  max-height: 50px;
+}
+
+/* ── Text group ── */
+
+.textGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemTitle {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.54px;
+  color: var(--color-black);
+}
+
+.itemSubtitle {
+  font-weight: 500;
+  color: var(--color-black);
+}
+
+.itemSubtitleDesktop {
+  font-size: 20px;
+  line-height: 1.45;
+  white-space: nowrap;
+}
+
+.itemSubtitleMobile {
+  display: none;
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 24px;
+  }
+
+  .sectionTitle {
+    padding-left: 0;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.54px;
+    margin-bottom: 32px;
+  }
+
+  .mobileBr {
+    display: initial;
+  }
+
+  .card {
+    margin: 0;
+    background: var(--color-surface);
+    border-radius: var(--radius-card);
+    padding: 32px 24px;
+  }
+
+  .items {
+    gap: 32px;
+  }
+
+  .item {
+    gap: 14px;
+  }
+
+  .iconWrapper {
+    width: 32px;
+  }
+
+  .icon {
+    width: 32px;
+    height: auto;
+    max-width: 32px;
+    max-height: none;
+  }
+
+  .itemTitle {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.24px;
+  }
+
+  .itemSubtitleDesktop {
+    display: none;
+  }
+
+  .itemSubtitleMobile {
+    display: block;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+}
