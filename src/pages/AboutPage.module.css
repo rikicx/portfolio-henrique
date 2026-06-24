@@ -1,0 +1,1278 @@
+/* ═══════════════════════════════════════════════════════════════════
+   AboutPage — Desktop reference 1440px · Mobile reference 390px
+   Navbar: 106px desktop, 88px mobile (Hero top offsets derived from these)
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Hero ──────────────────────────────────────────────────────── */
+
+/* Desktop: absolute layout matching Figma frame 375:343.
+   All direct children of heroInner are positioned absolutely.
+   Photo:   left calc(50%+65px), top 36px (frame 142 − navbar 106), w 607, h 616.
+   Title:   left 94px, top 123px (frame 229 − navbar 106), w 724.
+   Bar:     3px, immediately after title text flow.
+   Desc:    20px, 24px below bar.
+   Divider: 1px, top 652px (frame 758 − navbar 106). */
+
+.hero {
+  position: relative;
+}
+
+.heroInner {
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  min-height: 653px;
+}
+
+/* Title + bar + desc share the left column via absolute positioning */
+.heroTitle {
+  position: absolute;
+  left: 94px;
+  top: 123px;
+  width: 724px;
+  font-size: 72px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.72px;
+  color: var(--color-black);
+  margin: 0;
+}
+
+/* 3px decorative bar — below title block (title ≈3 lines × 72px = 216px → top 339px) */
+.heroBar {
+  position: absolute;
+  left: 94px;
+  top: 339px;
+  width: 702px;
+  height: 3px;
+  background: var(--color-black);
+}
+
+.heroDesc {
+  position: absolute;
+  left: 94px;
+  top: 366px;
+  width: 705px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.heroPhotoCol {
+  position: absolute;
+  left: calc(50% + 65px);
+  top: 36px;
+  width: 607px;
+  height: 616px;
+  overflow: hidden;
+}
+
+.heroImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Desktop divider at 652px from section top */
+.heroDivider {
+  position: absolute;
+  left: 48px;
+  right: 48px;
+  top: 652px;
+  height: 1px;
+  background: var(--color-black);
+  border: none;
+  margin: 0;
+}
+
+/* Mobile-only divider between photo and desc — hidden on desktop */
+.heroMobileDivider {
+  display: none;
+}
+
+/* ── 2. Carreira ──────────────────────────────────────────────────── */
+
+.carreira {
+  padding-top: 80px;
+}
+
+.carreiraOuter {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* Intro text sits in the right half of the layout.
+   calc(50% + 116px) from page left = 836px. Minus outer padding 48px = 788px.
+   Using margin-left pushes the block to that position within the padded container. */
+.carreiraIntroRow {
+  display: flex;
+  justify-content: center;
+}
+
+.carreiraIntroContent {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.carreiraTitle {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.44px;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.carreiraDesc {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0;
+}
+
+/* Desktop timeline — central vertical axis with alternating entries */
+.timelineDesktop {
+  position: relative;
+  max-width: 1220px;
+  margin: 72px auto 0;
+}
+
+/* Central vertical line */
+.timelineAxis {
+  display: none;
+}
+
+/* 3-column grid: [left content | marker zone | right content] */
+.timelineEntry {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr);
+  align-items: start;
+  min-height: 240px;
+  padding: 0;
+}
+
+.timelineEntry:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 52px;
+  bottom: 12px;
+  width: 1px;
+  background: var(--color-black);
+  transform: translateX(-50%);
+}
+
+.timelineEntry:last-child {
+  min-height: 48px;
+}
+
+.timelineEmpty {
+  /* placeholder column for alternating layout */
+}
+
+/* Marker — diamond outer border + diamond inner fill */
+.timelineMarkerWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.markerOuter {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--color-black);
+  background: var(--color-white);
+  transform: rotate(45deg);
+}
+
+.markerInner {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--color-black);
+  transform: rotate(45deg);
+}
+
+/* Right-side entries: content in column 3 */
+.timelineContent {
+  width: 100%;
+  max-width: 560px;
+  padding-left: 40px;
+}
+
+/* Left-side entries: content in column 1, right-aligned */
+.timelineContentLeft {
+  width: 100%;
+  max-width: 560px;
+  padding-left: 0;
+  padding-right: 40px;
+  text-align: right;
+  justify-self: end;
+}
+
+.companyName {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.54px;
+  color: var(--color-black);
+  margin: 0 0 8px;
+}
+
+.companyRole {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0 0 12px;
+}
+
+.companyDesc {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0;
+}
+
+/* Mobile timeline — hidden on desktop */
+.timelineMobile {
+  display: none;
+}
+
+/* Carreira pullquote — centered, large */
+.carreiraPullquote {
+  font-size: 72px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.72px;
+  color: var(--color-black);
+  text-align: center;
+  max-width: 1012px;
+  margin: 80px auto 0;
+  padding: 0;
+}
+
+/* ── 3. Princípios ────────────────────────────────────────────────── */
+
+.principios {
+  padding-top: 120px;
+}
+
+.principiosOuter {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.principiosTitle {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.44px;
+  color: var(--color-black);
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 80px;
+}
+
+.principiosGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.principio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+
+.principioIcon {
+  width: 124px;
+  height: auto;
+  display: block;
+}
+
+.principioName {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.54px;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.principioText {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--color-black);
+  max-width: 408px;
+  margin: 0;
+}
+
+/* ── 4. Liderança ─────────────────────────────────────────────────── */
+/* Desktop: asymmetric — title left (w 519px), text+pullquote right (w 774px).
+   Title at left 48px; text starts at calc(50%+49px) from page = 49px into right col. */
+
+.lideranca {
+  padding-top: 120px;
+}
+
+.liderancaOuter {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.liderancaInner {
+  display: grid;
+  grid-template-columns: 519px 1fr;
+  align-items: start;
+  gap: 0;
+}
+
+.liderancaTitle {
+  font-size: 96px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -2.88px;
+  color: var(--color-black);
+  max-width: 519px;
+  margin: 0;
+}
+
+.liderancaRight {
+  padding-left: 49px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.liderancaText {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--color-black);
+  max-width: 774px;
+  margin: 0;
+}
+
+.liderancaPullquote {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.44px;
+  color: var(--color-black);
+  max-width: 774px;
+  margin: 56px 0 0;
+}
+
+.liderancaDivider {
+  display: block;
+  height: 1px;
+  background: var(--color-black);
+  border: none;
+  max-width: calc(1440px - 96px);
+  margin: 80px auto 0;
+}
+
+/* ── 5. Sempre Iniciante ──────────────────────────────────────────── */
+/* Desktop: photos column left (karatê 429×873px + slot for imgImage273),
+   text column right (title 160px, body 20px), starting ~54px after photos.
+   Title: left calc(62.5%−321px) from page = 579px ≈ photos col 477px + gap 54px + content padding. */
+
+.iniciante {
+  padding-top: 80px;
+}
+
+.inicianteOuter {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.inicianteInner {
+  display: grid;
+  grid-template-columns: minmax(320px, 380px) minmax(0, 1fr);
+  column-gap: 64px;
+  align-items: start;
+}
+
+.iniciantePhotos {
+  position: relative;
+  width: 100%;
+}
+
+.inicianteKarateImg {
+  width: auto;
+  max-width: 100%;
+  height: calc(100vh - 180px);
+  max-height: 720px;
+  object-fit: contain;
+  object-position: top left;
+  border-radius: 16px;
+  display: block;
+}
+
+.inicianteShohoImg {
+  position: absolute;
+  top: 90px;
+  right: 0;
+  width: 94px;
+  height: 279px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  z-index: 2;
+}
+
+.inicianteText {
+  padding-top: 0;
+  width: 100%;
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.inicianteTitle {
+  font-size: 144px;
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -4.8px;
+  color: var(--color-black);
+  margin: 0 0 24px;
+}
+
+.inicianteBody {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--color-black);
+  max-width: none;
+  margin: 0 0 20px;
+}
+
+/* Text part 2: sibling of inicianteInner grid (not a grid item).
+   Aligned to the text column via margin-left: photos col 477px + gap 54px = 531px. */
+.inicianteBodyDesktop {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.inicianteBodyFull {
+  display: none;
+}
+
+.inicianteBodySecond {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--color-black);
+  max-width: 608px;
+  margin-top: 20px;
+  margin-left: 531px;
+}
+
+.inicianteDivider {
+  display: block;
+  height: 1px;
+  background: var(--color-black);
+  border: none;
+  margin: 80px 48px 0;
+  max-width: calc(1440px - 96px);
+}
+
+/* ── 6. Closing ───────────────────────────────────────────────────── */
+/* Desktop: title centered w 1012px; text centered w 774px;
+   links side-by-side at left ≈ calc(25%+76px) and calc(50%+66px).
+   Mobile: title 36px/1.15; links stacked. */
+
+.closing {
+  padding-top: 80px;
+  padding-bottom: 97px;
+}
+
+.closingOuter {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.closingTitle {
+  font-size: 72px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.72px;
+  color: var(--color-black);
+  text-align: center;
+  max-width: 1012px;
+  margin: 0 auto 48px;
+}
+
+.closingText {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.24px;
+  color: var(--color-black);
+  text-align: center;
+  max-width: 774px;
+  margin: 0 auto 20px;
+}
+
+/* Links — offset from left edge to match Figma positions (436px and 786px from page left).
+   Within the padded content area (48px left pad): 436-48=388px and 786-48=738px.
+   Implemented as flex row with gap matching the distance between them. */
+.closingLinks {
+  display: flex;
+  flex-direction: row;
+  gap: 302px;
+  margin-top: 48px;
+  padding-left: 388px;
+}
+
+/* HyperLink — styled link with hyperline.svg underline decoration */
+.hyperlink {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: clip;
+  padding: 4px 0;
+  text-decoration: none;
+  color: var(--color-black);
+  transition: opacity var(--transition);
+}
+
+.hyperlink:hover {
+  opacity: 0.55;
+}
+
+.hyperlinkText {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.24px;
+  color: var(--color-black);
+  white-space: nowrap;
+  display: block;
+}
+
+/* Zero-height container; image overflows downward as decorative underline */
+.hyperlineDecor {
+  display: block;
+  height: 0;
+  position: relative;
+  overflow: visible;
+}
+
+.hyperlineImg {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Mobile — 390px reference (Figma frame 439:3401)
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  /* ── Hero mobile ──────────────────────────────────────────────── */
+  /* Order: title → photo → divider → desc. All centered.
+     Navbar 88px. Title frame-top=137 → section-top=49px.
+     Photo frame-top=271 → section-top=183px (49 + title_h + gap = ~183). */
+
+  .heroInner {
+    position: static;
+    padding: 49px 24px 0;
+    min-height: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .heroTitle {
+    position: static;
+    width: auto;
+    max-width: 350px;
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.54px;
+    text-align: center;
+    order: 1;
+  }
+
+  .heroBar {
+    display: none;
+  }
+
+  .heroPhotoCol {
+    position: static;
+    order: 2;
+    width: 307px;
+    height: 252px;
+    margin-top: 24px;
+  }
+
+  .heroImg {
+    object-position: top center;
+  }
+
+  /* Mobile-only divider: between photo and desc */
+  .heroMobileDivider {
+    display: block;
+    order: 3;
+    width: 342px;
+    height: 1px;
+    background: var(--color-black);
+    border: none;
+    margin: 0;
+    align-self: center;
+  }
+
+  .heroDesc {
+    position: static;
+    width: auto;
+    max-width: 338px;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 16px;
+    order: 4;
+  }
+
+  /* Desktop divider hidden on mobile */
+  .heroDivider {
+    display: none;
+  }
+
+  /* ── Carreira mobile ──────────────────────────────────────────── */
+
+  .carreira {
+    padding-top: 64px;
+  }
+
+  .carreiraOuter {
+    padding: 0 24px;
+  }
+
+  .carreiraIntroRow {
+    justify-content: unset;
+  }
+
+  .carreiraIntroContent {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .carreiraTitle {
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.54px;
+  }
+
+  .carreiraDesc {
+    font-size: 14px;
+  }
+
+  /* Desktop timeline hidden on mobile */
+  .timelineDesktop {
+    display: none;
+  }
+
+  /* Mobile timeline — visible on mobile */
+  .timelineMobile {
+    display: block;
+    position: relative;
+    margin-top: 48px;
+    padding-left: 45px;
+  }
+
+  /* Vertical axis at left 26px (within padding-left 45px context: 26px from outer edge) */
+  .timelineMobileAxis {
+    position: absolute;
+    left: 26px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--color-black);
+  }
+
+  .timelineMobileEntry {
+    position: relative;
+    padding: 32px 0;
+  }
+
+  /* Diamond markers on left axis */
+  /* Marker sits on the left axis (axis at left:26px from outer edge, content offset 45px).
+     Within the content area (padding-left 45px), axis is at -19px from content left. */
+  .timelineMobileMarkerWrapper {
+    position: absolute;
+    left: -19px;
+    top: 36px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .markerMobileOuter {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--color-black);
+    background: var(--color-white);
+    transform: rotate(45deg);
+  }
+
+  .markerMobileInner {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--color-black);
+    transform: rotate(45deg);
+  }
+
+  .timelineMobileContent {
+    max-width: 321px;
+  }
+
+  .companyNameMobile {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--color-black);
+    margin: 0 0 6px;
+  }
+
+  .companyRoleMobile {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-black);
+    margin: 0 0 8px;
+  }
+
+  .companyDescMobile {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: var(--color-black);
+    margin: 0;
+  }
+
+  .carreiraPullquote {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0;
+    max-width: 338px;
+    margin: 48px auto 0;
+    text-align: center;
+  }
+
+  /* ── Princípios mobile ────────────────────────────────────────── */
+
+  .principios {
+    padding-top: 80px;
+  }
+
+  .principiosOuter {
+    padding: 0 24px;
+  }
+
+  .principiosTitle {
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.54px;
+    margin-bottom: 48px;
+  }
+
+  .principiosGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .principioIcon {
+    width: 80px;
+  }
+
+  .principioName {
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: 0;
+  }
+
+  .principioText {
+    font-size: 14px;
+    line-height: 1.45;
+    max-width: none;
+  }
+
+  /* ── Liderança mobile ─────────────────────────────────────────── */
+
+  .lideranca {
+    padding-top: 80px;
+  }
+
+  .liderancaOuter {
+    padding: 0 24px;
+  }
+
+  .liderancaInner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .liderancaTitle {
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.54px;
+    max-width: 341px;
+    margin: 0 auto;
+  }
+
+  .liderancaRight {
+    padding-left: 0;
+    max-width: 342px;
+    margin: 0 auto;
+    gap: 16px;
+  }
+
+  .liderancaText {
+    font-size: 14px;
+    text-align: center;
+    max-width: 342px;
+  }
+
+  .liderancaPullquote {
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.54px;
+    max-width: 340px;
+    margin: 32px 0 0;
+  }
+
+  .liderancaDivider {
+    margin: 48px 24px 0;
+    width: calc(100% - 48px);
+  }
+
+  /* ── Sempre Iniciante mobile ──────────────────────────────────── */
+  /* Side-by-side: karatê (134px) on left, title+text1 on right.
+     Text2 full-width below.
+     Figma: karatê left=23, w=134, h=361; title at left calc(70%−110px), w=197. */
+
+  .iniciante {
+    padding-top: 64px;
+  }
+
+  .inicianteOuter {
+    padding: 0 24px;
+  }
+
+  .inicianteInner {
+    grid-template-columns: 120px minmax(0, 1fr);
+    column-gap: 16px;
+    row-gap: 24px;
+    align-items: start;
+  }
+
+  .iniciantePhotos {
+    width: 120px;
+  }
+
+  .inicianteKarateImg {
+    width: 120px;
+    height: 324px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 8px;
+  }
+
+  .inicianteBodyDesktop {
+    display: none;
+  }
+
+  .inicianteBodyFull {
+    display: block;
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .inicianteText {
+    width: 100%;
+    min-width: 0;
+    padding-top: 0;
+    max-width: none;
+  }
+
+  .inicianteTitle {
+    font-size: 44px;
+    line-height: 1.04;
+    letter-spacing: -1.32px;
+    margin-bottom: 16px;
+    max-width: none;
+  }
+
+  .inicianteBody {
+    width: 100%;
+    max-width: none;
+    font-size: 14px;
+    line-height: 1.45;
+    margin-bottom: 16px;
+  }
+
+  /* Text part 2: full-width below the side-by-side block on mobile */
+  .inicianteBodySecond {
+    font-size: 14px;
+    max-width: 340px;
+    margin-left: 0;
+    margin-top: 16px;
+  }
+
+  .inicianteDivider {
+    margin: 48px 24px 0;
+    width: calc(100% - 48px);
+  }
+
+  /* ── Closing mobile ───────────────────────────────────────────── */
+
+  .closing {
+    padding-top: 64px;
+    padding-bottom: 80px;
+  }
+
+  .closingOuter {
+    padding: 0 24px;
+  }
+
+  .closingTitle {
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.54px;
+    max-width: 340px;
+    margin-bottom: 24px;
+  }
+
+  .closingText {
+    font-size: 14px;
+    line-height: 1.45;
+    letter-spacing: 0;
+    margin-bottom: 16px;
+  }
+
+  .closingLinks {
+    flex-direction: column;
+    gap: 16px;
+    padding-left: 55px;
+    margin-top: 32px;
+    align-items: flex-start;
+  }
+
+  .hyperlinkText {
+    font-size: 16px;
+    letter-spacing: 0;
+  }
+}
+
+/* Ajuste final — timeline mobile */
+@media (max-width: 767px) {
+  .timelineMobile {
+    margin-top: 28px;
+    padding-left: 45px;
+  }
+
+  .timelineMobileAxis {
+    display: none;
+  }
+
+  .timelineMobileEntry {
+    position: relative;
+    padding: 0 0 56px;
+  }
+
+  .timelineMobileEntry:last-child {
+    padding-bottom: 0;
+  }
+
+  .timelineMobileEntry:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: -9px;
+    top: 28px;
+    bottom: 10px;
+    width: 1px;
+    background: var(--color-black);
+  }
+
+  .timelineMobileMarkerWrapper {
+    left: -19px;
+    top: 3px;
+    z-index: 1;
+  }
+}
+
+/* Refinamento — timeline mobile mais compacta */
+@media (max-width: 767px) {
+  .timelineMobileEntry {
+    padding-bottom: 36px;
+  }
+
+  .timelineMobileContent {
+    padding-left: 16px;
+  }
+
+  .timelineMobileEntry:not(:last-child)::after {
+    bottom: 8px;
+  }
+}
+
+/* Refinamento — timeline mobile usando melhor a largura */
+@media (max-width: 767px) {
+  .timelineMobile {
+    padding-left: 32px;
+  }
+
+  .timelineMobileMarkerWrapper {
+    left: -18px;
+  }
+
+  .timelineMobileEntry:not(:last-child)::after {
+    left: -8px;
+  }
+
+  .timelineMobileContent {
+    width: 100%;
+    padding-left: 12px;
+    padding-right: 0;
+  }
+}
+
+/* Ajuste final — timeline mobile ocupando melhor a largura */
+@media (max-width: 767px) {
+  .timelineMobile {
+    width: calc(100% + 16px);
+    margin-left: -8px;
+    padding-left: 30px;
+    padding-right: 0;
+  }
+
+  .timelineMobileContent {
+    width: calc(100% - 4px);
+    max-width: none;
+    padding-left: 10px;
+    padding-right: 0;
+  }
+
+  .timelineMobileMarkerWrapper {
+    left: -18px;
+  }
+
+  .timelineMobileEntry:not(:last-child)::after {
+    left: -8px;
+  }
+}
+
+/* Reequilíbrio horizontal — timeline mobile */
+@media (max-width: 767px) {
+  .timelineMobile {
+    width: calc(100% + 8px);
+    margin-left: -8px;
+    padding-left: 28px;
+  }
+
+  .timelineMobileContent {
+    width: 100%;
+    padding-left: 8px;
+    padding-right: 0;
+  }
+
+  .timelineMobileMarkerWrapper {
+    left: -16px;
+  }
+
+  .timelineMobileEntry:not(:last-child)::after {
+    left: -6px;
+  }
+}
+
+/* Reequilíbrio horizontal — timeline mobile */
+@media (max-width: 767px) {
+  .timelineMobile {
+    width: calc(100% + 8px);
+    margin-left: -8px;
+    padding-left: 28px;
+  }
+
+  .timelineMobileContent {
+    width: 100%;
+    padding-left: 8px;
+    padding-right: 0;
+  }
+
+  .timelineMobileMarkerWrapper {
+    left: -16px;
+  }
+
+  .timelineMobileEntry:not(:last-child)::after {
+    left: -6px;
+  }
+}
+
+/* Ajuste — nós menores na timeline mobile */
+@media (max-width: 767px) {
+  .markerMobileOuter {
+    width: 10px;
+    height: 10px;
+  }
+
+  .markerMobileInner {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+/* Ajuste — seção Liderança mais larga no mobile */
+@media (max-width: 767px) {
+  .liderancaRight {
+    width: 100%;
+    max-width: none;
+  }
+
+  .liderancaText {
+    width: 100%;
+    max-width: none;
+  }
+
+  .liderancaPullquote {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .inicianteShohoImg {
+    display: none;
+  }
+}
+
+/* Ajuste — aproxima a seção Sempre Iniciante do divisor no mobile */
+@media (max-width: 767px) {
+  .iniciante {
+    padding-top: 48px;
+  }
+}
+
+/* Ajuste — foto acompanha a altura do conteúdo lateral no mobile */
+@media (max-width: 767px) {
+  .inicianteInner {
+    grid-template-columns: 136px minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .iniciantePhotos {
+    width: 136px;
+    height: 100%;
+  }
+
+  .inicianteKarateImg {
+    width: 136px;
+    height: 100%;
+    min-height: 420px;
+    object-fit: cover;
+    object-position: center top;
+  }
+}
+
+/* Refinamento — Closing mobile */
+@media (max-width: 767px) {
+  .closing {
+    padding-top: 48px;
+    padding-bottom: 56px;
+  }
+
+  .closingTitle {
+    max-width: 330px;
+    margin: 0 auto 24px;
+  }
+
+  .closingText {
+    width: 100%;
+    max-width: 342px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .closingLinks {
+    width: max-content;
+    margin: 28px auto 0;
+    padding-left: 0;
+    gap: 20px;
+    align-items: flex-start;
+  }
+}
+
+/* Refinamento — Closing desktop */
+@media (min-width: 768px) {
+  .closing {
+    padding-top: 72px;
+    padding-bottom: 80px;
+  }
+
+  .closingTitle {
+    max-width: 960px;
+    margin-bottom: 40px;
+  }
+
+  .closingText {
+    max-width: 900px;
+  }
+
+  .closingLinks {
+    width: 100%;
+    max-width: 760px;
+    margin: 44px auto 0;
+    padding-left: 0;
+    justify-content: space-between;
+    gap: 80px;
+  }
+}
