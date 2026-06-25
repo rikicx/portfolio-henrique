@@ -3,8 +3,7 @@ import styles from './OtherProjectsSection.module.css'
 
 import qiImg from '../media/shared/projects/card-qi-platform.png'
 import itauImg from '../media/shared/projects/itau-cover.jpg'
-import emrBgImg from '../media/shared/projects/card-emr-bg.png'
-import emrOverlayImg from '../media/shared/projects/card-emr-overlay.jpg'
+import emrImg from '../media/shared/projects/emr-integration-cover.png'
 import storeroomImg from '../media/shared/projects/card-gerdau-storeroom.png'
 import smartlogImg from '../media/shared/projects/gerdau-smartlog-cover.png'
 import threePhImg from '../media/shared/projects/3ph-hrcrs-cover.jpg'
@@ -26,10 +25,7 @@ const PROJECTS = [
     slug: 'emr-integration',
     title: 'EMR Integration',
     category: 'Saúde · Head of Design',
-    images: [
-      { src: emrBgImg, alt: '' },
-      { src: emrOverlayImg, alt: '' },
-    ],
+    images: [{ src: emrImg, alt: '' }],
   },
   {
     slug: 'gerdau-storeroom',
