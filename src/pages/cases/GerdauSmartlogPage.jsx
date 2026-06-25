@@ -8,7 +8,7 @@ import estruturando01Img from '../../media/cases/gerdau-smartlog/smartlog-estrut
 import estruturando02Img from '../../media/cases/gerdau-smartlog/smartlog-estruturando-02.jpg'
 import projetandoImg from '../../media/cases/gerdau-smartlog/smartlog-projetando.jpg'
 import validandoImg from '../../media/cases/gerdau-smartlog/smartlog-validando.jpg'
-import produtoImg from '../../media/cases/gerdau-smartlog/smartlog-produto.jpg'
+import produtoImg from '../../media/cases/gerdau-smartlog/smartlog-produto-cropped.jpg'
 import smartlogLogoSvg from '../../media/cases/gerdau-smartlog/smartlog-logo.svg'
 import quoteOpenImg from '../../media/shared/quotes/quote-open.png'
 import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
@@ -18,12 +18,18 @@ export default function GerdauSmartlogPage() {
     <Layout>
       {/* 1. Hero */}
       <section aria-labelledby="hero-title" className={styles.hero}>
-        <h1 id="hero-title" className={styles.heroTitle}>Gerdau Smartlog</h1>
-        <p className={styles.heroDesc}>
-          Uma ferramenta para transformar informações espalhadas entre SAP, Neolog, Excel e
-          e-mail em alertas que a operação pudesse assumir, acompanhar e resolver em um único
-          lugar.
-        </p>
+        <h1 id="hero-title" className={styles.heroTitle}>
+          <span>Gerdau</span>
+          <span>Smartlog</span>
+        </h1>
+
+        <div className={styles.heroMeta}>
+          <p className={styles.heroDesc}>
+            Uma ferramenta para transformar informações espalhadas entre SAP, Neolog, Excel e
+            e-mail em alertas que a operação pudesse assumir, acompanhar e resolver em um único
+            lugar.
+          </p>
+        </div>
       </section>
 
       <hr className={styles.dividerFull} aria-hidden="true" />
@@ -109,30 +115,32 @@ export default function GerdauSmartlogPage() {
       {/* 5. Cocriação como parte do processo */}
       <section aria-labelledby="cocriacao-title" className={styles.cocriacao}>
         <div className={styles.container}>
-          <h2 id="cocriacao-title" className={styles.sectionHeading}>
-            Cocriação como parte do processo
-          </h2>
-          <div className={styles.cocriacaoText}>
-            <p>O Smartlog não foi desenhado de forma isolada.</p>
-            <p>
-              Ao longo do projeto, trabalhamos lado a lado com pessoas da operação para discutir
-              cenários reais, mapear decisões, revisar fluxos e priorizar oportunidades.
-            </p>
-            <p className={styles.cocriacaoBreak}>
-              Essas conversas aconteciam em ciclos de cocriação, usando quadros, anotações,
-              simulações e fluxos desenhados em conjunto. Isso ajudou a transformar problemas
-              operacionais em funcionalidades mais aderentes à rotina do time e fez com que o
-              produto evoluísse sempre em construção conjunta.
-            </p>
-          </div>
-        </div>
-        <div className={styles.cocriacaoPanoramica}>
-          <div className={styles.container}>
-            <img
-              src={cocriacaoPanoramicaImg}
-              alt="Sessão de cocriação com a equipe de operação, mapeando decisões e fluxos do Smartlog"
-              className={styles.panoramicImg}
-            />
+          <div className={styles.cocriacaoLayout}>
+            <h2 id="cocriacao-title" className={styles.sectionHeading}>
+              Cocriação como parte do processo
+            </h2>
+
+            <div className={styles.cocriacaoText}>
+              <p>O Smartlog não foi desenhado de forma isolada.</p>
+              <p>
+                Ao longo do projeto, trabalhamos lado a lado com pessoas da operação para discutir
+                cenários reais, mapear decisões, revisar fluxos e priorizar oportunidades.
+              </p>
+              <p className={styles.cocriacaoBreak}>
+                Essas conversas aconteciam em ciclos de cocriação, usando quadros, anotações,
+                simulações e fluxos desenhados em conjunto. Isso ajudou a transformar problemas
+                operacionais em funcionalidades mais aderentes à rotina do time e fez com que o
+                produto evoluísse sempre em construção conjunta.
+              </p>
+            </div>
+
+            <div className={styles.cocriacaoPanoramica}>
+              <img
+                src={cocriacaoPanoramicaImg}
+                alt="Sessão de cocriação com a equipe de operação, mapeando decisões e fluxos do Smartlog"
+                className={styles.panoramicImg}
+              />
+            </div>
           </div>
         </div>
       </section>
