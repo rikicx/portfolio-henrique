@@ -11,11 +11,13 @@ import ItauEmpreendedorPage from './pages/cases/ItauEmpreendedorPage'
 import ThreePHHrcrsPage from './pages/cases/ThreePHHrcrsPage'
 import BackToTopButton from './components/BackToTopButton'
 import ScrollToTop from './components/ScrollToTop'
+import RouteTransitionLoader from './components/RouteTransitionLoader'
 
 export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <RouteTransitionLoader />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
