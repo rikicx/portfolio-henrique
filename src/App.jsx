@@ -10,10 +10,13 @@ import GerdauSmartlogPage from './pages/cases/GerdauSmartlogPage'
 import ItauEmpreendedorPage from './pages/cases/ItauEmpreendedorPage'
 import ThreePHHrcrsPage from './pages/cases/ThreePHHrcrsPage'
 import BackToTopButton from './components/BackToTopButton'
+import ScrollToTop from './components/ScrollToTop'
 
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/sobre" element={<AboutPage />} />
