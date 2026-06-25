@@ -13,10 +13,10 @@ import smartlogLogoSvg from '../../media/cases/gerdau-smartlog/smartlog-logo.svg
 import quoteOpenImg from '../../media/shared/quotes/quote-open.png'
 import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
 
-import cardQiImg from '../../media/card-qi-platform.png'
+import cardQiImg from '../../media/home/projects/card-qi-platform.png'
 import cardItauImg from '../../media/itau-cover.jpg'
 import cardEmrImg from '../../media/EMR-Int-Cover.png'
-import cardStoreroomImg from '../../media/card-gerdau-storeroom.png'
+import cardStoreroomImg from '../../media/home/projects/card-gerdau-storeroom.png'
 import card3phImg from '../../media/3ph-website-mockup.jpg'
 
 const OUTROS_PROJETOS = [

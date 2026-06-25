@@ -15,9 +15,9 @@ import quoteOpenImg from '../../media/shared/quotes/quote-open.png'
 import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
 
 import itauCardImg from '../../media/itau-cover.jpg'
-import gerdauCardImg from '../../media/card-gerdau-storeroom.png'
-import emrBgImg from '../../media/card-emr-bg.png'
-import emrOverlayImg from '../../media/card-emr-overlay.jpg'
+import gerdauCardImg from '../../media/home/projects/card-gerdau-storeroom.png'
+import emrBgImg from '../../media/home/projects/card-emr-bg.png'
+import emrOverlayImg from '../../media/home/projects/card-emr-overlay.jpg'
 import threePhCardImg from '../../media/Captura de Tela 2026-06-16 às 00.14.57.png'
 import smartlogCardImg from '../../media/Smartlog/cocriacao_ov_alocacao (1).jpeg'
 

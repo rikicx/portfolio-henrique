@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import styles from './Projects.module.css'
-import qiImg from '../media/card-qi-platform.png'
-import gerdauImg from '../media/card-gerdau-storeroom.png'
-import emrBgImg from '../media/card-emr-bg.png'
-import emrOverlayImg from '../media/card-emr-overlay.jpg'
+import qiImg from '../media/home/projects/card-qi-platform.png'
+import gerdauImg from '../media/home/projects/card-gerdau-storeroom.png'
+import emrBgImg from '../media/home/projects/card-emr-bg.png'
+import emrOverlayImg from '../media/home/projects/card-emr-overlay.jpg'
 
 // Desktop order: QI Platform → Gerdau Storeroom → EMR Integration (Figma left=48/510/972)
 // Mobile order:  Gerdau → QI → EMR (via CSS nth-child order override)

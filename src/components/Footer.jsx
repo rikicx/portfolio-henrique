@@ -1,5 +1,5 @@
 import styles from './Footer.module.css'
-import photoUrl from '../media/henrique-footer.png'
+import photoUrl from '../media/home/hero/henrique-footer.png'
 
 export default function Footer() {
   return (

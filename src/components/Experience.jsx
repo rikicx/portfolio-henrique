@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import styles from './Experience.module.css'
-import timelineSvg from '../media/timeline.svg'
-import hyperlineSvg from '../media/hyperline.svg'
-import logo3ph from '../media/logo-3ph.png'
-import logoSciensa from '../media/logo-sciensa.png'
-import logoNetfarma from '../media/logo-netfarma.png'
+import timelineSvg from '../media/home/experience/timeline.svg'
+import hyperlineSvg from '../media/home/experience/hyperline.svg'
+import logo3ph from '../media/home/experience/logo-3ph.png'
+import logoSciensa from '../media/home/experience/logo-sciensa.png'
+import logoNetfarma from '../media/home/experience/logo-netfarma.png'
 
 const companies = [
   {

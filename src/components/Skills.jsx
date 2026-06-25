@@ -1,9 +1,9 @@
 import styles from './Skills.module.css'
-import iconEstrategia from '../media/icon-estrategia.svg'
-import iconExperiencia from '../media/icon-experiencia.svg'
-import iconDados from '../media/icon-dados.svg'
-import iconLideranca from '../media/icon-lideranca.svg'
-import iconFerramentas from '../media/icon-ferramentas.svg'
+import iconEstrategia from '../media/home/experience/icon-estrategia.svg'
+import iconExperiencia from '../media/home/experience/icon-experiencia.svg'
+import iconDados from '../media/home/experience/icon-dados.svg'
+import iconLideranca from '../media/home/experience/icon-lideranca.svg'
+import iconFerramentas from '../media/home/experience/icon-ferramentas.svg'
 
 const items = [
   {

@@ -8,7 +8,7 @@ import manemShohoImg from '../media/ManemShoho.png'
 import comeceProbImg from '../media/ComeceProb.png'
 import aproxPersImg from '../media/AproxPers.png'
 import uxImg from '../media/UX.png'
-import hyperlineSvg from '../media/hyperline.svg'
+import hyperlineSvg from '../media/home/experience/hyperline.svg'
 
 const timeline = [
   {

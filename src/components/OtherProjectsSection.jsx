@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import styles from './OtherProjectsSection.module.css'
 
-import qiImg from '../media/card-qi-platform.png'
+import qiImg from '../media/home/projects/card-qi-platform.png'
 import itauImg from '../media/itau-cover.jpg'
-import emrBgImg from '../media/card-emr-bg.png'
-import emrOverlayImg from '../media/card-emr-overlay.jpg'
-import storeroomImg from '../media/card-gerdau-storeroom.png'
+import emrBgImg from '../media/home/projects/card-emr-bg.png'
+import emrOverlayImg from '../media/home/projects/card-emr-overlay.jpg'
+import storeroomImg from '../media/home/projects/card-gerdau-storeroom.png'
 import smartlogImg from '../media/Smartlog-Cover.png'
 import threePhImg from '../media/3ph-website-mockup.jpg'
 

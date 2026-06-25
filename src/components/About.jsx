@@ -1,6 +1,6 @@
 import styles from './About.module.css'
 import arrowLink from '../media/shared/icons/arrow-link.svg'
-import henriqueWorking from '../media/henrique-working.png'
+import henriqueWorking from '../media/home/hero/henrique-working.png'
 
 export default function About() {
   return (
