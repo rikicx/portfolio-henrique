@@ -12,7 +12,7 @@
   max-width: 1440px;
   margin: 0 auto;
   position: relative;
-  padding-bottom: 140px;
+  padding-bottom: 198px;
 }
 
 /* Display/XXL: 320px, 500, lh 0.88, ls -8px. Hero top offset = 259-106 = 153px. */
@@ -24,7 +24,7 @@
   letter-spacing: -8px;
   color: var(--color-black);
   white-space: nowrap;
-  padding-top: 153px;
+  padding-top: 95px;
   padding-left: 99px;
   position: relative;
   z-index: 0;
