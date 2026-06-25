@@ -9,6 +9,7 @@ import GerdauStoreroomPage from './pages/cases/GerdauStoreroomPage'
 import GerdauSmartlogPage from './pages/cases/GerdauSmartlogPage'
 import ItauEmpreendedorPage from './pages/cases/ItauEmpreendedorPage'
 import ThreePHHrcrsPage from './pages/cases/ThreePHHrcrsPage'
+import BackToTopButton from './components/BackToTopButton'
 
 export default function App() {
   return (
@@ -25,6 +26,8 @@ export default function App() {
         <Route path="/trabalhos/3ph-hrcrs-digital-ecosystem" element={<ThreePHHrcrsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+
+      <BackToTopButton />
     </BrowserRouter>
   )
 }
