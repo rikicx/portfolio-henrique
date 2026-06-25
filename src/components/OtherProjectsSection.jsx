@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import styles from './OtherProjectsSection.module.css'
 
-import qiImg from '../media/home/projects/card-qi-platform.png'
-import itauImg from '../media/itau-cover.jpg'
-import emrBgImg from '../media/home/projects/card-emr-bg.png'
-import emrOverlayImg from '../media/home/projects/card-emr-overlay.jpg'
-import storeroomImg from '../media/home/projects/card-gerdau-storeroom.png'
-import smartlogImg from '../media/Smartlog-Cover.png'
-import threePhImg from '../media/3ph-website-mockup.jpg'
+import qiImg from '../media/shared/projects/card-qi-platform.png'
+import itauImg from '../media/shared/projects/itau-cover.jpg'
+import emrBgImg from '../media/shared/projects/card-emr-bg.png'
+import emrOverlayImg from '../media/shared/projects/card-emr-overlay.jpg'
+import storeroomImg from '../media/shared/projects/card-gerdau-storeroom.png'
+import smartlogImg from '../media/shared/projects/gerdau-smartlog-cover.png'
+import threePhImg from '../media/shared/projects/3ph-hrcrs-cover.jpg'
 
 const PROJECTS = [
   {

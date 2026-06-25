@@ -13,11 +13,11 @@ import smartlogLogoSvg from '../../media/cases/gerdau-smartlog/smartlog-logo.svg
 import quoteOpenImg from '../../media/shared/quotes/quote-open.png'
 import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
 
-import cardQiImg from '../../media/home/projects/card-qi-platform.png'
-import cardItauImg from '../../media/itau-cover.jpg'
-import cardEmrImg from '../../media/EMR-Int-Cover.png'
-import cardStoreroomImg from '../../media/home/projects/card-gerdau-storeroom.png'
-import card3phImg from '../../media/3ph-website-mockup.jpg'
+import cardQiImg from '../../media/shared/projects/card-qi-platform.png'
+import cardItauImg from '../../media/shared/projects/itau-cover.jpg'
+import cardEmrImg from '../../media/shared/projects/emr-integration-cover.png'
+import cardStoreroomImg from '../../media/shared/projects/card-gerdau-storeroom.png'
+import card3phImg from '../../media/shared/projects/3ph-hrcrs-cover.jpg'
 
 const OUTROS_PROJETOS = [
   {
