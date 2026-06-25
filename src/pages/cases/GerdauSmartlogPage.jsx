@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
 import Layout from '../../components/Layout'
+import OtherProjectsSection from '../../components/OtherProjectsSection'
 import styles from './GerdauSmartlogPage.module.css'
 
 import heroImg from '../../media/cases/gerdau-smartlog/smartlog-hero.jpg'
@@ -12,69 +12,6 @@ import produtoImg from '../../media/cases/gerdau-smartlog/smartlog-produto.jpg'
 import smartlogLogoSvg from '../../media/cases/gerdau-smartlog/smartlog-logo.svg'
 import quoteOpenImg from '../../media/shared/quotes/quote-open.png'
 import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
-
-import cardQiImg from '../../media/shared/projects/card-qi-platform.png'
-import cardItauImg from '../../media/shared/projects/itau-cover.jpg'
-import cardEmrImg from '../../media/shared/projects/emr-integration-cover.png'
-import cardStoreroomImg from '../../media/shared/projects/card-gerdau-storeroom.png'
-import card3phImg from '../../media/shared/projects/3ph-hrcrs-cover.jpg'
-
-const OUTROS_PROJETOS = [
-  {
-    slug: 'qi-platform',
-    title: 'QI Platform',
-    category: 'Saúde · Head of Design',
-    img: cardQiImg,
-  },
-  {
-    slug: 'itau-empreendedor',
-    title: 'Itaú Empreendedor',
-    category: 'Finances · Product Designer',
-    img: cardItauImg,
-  },
-  {
-    slug: 'emr-integration',
-    title: 'EMR Integration',
-    category: 'Saúde · Head of Design',
-    img: cardEmrImg,
-  },
-  {
-    slug: 'gerdau-storeroom',
-    title: 'Gerdau Storeroom',
-    category: 'Industry · Product Designer',
-    img: cardStoreroomImg,
-  },
-  {
-    slug: '3ph-hrcrs-digital-ecosystem',
-    title: '3PH Alliance & HRCRS Digital Ecosystem',
-    category: 'Saúde · Head of Design',
-    img: card3phImg,
-  },
-]
-
-function OutrosProjetosCard({ project }) {
-  return (
-    <Link
-      to={`/trabalhos/${project.slug}`}
-      className={styles.card}
-      aria-label={`Ver projeto ${project.title}`}
-    >
-      {project.img ? (
-        <img src={project.img} alt="" aria-hidden="true" className={styles.cardImg} />
-      ) : (
-        <div className={styles.cardPlaceholder} />
-      )}
-      <div className={styles.cardOverlay} aria-hidden="true" />
-      <div className={styles.cardContent}>
-        <div className={styles.cardTextBlock}>
-          <p className={styles.cardCategory}>{project.category}</p>
-          <h3 className={styles.cardTitle}>{project.title}</h3>
-        </div>
-        <span className={styles.cardLink}>Ver Projeto →</span>
-      </div>
-    </Link>
-  )
-}
 
 export default function GerdauSmartlogPage() {
   return (
@@ -325,24 +262,7 @@ export default function GerdauSmartlogPage() {
       </section>
 
       {/* 10. Outros Projetos */}
-      <section aria-labelledby="outros-title" className={styles.outrosSection}>
-        <hr className={styles.dividerFull} aria-hidden="true" />
-        <div className={styles.container}>
-          <h2 id="outros-title" className={styles.outrosTitle}>Outros Projetos</h2>
-        </div>
-        <div className={styles.outrosGrid}>
-          <div className={styles.outrosLeft}>
-            {OUTROS_PROJETOS.slice(0, 3).map((project) => (
-              <OutrosProjetosCard key={project.slug} project={project} />
-            ))}
-          </div>
-          <div className={styles.outrosRight}>
-            {OUTROS_PROJETOS.slice(3).map((project) => (
-              <OutrosProjetosCard key={project.slug} project={project} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <OtherProjectsSection currentSlug="gerdau-smartlog" />
     </Layout>
   )
 }
