@@ -10,8 +10,8 @@ import projetandoImg from '../../media/cases/gerdau-smartlog/smartlog-projetando
 import validandoImg from '../../media/cases/gerdau-smartlog/smartlog-validando.jpg'
 import produtoImg from '../../media/cases/gerdau-smartlog/smartlog-produto.jpg'
 import smartlogLogoSvg from '../../media/cases/gerdau-smartlog/smartlog-logo.svg'
-import quoteOpenImg from '../../media/quote-open.png'
-import quoteCloseImg from '../../media/quote-close.png'
+import quoteOpenImg from '../../media/shared/quotes/quote-open.png'
+import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
 
 import cardQiImg from '../../media/card-qi-platform.png'
 import cardItauImg from '../../media/itau-cover.jpg'

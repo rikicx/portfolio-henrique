@@ -1,5 +1,5 @@
 import styles from './About.module.css'
-import arrowLink from '../media/arrow-link.svg'
+import arrowLink from '../media/shared/icons/arrow-link.svg'
 import henriqueWorking from '../media/henrique-working.png'
 
 export default function About() {

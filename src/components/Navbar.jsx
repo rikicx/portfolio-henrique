@@ -1,7 +1,7 @@
 import { NavLink, Link, useLocation } from 'react-router-dom'
 import { useState, useEffect, useCallback, useRef } from 'react'
 import styles from './Navbar.module.css'
-import logoUrl from '../media/HSD-LOGO.svg'
+import logoUrl from '../media/shared/branding/hsd-logo.svg'
 
 const TRABALHOS_ITEMS = [
   { label: 'Ver todos os trabalhos', to: '/trabalhos' },

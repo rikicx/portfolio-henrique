@@ -12,8 +12,8 @@ import testImg02 from '../../media/cases/gerdau-storeroom/gerdau-storeroom-usabi
 import testImg04 from '../../media/cases/gerdau-storeroom/gerdau-storeroom-usability-test-04.jpg'
 import refinedInterfaceImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-refined-interface.png'
 import projectTeamImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-project-team.jpg'
-import quoteOpenImg from '../../media/quote-open.png'
-import quoteCloseImg from '../../media/quote-close.png'
+import quoteOpenImg from '../../media/shared/quotes/quote-open.png'
+import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
 
 
 const VIMEO_SHADOWING = '1202496239'
