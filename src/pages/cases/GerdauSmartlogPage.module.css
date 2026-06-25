@@ -1,0 +1,893 @@
+/* ─── Containers ─────────────────────────────────────────────────────────── */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+/* ─── Dividers ───────────────────────────────────────────────────────────── */
+.dividerFull {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: block;
+  height: 1px;
+  background: var(--color-border);
+  border: none;
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+/* ─── Typography helpers ─────────────────────────────────────────────────── */
+.sectionHeading {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.44px;
+  color: var(--color-black);
+  margin: 0 0 32px;
+}
+
+.sectionHeadingCenter {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.44px;
+  color: var(--color-black);
+  text-align: center;
+  margin: 0 0 24px;
+}
+
+.bodyBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bodyBlock p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0;
+}
+
+/* Extra spacing for "blank line" paragraph breaks from Figma */
+.textGap {
+  margin-top: 13px;
+}
+
+/* ─── 1. Hero ────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  box-sizing: border-box;
+  min-height: 470px;
+}
+
+.heroTitle {
+  font-size: 160px;
+  font-weight: 500;
+  line-height: 0.96;
+  letter-spacing: -4.8px;
+  color: var(--color-black);
+  white-space: nowrap;
+  position: absolute;
+  left: 43px;
+  top: 110px;
+}
+
+.heroDesc {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+  position: absolute;
+  top: 318px;
+  left: calc(50% + 12px);
+  width: 629px;
+  margin: 0;
+}
+
+/* ─── 2. Metadata ────────────────────────────────────────────────────────── */
+.metadata {
+  padding: 24px 0 80px;
+}
+
+.metaLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.metaImage {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.metaImg {
+  width: 100%;
+  height: 532px;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-card);
+}
+
+.metaFields {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 8px;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metaLabel {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.metaValue {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.54px;
+  color: var(--color-black);
+  margin: 0;
+}
+
+/* ─── 3. O problema ──────────────────────────────────────────────────────── */
+.problema {
+  padding: 80px 0 40px;
+}
+
+.problemaLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 32fr) minmax(0, 68fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.problemaLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Label "O problema" in secondary/muted gray, per Figma */
+.problemaLabelText {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.54px;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.problema .sectionHeading {
+  margin: 0;
+}
+
+.problemaText {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.problemaText p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0;
+}
+
+/* ─── 4. Pergunta central ────────────────────────────────────────────────── */
+.centralQuestion {
+  padding: 40px 0;
+}
+
+.quoteIconOpen {
+  width: 103px;
+  height: 86px;
+  display: block;
+  transform: rotate(180deg);
+  margin-bottom: 24px;
+}
+
+.quoteLabel {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.24px;
+  color: var(--color-black);
+  margin: 0 0 8px;
+}
+
+.quoteText {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.44px;
+  color: var(--color-black);
+  margin: 0 0 24px;
+}
+
+.quoteIconClose {
+  width: 103px;
+  height: 86px;
+  display: block;
+  margin-left: auto;
+}
+
+/* ─── 5. Cocriação como parte do processo ────────────────────────────────── */
+.cocriacao {
+  padding: 80px 0 0;
+}
+
+.cocriacao .sectionHeading {
+  margin-bottom: 24px;
+}
+
+.cocriacaoText {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 48px;
+}
+
+.cocriacaoText p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0 0 16px;
+}
+
+.cocriacaoText p:last-child {
+  margin-bottom: 0;
+}
+
+/* Extra "blank line" gap before final cocriação paragraph */
+.cocriacaoBreak {
+  margin-top: 13px !important;
+}
+
+.cocriacaoPanoramica {
+  padding-bottom: 80px;
+}
+
+.panoramicImg {
+  width: 100%;
+  height: 489px;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  display: block;
+}
+
+/* ─── 6. Estruturando a complexidade ─────────────────────────────────────── */
+.estruturando {
+  padding: 80px 0;
+}
+
+.estruturandoLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.estruturandoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.estruturandoText .sectionHeading {
+  margin-bottom: 24px;
+}
+
+.estruturandoImages {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.estruturandoImg {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  display: block;
+}
+
+/* ─── 7. Projetando para a ação ──────────────────────────────────────────── */
+.projetando {
+  padding: 80px 0;
+}
+
+.projetandoLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.projetandoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.projetandoText .sectionHeading {
+  margin-bottom: 24px;
+}
+
+.projetandoImg {
+  width: 100%;
+  height: 495px;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  display: block;
+}
+
+/* ─── 8. Validando a lógica com a operação ───────────────────────────────── */
+.validando {
+  padding: 48px 0;
+}
+
+.validandoLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.validandoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.validandoText .sectionHeading {
+  margin-bottom: 24px;
+}
+
+.validandoImg {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  display: block;
+}
+
+/* ─── 9. Produto em operação ─────────────────────────────────────────────── */
+.produto {
+  padding: 80px 0;
+}
+
+.produto .sectionHeadingCenter {
+  margin-bottom: 24px;
+}
+
+.produtoDesc {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+  text-align: center;
+  max-width: 1117px;
+  margin: 0 auto 48px;
+}
+
+.smartlogLogoWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.smartlogLogo {
+  height: 55px;
+  width: auto;
+  display: block;
+}
+
+.produtoImgWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.produtoImg {
+  width: 100%;
+  max-width: 861px;
+  height: 480px;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  display: block;
+}
+
+/* ─── 10. Outros Projetos ────────────────────────────────────────────────── */
+.outrosSection {
+  padding-bottom: 80px;
+}
+
+.outrosTitle {
+  font-size: 96px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -2.88px;
+  color: var(--color-black);
+  margin: 24px 0 40px;
+  padding: 8px;
+  white-space: nowrap;
+}
+
+.outrosGrid {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 64px;
+  align-items: flex-start;
+}
+
+.outrosLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  flex: 1;
+}
+
+.outrosRight {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  flex: 1;
+  padding-top: 120px;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 680px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  background: var(--color-placeholder);
+}
+
+.cardImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  max-width: none;
+}
+
+.cardPlaceholder {
+  position: absolute;
+  inset: 0;
+  background: var(--color-placeholder);
+}
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 3%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+.cardContent {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  right: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: var(--color-white);
+}
+
+.cardTextBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardCategory {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-white);
+  margin: 0;
+}
+
+.cardTitle {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.44px;
+  color: var(--color-white);
+  margin: 0;
+}
+
+.cardLink {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+/* ─── Mobile: 390px ──────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 56px 24px 48px;
+    min-height: auto;
+  }
+
+  .heroTitle {
+    position: static;
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.54px;
+    white-space: normal;
+    margin-left: 0;
+  }
+
+  .heroDesc {
+    position: static;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.45;
+    margin-top: 16px;
+  }
+
+  /* Divider */
+  .dividerFull {
+    padding: 0 24px;
+  }
+
+  /* Metadata */
+  .metadata {
+    padding: 24px 0 32px;
+  }
+
+  .metaLayout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .metaImg {
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .metaFields {
+    gap: 16px;
+    padding-top: 0;
+  }
+
+  .metaItem {
+    gap: 4px;
+  }
+
+  .metaLabel {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .metaValue {
+    font-size: 16px;
+    letter-spacing: 0;
+  }
+
+  /* Section headings */
+  .sectionHeading,
+  .sectionHeadingCenter {
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -0.32px;
+  }
+
+  /* Section paddings */
+  .problema,
+  .centralQuestion,
+  .cocriacao,
+  .estruturando,
+  .projetando,
+  .validando,
+  .produto {
+    padding: 48px 0;
+  }
+
+  .cocriacaoPanoramica {
+    padding-bottom: 0;
+  }
+
+  /* O problema */
+  .problemaLayout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .problema .sectionHeading {
+    margin: 0;
+  }
+
+  .problemaLabelText {
+    font-size: 20px;
+    letter-spacing: 0;
+  }
+
+  .problemaText {
+    gap: 16px;
+  }
+
+  .problemaText p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* Central question */
+  .quoteIconOpen,
+  .quoteIconClose {
+    width: 48px;
+    height: 40px;
+  }
+
+  .quoteIconOpen {
+    margin-bottom: 16px;
+  }
+
+  .quoteLabel {
+    margin: 0 0 16px;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .quoteText {
+    margin: 0 0 16px;
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: -0.54px;
+  }
+
+  .quoteIconClose {
+    margin-left: auto;
+    margin-bottom: 0;
+  }
+
+  /* Cocriação */
+  .cocriacao .sectionHeading {
+    margin-bottom: 16px;
+  }
+
+  .cocriacaoText {
+    margin-bottom: 24px;
+  }
+
+  .cocriacaoText p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .cocriacaoBreak {
+    margin-top: 0 !important;
+  }
+
+  .panoramicImg {
+    height: 180px;
+    border-radius: var(--radius-8);
+  }
+
+  /* Estruturando: título → img1 → img2 → texto */
+  .estruturandoLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .estruturandoText {
+    display: contents;
+  }
+
+  .estruturandoText .sectionHeading {
+    order: 1;
+    width: 100%;
+    margin: 0 0 16px;
+  }
+
+  .estruturandoImages {
+    order: 2;
+    width: 100%;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .estruturandoText .bodyBlock {
+    order: 3;
+    width: 100%;
+  }
+
+  .estruturandoImg {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-8);
+  }
+
+  .estruturando .bodyBlock p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .estruturando .textGap {
+    margin-top: 0;
+  }
+
+  /* Projetando: título → imagem → texto */
+  .projetandoLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .projetandoText {
+    display: contents;
+  }
+
+  .projetandoText .sectionHeading {
+    order: 1;
+    width: 100%;
+    margin: 0 0 16px;
+  }
+
+  .projetandoMedia {
+    order: 2;
+    width: 100%;
+    margin: 0 0 24px;
+  }
+
+  .projetandoText .bodyBlock {
+    order: 3;
+    width: 100%;
+  }
+
+  .projetandoImg {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-8);
+  }
+
+  .projetando .bodyBlock p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* Validando: título → imagem → texto */
+  .validandoLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .validandoText {
+    display: contents;
+  }
+
+  .validandoText .sectionHeading {
+    order: 1;
+    width: 100%;
+    margin: 0 0 16px;
+  }
+
+  .validandoMedia {
+    order: 2;
+    width: 100%;
+    margin: 0 0 24px;
+  }
+
+  .validandoText .bodyBlock {
+    order: 3;
+    width: 100%;
+  }
+
+  .validandoImg {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-8);
+  }
+
+  .validando .bodyBlock p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .validando .textGap {
+    margin-top: 0;
+  }
+
+  /* Produto em operação */
+  .produto .sectionHeadingCenter {
+    margin-bottom: 16px;
+  }
+
+  .produtoDesc {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 32px;
+    text-align: left;
+  }
+
+  .smartlogLogo {
+    height: 36px;
+  }
+
+  .smartlogLogoWrap {
+    margin-bottom: 24px;
+    justify-content: flex-start;
+  }
+
+  .produtoImg {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-8);
+  }
+
+  /* Outros Projetos */
+  .outrosTitle {
+    font-size: 36px;
+    letter-spacing: -0.54px;
+    white-space: normal;
+    margin-bottom: 24px;
+    padding: 0;
+  }
+
+  .outrosGrid {
+    flex-direction: column;
+    padding: 0 24px;
+    gap: 24px;
+  }
+
+  .outrosLeft,
+  .outrosRight {
+    width: 100%;
+    padding-top: 0;
+    gap: 24px;
+  }
+
+  .card {
+    height: 360px;
+  }
+
+  .cardCategory {
+    font-size: 14px;
+  }
+
+  .cardTitle {
+    font-size: 24px;
+    letter-spacing: -0.24px;
+  }
+
+  .cardLink {
+    font-size: 14px;
+  }
+}
