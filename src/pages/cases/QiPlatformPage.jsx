@@ -19,7 +19,7 @@ import gerdauCardImg from '../../media/shared/projects/card-gerdau-storeroom.png
 import emrBgImg from '../../media/shared/projects/card-emr-bg.png'
 import emrOverlayImg from '../../media/shared/projects/card-emr-overlay.jpg'
 import threePhCardImg from '../../media/cases/qi-platform/qi-platform-laptop.png'
-import smartlogCardImg from '../../media/Smartlog/cocriacao_ov_alocacao (1).jpeg'
+import smartlogCardImg from '../../media/cases/qi-platform/qi-platform-allocation-cocreation.jpeg'
 
 const metaItems = [
   { label: 'Empresa', value: '3PH Alliance' },
