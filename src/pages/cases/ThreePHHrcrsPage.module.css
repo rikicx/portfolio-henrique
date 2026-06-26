@@ -1,0 +1,1148 @@
+/* ─── Container ──────────────────────────────────────────────────────────── */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+/* ─── Divider ────────────────────────────────────────────────────────────── */
+.dividerFull {
+  display: block;
+  border: none;
+  border-top: 1px solid var(--color-border);
+  width: calc(100% - 96px);
+  max-width: calc(1440px - 96px);
+  margin: 0 auto;
+}
+
+/* ─── Shared typography ──────────────────────────────────────────────────── */
+.sectionHeading {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.44px;
+  color: var(--color-black);
+  margin: 0 0 32px;
+}
+
+.sectionKicker {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.24px;
+  color: var(--color-black);
+  margin: 0 0 8px;
+}
+
+.caption {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-muted);
+  text-align: center;
+  margin: 8px auto 0;
+  max-width: 560px;
+}
+
+.bodyTextBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bodyTextBlock p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0;
+}
+
+/* ─── 1. Hero ────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  max-width: 1440px;
+  min-height: 470px;
+  margin: 0 auto;
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+.heroTitle {
+  position: absolute;
+  top: 109px;
+  left: 43px;
+  font-size: 96px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -2.88px;
+  color: var(--color-black);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  white-space: nowrap;
+}
+
+.heroDesc {
+  position: absolute;
+  top: 299px;
+  left: calc(50% + 66px);
+  width: 575px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0;
+}
+
+/* ─── 2. Metadata ────────────────────────────────────────────────────────── */
+.metadata {
+  padding: 24px 0 80px;
+}
+
+.metaLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.metaImageWrap {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.metaImg {
+  width: 100%;
+  height: 532px;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-card);
+}
+
+.metaFields {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 24px;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metaLabel {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.metaValue {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.54px;
+  color: var(--color-black);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.metaValueWide {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.54px;
+  color: var(--color-black);
+  margin: 0;
+}
+
+/* ─── 3. O problema ──────────────────────────────────────────────────────── */
+.problemaSection {
+  padding: 40px 0 48px;
+}
+
+.problemaLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.problemaLabelCol {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.problemaLabel {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.54px;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.problemaHeading {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.44px;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.problemaText {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.problemaText p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0;
+}
+
+/* ─── 4. Pergunta central ────────────────────────────────────────────────── */
+.centralQuestion {
+  padding: 40px 0 48px;
+}
+
+.quoteIconOpen {
+  width: 103px;
+  height: 86px;
+  display: block;
+  transform: rotate(180deg);
+  margin-bottom: 24px;
+}
+
+.quoteLabel {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.24px;
+  color: var(--color-black);
+  margin: 0 0 8px;
+}
+
+.quoteText {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.44px;
+  color: var(--color-black);
+  margin: 0 0 24px;
+  padding: 0;
+}
+
+.quoteIconClose {
+  width: 103px;
+  height: 86px;
+  display: block;
+  margin-left: auto;
+}
+
+/* ─── 5. Benchmark ───────────────────────────────────────────────────────── */
+.benchmarkSection {
+  padding: 48px 0;
+}
+
+.benchmarkLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.benchmarkFigure {
+  margin: 0;
+}
+
+.benchmarkImg {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  display: block;
+}
+
+.benchmarkText {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0;
+}
+
+.benchmarkText .sectionHeading {
+  margin-bottom: 24px;
+}
+
+/* ─── 6. Arquitetura de conteúdo ─────────────────────────────────────────── */
+.contentStructureSection {
+  padding: 48px 0;
+}
+
+.contentStructureLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.contentStructureText {
+  display: flex;
+  flex-direction: column;
+}
+
+.contentStructureText .sectionHeading {
+  margin-bottom: 24px;
+}
+
+.contentStructureFigure {
+  margin: 0;
+}
+
+.contentStructureImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-card);
+}
+
+/* ─── 7. Design System ───────────────────────────────────────────────────── */
+.designSystemSection {
+  padding: 48px 0;
+}
+
+.designSystemHeading {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.44px;
+  color: var(--color-black);
+  margin: 0 0 32px;
+  max-width: 774px;
+}
+
+.bodyTextBlockWide {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.bodyTextBlockWide p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.designSystemFigure {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.designSystemImg {
+  width: 100%;
+  max-width: 1116px;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-card);
+}
+
+/* ─── 8. CMS — O site precisava continuar vivo ───────────────────────────── */
+.cmsSection {
+  padding: 48px 0;
+}
+
+.cmsLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.cmsText {
+  display: flex;
+  flex-direction: column;
+  padding-top: 128px;
+}
+
+.cmsText .sectionHeading {
+  margin-bottom: 24px;
+}
+
+.cmsImages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.cmsImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-card);
+}
+
+/* ─── 9. Governança ──────────────────────────────────────────────────────── */
+.governanceSection {
+  padding: 48px 0;
+}
+
+.governanceLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.governanceFigure {
+  margin: 0;
+}
+
+.governanceImg {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  display: block;
+}
+
+.governanceText {
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+}
+
+.governanceText .sectionHeading {
+  margin-bottom: 24px;
+}
+
+/* ─── 10. Implementação ──────────────────────────────────────────────────── */
+.implementationSection {
+  padding: 48px 0;
+}
+
+.implementationSection .sectionHeading {
+  max-width: 943px;
+  margin-bottom: 24px;
+}
+
+.implementationBox {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  padding: 24px 40px;
+  min-height: 242px;
+}
+
+.webflowLogoWrap {
+  width: 124px;
+  height: 85px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.webflowLogo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.implementationText {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.implementationText p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0;
+}
+
+/* ─── 11. Pós-lançamento ─────────────────────────────────────────────────── */
+.postLaunchSection {
+  padding: 48px 0;
+}
+
+.postLaunchLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.postLaunchText {
+  display: flex;
+  flex-direction: column;
+  padding-top: 56px;
+}
+
+.postLaunchText .sectionHeading {
+  margin-bottom: 24px;
+}
+
+.postLaunchImages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.postLaunchImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-card);
+}
+
+/* ─── 12. Impacto ────────────────────────────────────────────────────────── */
+.impactSection {
+  padding: 48px 0 80px;
+}
+
+.impactLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.impactText {
+  display: flex;
+  flex-direction: column;
+}
+
+.impactText .sectionHeading {
+  margin-bottom: 24px;
+}
+
+.metricBoxes {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+}
+
+.metricBox {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  padding: 24px;
+}
+
+.metricIcon {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  object-fit: contain;
+  display: block;
+}
+
+.metricContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metricMain {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.24px;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.metricSub {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-black);
+  margin: 0;
+}
+
+/* ─── Content structure: botão + lightbox ───────────────────────────────── */
+.contentStructureBtn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  cursor: default;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.contentStructureTapHint {
+  display: none;
+}
+
+.lightboxOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  overflow-y: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 64px 16px 24px;
+}
+
+.lightboxImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-8);
+}
+
+.lightboxClose {
+  position: fixed;
+  top: 88px;
+  right: 16px;
+  z-index: 1001;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-pill);
+  background: #ffffff;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.lightboxClose:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* ─── Mobile: 768px ──────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Container */
+  .container {
+    padding: 0 24px;
+  }
+
+  /* Divider */
+  .dividerFull {
+    width: calc(100% - 48px);
+    max-width: calc(100% - 48px);
+  }
+
+  /* Shared */
+  .sectionHeading {
+    font-size: 32px;
+    letter-spacing: -0.32px;
+    margin-bottom: 16px;
+  }
+
+  .sectionKicker {
+    font-size: 16px;
+    letter-spacing: 0;
+    margin-bottom: 8px;
+  }
+
+  .caption {
+    width: 100%;
+    max-width: none;
+    margin: 8px auto 0;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .bodyTextBlock {
+    gap: 16px;
+  }
+
+  .bodyTextBlock p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    position: static;
+    padding: 48px 24px 40px;
+    min-height: auto;
+  }
+
+  .heroTitle {
+    position: static;
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: -0.54px;
+    white-space: normal;
+    margin: 0 0 16px;
+  }
+
+  .heroDesc {
+    position: static;
+    width: auto;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* ── Metadata ── */
+  .metadata {
+    padding: 24px 0 32px;
+  }
+
+  .metaLayout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .metaImg {
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .metaFields {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 16px 24px;
+    padding-top: 0;
+  }
+
+  .metaItem {
+    flex: 0 1 auto;
+    min-width: 0;
+    gap: 4px;
+  }
+
+  .metaItem:nth-child(4) {
+    flex: 0 0 100%;
+  }
+
+  .metaLabel {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .metaValue {
+    font-size: 16px;
+    letter-spacing: 0;
+    white-space: normal;
+  }
+
+  .metaValueWide {
+    font-size: 16px;
+    letter-spacing: 0;
+  }
+
+  /* ── O problema ── */
+  .problemaSection {
+    padding: 32px 0;
+  }
+
+  .problemaLayout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .problemaLabel {
+    font-size: 16px;
+    color: var(--color-muted);
+    letter-spacing: 0;
+  }
+
+  .problemaHeading {
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+
+  .problemaText {
+    gap: 16px;
+  }
+
+  .problemaText p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* ── Pergunta central ── */
+  .centralQuestion {
+    padding: 48px 0;
+  }
+
+  .quoteIconOpen,
+  .quoteIconClose {
+    width: 48px;
+    height: 40px;
+  }
+
+  .quoteIconOpen {
+    margin-bottom: 16px;
+  }
+
+  .quoteLabel {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+
+  .quoteText {
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: -0.54px;
+    margin-bottom: 16px;
+  }
+
+  /* ── Benchmark ── */
+  .benchmarkSection {
+    padding: 32px 0;
+  }
+
+  .benchmarkLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .benchmarkText {
+    display: contents;
+  }
+
+  .benchmarkText .sectionKicker {
+    order: 1;
+    width: 100%;
+    margin: 0 0 8px;
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: left;
+  }
+
+  .benchmarkText .sectionHeading {
+    order: 2;
+    margin: 0 0 8px;
+  }
+
+  .benchmarkFigure {
+    order: 3;
+    margin: 0;
+  }
+
+  .benchmarkFigure .caption {
+    margin: 8px auto 0;
+  }
+
+  .benchmarkText .bodyTextBlock {
+    order: 4;
+    margin: 16px 0 0;
+  }
+
+  .benchmarkImg {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* ── Arquitetura de conteúdo ── */
+  .contentStructureSection {
+    padding: 32px 0;
+  }
+
+  .contentStructureLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .contentStructureText {
+    display: contents;
+  }
+
+  .contentStructureText .sectionHeading {
+    order: 1;
+    margin: 0 0 8px;
+  }
+
+  .contentStructureFigure {
+    order: 2;
+  }
+
+  .contentStructureText .bodyTextBlock {
+    order: 3;
+    margin: 16px 0 0;
+  }
+
+  .contentStructureBtn {
+    cursor: pointer;
+  }
+
+  .contentStructureImg {
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    object-fit: contain;
+  }
+
+  .contentStructureTapHint {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-muted);
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  /* ── Design System ── */
+  .designSystemSection {
+    padding: 32px 0;
+  }
+
+  .designSystemSection .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .designSystemHeading {
+    order: 1;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+    max-width: none;
+    margin: 0 0 8px;
+  }
+
+  .designSystemFigure {
+    order: 2;
+    margin: 0 0 16px;
+  }
+
+  .bodyTextBlockWide {
+    order: 3;
+    gap: 16px;
+    margin-bottom: 0;
+  }
+
+  .bodyTextBlockWide p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .designSystemImg {
+    max-width: 100%;
+    border-radius: var(--radius-8);
+  }
+
+  /* ── CMS ── */
+  .cmsSection {
+    padding: 32px 0;
+  }
+
+  .cmsLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .cmsText {
+    display: contents;
+  }
+
+  .cmsText .sectionHeading {
+    order: 1;
+    margin: 0 0 8px;
+  }
+
+  .cmsImages {
+    order: 2;
+    width: 100%;
+    margin: 0 0 16px;
+  }
+
+  .cmsText .bodyTextBlock {
+    order: 3;
+  }
+
+  .cmsImg {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-8);
+  }
+
+  /* ── Governança ── */
+  .governanceSection {
+    padding: 32px 0;
+  }
+
+  .governanceLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .governanceText {
+    display: contents;
+  }
+
+  .governanceText .sectionHeading {
+    order: 1;
+    margin: 0 0 8px;
+  }
+
+  .governanceFigure {
+    order: 2;
+    margin: 0 0 16px;
+  }
+
+  .governanceImg {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .governanceText .bodyTextBlock {
+    order: 3;
+  }
+
+  /* ── Implementação ── */
+  .implementationSection {
+    padding: 32px 0;
+  }
+
+  .implementationSection .sectionHeading {
+    max-width: none;
+    margin-bottom: 16px;
+  }
+
+  .implementationBox {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 24px;
+    min-height: auto;
+  }
+
+  .webflowLogoWrap {
+    width: 80px;
+    height: 55px;
+  }
+
+  .implementationText {
+    gap: 16px;
+  }
+
+  .implementationText p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* ── Pós-lançamento ── */
+  .postLaunchSection {
+    padding: 32px 0;
+  }
+
+  .postLaunchLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .postLaunchText {
+    display: contents;
+  }
+
+  .postLaunchText .sectionHeading {
+    order: 1;
+    margin: 0 0 8px;
+  }
+
+  .postLaunchImages {
+    order: 2;
+    width: 100%;
+    margin: 0 0 16px;
+  }
+
+  .postLaunchImages .caption {
+    margin: 8px auto 0;
+  }
+
+  .postLaunchText .bodyTextBlock {
+    order: 3;
+    margin: 0;
+  }
+
+  .postLaunchImg {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-8);
+  }
+
+  /* ── Impacto ── */
+  .impactSection {
+    padding: 32px 0 48px;
+  }
+
+  .impactLayout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .impactText .sectionHeading {
+    margin-bottom: 16px;
+  }
+
+  .metricBoxes {
+    padding-top: 0;
+    gap: 8px;
+  }
+
+  .metricBox {
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .metricIcon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .metricMain {
+    font-size: 18px;
+    letter-spacing: 0;
+  }
+
+  .metricSub {
+    font-size: 14px;
+  }
+}
