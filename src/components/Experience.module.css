@@ -12,9 +12,9 @@
 .heading {
   font-family: 'Inter Tight', sans-serif;
   font-weight: 500;
-  font-size: 96px;
+  font-size: 72px;
   line-height: 1;
-  letter-spacing: -2.88px;
+  letter-spacing: -2.16px;
   color: var(--color-black);
   white-space: nowrap;
   padding: 10px;
@@ -234,20 +234,44 @@
     display: block;
     flex-shrink: 0;
     color: var(--color-black);
+    transition: transform 240ms ease;
   }
 
   .chevronOpen {
     transform: rotate(180deg);
   }
 
-  /* Expanded content — hidden by default */
+  /* Expanded content — animated with CSS Grid */
   .mobileContent {
-    display: none;
-    padding-bottom: 16px;
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      grid-template-rows 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 200ms ease,
+      visibility 0s linear 320ms;
   }
 
   .mobileContentOpen {
-    display: block;
+    grid-template-rows: 1fr;
+    visibility: visible;
+    opacity: 1;
+    transition:
+      grid-template-rows 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 240ms ease 60ms,
+      visibility 0s linear 0s;
+  }
+
+  .mobileContentInner {
+    min-height: 0;
+    overflow: hidden;
+    padding-bottom: 0;
+    transition: padding-bottom 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mobileContentOpen .mobileContentInner {
+    padding-bottom: 16px;
   }
 
   .mobilePositionExpanded {
@@ -282,5 +306,14 @@
 
   .linkedinText {
     font-size: 16px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobileContent,
+    .mobileContentOpen,
+    .mobileContentInner,
+    .chevron {
+      transition: none;
+    }
   }
 }

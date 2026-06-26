@@ -4,6 +4,11 @@
   z-index: 100;
   width: 100%;
   background: var(--color-white);
+  transition:
+    background 240ms ease,
+    border-color 240ms ease,
+    box-shadow 240ms ease,
+    backdrop-filter 240ms ease;
 }
 
 .inner {
@@ -12,6 +17,7 @@
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 14px 48px;
+  transition: padding 240ms ease;
 }
 
 /* Three equal-flex areas matching the Figma left/center/right layout */
@@ -27,6 +33,7 @@
   align-items: center;
   justify-content: center;
   gap: 32px;
+  transition: gap 240ms ease;
 }
 
 .rightArea {
@@ -50,6 +57,7 @@
   display: block;
   width: auto;
   height: 54px;
+  transition: height 240ms ease;
 }
 
 /* Nav links */
@@ -63,7 +71,9 @@
   line-height: 1.25;
   text-decoration: none;
   white-space: nowrap;
-  transition: opacity var(--transition);
+  transition:
+    opacity var(--transition),
+    font-size 240ms ease;
 }
 
 .link:hover {
@@ -89,7 +99,10 @@
   line-height: 1.25;
   text-decoration: none;
   white-space: nowrap;
-  transition: opacity var(--transition);
+  transition:
+    opacity var(--transition),
+    padding 240ms ease,
+    font-size 240ms ease;
 }
 
 .ctaBtn:hover {
@@ -151,7 +164,9 @@
   line-height: 1.25;
   white-space: nowrap;
   cursor: pointer;
-  transition: opacity var(--transition);
+  transition:
+    opacity var(--transition),
+    font-size 240ms ease;
 }
 
 .dropdownTrigger:hover {
@@ -193,6 +208,7 @@
   background: rgba(255, 255, 255, 0.62);
   backdrop-filter: blur(24px) saturate(120%);
   -webkit-backdrop-filter: blur(24px) saturate(120%);
+  transition: top 240ms ease;
 }
 
 .dropdownContent {
@@ -239,6 +255,44 @@
   font-weight: 400;
   line-height: 1.4;
   text-align: center;
+}
+
+/* Compact desktop state after page scroll */
+@media (min-width: 769px) {
+  .headerScrolled {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.045);
+    backdrop-filter: blur(24px) saturate(135%);
+    -webkit-backdrop-filter: blur(24px) saturate(135%);
+  }
+
+  .headerScrolled .inner {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .headerScrolled .brand img {
+    height: 48px;
+  }
+
+  .headerScrolled .centerArea {
+    gap: 28px;
+  }
+
+  .headerScrolled .link,
+  .headerScrolled .dropdownTrigger {
+    font-size: 16px;
+  }
+
+  .headerScrolled .ctaBtn {
+    padding: 11px 20px;
+    font-size: 15px;
+  }
+
+  .headerScrolled .dropdown {
+    top: 64px;
+  }
 }
 
 /* Mobile panel — hidden on desktop */

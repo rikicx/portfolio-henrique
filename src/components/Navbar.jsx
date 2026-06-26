@@ -18,6 +18,23 @@ const TRABALHOS_ITEMS = [
 
 export default function Navbar() {
   const location = useLocation()
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const updateScrolledState = () => {
+      setIsScrolled(window.scrollY > 96)
+    }
+
+    updateScrolledState()
+
+    window.addEventListener('scroll', updateScrolledState, {
+      passive: true,
+    })
+
+    return () => {
+      window.removeEventListener('scroll', updateScrolledState)
+    }
+  }, [])
 
   // Mobile menu
   const [openedAtPathname, setOpenedAtPathname] = useState(null)
@@ -128,7 +145,11 @@ export default function Navbar() {
       : styles.link
 
   return (
-    <header className={styles.header}>
+    <header
+      className={`${styles.header}${
+        isScrolled ? ` ${styles.headerScrolled}` : ''
+      }`}
+    >
       <div className={styles.inner}>
         <div className={styles.leftArea}>
           <NavLink

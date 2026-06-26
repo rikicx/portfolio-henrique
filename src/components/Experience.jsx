@@ -76,7 +76,7 @@ const companies = [
 ]
 
 export default function Experience() {
-  const [openKey, setOpenKey] = useState('3ph')
+  const [openKey, setOpenKey] = useState(null)
 
   function toggle(key) {
     setOpenKey((prev) => (prev === key ? null : key))
@@ -169,12 +169,14 @@ export default function Experience() {
                   role="region"
                   className={`${styles.mobileContent}${isOpen ? ` ${styles.mobileContentOpen}` : ''}`}
                 >
-                  {company.positions.map((pos) => (
-                    <div key={pos.mobileTitle} className={styles.mobilePositionExpanded}>
-                      <p className={styles.mobileExpandedTitle}>{pos.mobileTitle}</p>
-                      <p className={styles.mobileExpandedDesc}>{pos.description}</p>
-                    </div>
-                  ))}
+                  <div className={styles.mobileContentInner}>
+                    {company.positions.map((pos) => (
+                      <div key={pos.mobileTitle} className={styles.mobilePositionExpanded}>
+                        <p className={styles.mobileExpandedTitle}>{pos.mobileTitle}</p>
+                        <p className={styles.mobileExpandedDesc}>{pos.description}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             )

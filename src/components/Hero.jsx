@@ -6,7 +6,7 @@ export default function Hero() {
     <section className={styles.section}>
       <div className={styles.inner}>
         {/* Name overflows right intentionally — section clips overflow */}
-        <p className={styles.name} aria-hidden="true">Henrique&nbsp;</p>
+        <p className={styles.name} aria-hidden="true">Henrique</p>
 
         {/* Desktop: absolute left=831px top=32px. Mobile: in-flow, pulled up to overlap name */}
         <div className={styles.photoWrapper} aria-hidden="true">
