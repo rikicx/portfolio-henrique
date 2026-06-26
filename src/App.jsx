@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import WorksPage from './pages/WorksPage'
+import ContactPage from './pages/ContactPage'
 import NotFoundPage from './pages/NotFoundPage'
 import QiPlatformPage from './pages/cases/QiPlatformPage'
 import EmrIntegrationPage from './pages/cases/EmrIntegrationPage'
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/sobre" element={<AboutPage />} />
         <Route path="/trabalhos" element={<WorksPage />} />
+        <Route path="/contato" element={<ContactPage />} />
         <Route path="/trabalhos/qi-platform" element={<QiPlatformPage />} />
         <Route path="/trabalhos/emr-integration" element={<EmrIntegrationPage />} />
         <Route path="/trabalhos/gerdau-storeroom" element={<GerdauStoreroomPage />} />
