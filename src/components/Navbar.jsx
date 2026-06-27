@@ -266,12 +266,12 @@ export default function Navbar() {
         </nav>
 
         <div className={styles.rightArea}>
-          <a
-            href="mailto:contato@henriquemsilva.com"
+          <Link
+            to="/contato"
             className={styles.ctaBtn}
           >
             Entre em contato
-          </a>
+          </Link>
 
           <button
             type="button"
@@ -383,14 +383,14 @@ export default function Navbar() {
             LinkedIn
           </a>
 
-          <a
-            href="mailto:contato@henriquemsilva.com"
+          <Link
+            to="/contato"
             className={styles.mobileCta}
             onClick={close}
             tabIndex={isOpen ? 0 : -1}
           >
             Entre em contato
-          </a>
+          </Link>
         </nav>
 
         <div className={styles.mobileFooter}>
