@@ -755,122 +755,19 @@
   max-width: 896px;
 }
 
-/* ─── 16. Outros Projetos ────────────────────────────────────────────────── */
-.outrosSection {
-  padding-bottom: 80px;
-}
 
-.outrosTitle {
-  font-size: 96px;
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -2.88px;
-  color: var(--color-black);
-  margin: 24px 0 40px;
-  padding: 8px;
-  white-space: nowrap;
-}
 
-.outrosGrid {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 48px;
-  box-sizing: border-box;
-  display: flex;
-  gap: 64px;
-  align-items: flex-start;
-}
 
-.outrosLeft {
-  display: flex;
-  flex-direction: column;
-  gap: 64px;
-  flex: 1;
-}
 
-.outrosRight {
-  display: flex;
-  flex-direction: column;
-  gap: 64px;
-  flex: 1;
-  padding-top: 120px;
-}
 
-.card {
-  position: relative;
-  width: 100%;
-  height: 680px;
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  display: block;
-  text-decoration: none;
-  background: var(--color-placeholder);
-}
 
-.cardImg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  pointer-events: none;
-  max-width: none;
-}
 
-.cardPlaceholder {
-  position: absolute;
-  inset: 0;
-  background: var(--color-placeholder);
-}
 
-.cardOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 3%, rgba(0,0,0,0.75) 100%);
-}
 
-.cardContent {
-  position: absolute;
-  bottom: 32px;
-  left: 32px;
-  right: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  color: var(--color-white);
-}
 
-.cardTextBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
 
-.cardCategory {
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.25;
-  color: var(--color-white);
-  margin: 0;
-}
 
-.cardTitle {
-  font-size: 48px;
-  font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: -1.44px;
-  color: var(--color-white);
-  margin: 0;
-}
 
-.cardLink {
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.25;
-  color: var(--color-white);
-  white-space: nowrap;
-}
 
 /* ─── Mobile: 390px ──────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
@@ -1446,44 +1343,12 @@
     border-radius: var(--radius-8);
   }
 
-  /* Outros Projetos */
-  .outrosTitle {
-    font-size: 36px;
-    letter-spacing: -0.54px;
-    white-space: normal;
-    margin-bottom: 24px;
-    padding: 0;
-  }
 
-  .outrosGrid {
-    flex-direction: column;
-    padding: 0 24px;
-    gap: 24px;
-  }
 
-  .outrosLeft,
-  .outrosRight {
-    width: 100%;
-    padding-top: 0;
-    gap: 24px;
-  }
 
-  .card {
-    height: 360px;
-  }
 
-  .cardCategory {
-    font-size: 14px;
-  }
 
-  .cardTitle {
-    font-size: 24px;
-    letter-spacing: -0.24px;
-  }
 
-  .cardLink {
-    font-size: 14px;
-  }
 }
 
 /* ─── Tablet: 769px–1024px ─────────────────────────────────────────── */
