@@ -383,3 +383,66 @@
     font-size: 18px;
   }
 }
+
+/* ─── About entrance animation ───────────────────────────────────────── */
+
+.imageCol,
+.contentCol {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 420ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 420ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.section[data-visible='true'] .imageCol {
+  opacity: 1;
+  transform: none;
+  transition-delay: 220ms;
+}
+
+.section[data-visible='true'] .contentCol {
+  opacity: 1;
+  transform: none;
+  transition-delay: 320ms;
+}
+
+/* Mobile: stagger ≤60ms */
+@media (max-width: 768px) {
+  .section[data-visible='true'] .contentCol {
+    transition-delay: 260ms;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .imageCol,
+  .contentCol {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ─── "Saiba mais" arrow hover ────────────────────────────────────────── */
+
+/* arrowIcon base: translateY(-4px). Hover adds translateX(3px), combinados. */
+@media (hover: hover) and (pointer: fine) {
+  .saibaMaisLink .arrowIcon {
+    transition: transform 200ms ease-out;
+  }
+
+  .saibaMaisLink:hover .arrowIcon {
+    transform: translateY(-4px) translateX(3px);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
+  .saibaMaisLink .arrowIcon {
+    transition: none;
+  }
+
+  .saibaMaisLink:hover .arrowIcon {
+    transform: translateY(-4px);
+  }
+}

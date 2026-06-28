@@ -226,3 +226,43 @@
     max-width: 560px;
   }
 }
+
+/* ─── Skills entrance animation ──────────────────────────────────────── */
+
+.sectionTitle {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 360ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 360ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.item {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 340ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 340ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.section[data-visible='true'] .sectionTitle {
+  opacity: 1;
+  transform: none;
+  transition-delay: 220ms;
+}
+
+.section[data-visible='true'] .item:nth-child(1) { opacity: 1; transform: none; transition-delay: 320ms; }
+.section[data-visible='true'] .item:nth-child(2) { opacity: 1; transform: none; transition-delay: 375ms; }
+.section[data-visible='true'] .item:nth-child(3) { opacity: 1; transform: none; transition-delay: 430ms; }
+.section[data-visible='true'] .item:nth-child(4) { opacity: 1; transform: none; transition-delay: 485ms; }
+.section[data-visible='true'] .item:nth-child(5) { opacity: 1; transform: none; transition-delay: 540ms; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .sectionTitle,
+  .item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

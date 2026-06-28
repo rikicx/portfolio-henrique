@@ -1,10 +1,13 @@
+import { useInView } from '../hooks/useInView'
 import styles from './About.module.css'
 import arrowLink from '../media/shared/icons/arrow-link.svg'
 import henriqueWorking from '../media/home/hero/henrique-working.webp'
 
 export default function About() {
+  const [sectionRef, isVisible] = useInView({ threshold: 0.16 })
+
   return (
-    <section id="sobre" className={styles.section}>
+    <section id="sobre" className={styles.section} ref={sectionRef} data-visible={isVisible}>
       <div className={styles.container}>
         <div className={styles.imageCol}>
           <img

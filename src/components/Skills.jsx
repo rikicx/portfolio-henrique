@@ -1,3 +1,4 @@
+import { useInView } from '../hooks/useInView'
 import styles from './Skills.module.css'
 import iconEstrategia from '../media/home/experience/icon-estrategia.svg'
 import iconExperiencia from '../media/home/experience/icon-experiencia.svg'
@@ -39,8 +40,10 @@ const items = [
 ]
 
 export default function Skills() {
+  const [sectionRef, isVisible] = useInView({ threshold: 0.14 })
+
   return (
-    <section className={styles.section} id="competencias">
+    <section className={styles.section} id="competencias" ref={sectionRef} data-visible={isVisible}>
       <h2 className={styles.sectionTitle}>
         Competências &amp;{' '}
         <br className={styles.mobileBr} />
