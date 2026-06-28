@@ -279,10 +279,6 @@
   line-height: 1.4;
 }
 
-.formStatusSuccess {
-  color: var(--color-black);
-}
-
 .formStatusError {
   color: #b42318;
 }
