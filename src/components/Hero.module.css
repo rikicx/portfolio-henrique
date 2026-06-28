@@ -105,6 +105,83 @@
   opacity: 0.75;
 }
 
+/* ─── Tablet: 769px–1024px ─────────────────────────────────────────── */
+/* Composição centrada: nome → foto (sobreposta) → cargo → texto → CTA.  */
+/* Alturas desde o topo da section:                                        */
+/*   nome:  top=64px, h=200px (lh 1),  bottom=264px.                      */
+/*   foto:  top=192px, h=443px,         bottom=635px. Sobreposição=72px.  */
+/*   stack: top=643px. Fim estimado ≈820px.                                */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .inner {
+    min-height: 860px;
+    padding-bottom: 0;
+    overflow: hidden;
+  }
+
+  /* Nome: absoluto centrado, z-index 0 (atrás da foto).                   */
+  /* Sangra lateralmente em 769–834px; .section overflow:hidden contém.    */
+  /* A partir de ~880px de viewport o nome cabe inteiro (880px de largura).*/
+  .name {
+    position: absolute;
+    top: 64px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 0;
+    padding-left: 0;
+    font-size: 200px;
+    line-height: 1;
+    letter-spacing: -6px;
+    z-index: 0;
+  }
+
+  /* Foto: centrada, z-index 1 (à frente do nome). */
+  /* Resets: left=831px do desktop, right=24px do antigo tablet. */
+  .photoWrapper {
+    top: 192px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: 360px;
+    height: 443px;
+  }
+
+  /* TextStack: coluna centrada abaixo da foto.                             */
+  /* Resets: position=relative, padding-left=120px, padding-top=8px, gap=16px. */
+  .textStack {
+    position: absolute;
+    top: 643px;
+    left: 0;
+    right: 0;
+    padding: 0 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .subtitle {
+    font-size: 26px;
+    line-height: 1.25;
+    letter-spacing: -0.26px;
+    text-align: center;
+    max-width: 480px;
+  }
+
+  .body {
+    font-size: 16px;
+    line-height: 1.45;
+    text-align: center;
+    max-width: 520px;
+    margin-top: 8px;
+  }
+
+  .cta {
+    font-size: 16px;
+    padding: 14px 24px;
+    margin-top: 18px;
+  }
+}
+
 /* ─── Mobile: 390px reference (Figma frame 417:2598) ─────────────────── */
 /* Navbar=88px. All positions relative to hero section top (after navbar). */
 /* Elements use position:absolute matching Figma's independent placement.  */
@@ -203,5 +280,74 @@
     font-size: 16px;
     padding: 14px 24px;
     margin-top: 18px;
+  }
+}
+
+/* Tablet visual refinement */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .name {
+    left: calc(50% - 18px);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .name {
+    left: calc(50% + 10px);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .name {
+    left: calc(50% - 4px);
+  }
+}
+
+/* Desktop compacto — preserva a composição sem depender do frame de 1440px */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .inner {
+    width: 100%;
+    max-width: none;
+    padding-bottom: 150px;
+    box-sizing: border-box;
+  }
+
+  .name {
+    padding-top: 76px;
+    padding-left: 48px;
+    font-size: clamp(220px, 22vw, 280px);
+    line-height: 0.9;
+    letter-spacing: clamp(-7px, -0.55vw, -5px);
+  }
+
+  .photoWrapper {
+    top: 24px;
+    left: 58%;
+    width: clamp(400px, 38vw, 470px);
+    height: clamp(492px, 46.5vw, 578px);
+  }
+
+  .textStack {
+    padding-left: 64px;
+    padding-top: 12px;
+    gap: 14px;
+  }
+
+  .subtitle {
+    max-width: 570px;
+    font-size: clamp(36px, 3.5vw, 42px);
+    line-height: 1.08;
+    letter-spacing: -0.84px;
+  }
+
+  .body {
+    max-width: 520px;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .cta {
+    padding: 15px 28px;
+    font-size: 20px;
+    margin-top: 6px;
   }
 }

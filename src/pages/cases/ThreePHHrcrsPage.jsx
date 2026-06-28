@@ -241,6 +241,10 @@ export default function ThreePHHrcrsPage() {
               alt="Design System compartilhado entre os sites da 3PH Alliance e HRCRS, com cores, tipografia, componentes e padrões de interação"
               className={styles.designSystemImg}
             />
+            <figcaption className={styles.caption}>
+              Design System compartilhado entre os dois sites, reunindo fundamentos visuais,
+              componentes e padrões de interação.
+            </figcaption>
           </figure>
         </div>
       </section>

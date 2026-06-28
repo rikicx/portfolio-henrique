@@ -18,7 +18,7 @@ export default function ItauEmpreendedorPage() {
       {/* 1. Hero */}
       <section aria-labelledby="itau-title" className={styles.hero}>
         <h1 id="itau-title" className={styles.heroTitle}>
-          Itaú<br aria-hidden="true" />Empreendedor
+          Itaú<br aria-hidden="true" />Empreendedora
         </h1>
         <div className={styles.heroMeta}>
           <p className={styles.heroKicker}>
@@ -41,7 +41,7 @@ export default function ItauEmpreendedorPage() {
             <div className={styles.metaImageWrap}>
               <img
                 src={metaHeroImg}
-                alt="Telas do aplicativo Itaú Empreendedor com funcionalidades de controle de fluxo de caixa"
+                alt="Telas do aplicativo Itaú Empreendedora com funcionalidades de controle de fluxo de caixa"
                 className={styles.metaImg}
               />
             </div>
@@ -71,13 +71,13 @@ export default function ItauEmpreendedorPage() {
         </div>
       </section>
 
-      {/* 3. O desafio */}
-      <section aria-labelledby="itau-desafio" className={styles.desafio}>
+      {/* 3. O problema */}
+      <section aria-labelledby="itau-problema" className={styles.desafio}>
         <div className={styles.container}>
           <div className={styles.desafioLayout}>
             <div className={styles.desafioLabelCol}>
-              <p id="itau-desafio" className={styles.desafioLabel}>
-                O desafio
+              <p id="itau-problema" className={styles.desafioLabel}>
+                O problema
               </p>
             </div>
             <div className={styles.desafioText}>
@@ -135,12 +135,9 @@ export default function ItauEmpreendedorPage() {
           <div className={styles.construindoText}>
             <p>
               O trabalho foi desenvolvido a partir de workshops e sessões de
-              cocriação com mulheres que viviam essa realidade.
-            </p>
-            <p>
-              As conversas ajudaram a entender como elas organizavam as
-              finanças, onde surgiam dúvidas e que tipo de linguagem fazia
-              sentido.
+              cocriação com mulheres que viviam essa realidade. As conversas
+              ajudaram a entender como elas organizavam as finanças, onde
+              surgiam dúvidas e que tipo de linguagem fazia sentido.
             </p>
             <p className={styles.questionsIntro}>
               Em vez de começar por categorias contábeis, começamos por
@@ -215,7 +212,7 @@ export default function ItauEmpreendedorPage() {
           <div className={styles.conversaLayout}>
             <div className={styles.conversaTextCol}>
               <h2 id="itau-conversa" className={styles.sectionHeading}>
-                Da conversa<br aria-hidden="true" />para o protótipo
+                Da conversa{' '}<br aria-hidden="true" />para o protótipo
               </h2>
               <div className={styles.conversaText}>
                 <p>
@@ -265,12 +262,12 @@ export default function ItauEmpreendedorPage() {
         <div className={styles.produtoWrap}>
           <img
             src={produtoImg}
-            alt="Aplicativo mobile e plataforma de gestão de conteúdo desenvolvidos para a experiência Itaú Empreendedor"
+            alt="Aplicativo mobile e plataforma de gestão de conteúdo desenvolvidos para a experiência Itaú Empreendedora"
             className={styles.produtoImg}
           />
           <p className={styles.produtoCaption}>
             Aplicativo mobile e plataforma de gestão de conteúdo desenvolvidos
-            para a experiência Itaú Empreendedor.
+            para a experiência Itaú Empreendedora.
           </p>
         </div>
       </section>

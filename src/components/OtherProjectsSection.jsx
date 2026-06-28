@@ -17,7 +17,7 @@ const PROJECTS = [
   },
   {
     slug: 'itau-empreendedor',
-    title: 'Itaú Empreendedor',
+    title: 'Itaú Empreendedora',
     category: 'Finanças · Product Designer',
     images: [{ src: itauImg, alt: '' }],
   },

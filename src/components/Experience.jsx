@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import styles from './Experience.module.css'
-import timelineSvg from '../media/home/experience/timeline.svg'
 import hyperlineSvg from '../media/home/experience/hyperline.svg'
 import logo3ph from '../media/home/experience/logo-3ph.png'
 import logoSciensa from '../media/home/experience/logo-sciensa.png'
@@ -92,12 +91,6 @@ export default function Experience() {
           {companies.map((company) => (
             <div key={company.key} className={styles.companyRow}>
               <div className={styles.experienceBody}>
-                <img
-                  src={timelineSvg}
-                  alt=""
-                  aria-hidden="true"
-                  className={styles.timelineImg}
-                />
                 <div className={styles.positions}>
                   {company.positions.map((pos) => (
                     <div key={pos.title} className={styles.position}>

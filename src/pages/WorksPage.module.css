@@ -323,8 +323,171 @@
   }
 }
 
+/* ─── Tablet: 769px–1024px ─────────────────────────────────────────── */
+/* Header: flow layout (text left, infographic right) instead of absolute */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .header {
+    display: flex;
+    align-items: center;
+    min-height: auto;
+    padding: 32px 0 0;
+    gap: 24px;
+  }
+
+  /* position: static resets desktop position: absolute; transform: translateY(-50%) */
+  .headerText {
+    position: static;
+    flex: 0 0 360px;
+    transform: none;
+    width: auto;
+    padding: 0 0 0 32px;
+  }
+
+  .pageTitle {
+    font-size: 48px;
+    letter-spacing: -1.44px;
+    white-space: normal;
+  }
+
+  .pageDescription {
+    width: auto;
+    font-size: 28px;
+    letter-spacing: -0.56px;
+    margin-top: 20px;
+  }
+
+  /* Infographic: static flex child, scales to remaining space */
+  .infographic {
+    position: static;
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    height: auto;
+  }
+
+  .infographicSvg,
+  .infographicSvg svg {
+    height: auto;
+  }
+
+  .grid {
+    padding-inline: 32px;
+    padding-bottom: 80px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .card {
     transition: none;
+  }
+}
+
+/* Desktop compacto — 1025px–1399px */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .header {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(380px, 0.95fr);
+    align-items: center;
+    min-height: auto;
+    padding: 64px 40px 72px;
+    gap: 40px;
+  }
+
+  .headerText {
+    position: static;
+    width: auto;
+    min-width: 0;
+    transform: none;
+  }
+
+  .pageTitle {
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: -1.92px;
+    white-space: normal;
+  }
+
+  .pageDescription {
+    width: auto;
+    max-width: 620px;
+    margin-top: 24px;
+    font-size: clamp(30px, 3vw, 36px);
+    line-height: 1.1;
+    letter-spacing: -0.72px;
+  }
+
+  .infographic {
+    position: static;
+    width: 100%;
+    height: auto;
+    min-width: 0;
+  }
+
+  .infographicSvg,
+  .infographicSvg svg {
+    height: auto;
+  }
+
+  .grid {
+    gap: 24px;
+    padding: 0 40px 96px;
+  }
+
+  .colLeft,
+  .colRight {
+    gap: 24px;
+  }
+
+  .colRight {
+    padding-top: 56px;
+  }
+
+  .card {
+    height: 440px;
+  }
+
+  .cardTitle {
+    font-size: 30px;
+    line-height: 1.12;
+    letter-spacing: -0.6px;
+  }
+
+  .cardCategory,
+  .cardCta {
+    font-size: 16px;
+  }
+}
+
+/* Tablet estreito — mantém navegação mobile, mas amplia o header da Works */
+@media (min-width: 700px) and (max-width: 768px) {
+  .header {
+    padding: 56px 40px 0;
+  }
+
+  .pageTitle {
+    margin-bottom: 32px;
+    font-size: 48px;
+    line-height: 1.05;
+    letter-spacing: -1.44px;
+  }
+
+  .infographic {
+    max-width: 430px;
+    margin-bottom: 36px;
+  }
+
+  .pageDescription {
+    max-width: 620px;
+    margin-right: auto;
+    margin-bottom: 56px;
+    margin-left: auto;
+    font-size: 24px;
+    line-height: 1.35;
+    letter-spacing: -0.24px;
+  }
+
+  .grid {
+    padding-right: 40px;
+    padding-left: 40px;
   }
 }

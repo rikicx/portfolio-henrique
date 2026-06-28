@@ -203,6 +203,10 @@ export default function EmrIntegrationPage() {
                 alt="Interface da plataforma mostrando a reconciliação de dados entre EMR e EDC"
                 className={styles.experienciaImg}
               />
+              <p className={styles.mediaCaption}>
+                Estrutura da experiência criada para apoiar a reconciliação de dados entre EMR e
+                EDC.
+              </p>
             </div>
             <div className={styles.experienciaRightCol}>
               <h2 id="emr-experiencia" className={styles.sectionHeading}>
@@ -369,6 +373,10 @@ export default function EmrIntegrationPage() {
                 alt="Profissional utilizando a plataforma EMR Integration em contexto de reconciliação de dados clínicos"
                 className={styles.mudouImg}
               />
+              <p className={styles.mediaCaption}>
+                Uso da solução em contexto operacional, reduzindo etapas manuais e centralizando a
+                conferência dos dados.
+              </p>
             </div>
           </div>
         </div>
