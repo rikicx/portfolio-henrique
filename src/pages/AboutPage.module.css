@@ -613,8 +613,8 @@
   .heroTitle {
     position: static;
     width: auto;
-    max-width: 350px;
-    font-size: 36px;
+    max-width: 600px;
+    font-size: clamp(36px, 6vw, 48px);
     line-height: 1.15;
     letter-spacing: -0.54px;
     text-align: center;
@@ -628,12 +628,16 @@
   .heroPhotoCol {
     position: static;
     order: 2;
-    width: 307px;
-    height: 252px;
+    width: min(520px, 100%);
+    height: auto;
     margin-top: 24px;
+    overflow: visible;
   }
 
   .heroImg {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
     object-position: top center;
   }
 
@@ -641,7 +645,7 @@
   .heroMobileDivider {
     display: block;
     order: 3;
-    width: 342px;
+    width: min(560px, 100%);
     height: 1px;
     background: var(--color-black);
     border: none;
@@ -652,8 +656,9 @@
   .heroDesc {
     position: static;
     width: auto;
-    max-width: 338px;
-    font-size: 14px;
+    max-width: 560px;
+    font-size: clamp(14px, 2.2vw, 18px);
+    line-height: 1.45;
     text-align: center;
     margin-top: 16px;
     order: 4;
@@ -1161,24 +1166,45 @@
   }
 }
 
-/* Ajuste — foto acompanha a altura do conteúdo lateral no mobile */
-@media (max-width: 767px) {
+/* Mobile largo — composição intermediária antes do tablet */
+@media (min-width: 600px) and (max-width: 768px) {
   .inicianteInner {
-    grid-template-columns: 136px minmax(0, 1fr);
-    align-items: stretch;
+    grid-template-columns: 220px minmax(0, 1fr);
+    column-gap: 28px;
+    row-gap: 32px;
+    align-items: start;
   }
 
   .iniciantePhotos {
-    width: 136px;
-    height: 100%;
+    width: 220px;
+    height: auto;
   }
 
   .inicianteKarateImg {
-    width: 136px;
-    height: 100%;
-    min-height: 420px;
+    width: 220px;
+    height: 420px;
+    min-height: 0;
     object-fit: cover;
     object-position: center top;
+    border-radius: 12px;
+  }
+
+  .inicianteTitle {
+    font-size: clamp(56px, 8vw, 68px);
+    line-height: 0.98;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+  }
+
+  .inicianteBody {
+    font-size: 16px;
+    line-height: 1.45;
+    margin-bottom: 18px;
+  }
+
+  .inicianteBodyFull {
+    font-size: 16px;
+    line-height: 1.45;
   }
 }
 
