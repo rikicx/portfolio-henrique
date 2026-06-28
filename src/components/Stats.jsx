@@ -1,3 +1,4 @@
+import { useInView } from '../hooks/useInView'
 import styles from './Stats.module.css'
 
 const items = [
@@ -20,8 +21,10 @@ const items = [
 ]
 
 export default function Stats() {
+  const [sectionRef, isVisible] = useInView({ threshold: 0.28 })
+
   return (
-    <section className={styles.section}>
+    <section className={styles.section} ref={sectionRef} data-visible={isVisible}>
       <div className={styles.container}>
         {items.map((item) => (
           <div

@@ -178,3 +178,54 @@
     line-height: 1.45;
   }
 }
+
+/* ─── Stats entrance animation ────────────────────────────────────────── */
+
+/* Initial state: cards hidden. opacity + transform only — no layout shift. */
+.card {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 380ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 380ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Visible state: all cards revealed */
+.section[data-visible='true'] .card {
+  opacity: 1;
+  transform: none;
+}
+
+/* Desktop + tablet: espera breve antes da entrada e mantém
+   o stagger da esquerda para a direita. */
+.section[data-visible='true'] .card:nth-child(1) {
+  transition-delay: 260ms;
+}
+
+.section[data-visible='true'] .card:nth-child(2) {
+  transition-delay: 340ms;
+}
+
+.section[data-visible='true'] .card:nth-child(3) {
+  transition-delay: 420ms;
+}
+
+/* Mobile: os três cards entram juntos, após uma espera curta. */
+@media (max-width: 768px) {
+  .section[data-visible='true'] .card:nth-child(1),
+  .section[data-visible='true'] .card:nth-child(2),
+  .section[data-visible='true'] .card:nth-child(3) {
+    transition-delay: 220ms;
+  }
+}
+
+/* Reduced motion: show immediately with no animation.
+   transition: none stops all transitions; trigger rules don't set transition,
+   so this wins for that property regardless of specificity order. */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
