@@ -1,5 +1,5 @@
 import styles from './Hero.module.css'
-import heroUrl from '../media/home/hero/henrique-hero.png'
+import heroUrl from '../media/home/hero/henrique-hero.webp'
 
 export default function Hero() {
   return (

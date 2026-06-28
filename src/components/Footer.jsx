@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './Footer.module.css'
-import photoUrl from '../media/home/hero/henrique-footer.png'
+import photoUrl from '../media/home/hero/henrique-footer.webp'
 
 export default function Footer() {
   return (

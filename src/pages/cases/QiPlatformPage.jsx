@@ -4,7 +4,7 @@ import styles from './QiPlatformPage.module.css'
 import headOfDesignRoleImg from '../../media/cases/qi-platform/head-of-design-role.png'
 import qiMiroCocreationImg from '../../media/cases/qi-platform/QI-Miro-Cocreation.png'
 
-import heroTabletImg from '../../media/cases/qi-platform/qi-platform-tablet.png'
+import heroTabletImg from '../../media/cases/qi-platform/qi-platform-tablet.webp'
 import comparisonImg from '../../media/cases/qi-platform/comparar-sem-expor.png'
 import evolutionImg from '../../media/cases/qi-platform/emr-evolution-charts.png'
 import myEvolutionIcon from '../../media/cases/qi-platform/evolucao.svg'
