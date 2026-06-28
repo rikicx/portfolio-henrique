@@ -327,9 +327,6 @@
 }
 
 /* ─── 7. Diagrama de fluxo ───────────────────────────────────────────────── */
-.flowSection {
-  padding: 80px 0;
-}
 
 .sectionHeadingLeft {
   font-size: 48px;
@@ -389,30 +386,7 @@
   flex-shrink: 0;
 }
 
-.flowTurn {
-  position: absolute;
-  top: 29px;
-  right: -2px;
-  width: 16px;
-  height: 36px;
-  border-right: 1.5px solid var(--color-black);
-  border-bottom: 1.5px solid var(--color-black);
-  border-radius: 0 0 2px 0;
-  pointer-events: none;
-}
 
-.flowTurn::after {
-  content: "";
-  position: absolute;
-  left: -1px;
-  bottom: -4px;
-  width: 7px;
-  height: 7px;
-  border-left: 1.5px solid var(--color-black);
-  border-bottom: 1.5px solid var(--color-black);
-  transform: rotate(45deg);
-  transform-origin: center;
-}
 
 .excecaoBlock {
   display: flex;
@@ -1023,7 +997,6 @@
   .problema,
   .centralQuestion,
   .shadowing,
-  .flowSection,
   .mappingSection,
   .cocriacaoSection,
   .decidirSection,
@@ -1157,9 +1130,6 @@
     display: none;
   }
 
-  .flowTurn {
-    display: none;
-  }
 
   .bodyTextLabel {
     margin: 0;
@@ -1703,9 +1673,6 @@
     white-space: normal;
   }
 
-  .flowTurn {
-    display: none;
-  }
 
   .excecaoBlock {
     order: 5;
@@ -2033,9 +2000,6 @@
     line-height: 1;
   }
 
-  .flowTurn {
-    display: none;
-  }
 
   .excecaoBlock {
     margin-top: 40px;
@@ -2387,10 +2351,6 @@
 
   /* ── Diagrama de fluxo ──────────────────────────────────────── */
 
-  .flowSection {
-    padding-top: 64px;
-    padding-bottom: 64px;
-  }
 
   .bodyTextWide {
     max-width: 720px;
@@ -2591,9 +2551,6 @@
     font-size: 13px;
   }
 
-  .flowTurn {
-    right: 0;
-  }
 }
 
 /* Correção — reposiciona a seta de retorno do fluxograma */
@@ -2603,17 +2560,7 @@
     box-sizing: border-box;
   }
 
-  .flowTurn {
-    top: 26px;
-    right: 4px;
-    width: 14px;
-    height: 28px;
-  }
 
-  .flowTurn::after {
-    width: 6px;
-    height: 6px;
-  }
 }
 
 /* Fluxograma estático responsivo */
