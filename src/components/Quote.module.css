@@ -213,76 +213,6 @@
   }
 }
 
-/* ─── Tablet: 769px–1024px ─────────────────────────────────────────── */
-/* All children were absolutely positioned for 1440px; convert to flow layout */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .section {
-    padding-bottom: 72px;
-  }
-
-  .inner {
-    position: static;
-    height: auto;
-    padding: 0 32px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .quoteOpen {
-    position: static;
-    width: 72px;
-    height: 60px;
-    margin-bottom: 16px;
-  }
-
-  .quoteText {
-    position: static;
-    width: auto;
-    font-size: 48px;
-    line-height: 1.1;
-    letter-spacing: -0.48px;
-    margin-bottom: 12px;
-  }
-
-  .quoteClose {
-    position: static;
-    width: 72px;
-    height: 60px;
-    align-self: flex-end;
-    margin-bottom: 28px;
-  }
-
-  .divider {
-    position: static;
-    width: 100%;
-    margin: 0 0 12px;
-  }
-
-  .author {
-    position: static;
-    font-size: 24px;
-    line-height: 1.4;
-    letter-spacing: -0.48px;
-    white-space: normal;
-    margin-bottom: 16px;
-  }
-
-  .description {
-    position: static;
-    width: auto;
-    max-width: 640px;
-    font-size: 20px;
-    margin-bottom: 24px;
-  }
-
-  .cta {
-    position: static;
-    left: auto;
-    top: auto;
-  }
-}
-
 /* ─── Desktop menor: 1025px–1399px ────────────────────────────────── */
 @media (min-width: 1025px) and (max-width: 1399px) {
   .section {
@@ -374,54 +304,6 @@
   }
 }
 
-/* Tablet visual refinement */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .section {
-    padding-top: 32px;
-    padding-bottom: 88px;
-  }
-
-  .quoteOpen {
-    width: 64px;
-    height: 54px;
-    margin-bottom: 8px;
-  }
-
-  .quoteText {
-    max-width: 760px;
-    margin-bottom: 4px;
-    font-size: 46px;
-    line-height: 1.08;
-  }
-
-  .quoteClose {
-    width: 64px;
-    height: 54px;
-    margin-top: -4px;
-    margin-bottom: 8px;
-  }
-
-  .author {
-    margin-bottom: 8px;
-    font-size: 22px;
-  }
-
-  .divider {
-    margin-bottom: 14px;
-  }
-
-  .description {
-    max-width: 680px;
-    margin-bottom: 22px;
-    line-height: 1.45;
-  }
-
-  .cta {
-    padding: 14px 24px;
-    font-size: 16px;
-  }
-}
-
 /* Tablet — composição editorial próxima ao desktop */
 @media (min-width: 769px) and (max-width: 1024px) {
   .section {
@@ -464,6 +346,7 @@
     position: static;
     grid-column: 2;
     grid-row: 2;
+    align-self: flex-end;
     justify-self: end;
     width: 72px;
     height: auto;
