@@ -1042,13 +1042,6 @@
   }
 }
 
-/* Tablet — alinha o título da pergunta com o problem statement */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .quoteLabel {
-    padding-left: 0;
-  }
-}
-
 /* Tablet — Da conversa para o protótipo em fluxo editorial */
 @media (min-width: 769px) and (max-width: 1024px) {
   .conversa {
