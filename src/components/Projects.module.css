@@ -41,13 +41,23 @@
   gap: 42px;
 }
 
-/* Project Card: 420×480px, radius 16px. Position relative for image/overlay stacking. */
+/* Project Card: 420×480px, radius 16px. Position relative for image/overlay stacking.
+   display: block and text-decoration: none reset <a> element defaults from Link. */
 .card {
+  display: block;
   position: relative;
   flex: 0 0 420px;
   height: 480px;
   border-radius: 16px;
   overflow: hidden;
+  text-decoration: none;
+}
+
+/* Keyboard focus ring — outline follows border-radius in modern browsers.
+   Appears outside the card in the page background (not clipped by overflow: hidden). */
+.card:focus-visible {
+  outline: 2px solid var(--color-black);
+  outline-offset: 3px;
 }
 
 /* Full-bleed images — stacked via absolute; EMR uses two (bg + overlay). */
@@ -302,5 +312,131 @@
     line-height: 1.12;
     letter-spacing: -0.64px;
     overflow-wrap: anywhere;
+  }
+}
+
+/* ─── Projects hover effects ─────────────────────────────────────────── */
+
+/* Pointer devices only — no hover effects on touch */
+@media (hover: hover) and (pointer: fine) {
+  /* Image scale — contained by card overflow: hidden; card itself does not move */
+  .cardImg {
+    transition: transform 280ms ease-out;
+  }
+
+  .card:hover .cardImg {
+    transform: scale(1.05);
+  }
+
+  /* "Ver Projeto" visual element responds to card hover */
+  .link {
+    transition: opacity 200ms ease-out;
+  }
+
+  .card:hover .link {
+    opacity: 0.8;
+  }
+
+  /* Arrow responds to card hover */
+  .link span:last-child {
+    transition: transform 200ms ease-out;
+  }
+
+  .card:hover .link span:last-child {
+    transform: translateX(6px);
+  }
+}
+
+/* Arrow also responds to keyboard focus-visible on the card (all devices) */
+.card:focus-visible .link span:last-child {
+  transform: translateX(4px);
+}
+
+/* Within hover context: disable motion transforms for reduced motion */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
+  .cardImg,
+  .link span:last-child {
+    transition: none;
+  }
+
+  .card:hover .cardImg,
+  .card:hover .link span:last-child {
+    transform: none;
+  }
+}
+
+/* Focus-visible arrow: no transform in reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .card:focus-visible .link span:last-child {
+    transform: none;
+  }
+}
+
+/* ─── Projects entrance animation ────────────────────────────────────── */
+
+/* Heading hidden across all breakpoints */
+.heading {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 380ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 380ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Cards hidden on desktop + tablet only.
+   Mobile slider cards stay visible to signal horizontal scrollability. */
+@media (min-width: 769px) {
+  .card {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 420ms cubic-bezier(0.23, 1, 0.32, 1),
+      transform 420ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+}
+
+/* Heading reveal — 220ms base delay so user perceives the entry on arrival */
+.section[data-visible='true'] .heading {
+  opacity: 1;
+  transform: none;
+  transition-delay: 220ms;
+}
+
+/* Cards reveal with stagger — desktop + tablet only.
+   Stagger of 80ms; 320ms base keeps cards behind the heading. */
+@media (min-width: 769px) {
+  .section[data-visible='true'] .card:nth-child(1) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 320ms;
+  }
+
+  .section[data-visible='true'] .card:nth-child(2) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 400ms;
+  }
+
+  .section[data-visible='true'] .card:nth-child(3) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 480ms;
+  }
+}
+
+/* Reduced motion: show everything immediately, no transitions */
+@media (prefers-reduced-motion: reduce) {
+  .heading {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 769px) {
+  .card {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useInView } from '../hooks/useInView'
 import styles from './Projects.module.css'
 import qiImg from '../media/shared/projects/card-qi-platform.webp'
 import gerdauImg from '../media/shared/projects/card-gerdau-storeroom.png'
@@ -31,9 +32,16 @@ const projects = [
   },
 ]
 
+// Card is the link — no nested anchors.
+// aria-label provides the accessible name from the project title.
+// "Ver Projeto →" is a visual affordance only (aria-hidden).
 function ProjectCard({ project }) {
   return (
-    <article className={styles.card}>
+    <Link
+      to={`/trabalhos/${project.slug}`}
+      className={styles.card}
+      aria-label={project.title}
+    >
       {project.images.map((img, i) => (
         <img
           key={i}
@@ -49,18 +57,20 @@ function ProjectCard({ project }) {
           <p className={styles.category}>{project.category}</p>
           <h3 className={styles.cardTitle}>{project.title}</h3>
         </div>
-        <Link to={`/trabalhos/${project.slug}`} className={styles.link}>
+        <div className={styles.link} aria-hidden="true">
           <span>Ver Projeto</span>
-          <span aria-hidden="true">→</span>
-        </Link>
+          <span>→</span>
+        </div>
       </div>
-    </article>
+    </Link>
   )
 }
 
 export default function Projects() {
+  const [sectionRef, isVisible] = useInView({ threshold: 0.16 })
+
   return (
-    <section id="projetos" className={styles.section}>
+    <section id="projetos" className={styles.section} ref={sectionRef} data-visible={isVisible}>
       <div className={styles.titleWrapper}>
         <h2 className={styles.heading}>Projetos selecionados</h2>
       </div>
