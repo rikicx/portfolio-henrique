@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom'
 import Layout from '../components/Layout'
 import styles from './WorksPage.module.css'
 
-import qiImg from '../media/shared/projects/card-qi-platform.png'
+import qiImg from '../media/shared/projects/card-qi-platform.webp'
 import itauImg from '../media/shared/projects/itau-cover.jpg'
 import emrImg from '../media/shared/projects/emr-integration-cover.png'
 import storeroomImg from '../media/shared/projects/card-gerdau-storeroom.png'
 import threePhImg from '../media/shared/projects/3ph-hrcrs-cover.jpg'
-import smartlogImg from '../media/shared/projects/gerdau-smartlog-cover.png'
+import smartlogImg from '../media/shared/projects/gerdau-smartlog-cover.webp'
 import worksInfographic from '../media/works/works-infographic.svg?raw'
 
 const PROJECTS = [

@@ -6,7 +6,7 @@ import qiMiroCocreationImg from '../../media/cases/qi-platform/QI-Miro-Cocreatio
 
 import heroTabletImg from '../../media/cases/qi-platform/qi-platform-tablet.webp'
 import comparisonImg from '../../media/cases/qi-platform/comparar-sem-expor.png'
-import evolutionImg from '../../media/cases/qi-platform/emr-evolution-charts.png'
+import evolutionImg from '../../media/cases/qi-platform/emr-evolution-charts.webp'
 import myEvolutionIcon from '../../media/cases/qi-platform/evolucao.svg'
 import groupsIcon from '../../media/cases/qi-platform/grupos-preferencia.svg'
 import networkIcon from '../../media/cases/qi-platform/visao-rede.svg'

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './Projects.module.css'
-import qiImg from '../media/shared/projects/card-qi-platform.png'
+import qiImg from '../media/shared/projects/card-qi-platform.webp'
 import gerdauImg from '../media/shared/projects/card-gerdau-storeroom.png'
 import emrBgImg from '../media/shared/projects/card-emr-bg.png'
 import emrOverlayImg from '../media/shared/projects/card-emr-overlay.jpg'
