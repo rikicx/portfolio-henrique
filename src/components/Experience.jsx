@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useInView } from '../hooks/useInView'
 import styles from './Experience.module.css'
 import hyperlineSvg from '../media/home/experience/hyperline.svg'
 import logo3ph from '../media/home/experience/logo-3ph.png'
@@ -76,13 +77,14 @@ const companies = [
 
 export default function Experience() {
   const [openKey, setOpenKey] = useState(null)
+  const [sectionRef, isVisible] = useInView({ threshold: 0.12 })
 
   function toggle(key) {
     setOpenKey((prev) => (prev === key ? null : key))
   }
 
   return (
-    <section id="experiencia" className={styles.section}>
+    <section id="experiencia" className={styles.section} ref={sectionRef} data-visible={isVisible}>
       <div className={styles.container}>
         <h2 className={styles.heading}>Experiência</h2>
 
