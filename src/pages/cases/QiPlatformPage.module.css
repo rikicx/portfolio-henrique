@@ -153,8 +153,7 @@
 .problemSection,
 .storyGrid,
 .productSection,
-.impactSection,
-.otherProjects {
+.impactSection {
   max-width: var(--max-width);
   margin: 0 auto;
   padding-right: 48px;
@@ -548,121 +547,46 @@
   text-align: center;
 }
 
-.otherProjects {
-  padding-bottom: 176px;
-}
 
-.otherProjects .rule {
-  margin-top: 0;
-}
 
-.otherProjects h2 {
-  margin-top: 0;
-  padding: 10px 0 10px 1px;
-  font-size: 96px;
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: 0;
-}
 
-.projectsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 64px;
-  margin-top: 18px;
-}
 
-.projectsColumn {
-  display: flex;
-  flex-direction: column;
-  gap: 64px;
-}
 
-.projectsColumnOffset {
-  padding-top: 120px;
-}
 
-.projectCard,
-.projectLink {
-  height: 684px;
-}
 
-.projectCard {
-  overflow: hidden;
-  border-radius: var(--radius-card);
-  background: var(--color-placeholder);
-}
 
-.projectLink {
-  position: relative;
-  display: block;
-  color: var(--color-white);
-}
 
-.projectImage,
-.projectOverlay {
-  position: absolute;
-  inset: 0;
-}
 
-.projectImage {
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  object-fit: cover;
-}
 
-.projectOverlay {
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 3%,
-    rgba(0, 0, 0, 0.75) 100%
-  );
-}
 
-.projectContent {
-  position: absolute;
-  right: 32px;
-  bottom: 33px;
-  left: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
 
-.projectText {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
 
-.projectCategory,
-.projectCta {
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.25;
-}
 
-.projectTitle {
-  font-size: 48px;
-  font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: 0;
-}
 
-.projectCta {
-  display: inline-flex;
-  gap: 10px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 1024px) {
   .questionGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .projectsGrid {
-    gap: 32px;
-  }
+
 }
 
 @media (max-width: 768px) {
@@ -976,53 +900,23 @@
     text-align: left;
   }
 
-  .otherProjects {
-    padding-bottom: 96px;
-  }
 
-  .otherProjects h2 {
-    padding: 0;
-    margin-top: 24px;
-  }
 
-  .projectsGrid {
-    gap: 16px;
-    margin-top: 24px;
-  }
 
-  .projectsColumn,
-  .projectsColumnOffset {
-    gap: 16px;
-    padding-top: 0;
-  }
 
-  .projectCard,
-  .projectLink {
-    height: 360px;
-  }
 
-  .projectContent {
-    right: 24px;
-    bottom: 24px;
-    left: 24px;
-    gap: 16px;
-  }
 
-  .projectText {
-    gap: 8px;
-  }
 
-  .projectCategory,
-  .projectCta {
-    font-size: 14px;
-  }
 
-  .projectTitle {
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 1.25;
-    letter-spacing: 0;
-  }
+
+
+
+
+
+
+
+
+
 
   /* MOBILE — problem section fix */
   .problemSection {
@@ -1463,74 +1357,22 @@
   }
 
 
-  /* MOBILE — other projects layout */
-  .otherProjects {
-    width: 100%;
-    max-width: none;
-    padding: 64px 24px 96px;
-    box-sizing: border-box;
-  }
 
-  .otherProjects .rule {
-    margin: 0 0 24px;
-  }
 
-  .otherProjects h2 {
-    width: 100%;
-    max-width: none;
-    margin: 0 0 24px;
-    padding: 0;
-    font-size: 32px;
-    line-height: 1.1;
-    letter-spacing: -0.32px;
-  }
 
-  .projectsGrid {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
-    margin: 0;
-  }
 
-  .projectsColumn,
-  .projectsColumnOffset {
-    display: contents;
-    padding-top: 0;
-  }
 
-  .projectCard,
-  .projectLink {
-    display: block;
-    width: 100%;
-    min-width: 0;
-    height: 360px;
-    margin: 0;
-  }
 
-  .projectImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 
-  .projectContent {
-    right: 24px;
-    bottom: 24px;
-    left: 24px;
-    gap: 16px;
-  }
 
-  .projectCategory,
-  .projectCta {
-    font-size: 14px;
-    line-height: 1.45;
-  }
 
-  .projectTitle {
-    font-size: 24px;
-    line-height: 1.25;
-  }
+
+
+
+
+
+
+
 
 
   /* MOBILE — impact to other projects transition */
@@ -1538,34 +1380,13 @@
     padding-bottom: 48px;
   }
 
-  .otherProjects {
-    width: 100%;
-    max-width: none;
-    padding: 0 24px 96px;
-    box-sizing: border-box;
-  }
 
-  .otherProjects .rule {
-    display: block;
-    width: 100%;
-    height: 1px;
-    margin: 0 0 48px;
-    padding: 0;
-    border: 0;
-    background: var(--color-border);
-  }
 
-  .otherProjects h2 {
-    margin: 0 0 24px;
-    padding: 0;
-    font-size: 32px;
-    line-height: 1.1;
-    letter-spacing: -0.32px;
-  }
 
-  .otherProjects .projectsGrid {
-    margin-top: 0;
-  }
+
+
+
+
 
 }
 
