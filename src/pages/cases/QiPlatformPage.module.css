@@ -294,10 +294,6 @@
   padding-top: 80px;
 }
 
-.imageLeft {
-  --story-image-side: left;
-}
-
 .storyGrid.imageRight {
   grid-template-areas:
     "title media"
@@ -355,17 +351,11 @@
   gap: 12px;
 }
 
-.storyFigure .imageCover,
-.missingAsset {
+.storyFigure .imageCover {
   height: 466px;
   overflow: hidden;
   border-radius: var(--radius-card);
   background: var(--color-surface);
-}
-
-.missingAsset {
-  width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .comparisonSection .storyFigure .comparisonImage {
@@ -895,8 +885,7 @@
     order: 3;
   }
 
-  .storyFigure .imageCover,
-  .missingAsset {
+  .storyFigure .imageCover {
     height: 192px;
     border-radius: var(--radius-8);
   }

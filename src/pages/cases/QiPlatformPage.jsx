@@ -116,18 +116,6 @@ function QuoteBlock({ label = null, children, compact = false }) {
   )
 }
 
-function MissingAssetFigure({ caption = null, className = '' }) {
-  return (
-    <figure className={`${styles.figure} ${className}`}>
-      <div
-        className={styles.missingAsset}
-        role="img"
-        aria-label="Asset não encontrado"
-      />
-      {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
-    </figure>
-  )
-}
 
 export default function QiPlatformPage() {
   return (
