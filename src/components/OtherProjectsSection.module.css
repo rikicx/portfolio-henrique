@@ -135,10 +135,6 @@
 }
 
 @media (max-width: 768px) {
-  .section {
-    padding-bottom: 80px;
-  }
-
   .container {
     padding: 0 24px;
   }

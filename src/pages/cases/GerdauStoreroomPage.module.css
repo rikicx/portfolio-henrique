@@ -2782,24 +2782,6 @@
   }
 }
 
-/* Correção — orientação das aspas da pergunta central */
-.centralQuestion .quoteIconOpen {
-  transform: rotate(180deg);
-}
-
-.centralQuestion .quoteIconClose {
-  transform: none;
-}
-
-/* Correção definitiva — aspa de abertura espelhada */
-.centralQuestion .quoteIconOpen {
-  transform: scaleX(-1);
-}
-
-.centralQuestion .quoteIconClose {
-  transform: none;
-}
-
 /* Correção final — os próprios arquivos já possuem a orientação correta */
 .centralQuestion .quoteIconOpen,
 .centralQuestion .quoteIconClose {
