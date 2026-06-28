@@ -489,16 +489,6 @@
   display: none;
 }
 
-.inicianteBodySecond {
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1.45;
-  color: var(--color-black);
-  max-width: 608px;
-  margin-top: 20px;
-  margin-left: 531px;
-}
-
 .inicianteDivider {
   display: block;
   height: 1px;
@@ -961,14 +951,6 @@
     margin-bottom: 16px;
   }
 
-  /* Text part 2: full-width below the side-by-side block on mobile */
-  .inicianteBodySecond {
-    font-size: 14px;
-    max-width: 340px;
-    margin-left: 0;
-    margin-top: 16px;
-  }
-
   .inicianteDivider {
     margin: 48px 24px 0;
     width: calc(100% - 48px);
@@ -1343,11 +1325,6 @@
   }
 
   /* ── Sempre Iniciante ── */
-  /* margin-left: 531px causes overflow; reset to flow */
-  .inicianteBodySecond {
-    margin-left: 0;
-    max-width: none;
-  }
 
   /* inicianteTitle (144px) estoura a coluna de ~229px em 769px.         */
   /* Grid ajustado para 250px foto + 32px gap + 1fr texto.               */
@@ -1550,7 +1527,6 @@
   .inicianteBody,
   .inicianteBodyDesktop,
   .inicianteBodyFull,
-  .inicianteBodySecond,
   .closingText {
     font-size: 18px;
     line-height: 1.5;
@@ -1813,16 +1789,9 @@
   }
 
   .inicianteBody,
-  .inicianteBodyDesktop,
-  .inicianteBodySecond {
+  .inicianteBodyDesktop {
     font-size: 18px;
     line-height: 1.5;
-  }
-
-  .inicianteBodySecond {
-    max-width: none;
-    margin-top: 20px;
-    margin-left: calc(340px + 48px);
   }
 
   .inicianteDivider {
