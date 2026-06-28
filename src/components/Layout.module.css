@@ -1,4 +1,6 @@
 .pageBackground {
+  position: relative;
+  isolation: isolate;
   background: var(--color-black);
 }
 
