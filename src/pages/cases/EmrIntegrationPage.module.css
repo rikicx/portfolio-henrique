@@ -527,20 +527,6 @@
   color: var(--color-black);
 }
 
-.impactoFooter {
-  display: flex;
-  flex-direction: column;
-  max-width: 1037px;
-}
-
-.impactoFooter p {
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.45;
-  color: var(--color-black);
-  margin: 0;
-}
-
 /* ─────────────────────────────────────────────
    Mobile — @media (max-width: 768px)
 ───────────────────────────────────────────── */
@@ -868,11 +854,6 @@
   }
 
   /* ── 8. Impacto & Escala ─────────────────────── */
-  /* .impacto não existe no desktop — só aplica no mobile */
-  .impacto {
-    padding: 0 0 48px;
-  }
-
   .impactoTitle {
     font-size: 32px;
     letter-spacing: -0.32px;
@@ -904,14 +885,6 @@
     font-size: 14px;
   }
 
-  .impactoFooter {
-    max-width: 100%;
-  }
-
-  .impactoFooter p {
-    font-size: 16px;
-    line-height: 1.5;
-  }
 }
 
 /* ─── Desktop compacto: 1025px–1399px ─────────────────────────────── */
