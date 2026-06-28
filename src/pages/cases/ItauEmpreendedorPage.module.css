@@ -522,16 +522,13 @@
 
   .metaValue {
     overflow-wrap: normal;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 1.3;
   }
 
   .metaLabel {
     font-size: 14px;
-  }
-
-  .metaValue {
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: 1.3;
   }
 
   /* ── 3. O desafio ────────────────────────────── */
