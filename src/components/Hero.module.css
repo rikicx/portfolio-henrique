@@ -283,6 +283,77 @@
   }
 }
 
+/* ─── Hero entrance animations ─────────────────────────────────────────── */
+
+@keyframes heroLetterIn {
+  from { opacity: 0; transform: translateY(3px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroFadeScale {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Letter stagger — --i set via inline style on each span */
+.letter {
+  display: inline-block;
+  animation: heroLetterIn 280ms cubic-bezier(0.23, 1, 0.32, 1) calc(var(--i) * 40ms) both;
+}
+
+.photo {
+  animation: heroFadeScale 480ms cubic-bezier(0.23, 1, 0.32, 1) 500ms both;
+}
+
+.subtitle {
+  animation: heroFadeUp 380ms cubic-bezier(0.23, 1, 0.32, 1) 680ms both;
+}
+
+.body {
+  animation: heroFadeUp 380ms cubic-bezier(0.23, 1, 0.32, 1) 780ms both;
+}
+
+.cta {
+  animation: heroFadeUp 340ms cubic-bezier(0.23, 1, 0.32, 1) 860ms both;
+}
+
+/* Parallax text target: invisible to layout on mobile/tablet; real box on desktop */
+.textParallax {
+  display: contents;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .letter,
+  .photo,
+  .subtitle,
+  .body,
+  .cta {
+    animation: none;
+    opacity: 1;
+  }
+
+  .letter,
+  .subtitle,
+  .body,
+  .cta {
+    transform: none;
+  }
+}
+
+/* textParallax generates a real flex box for parallax transforms on desktop */
+@media (min-width: 1025px) {
+  .textParallax {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
 /* Tablet visual refinement */
 @media (min-width: 769px) and (max-width: 1024px) {
   .name {
@@ -337,5 +408,9 @@
     padding: 15px 28px;
     font-size: 20px;
     margin-top: 6px;
+  }
+
+  .textParallax {
+    gap: 14px;
   }
 }
