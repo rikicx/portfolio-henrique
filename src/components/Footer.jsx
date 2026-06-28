@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom'
 import styles from './Footer.module.css'
-import photoUrl from '../media/henrique-footer.png'
+import photoUrl from '../media/home/hero/henrique-footer.webp'
 
 export default function Footer() {
   return (
@@ -24,9 +25,9 @@ export default function Footer() {
             <h2 className={styles.ctaHeading}>
               Tem um desafio complexo para resolver?
             </h2>
-            <a href="mailto:contato@henriquemsilva.com" className={styles.ctaBtn}>
+            <Link to="/contato" className={styles.ctaBtn}>
               Vamos conversar →
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -40,7 +41,7 @@ export default function Footer() {
             LinkedIn ↗
           </a>
           <span className={styles.dot} aria-hidden="true" />
-          <a href="mailto:contato@henriquemsilva.com" className={styles.link}>
+          <a href="mailto:hello@henriquesilva.design" className={styles.link}>
             E-mail ↗
           </a>
           <span className={styles.dot} aria-hidden="true" />

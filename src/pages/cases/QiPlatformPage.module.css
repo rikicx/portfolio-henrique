@@ -153,8 +153,7 @@
 .problemSection,
 .storyGrid,
 .productSection,
-.impactSection,
-.otherProjects {
+.impactSection {
   max-width: var(--max-width);
   margin: 0 auto;
   padding-right: 48px;
@@ -294,10 +293,6 @@
   padding-top: 80px;
 }
 
-.imageLeft {
-  --story-image-side: left;
-}
-
 .storyGrid.imageRight {
   grid-template-areas:
     "title media"
@@ -355,17 +350,11 @@
   gap: 12px;
 }
 
-.storyFigure .imageCover,
-.missingAsset {
+.storyFigure .imageCover {
   height: 466px;
   overflow: hidden;
   border-radius: var(--radius-card);
   background: var(--color-surface);
-}
-
-.missingAsset {
-  width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .comparisonSection .storyFigure .comparisonImage {
@@ -558,121 +547,46 @@
   text-align: center;
 }
 
-.otherProjects {
-  padding-bottom: 176px;
-}
 
-.otherProjects .rule {
-  margin-top: 0;
-}
 
-.otherProjects h2 {
-  margin-top: 0;
-  padding: 10px 0 10px 1px;
-  font-size: 96px;
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: 0;
-}
 
-.projectsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 64px;
-  margin-top: 18px;
-}
 
-.projectsColumn {
-  display: flex;
-  flex-direction: column;
-  gap: 64px;
-}
 
-.projectsColumnOffset {
-  padding-top: 120px;
-}
 
-.projectCard,
-.projectLink {
-  height: 684px;
-}
 
-.projectCard {
-  overflow: hidden;
-  border-radius: var(--radius-card);
-  background: var(--color-placeholder);
-}
 
-.projectLink {
-  position: relative;
-  display: block;
-  color: var(--color-white);
-}
 
-.projectImage,
-.projectOverlay {
-  position: absolute;
-  inset: 0;
-}
 
-.projectImage {
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  object-fit: cover;
-}
 
-.projectOverlay {
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 3%,
-    rgba(0, 0, 0, 0.75) 100%
-  );
-}
 
-.projectContent {
-  position: absolute;
-  right: 32px;
-  bottom: 33px;
-  left: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
 
-.projectText {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
 
-.projectCategory,
-.projectCta {
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.25;
-}
 
-.projectTitle {
-  font-size: 48px;
-  font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: 0;
-}
 
-.projectCta {
-  display: inline-flex;
-  gap: 10px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 1024px) {
   .questionGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .projectsGrid {
-    gap: 32px;
-  }
+
 }
 
 @media (max-width: 768px) {
@@ -895,8 +809,7 @@
     order: 3;
   }
 
-  .storyFigure .imageCover,
-  .missingAsset {
+  .storyFigure .imageCover {
     height: 192px;
     border-radius: var(--radius-8);
   }
@@ -987,53 +900,23 @@
     text-align: left;
   }
 
-  .otherProjects {
-    padding-bottom: 96px;
-  }
 
-  .otherProjects h2 {
-    padding: 0;
-    margin-top: 24px;
-  }
 
-  .projectsGrid {
-    gap: 16px;
-    margin-top: 24px;
-  }
 
-  .projectsColumn,
-  .projectsColumnOffset {
-    gap: 16px;
-    padding-top: 0;
-  }
 
-  .projectCard,
-  .projectLink {
-    height: 360px;
-  }
 
-  .projectContent {
-    right: 24px;
-    bottom: 24px;
-    left: 24px;
-    gap: 16px;
-  }
 
-  .projectText {
-    gap: 8px;
-  }
 
-  .projectCategory,
-  .projectCta {
-    font-size: 14px;
-  }
 
-  .projectTitle {
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 1.25;
-    letter-spacing: 0;
-  }
+
+
+
+
+
+
+
+
+
 
   /* MOBILE — problem section fix */
   .problemSection {
@@ -1474,74 +1357,22 @@
   }
 
 
-  /* MOBILE — other projects layout */
-  .otherProjects {
-    width: 100%;
-    max-width: none;
-    padding: 64px 24px 96px;
-    box-sizing: border-box;
-  }
 
-  .otherProjects .rule {
-    margin: 0 0 24px;
-  }
 
-  .otherProjects h2 {
-    width: 100%;
-    max-width: none;
-    margin: 0 0 24px;
-    padding: 0;
-    font-size: 32px;
-    line-height: 1.1;
-    letter-spacing: -0.32px;
-  }
 
-  .projectsGrid {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
-    margin: 0;
-  }
 
-  .projectsColumn,
-  .projectsColumnOffset {
-    display: contents;
-    padding-top: 0;
-  }
 
-  .projectCard,
-  .projectLink {
-    display: block;
-    width: 100%;
-    min-width: 0;
-    height: 360px;
-    margin: 0;
-  }
 
-  .projectImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 
-  .projectContent {
-    right: 24px;
-    bottom: 24px;
-    left: 24px;
-    gap: 16px;
-  }
 
-  .projectCategory,
-  .projectCta {
-    font-size: 14px;
-    line-height: 1.45;
-  }
 
-  .projectTitle {
-    font-size: 24px;
-    line-height: 1.25;
-  }
+
+
+
+
+
+
+
 
 
   /* MOBILE — impact to other projects transition */
@@ -1549,33 +1380,583 @@
     padding-bottom: 48px;
   }
 
-  .otherProjects {
-    width: 100%;
-    max-width: none;
-    padding: 0 24px 96px;
-    box-sizing: border-box;
+
+
+
+
+
+
+
+
+}
+
+/* ─── Desktop compacto: 1025px–1399px ─────────────────────────────── */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  /* Hero: elimina a colisão causada pelo posicionamento absoluto */
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr);
+    gap: 48px;
+    align-items: end;
+    min-height: 430px;
+    padding: 72px 40px 64px;
   }
 
-  .otherProjects .rule {
+  .heroTitle {
+    position: static;
+    align-self: end;
+    margin: 0;
+    font-size: clamp(104px, 10vw, 136px);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    white-space: normal;
+  }
+
+  .heroMeta {
+    position: static;
+    width: 100%;
+    align-self: end;
+    padding-bottom: 4px;
+  }
+
+  .heroKicker {
+    margin-bottom: 20px;
+    font-size: 30px;
+    line-height: 1.12;
+    letter-spacing: -0.6px;
+  }
+
+  .heroDescription {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .dividerFull {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  .container {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  /* Metadados: preserva duas colunas, mas reduz a escala */
+  .metadata {
+    padding: 32px 0 72px;
+  }
+
+  .metaLayout {
+    grid-template-columns: minmax(320px, 0.8fr) minmax(0, 1.2fr);
+    gap: 40px;
+  }
+
+  .metaImg {
+    height: 440px;
+  }
+
+  .metaFields {
+    min-height: 440px;
+    gap: 28px;
+  }
+
+  .metaRow {
+    grid-template-columns:
+      minmax(130px, 1fr)
+      minmax(72px, 0.5fr)
+      minmax(180px, 1fr);
+    column-gap: 24px;
+  }
+
+  .metaRow .metaItem:nth-child(3) {
+    grid-column: auto;
+  }
+
+  .metaLabel {
+    font-size: 17px;
+    line-height: 1.4;
+  }
+
+  .metaValue {
+    font-size: 28px;
+    line-height: 1.12;
+    letter-spacing: -0.56px;
+  }
+}
+
+/* ─── Tablet: 769px–1024px ─────────────────────────────────────────── */
+/* Note: existing @media (max-width: 1024px) handles questionGrid/projectsGrid; */
+/* this block is tablet-only and targets the hero collision only. */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero {
+    padding: 40px 32px;
+    min-height: auto;
+  }
+
+  .heroTitle {
+    position: static;
+    font-size: 80px;
+    letter-spacing: -2.4px;
+    white-space: normal;
+    margin: 0 0 20px;
+  }
+
+  .heroMeta {
+    position: static;
+    width: 100%;
+  }
+
+  .container {
+    padding: 0 32px;
+  }
+}
+
+/* Tablet editorial refinement — metadata */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .metadata {
+    padding: 40px 0;
+  }
+
+  .metaLayout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .metaImage {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .metaImg {
+    width: 100%;
+    height: 520px;
+    object-fit: contain;
+    object-position: center;
+    background: var(--color-white);
+  }
+
+  .metaFields {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    width: 100%;
+    min-height: 0;
+  }
+
+  /* Empresa, Ano e Papel */
+  .metaRow {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(96px, 0.45fr)
+      minmax(200px, 1fr);
+    gap: 24px;
+    width: 100%;
+  }
+
+  .metaRow .metaItem:nth-child(3) {
+    grid-column: auto;
+  }
+
+  .metaItem,
+  .metaBlock {
+    min-width: 0;
+    gap: 6px;
+  }
+
+  /* Impacto, Escala e Atuação ocupam a largura inteira. */
+  .metaFields > .metaBlock {
+    width: 100%;
+  }
+
+  .metaLabel {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .metaValue {
+    gap: 0;
+    font-size: 32px;
+    line-height: 1.12;
+    letter-spacing: -0.48px;
+    overflow-wrap: normal;
+  }
+
+  .metaRow .metaValue {
+    font-size: 30px;
+  }
+
+  .metaRow .metaItem:nth-child(3) .metaValue {
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .problemSection {
+    grid-template-columns: minmax(220px, 0.8fr) minmax(0, 2fr);
+    gap: 40px;
+  }
+
+  .problemSection h2 {
+    white-space: nowrap;
+    font-size: 48px;
+    line-height: 1.1;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .discoverySection {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-top: 72px;
+  }
+
+  .discoverySection h2 {
+    order: 1;
+    width: 100%;
+    margin: 0 0 24px;
+    font-size: 48px;
+    line-height: 1.08;
+  }
+
+  .discoverySection .storyFigure {
+    order: 2;
+    width: 100%;
+    margin: 0 0 32px;
+  }
+
+  .discoverySection .storyFigure .miroImage {
     display: block;
     width: 100%;
-    height: 1px;
-    margin: 0 0 48px;
-    padding: 0;
-    border: 0;
-    background: var(--color-border);
+    height: auto;
+    max-height: 560px;
+    object-fit: contain;
+    background: transparent;
+    border-radius: 16px;
   }
 
-  .otherProjects h2 {
+  .discoverySection .bodyText {
+    order: 3;
+    width: 100%;
+    max-width: 760px;
+    margin: 0;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+}
+
+/* Tablet editorial refinement — Comparação e Papel */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* ── Comparar sem expor: título → imagem → conteúdo ─────────── */
+
+  .comparisonSection {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding-top: 80px;
+  }
+
+  /* Permite ordenar título e texto separadamente da wrapper. */
+  .comparisonContent {
+    display: contents;
+  }
+
+  .comparisonContent h2 {
+    order: 1;
+    width: 100%;
     margin: 0 0 24px;
+    font-size: 48px;
+    line-height: 1.08;
+    letter-spacing: -0.48px;
+  }
+
+  .comparisonSection .storyFigure {
+    order: 2;
+    width: 100%;
+    margin: 0 0 32px;
+    gap: 12px;
+  }
+
+  .comparisonSection .storyFigure .comparisonImage {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 560px;
+    object-fit: contain;
+    object-position: center;
+    background: transparent;
+    border-radius: 16px;
+  }
+
+  .comparisonSection .caption {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    text-align: center;
+  }
+
+  .comparisonContent .bodyText {
+    order: 3;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  /* ── Meu papel: título → diagrama → conteúdo ────────────────── */
+
+  .roleMobileSection {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding-top: 80px;
+  }
+
+  .roleMobileSection > h2 {
+    order: 1;
+    width: 100%;
+    margin: 0 0 24px;
+    font-size: 48px;
+    line-height: 1.08;
+    letter-spacing: -0.48px;
+  }
+
+  .roleMobileSection .storyFigure {
+    order: 2;
+    width: 100%;
+    margin: 0 0 32px;
+  }
+
+  .roleMobileSection .storyFigure .roleImage {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 560px;
+    object-fit: contain;
+    object-position: center;
+    background: transparent;
+    border-radius: 16px;
+  }
+
+  .roleMobileSection > .bodyText {
+    order: 3;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .roleMobileSection > .bodyText p {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* Tablet editorial refinement — Evolução e Impacto */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* ── Uma plataforma em evolução ─────────────────────────────── */
+
+  .evolutionSection {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding-top: 80px;
+  }
+
+  .evolutionSection > h2 {
+    order: 1;
+    width: 100%;
+    margin: 0 0 24px;
+    font-size: 48px;
+    line-height: 1.08;
+    letter-spacing: -0.48px;
+  }
+
+  .evolutionSection .storyFigure {
+    order: 2;
+    width: 100%;
+    margin: 0 0 32px;
+    gap: 12px;
+  }
+
+  .evolutionSection .storyFigure .evolutionImage {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 560px;
+    object-fit: contain;
+    object-position: center;
+    background: transparent;
+    border-radius: 16px;
+  }
+
+  .evolutionSection .caption {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    text-align: center;
+  }
+
+  .evolutionSection > .bodyText {
+    order: 3;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .evolutionSection > .bodyText p {
+    width: 100%;
+    margin: 0;
+  }
+
+  /* ── Impacto e Escala ───────────────────────────────────────── */
+
+  .impactSection {
+    padding-top: 80px;
+    padding-bottom: 96px;
+  }
+
+  .impactGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+  }
+
+  .impactGrid h2 {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin: 0 0 12px;
     padding: 0;
-    font-size: 32px;
-    line-height: 1.1;
-    letter-spacing: -0.32px;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -1.68px;
   }
 
-  .otherProjects .projectsGrid {
-    margin-top: 0;
+  .impactGrid .statCard {
+    grid-column: auto;
+    min-width: 0;
+    min-height: 0;
+    padding: 24px;
   }
 
+  .impactGrid .statWide,
+  .impactGrid .statCard:first-of-type,
+  .impactGrid .statCard:last-of-type {
+    grid-column: 1 / -1;
+  }
+
+  .impactGrid .statValue {
+    font-size: 40px;
+    line-height: 1.08;
+    letter-spacing: -0.8px;
+  }
+
+  .impactGrid .statLabel {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .impactText {
+    width: 100%;
+    max-width: none;
+    margin: 32px 0 0;
+    text-align: left;
+  }
+}
+
+/* Tablet e desktop — tratamento editorial da seção O problema */
+@media (min-width: 769px) {
+  .problemSection {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 0;
+    width: calc(100% - 96px);
+    max-width: calc(var(--max-width) - 96px);
+    margin-top: 64px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+    overflow: hidden;
+    background: var(--color-white);
+    border-radius: 16px;
+  }
+
+  .problemSection h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    min-height: 100%;
+    margin: 0;
+    padding: 24px 0;
+    align-self: stretch;
+    background: var(--color-black);
+    color: var(--color-white);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.48px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+  }
+
+  .problemSection .bodyText {
+    width: 100%;
+    margin: 0;
+    padding: 48px;
+    box-sizing: border-box;
+    gap: 24px;
+    background: var(--color-white);
+    font-size: 20px;
+    line-height: 1.45;
+  }
+
+  .problemSection .bodyText p {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* Tablet — escala compacta do tratamento editorial */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .problemSection {
+    grid-template-columns: 64px minmax(0, 1fr);
+    width: calc(100% - 64px);
+    max-width: none;
+    margin-top: 40px;
+  }
+
+  .problemSection h2 {
+    width: 64px;
+    padding: 20px 0;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: -0.48px;
+  }
+
+  .problemSection .bodyText {
+    padding: 32px 40px;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .problemSection + .quoteBlock {
+    margin-top: 64px;
+  }
 }

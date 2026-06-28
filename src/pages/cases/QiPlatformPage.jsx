@@ -1,25 +1,18 @@
-import { Link } from 'react-router-dom'
 import Layout from '../../components/Layout'
+import OtherProjectsSection from '../../components/OtherProjectsSection'
 import styles from './QiPlatformPage.module.css'
 import headOfDesignRoleImg from '../../media/cases/qi-platform/head-of-design-role.png'
 import qiMiroCocreationImg from '../../media/cases/qi-platform/QI-Miro-Cocreation.png'
 
-import heroTabletImg from '../../media/QI-Platform-tablet.png'
+import heroTabletImg from '../../media/cases/qi-platform/qi-platform-tablet.webp'
 import comparisonImg from '../../media/cases/qi-platform/comparar-sem-expor.png'
-import evolutionImg from '../../media/cases/qi-platform/emr-evolution-charts.png'
-import myEvolutionIcon from '../../media/my-evolution.svg'
-import groupsIcon from '../../media/grupos-pref.svg'
-import networkIcon from '../../media/visao-rede.svg'
-import investigationIcon from '../../media/investigacao.svg'
-import quoteOpenImg from '../../media/quote-open.png'
-import quoteCloseImg from '../../media/quote-close.png'
-
-import itauCardImg from '../../media/itau-cover.jpg'
-import gerdauCardImg from '../../media/card-gerdau-storeroom.png'
-import emrBgImg from '../../media/card-emr-bg.png'
-import emrOverlayImg from '../../media/card-emr-overlay.jpg'
-import threePhCardImg from '../../media/Captura de Tela 2026-06-16 às 00.14.57.png'
-import smartlogCardImg from '../../media/Smartlog/cocriacao_ov_alocacao (1).jpeg'
+import evolutionImg from '../../media/cases/qi-platform/emr-evolution-charts.webp'
+import myEvolutionIcon from '../../media/cases/qi-platform/evolucao.svg'
+import groupsIcon from '../../media/cases/qi-platform/grupos-preferencia.svg'
+import networkIcon from '../../media/cases/qi-platform/visao-rede.svg'
+import investigationIcon from '../../media/cases/qi-platform/investigacao.svg'
+import quoteOpenImg from '../../media/shared/quotes/quote-open.png'
+import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
 
 const metaItems = [
   { label: 'Empresa', value: '3PH Alliance' },
@@ -86,42 +79,6 @@ const impactStats = [
   },
 ]
 
-const otherProjects = [
-  {
-    slug: 'itau-empreendedor',
-    title: 'Itaú Empreendedor',
-    category: 'Finances · Product Designer',
-    images: [{ src: itauCardImg, alt: 'Itaú Empreendedor' }],
-  },
-  {
-    slug: 'emr-integration',
-    title: 'EMR Integration',
-    category: 'Saúde · Head of Design',
-    images: [
-      { src: emrBgImg, alt: 'EMR Integration' },
-      { src: emrOverlayImg, alt: '' },
-    ],
-  },
-  {
-    slug: 'gerdau-storeroom',
-    title: 'Gerdau Storeroom',
-    category: 'Industry · Product Designer',
-    images: [{ src: gerdauCardImg, alt: 'Gerdau Storeroom' }],
-  },
-  {
-    slug: '3ph-hrcrs-digital-ecosystem',
-    title: '3PH Alliance & HRCRS Digital Ecosystem',
-    category: 'Saúde · Head of Design',
-    images: [{ src: threePhCardImg, alt: '3PH Alliance & HRCRS Digital Ecosystem' }],
-  },
-  {
-    slug: 'gerdau-smartlog',
-    title: 'Gerdau Smartlog',
-    category: 'Industry · Product Designer',
-    images: [{ src: smartlogCardImg, alt: 'Gerdau Smartlog' }],
-  },
-]
-
 function MetaValue({ value }) {
   if (Array.isArray(value)) {
     return (
@@ -159,51 +116,6 @@ function QuoteBlock({ label = null, children, compact = false }) {
   )
 }
 
-function MissingAssetFigure({ caption = null, className = '' }) {
-  return (
-    <figure className={`${styles.figure} ${className}`}>
-      <div
-        className={styles.missingAsset}
-        role="img"
-        aria-label="Asset não encontrado"
-      />
-      {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
-    </figure>
-  )
-}
-
-function ProjectCard({ project }) {
-  return (
-    <article className={styles.projectCard}>
-      <Link
-        to={`/trabalhos/${project.slug}`}
-        className={styles.projectLink}
-        aria-label={`Ver projeto ${project.title}`}
-      >
-        {project.images.map((image, index) => (
-          <img
-            key={`${project.slug}-${image.src}`}
-            src={image.src}
-            alt={image.alt}
-            className={styles.projectImage}
-            aria-hidden={index > 0 ? 'true' : undefined}
-          />
-        ))}
-        <span className={styles.projectOverlay} aria-hidden="true" />
-        <span className={styles.projectContent}>
-          <span className={styles.projectText}>
-            <span className={styles.projectCategory}>{project.category}</span>
-            <span className={styles.projectTitle}>{project.title}</span>
-          </span>
-          <span className={styles.projectCta}>
-            <span>Ver Projeto</span>
-            <span aria-hidden="true">→</span>
-          </span>
-        </span>
-      </Link>
-    </article>
-  )
-}
 
 export default function QiPlatformPage() {
   return (
@@ -477,22 +389,7 @@ export default function QiPlatformPage() {
           </div>
         </section>
 
-        <section className={styles.otherProjects} aria-labelledby="other-projects">
-          <div className={styles.rule} aria-hidden="true" />
-          <h2 id="other-projects">Outros Projetos</h2>
-          <div className={styles.projectsGrid}>
-            <div className={styles.projectsColumn}>
-              {otherProjects.slice(0, 2).map((project) => (
-                <ProjectCard key={project.slug} project={project} />
-              ))}
-            </div>
-            <div className={`${styles.projectsColumn} ${styles.projectsColumnOffset}`}>
-              {otherProjects.slice(2).map((project) => (
-                <ProjectCard key={project.slug} project={project} />
-              ))}
-            </div>
-          </div>
-        </section>
+        <OtherProjectsSection currentSlug="qi-platform" />
       </article>
     </Layout>
   )

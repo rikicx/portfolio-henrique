@@ -105,3 +105,38 @@
     font-size: 16px;
   }
 }
+
+/* Desktop compacto — 1025px–1399px */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .content {
+    min-height: 600px;
+    padding: 96px 40px 88px;
+  }
+
+  .code {
+    font-size: 136px;
+    margin-bottom: 12px;
+  }
+
+  .heading {
+    max-width: 540px;
+    font-size: 42px;
+    line-height: 1.08;
+    margin-bottom: 20px;
+  }
+
+  .body {
+    max-width: 860px;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+  }
+
+  .links {
+    gap: 56px;
+  }
+
+  .hyperlink {
+    font-size: 20px;
+  }
+}

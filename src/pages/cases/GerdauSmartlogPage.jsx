@@ -1,92 +1,35 @@
-import { Link } from 'react-router-dom'
 import Layout from '../../components/Layout'
+import OtherProjectsSection from '../../components/OtherProjectsSection'
 import styles from './GerdauSmartlogPage.module.css'
 
-import heroImg from '../../media/cases/gerdau-smartlog/smartlog-hero.jpg'
+import heroImg from '../../media/cases/gerdau-smartlog/smartlog-hero.webp'
 import cocriacaoPanoramicaImg from '../../media/cases/gerdau-smartlog/smartlog-cocriacao-panoramica.jpg'
 import estruturando01Img from '../../media/cases/gerdau-smartlog/smartlog-estruturando-01.jpg'
-import estruturando02Img from '../../media/cases/gerdau-smartlog/smartlog-estruturando-02.jpg'
-import projetandoImg from '../../media/cases/gerdau-smartlog/smartlog-projetando.jpg'
+import estruturando02Img from '../../media/cases/gerdau-smartlog/smartlog-estruturando-02.webp'
+import projetandoImg from '../../media/cases/gerdau-smartlog/smartlog-projetando.webp'
 import validandoImg from '../../media/cases/gerdau-smartlog/smartlog-validando.jpg'
-import produtoImg from '../../media/cases/gerdau-smartlog/smartlog-produto.jpg'
+import produtoImg from '../../media/cases/gerdau-smartlog/smartlog-produto-cropped.webp'
 import smartlogLogoSvg from '../../media/cases/gerdau-smartlog/smartlog-logo.svg'
-import quoteOpenImg from '../../media/quote-open.png'
-import quoteCloseImg from '../../media/quote-close.png'
-
-import cardQiImg from '../../media/card-qi-platform.png'
-import cardItauImg from '../../media/itau-cover.jpg'
-import cardEmrImg from '../../media/EMR-Int-Cover.png'
-import cardStoreroomImg from '../../media/card-gerdau-storeroom.png'
-import card3phImg from '../../media/3ph-website-mockup.jpg'
-
-const OUTROS_PROJETOS = [
-  {
-    slug: 'qi-platform',
-    title: 'QI Platform',
-    category: 'Saúde · Head of Design',
-    img: cardQiImg,
-  },
-  {
-    slug: 'itau-empreendedor',
-    title: 'Itaú Empreendedor',
-    category: 'Finances · Product Designer',
-    img: cardItauImg,
-  },
-  {
-    slug: 'emr-integration',
-    title: 'EMR Integration',
-    category: 'Saúde · Head of Design',
-    img: cardEmrImg,
-  },
-  {
-    slug: 'gerdau-storeroom',
-    title: 'Gerdau Storeroom',
-    category: 'Industry · Product Designer',
-    img: cardStoreroomImg,
-  },
-  {
-    slug: '3ph-hrcrs-digital-ecosystem',
-    title: '3PH Alliance & HRCRS Digital Ecosystem',
-    category: 'Saúde · Head of Design',
-    img: card3phImg,
-  },
-]
-
-function OutrosProjetosCard({ project }) {
-  return (
-    <Link
-      to={`/trabalhos/${project.slug}`}
-      className={styles.card}
-      aria-label={`Ver projeto ${project.title}`}
-    >
-      {project.img ? (
-        <img src={project.img} alt="" aria-hidden="true" className={styles.cardImg} />
-      ) : (
-        <div className={styles.cardPlaceholder} />
-      )}
-      <div className={styles.cardOverlay} aria-hidden="true" />
-      <div className={styles.cardContent}>
-        <div className={styles.cardTextBlock}>
-          <p className={styles.cardCategory}>{project.category}</p>
-          <h3 className={styles.cardTitle}>{project.title}</h3>
-        </div>
-        <span className={styles.cardLink}>Ver Projeto →</span>
-      </div>
-    </Link>
-  )
-}
+import quoteOpenImg from '../../media/shared/quotes/quote-open.png'
+import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
 
 export default function GerdauSmartlogPage() {
   return (
     <Layout>
       {/* 1. Hero */}
       <section aria-labelledby="hero-title" className={styles.hero}>
-        <h1 id="hero-title" className={styles.heroTitle}>Gerdau Smartlog</h1>
-        <p className={styles.heroDesc}>
-          Uma ferramenta para transformar informações espalhadas entre SAP, Neolog, Excel e
-          e-mail em alertas que a operação pudesse assumir, acompanhar e resolver em um único
-          lugar.
-        </p>
+        <h1 id="hero-title" className={styles.heroTitle}>
+          <span>Gerdau</span>
+          <span>Smartlog</span>
+        </h1>
+
+        <div className={styles.heroMeta}>
+          <p className={styles.heroDesc}>
+            Uma ferramenta para transformar informações espalhadas entre SAP, Neolog, Excel e
+            e-mail em alertas que a operação pudesse assumir, acompanhar e resolver em um único
+            lugar.
+          </p>
+        </div>
       </section>
 
       <hr className={styles.dividerFull} aria-hidden="true" />
@@ -172,30 +115,36 @@ export default function GerdauSmartlogPage() {
       {/* 5. Cocriação como parte do processo */}
       <section aria-labelledby="cocriacao-title" className={styles.cocriacao}>
         <div className={styles.container}>
-          <h2 id="cocriacao-title" className={styles.sectionHeading}>
-            Cocriação como parte do processo
-          </h2>
-          <div className={styles.cocriacaoText}>
-            <p>O Smartlog não foi desenhado de forma isolada.</p>
-            <p>
-              Ao longo do projeto, trabalhamos lado a lado com pessoas da operação para discutir
-              cenários reais, mapear decisões, revisar fluxos e priorizar oportunidades.
-            </p>
-            <p className={styles.cocriacaoBreak}>
-              Essas conversas aconteciam em ciclos de cocriação, usando quadros, anotações,
-              simulações e fluxos desenhados em conjunto. Isso ajudou a transformar problemas
-              operacionais em funcionalidades mais aderentes à rotina do time e fez com que o
-              produto evoluísse sempre em construção conjunta.
-            </p>
-          </div>
-        </div>
-        <div className={styles.cocriacaoPanoramica}>
-          <div className={styles.container}>
-            <img
-              src={cocriacaoPanoramicaImg}
-              alt="Sessão de cocriação com a equipe de operação, mapeando decisões e fluxos do Smartlog"
-              className={styles.panoramicImg}
-            />
+          <div className={styles.cocriacaoLayout}>
+            <h2 id="cocriacao-title" className={styles.sectionHeading}>
+              Cocriação como parte do processo
+            </h2>
+
+            <div className={styles.cocriacaoText}>
+              <p>O Smartlog não foi desenhado de forma isolada.</p>
+              <p>
+                Ao longo do projeto, trabalhamos lado a lado com pessoas da operação para discutir
+                cenários reais, mapear decisões, revisar fluxos e priorizar oportunidades.
+              </p>
+              <p className={styles.cocriacaoBreak}>
+                Essas conversas aconteciam em ciclos de cocriação, usando quadros, anotações,
+                simulações e fluxos desenhados em conjunto. Isso ajudou a transformar problemas
+                operacionais em funcionalidades mais aderentes à rotina do time e fez com que o
+                produto evoluísse sempre em construção conjunta.
+              </p>
+            </div>
+
+            <div className={styles.cocriacaoPanoramica}>
+              <img
+                src={cocriacaoPanoramicaImg}
+                alt="Sessão de cocriação com a equipe de operação, mapeando decisões e fluxos do Smartlog"
+                className={styles.panoramicImg}
+              />
+              <p className={styles.mediaCaption}>
+                Cocriação com as áreas envolvidas para mapear exceções, responsabilidades e
+                decisões da operação.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -222,16 +171,26 @@ export default function GerdauSmartlogPage() {
               </div>
             </div>
             <div className={styles.estruturandoImages}>
-              <img
+              <div className={styles.processFigure}>
+                <img
                 src={estruturando01Img}
                 alt="Papéis com fluxos e anotações mapeando exceções e decisões do processo logístico"
                 className={styles.estruturandoImg}
               />
-              <img
+                <p className={styles.mediaCaption}>
+                  Organização dos cenários e fluxos levantados durante as sessões de trabalho.
+                </p>
+              </div>
+              <div className={styles.processFigure}>
+                <img
                 src={estruturando02Img}
                 alt="Diagramas e fluxos estruturando cenários operacionais do Smartlog"
                 className={styles.estruturandoImg}
               />
+                <p className={styles.mediaCaption}>
+                  Discussão dos caminhos possíveis com a operação antes de levar as decisões para a interface.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -247,6 +206,10 @@ export default function GerdauSmartlogPage() {
                 alt="Monitor com o painel de alertas do Smartlog, mostrando exceções logísticas em tratamento"
                 className={styles.projetandoImg}
               />
+              <p className={styles.mediaCaption}>
+                Interface do Smartlog projetada para centralizar alertas, evidências e ações da
+                operação.
+              </p>
             </div>
             <div className={styles.projetandoText}>
               <h2 id="projetando-title" className={styles.sectionHeading}>
@@ -278,6 +241,9 @@ export default function GerdauSmartlogPage() {
                 alt="Quadro branco com fluxo de decisão logística mapeado em sessão com a operação"
                 className={styles.validandoImg}
               />
+              <p className={styles.mediaCaption}>
+                Fluxo de decisão revisado com a operação antes dos ajustes finais na interface.
+              </p>
             </div>
             <div className={styles.validandoText}>
               <h2 id="validando-title" className={styles.sectionHeading}>
@@ -325,24 +291,7 @@ export default function GerdauSmartlogPage() {
       </section>
 
       {/* 10. Outros Projetos */}
-      <section aria-labelledby="outros-title" className={styles.outrosSection}>
-        <hr className={styles.dividerFull} aria-hidden="true" />
-        <div className={styles.container}>
-          <h2 id="outros-title" className={styles.outrosTitle}>Outros Projetos</h2>
-        </div>
-        <div className={styles.outrosGrid}>
-          <div className={styles.outrosLeft}>
-            {OUTROS_PROJETOS.slice(0, 3).map((project) => (
-              <OutrosProjetosCard key={project.slug} project={project} />
-            ))}
-          </div>
-          <div className={styles.outrosRight}>
-            {OUTROS_PROJETOS.slice(3).map((project) => (
-              <OutrosProjetosCard key={project.slug} project={project} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <OtherProjectsSection currentSlug="gerdau-smartlog" />
     </Layout>
   )
 }

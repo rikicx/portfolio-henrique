@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom'
 import Layout from '../components/Layout'
 import styles from './AboutPage.module.css'
 
-import heroImg from '../media/about-henrique.png'
-import karateImg from '../media/henriqueKarate.png'
-import manemShohoImg from '../media/ManemShoho.png'
-import comeceProbImg from '../media/ComeceProb.png'
-import aproxPersImg from '../media/AproxPers.png'
-import uxImg from '../media/UX.png'
-import hyperlineSvg from '../media/hyperline.svg'
+import heroImg from '../media/about/about-henrique.webp'
+import karateImg from '../media/about/henrique-karate.webp'
+import manemShohoImg from '../media/about/manem-shoho.png'
+import comeceProbImg from '../media/about/comece-pelo-problema.png'
+import aproxPersImg from '../media/about/aproximacao-com-pessoas.png'
+import uxImg from '../media/about/ux.png'
+import hyperlineSvg from '../media/home/experience/hyperline.svg'
 
 const timeline = [
   {

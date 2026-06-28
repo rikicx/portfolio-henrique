@@ -3,7 +3,7 @@
 }
 
 .container {
-  max-width: var(--max-width);
+  max-width: calc(var(--max-width) - 96px);
   margin: 0 auto;
 }
 
@@ -12,9 +12,9 @@
 .heading {
   font-family: 'Inter Tight', sans-serif;
   font-weight: 500;
-  font-size: 96px;
+  font-size: 72px;
   line-height: 1;
-  letter-spacing: -2.88px;
+  letter-spacing: -2.16px;
   color: var(--color-black);
   white-space: nowrap;
   padding: 10px;
@@ -46,20 +46,46 @@
   align-items: flex-start;
 }
 
-.timelineImg {
-  width: 16px;
-  height: 250px;
-  flex-shrink: 0;
-}
-
 .positions {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 0;
 }
 
-.position {}
+.position {
+  position: relative;
+  padding: 0 0 32px 32px;
+}
+
+.position:last-child {
+  padding-bottom: 0;
+}
+
+.position::before {
+  position: absolute;
+  top: 14px;
+  bottom: -14px;
+  left: 7px;
+  width: 1px;
+  content: '';
+  background: var(--color-black);
+}
+
+.position:last-child::before {
+  display: none;
+}
+
+.position::after {
+  position: absolute;
+  top: 8px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  content: '';
+  background: var(--color-black);
+  transform: rotate(45deg);
+}
 
 .positionTitle {
   font-family: 'Inter Tight', sans-serif;
@@ -234,24 +260,74 @@
     display: block;
     flex-shrink: 0;
     color: var(--color-black);
+    transition: transform 240ms ease;
   }
 
   .chevronOpen {
     transform: rotate(180deg);
   }
 
-  /* Expanded content — hidden by default */
+  /* Expanded content — animated with CSS Grid */
   .mobileContent {
-    display: none;
-    padding-bottom: 16px;
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      grid-template-rows 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 200ms ease,
+      visibility 0s linear 320ms;
   }
 
   .mobileContentOpen {
-    display: block;
+    grid-template-rows: 1fr;
+    visibility: visible;
+    opacity: 1;
+    transition:
+      grid-template-rows 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 240ms ease 60ms,
+      visibility 0s linear 0s;
+  }
+
+  .mobileContentInner {
+    min-height: 0;
+    overflow: hidden;
+    padding-bottom: 0;
+    transition: padding-bottom 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mobileContentOpen .mobileContentInner {
+    padding-bottom: 16px;
   }
 
   .mobilePositionExpanded {
-    padding-top: 16px;
+    position: relative;
+    padding: 16px 0 0 24px;
+  }
+
+  .mobilePositionExpanded::before {
+    position: absolute;
+    top: 26px;
+    bottom: -20px;
+    left: 5px;
+    width: 1px;
+    content: '';
+    background: var(--color-black);
+  }
+
+  .mobilePositionExpanded:last-child::before {
+    display: none;
+  }
+
+  .mobilePositionExpanded::after {
+    position: absolute;
+    top: 21px;
+    left: 1px;
+    width: 9px;
+    height: 9px;
+    content: '';
+    background: var(--color-black);
+    transform: rotate(45deg);
   }
 
   .mobilePositionExpanded + .mobilePositionExpanded {
@@ -282,5 +358,110 @@
 
   .linkedinText {
     font-size: 16px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobileContent,
+    .mobileContentOpen,
+    .mobileContentInner,
+    .chevron {
+      transition: none;
+    }
+  }
+}
+
+/* Tablet visual refinement */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section {
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+
+  .companyRow {
+    align-items: center;
+    padding: 28px 16px;
+  }
+
+  .experienceBody {
+    gap: 0;
+  }
+
+  .positionTitle {
+    margin-bottom: 8px;
+  }
+
+  .companyLogo {
+    width: 120px;
+  }
+}
+
+/* Responsive CSS timeline stabilization */
+.experienceBody,
+.positions,
+.position {
+  min-width: 0;
+}
+
+.position {
+  display: flow-root;
+}
+
+.positionTitle,
+.positionDesc {
+  overflow-wrap: anywhere;
+}
+
+.companyLogo {
+  margin-left: auto;
+}
+
+/* Desktop compacto — 1025px–1399px */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .section {
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-bottom: 96px;
+  }
+
+  .heading {
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: -1.92px;
+  }
+
+  .companyRow {
+    gap: 16px;
+    padding: 24px 8px;
+  }
+
+  .experienceBody {
+    min-width: 0;
+  }
+
+  .position {
+    padding-left: 28px;
+  }
+
+  .positionTitle {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .positionDesc {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .companyLogo {
+    width: 120px;
+    height: 88px;
+  }
+
+  .linkedinLink {
+    margin-top: 40px;
+  }
+
+  .linkedinText {
+    font-size: 22px;
   }
 }

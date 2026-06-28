@@ -1,12 +1,12 @@
 import styles from './Hero.module.css'
-import heroUrl from '../media/henrique-hero.png'
+import heroUrl from '../media/home/hero/henrique-hero.webp'
 
 export default function Hero() {
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
         {/* Name overflows right intentionally — section clips overflow */}
-        <p className={styles.name} aria-hidden="true">Henrique&nbsp;</p>
+        <p className={styles.name} aria-hidden="true">Henrique</p>
 
         {/* Desktop: absolute left=831px top=32px. Mobile: in-flow, pulled up to overlap name */}
         <div className={styles.photoWrapper} aria-hidden="true">

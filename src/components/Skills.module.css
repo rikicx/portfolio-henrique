@@ -1,18 +1,18 @@
 /* ── Section ── */
 
 .section {
-  padding: 80px 0;
+  padding: 56px 0;
   background: var(--color-bg);
 }
 
 .sectionTitle {
-  padding-left: 32px;
-  font-size: 96px;
+  padding-left: 48px;
+  font-size: 72px;
   font-weight: 500;
   line-height: 1;
-  letter-spacing: -2.88px;
+  letter-spacing: -2.16px;
   color: var(--color-black);
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .mobileBr {
@@ -25,7 +25,7 @@
   margin: 0 48px;
   background: var(--color-surface);
   border-radius: var(--radius-card);
-  padding: 32px 268px 32px 48px;
+  padding: 28px 48px;
 }
 
 /* ── Items list ── */
@@ -34,32 +34,33 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 28px;
 }
 
 .item {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  gap: 32px;
+  align-items: center;
+  gap: 24px;
 }
 
 /* ── Icon ── */
 
 .iconWrapper {
-  width: 50px;
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .icon {
   display: block;
   width: auto;
   height: auto;
-  max-width: 50px;
-  max-height: 50px;
+  max-width: 44px;
+  max-height: 44px;
 }
 
 /* ── Text group ── */
@@ -70,10 +71,10 @@
 }
 
 .itemTitle {
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 500;
   line-height: 1.15;
-  letter-spacing: -0.54px;
+  letter-spacing: -0.42px;
   color: var(--color-black);
 }
 
@@ -83,9 +84,9 @@
 }
 
 .itemSubtitleDesktop {
-  font-size: 20px;
-  line-height: 1.45;
-  white-space: nowrap;
+  font-size: 18px;
+  line-height: 1.4;
+  white-space: normal;
 }
 
 .itemSubtitleMobile {
@@ -124,25 +125,54 @@
   }
 
   .item {
-    gap: 14px;
+    gap: 16px;
   }
 
   .iconWrapper {
-    width: 32px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
   }
 
   .icon {
-    width: 32px;
+    width: auto;
     height: auto;
-    max-width: 32px;
+    max-width: none;
     max-height: none;
+    object-fit: contain;
+  }
+
+  .item:nth-child(1) .icon {
+    width: 28px;
+    height: 44px;
+  }
+
+  .item:nth-child(2) .icon {
+    width: 42px;
+    height: auto;
+  }
+
+  .item:nth-child(3) .icon {
+    width: 42px;
+    height: auto;
+  }
+
+  .item:nth-child(4) .icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .item:nth-child(5) .icon {
+    width: 36px;
+    height: 43px;
   }
 
   .itemTitle {
-    font-size: 24px;
-    font-weight: 400;
+    font-size: 20px;
+    font-weight: 500;
     line-height: 1.25;
-    letter-spacing: -0.24px;
+    letter-spacing: -0.2px;
   }
 
   .itemSubtitleDesktop {
@@ -153,5 +183,46 @@
     display: block;
     font-size: 14px;
     line-height: 1.45;
+  }
+}
+
+/* Desktop — composição interna para aproveitar melhor telas amplas */
+@media (min-width: 1025px) {
+  .sectionTitle {
+    width: calc(100% - 96px);
+    max-width: 1344px;
+    margin: 0 auto 24px;
+    padding-left: 0;
+  }
+
+  .card {
+    width: calc(100% - 96px);
+    max-width: 1344px;
+    margin: 0 auto;
+    padding: 40px 48px;
+    box-sizing: border-box;
+  }
+
+  .items {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 64px;
+    row-gap: 36px;
+  }
+
+  .item {
+    align-items: flex-start;
+  }
+
+  .item:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .textGroup {
+    min-width: 0;
+  }
+
+  .itemSubtitleDesktop {
+    max-width: 560px;
   }
 }

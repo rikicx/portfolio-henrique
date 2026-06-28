@@ -1,6 +1,6 @@
 import styles from './Quote.module.css'
-import quoteOpenImg from '../media/quote-open.png'
-import quoteCloseImg from '../media/quote-close.png'
+import quoteOpenImg from '../media/shared/quotes/quote-open.png'
+import quoteCloseImg from '../media/shared/quotes/quote-close.png'
 
 export default function Quote() {
   return (

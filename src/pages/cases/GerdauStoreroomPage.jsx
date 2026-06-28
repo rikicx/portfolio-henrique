@@ -1,25 +1,21 @@
-import { Link } from 'react-router-dom'
 import Layout from '../../components/Layout'
+import OtherProjectsSection from '../../components/OtherProjectsSection'
 import styles from './GerdauStoreroomPage.module.css'
 
 import heroImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-inventory-counting-hero.jpg'
-import panoramicImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-synthesis-overview.jpg'
-import processMappingImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-process-mapping.jpg'
-import cocreationSessionImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-cocreation-session.jpg'
-import cocreationSynthesisImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-cocreation-synthesis.jpg'
-import prototypeSketchImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-prototype-sketch.jpg'
-import testImg02 from '../../media/cases/gerdau-storeroom/gerdau-storeroom-usability-test-02.jpg'
-import testImg04 from '../../media/cases/gerdau-storeroom/gerdau-storeroom-usability-test-04.jpg'
+import panoramicImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-synthesis-overview.webp'
+import processMappingImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-process-mapping.webp'
+import cocreationSessionImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-cocreation-session.webp'
+import cocreationSynthesisImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-cocreation-synthesis.webp'
+import prototypeSketchImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-prototype-sketch.webp'
+import testImg02 from '../../media/cases/gerdau-storeroom/gerdau-storeroom-usability-test-02.webp'
+import testImg04 from '../../media/cases/gerdau-storeroom/gerdau-storeroom-usability-test-04.webp'
 import refinedInterfaceImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-refined-interface.png'
-import projectTeamImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-project-team.jpg'
-import quoteOpenImg from '../../media/quote-open.png'
-import quoteCloseImg from '../../media/quote-close.png'
+import projectTeamImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-project-team.webp'
+import quoteOpenImg from '../../media/shared/quotes/quote-open.png'
+import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
+import fluxogramaImg from '../../media/cases/gerdau-storeroom/fluxograma.svg';
 
-import cardQiImg from '../../media/card-qi-platform.png'
-import cardItauImg from '../../media/itau-cover.jpg'
-import cardEmrImg from '../../media/EMR-Int-Cover.png'
-import cardSmartlogImg from '../../media/Smartlog-Cover.png'
-import card3phImg from '../../media/3ph-website-mockup.jpg'
 
 const VIMEO_SHADOWING = '1202496239'
 const VIMEO_TEST_OPERATOR = '1204273143'
@@ -40,38 +36,6 @@ const FLOW_BOTTOM = [
   'Procurar itens no galpão',
 ]
 
-const OUTROS_PROJETOS = [
-  {
-    slug: 'qi-platform',
-    title: 'QI Platform',
-    category: 'Saúde · Head of Design',
-    img: cardQiImg,
-  },
-  {
-    slug: 'itau-empreendedor',
-    title: 'Itaú Empreendedor',
-    category: 'Finanças · Product Designer',
-    img: cardItauImg,
-  },
-  {
-    slug: 'emr-integration',
-    title: 'EMR Integration',
-    category: 'Saúde · Head of Design',
-    img: cardEmrImg,
-  },
-  {
-    slug: '3ph-hrcrs-digital-ecosystem',
-    title: '3PH Alliance & HRCRS Digital Ecosystem',
-    category: 'Saúde · Head of Design',
-    img: card3phImg,
-  },
-  {
-    slug: 'gerdau-smartlog',
-    title: 'Gerdau Smartlog',
-    category: 'Indústria · Product Designer',
-    img: cardSmartlogImg,
-  },
-]
 
 function VideoPortrait({ vimeoId, title }) {
   return (
@@ -103,29 +67,6 @@ function VideoWide({ vimeoId, title }) {
   )
 }
 
-function OutrosProjetosCard({ project }) {
-  return (
-    <Link
-      to={`/trabalhos/${project.slug}`}
-      className={styles.card}
-      aria-label={`Ver projeto ${project.title}`}
-    >
-      {project.img ? (
-        <img src={project.img} alt="" aria-hidden="true" className={styles.cardImg} />
-      ) : (
-        <div className={styles.cardPlaceholder} />
-      )}
-      <div className={styles.cardOverlay} aria-hidden="true" />
-      <div className={styles.cardContent}>
-        <div className={styles.cardTextBlock}>
-          <p className={styles.cardCategory}>{project.category}</p>
-          <h3 className={styles.cardTitle}>{project.title}</h3>
-        </div>
-        <span className={styles.cardLink}>Ver Projeto →</span>
-      </div>
-    </Link>
-  )
-}
 
 export default function GerdauStoreroomPage() {
   return (
@@ -265,28 +206,50 @@ export default function GerdauStoreroomPage() {
               </p>
 
               <div className={styles.flowDiagram}>
-                <div className={styles.flowRow}>
-                  {FLOW_TOP.map((step, i) => (
-                    <span key={step} className={styles.flowPillGroup}>
-                      <span className={styles.flowPill}>{step}</span>
-                      {i < FLOW_TOP.length - 1 && (
-                        <span className={styles.flowArrow} aria-hidden="true">→</span>
-                      )}
-                    </span>
-                  ))}
-                </div>
+                <img
+                  src={fluxogramaImg}
+                  alt="Fluxo anterior da contagem de inventário, da lista de itens até a validação final no SAP."
+                  className={styles.flowDiagramImage}
+                />
 
-                <span className={styles.flowTurn} aria-hidden="true" />
+                <div
+                  className={styles.flowDiagramMobile}
+                  aria-label="Fluxo anterior da contagem de inventário"
+                >
+                  <div className={styles.flowRow}>
+                    {FLOW_TOP.map((step, i) => (
+                      <span key={step} className={styles.flowPillGroup}>
+                        <span className={styles.flowPill}>{step}</span>
 
-                <div className={styles.flowRow}>
-                  {FLOW_BOTTOM.map((step, i) => (
-                    <span key={step} className={styles.flowPillGroup}>
-                      <span className={styles.flowPill}>{step}</span>
-                      {i < FLOW_BOTTOM.length - 1 && (
-                        <span className={styles.flowArrow} aria-hidden="true">←</span>
-                      )}
-                    </span>
-                  ))}
+                        {i < FLOW_TOP.length - 1 && (
+                          <span className={styles.flowArrow} aria-hidden="true">
+                            ↓
+                          </span>
+                        )}
+                      </span>
+                    ))}
+                  </div>
+
+                  <span
+                    className={styles.flowRowConnector}
+                    aria-hidden="true"
+                  >
+                    ↓
+                  </span>
+
+                  <div className={styles.flowRow}>
+                    {FLOW_BOTTOM.slice().reverse().map((step, i, steps) => (
+                      <span key={step} className={styles.flowPillGroup}>
+                        <span className={styles.flowPill}>{step}</span>
+
+                        {i < steps.length - 1 && (
+                          <span className={styles.flowArrow} aria-hidden="true">
+                            ↓
+                          </span>
+                        )}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -295,9 +258,7 @@ export default function GerdauStoreroomPage() {
                 <p className={styles.excecaoText}>
                   Qualquer exceção virava retrabalho:
                   <br />
-                  Item fora do lugar, quantidade divergente ou
-                  <br />
-                  nova validação no SAP.
+                  Item fora do lugar, quantidade divergente ou nova validação no SAP.
                 </p>
               </div>
             </div>
@@ -583,24 +544,7 @@ export default function GerdauStoreroomPage() {
       </div>
 
       {/* 17. Outros Projetos */}
-      <section aria-labelledby="outros-title" className={styles.outrosSection}>
-        <hr className={styles.dividerFull} aria-hidden="true" />
-        <div className={styles.container}>
-          <h2 id="outros-title" className={styles.outrosTitle}>Outros Projetos</h2>
-        </div>
-        <div className={styles.outrosGrid}>
-          <div className={styles.outrosLeft}>
-            {OUTROS_PROJETOS.slice(0, 3).map((project) => (
-              <OutrosProjetosCard key={project.slug} project={project} />
-            ))}
-          </div>
-          <div className={styles.outrosRight}>
-            {OUTROS_PROJETOS.slice(3).map((project) => (
-              <OutrosProjetosCard key={project.slug} project={project} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <OtherProjectsSection currentSlug="gerdau-storeroom" />
     </Layout>
   )
 }

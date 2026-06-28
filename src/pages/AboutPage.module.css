@@ -489,16 +489,6 @@
   display: none;
 }
 
-.inicianteBodySecond {
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1.45;
-  color: var(--color-black);
-  max-width: 608px;
-  margin-top: 20px;
-  margin-left: 531px;
-}
-
 .inicianteDivider {
   display: block;
   height: 1px;
@@ -623,8 +613,8 @@
   .heroTitle {
     position: static;
     width: auto;
-    max-width: 350px;
-    font-size: 36px;
+    max-width: 600px;
+    font-size: clamp(36px, 6vw, 48px);
     line-height: 1.15;
     letter-spacing: -0.54px;
     text-align: center;
@@ -638,12 +628,16 @@
   .heroPhotoCol {
     position: static;
     order: 2;
-    width: 307px;
-    height: 252px;
+    width: min(520px, 100%);
+    height: auto;
     margin-top: 24px;
+    overflow: visible;
   }
 
   .heroImg {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
     object-position: top center;
   }
 
@@ -651,7 +645,7 @@
   .heroMobileDivider {
     display: block;
     order: 3;
-    width: 342px;
+    width: min(560px, 100%);
     height: 1px;
     background: var(--color-black);
     border: none;
@@ -662,8 +656,9 @@
   .heroDesc {
     position: static;
     width: auto;
-    max-width: 338px;
-    font-size: 14px;
+    max-width: 560px;
+    font-size: clamp(14px, 2.2vw, 18px);
+    line-height: 1.45;
     text-align: center;
     margin-top: 16px;
     order: 4;
@@ -961,14 +956,6 @@
     margin-bottom: 16px;
   }
 
-  /* Text part 2: full-width below the side-by-side block on mobile */
-  .inicianteBodySecond {
-    font-size: 14px;
-    max-width: 340px;
-    margin-left: 0;
-    margin-top: 16px;
-  }
-
   .inicianteDivider {
     margin: 48px 24px 0;
     width: calc(100% - 48px);
@@ -1135,29 +1122,6 @@
   }
 }
 
-/* Reequilíbrio horizontal — timeline mobile */
-@media (max-width: 767px) {
-  .timelineMobile {
-    width: calc(100% + 8px);
-    margin-left: -8px;
-    padding-left: 28px;
-  }
-
-  .timelineMobileContent {
-    width: 100%;
-    padding-left: 8px;
-    padding-right: 0;
-  }
-
-  .timelineMobileMarkerWrapper {
-    left: -16px;
-  }
-
-  .timelineMobileEntry:not(:last-child)::after {
-    left: -6px;
-  }
-}
-
 /* Ajuste — nós menores na timeline mobile */
 @media (max-width: 767px) {
   .markerMobileOuter {
@@ -1202,24 +1166,45 @@
   }
 }
 
-/* Ajuste — foto acompanha a altura do conteúdo lateral no mobile */
-@media (max-width: 767px) {
+/* Mobile largo — composição intermediária antes do tablet */
+@media (min-width: 600px) and (max-width: 768px) {
   .inicianteInner {
-    grid-template-columns: 136px minmax(0, 1fr);
-    align-items: stretch;
+    grid-template-columns: 220px minmax(0, 1fr);
+    column-gap: 28px;
+    row-gap: 32px;
+    align-items: start;
   }
 
   .iniciantePhotos {
-    width: 136px;
-    height: 100%;
+    width: 220px;
+    height: auto;
   }
 
   .inicianteKarateImg {
-    width: 136px;
-    height: 100%;
-    min-height: 420px;
+    width: 220px;
+    height: 420px;
+    min-height: 0;
     object-fit: cover;
     object-position: center top;
+    border-radius: 12px;
+  }
+
+  .inicianteTitle {
+    font-size: clamp(56px, 8vw, 68px);
+    line-height: 0.98;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+  }
+
+  .inicianteBody {
+    font-size: 16px;
+    line-height: 1.45;
+    margin-bottom: 18px;
+  }
+
+  .inicianteBodyFull {
+    font-size: 16px;
+    line-height: 1.45;
   }
 }
 
@@ -1274,5 +1259,583 @@
     padding-left: 0;
     justify-content: space-between;
     gap: 80px;
+  }
+}
+
+/* ─── Tablet: 769px–1024px ─────────────────────────────────────────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* ── Hero ── */
+  .heroInner {
+    padding: 40px 32px 0;
+    min-height: 460px;
+  }
+
+  /* Photo anchored to right; left: auto resets desktop calc(50%+65px) */
+  .heroPhotoCol {
+    left: auto;
+    right: 0;
+    top: 24px;
+    width: 300px;
+    height: 360px;
+  }
+
+  /* position: static removes absolute context; padding-right keeps text clear of photo */
+  .heroTitle {
+    position: static;
+    width: auto;
+    font-size: 48px;
+    line-height: 1.05;
+    letter-spacing: -0.48px;
+    padding-right: 320px;
+  }
+
+  .heroBar {
+    display: none;
+  }
+
+  .heroDesc {
+    position: static;
+    width: auto;
+    font-size: 16px;
+    margin-top: 20px;
+    padding-right: 320px;
+  }
+
+  /* position: static removes absolute top: 652px; flows below heroDesc */
+  .heroDivider {
+    position: static;
+    left: auto;
+    right: auto;
+    top: auto;
+    margin: 40px 0 0;
+  }
+
+  /* ── Liderança ── */
+  /* 519px first column overflows at tablet; equalize */
+  .liderancaInner {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .liderancaTitle {
+    font-size: 64px;
+    letter-spacing: -1.92px;
+    max-width: none;
+  }
+
+  .liderancaRight {
+    padding-left: 0;
+  }
+
+  /* ── Sempre Iniciante ── */
+
+  /* inicianteTitle (144px) estoura a coluna de ~229px em 769px.         */
+  /* Grid ajustado para 250px foto + 32px gap + 1fr texto.               */
+  /* inicianteKarateImg: cover 250×460px preserva o sujeito sem crop excessivo. */
+  .inicianteOuter {
+    padding: 0 32px;
+  }
+
+  .inicianteInner {
+    grid-template-columns: minmax(0, 250px) minmax(0, 1fr);
+    column-gap: 32px;
+  }
+
+  .inicianteKarateImg {
+    width: 100%;
+    height: 460px;
+    max-height: none;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 16px;
+  }
+
+  .inicianteTitle {
+    font-size: 96px;
+    line-height: 0.96;
+    letter-spacing: -3.2px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Tablet refinement — Hero e Sempre Iniciante */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* A foto termina em 24px + 360px = 384px.
+     Elimina a altura vazia restante do hero. */
+  .heroInner {
+    min-height: 384px;
+  }
+
+  /* Cola a linha ao final da composição e aproxima a seção seguinte. */
+  .heroDivider {
+    margin-top: 0;
+  }
+
+  /* O parágrafo duplicado dentro da coluna direita deixa de aparecer. */
+  .inicianteBodyDesktop {
+    display: none;
+  }
+
+  /* Usa a versão já existente como última linha do grid,
+     abaixo da foto e ocupando toda a largura. */
+  .inicianteBodyFull {
+    display: block;
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: var(--color-black);
+  }
+
+  .inicianteInner {
+    row-gap: 24px;
+  }
+}
+
+/* Tablet refinement — Liderança em fluxo vertical */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .liderancaInner {
+    display: block;
+  }
+
+  .liderancaTitle {
+    max-width: 720px;
+    margin-bottom: 32px;
+    font-size: 56px;
+    line-height: 1.02;
+    letter-spacing: -1.68px;
+  }
+
+  .liderancaRight {
+    width: 100%;
+    max-width: 760px;
+    padding-left: 0;
+  }
+
+  .liderancaText {
+    width: 100%;
+    max-width: 720px;
+    font-size: 20px;
+    line-height: 1.45;
+  }
+
+  .liderancaText + .liderancaText {
+    margin-top: 20px;
+  }
+
+  .liderancaPullquote {
+    width: 100%;
+    max-width: 720px;
+    margin-top: 40px;
+    font-size: 44px;
+    line-height: 1.08;
+    letter-spacing: -1.32px;
+    text-align: left;
+  }
+}
+
+/* Tablet — ritmo vertical uniforme entre as seções da página Sobre Mim */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Transições sem divisor: intervalo total de 80px */
+  .carreira,
+  .principios,
+  .lideranca {
+    padding-top: 80px;
+  }
+
+  /* Transições com divisor: 40px antes + 40px depois */
+  .liderancaDivider,
+  .inicianteDivider {
+    margin-top: 40px;
+  }
+
+  .iniciante,
+  .closing {
+    padding-top: 40px;
+  }
+
+  .closing {
+    padding-bottom: 80px;
+  }
+}
+
+/* Tablet — remove espaçamento duplicado na seção Liderança */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .liderancaRight {
+    gap: 20px;
+  }
+
+  .liderancaText + .liderancaText {
+    margin-top: 0;
+  }
+
+  .liderancaPullquote {
+    margin-top: 20px;
+  }
+}
+
+/* Tablet — refinamento de escala da transição Carreira → Princípios */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .carreiraPullquote {
+    max-width: 820px;
+    margin-top: 64px;
+    font-size: 52px;
+    line-height: 1.05;
+    letter-spacing: -1.04px;
+  }
+
+  .principiosTitle {
+    max-width: 720px;
+    margin-bottom: 56px;
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: -0.8px;
+  }
+
+  .principiosGrid {
+    gap: 32px;
+  }
+
+  .principio {
+    gap: 20px;
+  }
+
+  .principioIcon {
+    width: 96px;
+  }
+
+  .principioName {
+    font-size: 30px;
+    line-height: 1.12;
+    letter-spacing: -0.3px;
+  }
+
+  .principioText {
+    max-width: 280px;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+}
+
+/* Tablet — escala tipográfica consistente para textos corridos */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .carreiraDesc,
+  .companyRole,
+  .companyDesc,
+  .principioText,
+  .liderancaText,
+  .inicianteBody,
+  .inicianteBodyDesktop,
+  .inicianteBodyFull,
+  .closingText {
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+
+  /* O Hero usa texto auxiliar e precisa caber na composição com a foto. */
+  .heroDesc {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+
+  /* Nome da empresa continua hierarquicamente acima dos textos. */
+  .companyName {
+    font-size: 30px;
+    line-height: 1.15;
+    letter-spacing: -0.3px;
+  }
+
+  /* O texto final deixa de competir com os títulos da página. */
+  .closingText {
+    max-width: 820px;
+  }
+}
+
+/* Desktop compacto — 1025px–1399px */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  /* ── Hero ───────────────────────────────────────────────────── */
+
+  .heroInner {
+    min-height: 560px;
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  .heroTitle {
+    top: 96px;
+    left: 56px;
+    width: calc(58% - 56px);
+    font-size: clamp(54px, 5vw, 64px);
+    line-height: 1;
+    letter-spacing: -1.28px;
+  }
+
+  .heroBar {
+    display: none;
+  }
+
+  .heroDesc {
+    top: 320px;
+    left: 56px;
+    width: calc(52% - 56px);
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .heroPhotoCol {
+    top: 24px;
+    right: 0;
+    left: auto;
+    width: 43%;
+    height: 536px;
+  }
+
+  .heroDivider {
+    top: 559px;
+    right: 40px;
+    left: 40px;
+  }
+
+  /* ── Carreira ───────────────────────────────────────────────── */
+
+  .carreira {
+    padding-top: 72px;
+  }
+
+  .carreiraOuter {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  .carreiraIntroContent {
+    max-width: 920px;
+  }
+
+  .carreiraTitle {
+    font-size: 44px;
+    letter-spacing: -0.88px;
+  }
+
+  .carreiraDesc,
+  .companyRole,
+  .companyDesc {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .timelineDesktop {
+    max-width: 1080px;
+    margin-top: 64px;
+  }
+
+  .timelineEntry {
+    grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr);
+    min-height: 220px;
+  }
+
+  .timelineMarkerWrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .timelineContent {
+    max-width: 480px;
+    padding-left: 28px;
+  }
+
+  .timelineContentLeft {
+    max-width: 480px;
+    padding-right: 28px;
+  }
+
+  .companyName {
+    font-size: 30px;
+    line-height: 1.15;
+    letter-spacing: -0.3px;
+  }
+
+  .carreiraPullquote {
+    max-width: 900px;
+    margin-top: 64px;
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -1.12px;
+  }
+
+  /* ── Princípios ─────────────────────────────────────────────── */
+
+  .principios {
+    padding-top: 96px;
+  }
+
+  .principiosOuter {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  .principiosTitle {
+    max-width: 760px;
+    margin-bottom: 64px;
+    font-size: 44px;
+    letter-spacing: -0.88px;
+  }
+
+  .principiosGrid {
+    gap: 32px;
+  }
+
+  .principio {
+    gap: 20px;
+  }
+
+  .principioIcon {
+    width: 104px;
+  }
+
+  .principioName {
+    font-size: 30px;
+    line-height: 1.12;
+    letter-spacing: -0.3px;
+  }
+
+  .principioText {
+    max-width: 340px;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  /* ── Liderança ──────────────────────────────────────────────── */
+
+  .lideranca {
+    padding-top: 96px;
+  }
+
+  .liderancaOuter {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  .liderancaInner {
+    grid-template-columns: minmax(320px, 0.8fr) minmax(0, 1.2fr);
+    gap: 48px;
+  }
+
+  .liderancaTitle {
+    max-width: none;
+    font-size: clamp(64px, 6.5vw, 80px);
+    line-height: 0.98;
+    letter-spacing: -2.4px;
+  }
+
+  .liderancaRight {
+    min-width: 0;
+    padding-left: 0;
+    gap: 20px;
+  }
+
+  .liderancaText {
+    max-width: 680px;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .liderancaPullquote {
+    max-width: 680px;
+    margin-top: 28px;
+    font-size: 42px;
+    line-height: 1.08;
+    letter-spacing: -0.84px;
+  }
+
+  .liderancaDivider {
+    max-width: none;
+    margin: 64px 40px 0;
+  }
+
+  /* ── Sempre iniciante ───────────────────────────────────────── */
+
+  .iniciante {
+    padding-top: 64px;
+  }
+
+  .inicianteOuter {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  .inicianteInner {
+    grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+    column-gap: 48px;
+  }
+
+  .inicianteKarateImg {
+    width: 100%;
+    height: auto;
+    max-height: 640px;
+  }
+
+  .inicianteShohoImg {
+    top: 72px;
+    width: 78px;
+    height: 232px;
+  }
+
+  .inicianteTitle {
+    font-size: clamp(88px, 9vw, 116px);
+    line-height: 0.95;
+    letter-spacing: -3.48px;
+  }
+
+  .inicianteBody,
+  .inicianteBodyDesktop {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .inicianteDivider {
+    max-width: none;
+    margin: 64px 40px 0;
+  }
+
+  /* ── Encerramento ───────────────────────────────────────────── */
+
+  .closing {
+    padding-top: 64px;
+    padding-bottom: 80px;
+  }
+
+  .closingOuter {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  .closingTitle {
+    max-width: 880px;
+    margin-bottom: 32px;
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -1.12px;
+  }
+
+  .closingText {
+    max-width: 760px;
+    font-size: 20px;
+    line-height: 1.4;
+    letter-spacing: 0;
+  }
+
+  .closingLinks {
+    max-width: 680px;
+    margin-top: 40px;
+    gap: 64px;
+  }
+
+  .hyperlinkText {
+    font-size: 20px;
   }
 }

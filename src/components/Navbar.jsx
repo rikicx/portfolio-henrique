@@ -1,7 +1,7 @@
 import { NavLink, Link, useLocation } from 'react-router-dom'
 import { useState, useEffect, useCallback, useRef } from 'react'
 import styles from './Navbar.module.css'
-import logoUrl from '../media/HSD-LOGO.svg'
+import logoUrl from '../media/shared/branding/hsd-logo.svg'
 
 const TRABALHOS_ITEMS = [
   { label: 'Ver todos os trabalhos', to: '/trabalhos' },
@@ -18,6 +18,23 @@ const TRABALHOS_ITEMS = [
 
 export default function Navbar() {
   const location = useLocation()
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const updateScrolledState = () => {
+      setIsScrolled(window.scrollY > 96)
+    }
+
+    updateScrolledState()
+
+    window.addEventListener('scroll', updateScrolledState, {
+      passive: true,
+    })
+
+    return () => {
+      window.removeEventListener('scroll', updateScrolledState)
+    }
+  }, [])
 
   // Mobile menu
   const [openedAtPathname, setOpenedAtPathname] = useState(null)
@@ -128,7 +145,11 @@ export default function Navbar() {
       : styles.link
 
   return (
-    <header className={styles.header}>
+    <header
+      className={`${styles.header}${
+        isScrolled ? ` ${styles.headerScrolled}` : ''
+      }`}
+    >
       <div className={styles.inner}>
         <div className={styles.leftArea}>
           <NavLink
@@ -245,12 +266,12 @@ export default function Navbar() {
         </nav>
 
         <div className={styles.rightArea}>
-          <a
-            href="mailto:contato@henriquemsilva.com"
+          <Link
+            to="/contato"
             className={styles.ctaBtn}
           >
             Entre em contato
-          </a>
+          </Link>
 
           <button
             type="button"
@@ -362,14 +383,14 @@ export default function Navbar() {
             LinkedIn
           </a>
 
-          <a
-            href="mailto:contato@henriquemsilva.com"
+          <Link
+            to="/contato"
             className={styles.mobileCta}
             onClick={close}
             tabIndex={isOpen ? 0 : -1}
           >
             Entre em contato
-          </a>
+          </Link>
         </nav>
 
         <div className={styles.mobileFooter}>

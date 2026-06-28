@@ -1,4 +1,6 @@
 .pageBackground {
+  position: relative;
+  isolation: isolate;
   background: var(--color-black);
 }
 
@@ -8,6 +10,12 @@
   overflow: hidden;
   background: var(--color-white);
   border-radius: 0 0 64px 64px;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .main {
+    border-radius: 0 0 48px 48px;
+  }
 }
 
 @media (max-width: 768px) {
