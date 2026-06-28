@@ -212,3 +212,302 @@
     font-size: 16px;
   }
 }
+
+/* ─── Tablet: 769px–1024px ─────────────────────────────────────────── */
+/* All children were absolutely positioned for 1440px; convert to flow layout */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section {
+    padding-bottom: 72px;
+  }
+
+  .inner {
+    position: static;
+    height: auto;
+    padding: 0 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .quoteOpen {
+    position: static;
+    width: 72px;
+    height: 60px;
+    margin-bottom: 16px;
+  }
+
+  .quoteText {
+    position: static;
+    width: auto;
+    font-size: 48px;
+    line-height: 1.1;
+    letter-spacing: -0.48px;
+    margin-bottom: 12px;
+  }
+
+  .quoteClose {
+    position: static;
+    width: 72px;
+    height: 60px;
+    align-self: flex-end;
+    margin-bottom: 28px;
+  }
+
+  .divider {
+    position: static;
+    width: 100%;
+    margin: 0 0 12px;
+  }
+
+  .author {
+    position: static;
+    font-size: 24px;
+    line-height: 1.4;
+    letter-spacing: -0.48px;
+    white-space: normal;
+    margin-bottom: 16px;
+  }
+
+  .description {
+    position: static;
+    width: auto;
+    max-width: 640px;
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+
+  .cta {
+    position: static;
+    left: auto;
+    top: auto;
+  }
+}
+
+/* ─── Desktop menor: 1025px–1399px ────────────────────────────────── */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .section {
+    padding-bottom: 96px;
+  }
+
+  .inner {
+    position: relative;
+    height: auto;
+    padding: 0 44px;
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr) 88px;
+    column-gap: 20px;
+    align-items: start;
+  }
+
+  .quoteOpen {
+    position: static;
+    grid-column: 1;
+    grid-row: 1;
+    width: 76px;
+    height: auto;
+    margin: 4px 0 0;
+  }
+
+  .quoteText {
+    position: static;
+    grid-column: 2;
+    grid-row: 1;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    font-size: clamp(46px, 4vw, 52px);
+    line-height: 1.06;
+    letter-spacing: -1.04px;
+  }
+
+  .quoteClose {
+    position: static;
+    grid-column: 3;
+    grid-row: 1;
+    align-self: end;
+    justify-self: end;
+    width: 76px;
+    height: auto;
+    margin: 0 0 -4px;
+  }
+
+  .divider {
+    position: static;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    margin: 32px 0 16px;
+  }
+
+  .description {
+    position: static;
+    grid-column: 1 / 3;
+    grid-row: 3;
+    width: auto;
+    max-width: 760px;
+    margin: 0 0 28px;
+    font-size: 20px;
+    line-height: 1.45;
+    letter-spacing: 0;
+  }
+
+  .author {
+    position: static;
+    grid-column: 3;
+    grid-row: 3;
+    justify-self: end;
+    align-self: start;
+    margin: -4px 0 0 24px;
+    font-size: 22px;
+    line-height: 1.4;
+    letter-spacing: -0.44px;
+    white-space: nowrap;
+  }
+
+  .cta {
+    position: static;
+    grid-column: 1 / 3;
+    grid-row: 4;
+    justify-self: start;
+    padding: 15px 28px;
+    font-size: 18px;
+  }
+}
+
+/* Tablet visual refinement */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section {
+    padding-top: 32px;
+    padding-bottom: 88px;
+  }
+
+  .quoteOpen {
+    width: 64px;
+    height: 54px;
+    margin-bottom: 8px;
+  }
+
+  .quoteText {
+    max-width: 760px;
+    margin-bottom: 4px;
+    font-size: 46px;
+    line-height: 1.08;
+  }
+
+  .quoteClose {
+    width: 64px;
+    height: 54px;
+    margin-top: -4px;
+    margin-bottom: 8px;
+  }
+
+  .author {
+    margin-bottom: 8px;
+    font-size: 22px;
+  }
+
+  .divider {
+    margin-bottom: 14px;
+  }
+
+  .description {
+    max-width: 680px;
+    margin-bottom: 22px;
+    line-height: 1.45;
+  }
+
+  .cta {
+    padding: 14px 24px;
+    font-size: 16px;
+  }
+}
+
+/* Tablet — composição editorial próxima ao desktop */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section {
+    padding-top: 40px;
+    padding-bottom: 88px;
+  }
+
+  .inner {
+    position: relative;
+    height: auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    column-gap: 24px;
+    align-items: start;
+  }
+
+  .quoteOpen {
+    position: static;
+    grid-column: 1;
+    grid-row: 1;
+    width: 72px;
+    height: auto;
+    margin: 4px 0 0;
+  }
+
+  .quoteText {
+    position: static;
+    grid-column: 2;
+    grid-row: 1;
+    width: auto;
+    max-width: 660px;
+    margin: 0;
+    font-size: 46px;
+    line-height: 1.08;
+    letter-spacing: -0.92px;
+  }
+
+  .quoteClose {
+    position: static;
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+    width: 72px;
+    height: auto;
+    margin: -4px 0 24px;
+  }
+
+  .divider {
+    position: static;
+    grid-column: 1 / -1;
+    grid-row: 3;
+    width: 100%;
+    margin: 0;
+  }
+
+  .author {
+    position: static;
+    grid-column: 1 / -1;
+    grid-row: 4;
+    justify-self: end;
+    margin: 8px 0 20px;
+    font-size: 20px;
+    line-height: 1.4;
+    letter-spacing: -0.4px;
+    white-space: nowrap;
+  }
+
+  .description {
+    position: static;
+    grid-column: 1 / -1;
+    grid-row: 5;
+    width: auto;
+    max-width: 680px;
+    margin: 0 0 24px;
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+
+  .cta {
+    position: static;
+    grid-column: 1 / -1;
+    grid-row: 6;
+    justify-self: start;
+    padding: 14px 24px;
+    font-size: 16px;
+  }
+}

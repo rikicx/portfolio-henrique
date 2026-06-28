@@ -14,6 +14,7 @@ import refinedInterfaceImg from '../../media/cases/gerdau-storeroom/gerdau-store
 import projectTeamImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-project-team.jpg'
 import quoteOpenImg from '../../media/shared/quotes/quote-open.png'
 import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
+import fluxogramaImg from '../../media/cases/gerdau-storeroom/fluxograma.svg';
 
 
 const VIMEO_SHADOWING = '1202496239'
@@ -205,28 +206,50 @@ export default function GerdauStoreroomPage() {
               </p>
 
               <div className={styles.flowDiagram}>
-                <div className={styles.flowRow}>
-                  {FLOW_TOP.map((step, i) => (
-                    <span key={step} className={styles.flowPillGroup}>
-                      <span className={styles.flowPill}>{step}</span>
-                      {i < FLOW_TOP.length - 1 && (
-                        <span className={styles.flowArrow} aria-hidden="true">→</span>
-                      )}
-                    </span>
-                  ))}
-                </div>
+                <img
+                  src={fluxogramaImg}
+                  alt="Fluxo anterior da contagem de inventário, da lista de itens até a validação final no SAP."
+                  className={styles.flowDiagramImage}
+                />
 
-                <span className={styles.flowTurn} aria-hidden="true" />
+                <div
+                  className={styles.flowDiagramMobile}
+                  aria-label="Fluxo anterior da contagem de inventário"
+                >
+                  <div className={styles.flowRow}>
+                    {FLOW_TOP.map((step, i) => (
+                      <span key={step} className={styles.flowPillGroup}>
+                        <span className={styles.flowPill}>{step}</span>
 
-                <div className={styles.flowRow}>
-                  {FLOW_BOTTOM.map((step, i) => (
-                    <span key={step} className={styles.flowPillGroup}>
-                      <span className={styles.flowPill}>{step}</span>
-                      {i < FLOW_BOTTOM.length - 1 && (
-                        <span className={styles.flowArrow} aria-hidden="true">←</span>
-                      )}
-                    </span>
-                  ))}
+                        {i < FLOW_TOP.length - 1 && (
+                          <span className={styles.flowArrow} aria-hidden="true">
+                            ↓
+                          </span>
+                        )}
+                      </span>
+                    ))}
+                  </div>
+
+                  <span
+                    className={styles.flowRowConnector}
+                    aria-hidden="true"
+                  >
+                    ↓
+                  </span>
+
+                  <div className={styles.flowRow}>
+                    {FLOW_BOTTOM.slice().reverse().map((step, i, steps) => (
+                      <span key={step} className={styles.flowPillGroup}>
+                        <span className={styles.flowPill}>{step}</span>
+
+                        {i < steps.length - 1 && (
+                          <span className={styles.flowArrow} aria-hidden="true">
+                            ↓
+                          </span>
+                        )}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -235,9 +258,7 @@ export default function GerdauStoreroomPage() {
                 <p className={styles.excecaoText}>
                   Qualquer exceção virava retrabalho:
                   <br />
-                  Item fora do lugar, quantidade divergente ou
-                  <br />
-                  nova validação no SAP.
+                  Item fora do lugar, quantidade divergente ou nova validação no SAP.
                 </p>
               </div>
             </div>

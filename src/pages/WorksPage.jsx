@@ -48,10 +48,10 @@ const PROJECTS = [
   },
   {
     slug: 'itau-empreendedor',
-    title: 'Itaú Empreendedor',
+    title: 'Itaú Empreendedora',
     category: 'Finanças · Product Designer',
     img: itauImg,
-    alt: 'Itaú Empreendedor — produto financeiro para empreendedores',
+    alt: 'Itaú Empreendedora — experiência financeira para mulheres empreendedoras',
   },
 ]
 

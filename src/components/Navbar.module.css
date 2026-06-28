@@ -304,6 +304,50 @@
   }
 }
 
+/* Tablet — 769px to 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .inner {
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+
+  .brand img {
+    height: 48px;
+  }
+
+  .centerArea {
+    gap: 20px;
+  }
+
+  .link,
+  .dropdownTrigger {
+    font-size: 16px;
+  }
+
+  .ctaBtn {
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+
+  .dropdown {
+    top: 76px;
+    padding: 48px 32px 40px;
+  }
+
+  .dropdownItem {
+    font-size: 24px;
+  }
+
+  .headerScrolled .inner {
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+
+  .headerScrolled .dropdown {
+    top: 64px;
+  }
+}
+
 /* Mobile panel — hidden on desktop */
 .mobilePanel {
   display: none;
@@ -487,5 +531,40 @@
   .chevron,
   .accordionTrigger {
     transition: none;
+  }
+}
+/* Desktop compacto — 1025px–1399px */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .inner {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  .centerArea {
+    gap: 24px;
+  }
+
+  .link,
+  .dropdownTrigger {
+    font-size: 17px;
+  }
+
+  .ctaBtn {
+    padding: 13px 20px;
+    font-size: 15px;
+  }
+
+  .dropdown {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  .headerScrolled .inner {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  .headerScrolled .centerArea {
+    gap: 22px;
   }
 }

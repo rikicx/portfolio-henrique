@@ -140,6 +140,10 @@ export default function GerdauSmartlogPage() {
                 alt="Sessão de cocriação com a equipe de operação, mapeando decisões e fluxos do Smartlog"
                 className={styles.panoramicImg}
               />
+              <p className={styles.mediaCaption}>
+                Cocriação com as áreas envolvidas para mapear exceções, responsabilidades e
+                decisões da operação.
+              </p>
             </div>
           </div>
         </div>
@@ -167,16 +171,26 @@ export default function GerdauSmartlogPage() {
               </div>
             </div>
             <div className={styles.estruturandoImages}>
-              <img
+              <div className={styles.processFigure}>
+                <img
                 src={estruturando01Img}
                 alt="Papéis com fluxos e anotações mapeando exceções e decisões do processo logístico"
                 className={styles.estruturandoImg}
               />
-              <img
+                <p className={styles.mediaCaption}>
+                  Organização dos cenários e fluxos levantados durante as sessões de trabalho.
+                </p>
+              </div>
+              <div className={styles.processFigure}>
+                <img
                 src={estruturando02Img}
                 alt="Diagramas e fluxos estruturando cenários operacionais do Smartlog"
                 className={styles.estruturandoImg}
               />
+                <p className={styles.mediaCaption}>
+                  Discussão dos caminhos possíveis com a operação antes de levar as decisões para a interface.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -192,6 +206,10 @@ export default function GerdauSmartlogPage() {
                 alt="Monitor com o painel de alertas do Smartlog, mostrando exceções logísticas em tratamento"
                 className={styles.projetandoImg}
               />
+              <p className={styles.mediaCaption}>
+                Interface do Smartlog projetada para centralizar alertas, evidências e ações da
+                operação.
+              </p>
             </div>
             <div className={styles.projetandoText}>
               <h2 id="projetando-title" className={styles.sectionHeading}>
@@ -223,6 +241,9 @@ export default function GerdauSmartlogPage() {
                 alt="Quadro branco com fluxo de decisão logística mapeado em sessão com a operação"
                 className={styles.validandoImg}
               />
+              <p className={styles.mediaCaption}>
+                Fluxo de decisão revisado com a operação antes dos ajustes finais na interface.
+              </p>
             </div>
             <div className={styles.validandoText}>
               <h2 id="validando-title" className={styles.sectionHeading}>

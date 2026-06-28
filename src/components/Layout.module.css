@@ -12,6 +12,12 @@
   border-radius: 0 0 64px 64px;
 }
 
+@media (min-width: 769px) and (max-width: 1024px) {
+  .main {
+    border-radius: 0 0 48px 48px;
+  }
+}
+
 @media (max-width: 768px) {
   .main {
     border-radius: 0 0 32px 32px;

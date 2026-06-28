@@ -196,3 +196,115 @@
     gap: 6px;
   }
 }
+
+/* ─── Tablet: 769px–1024px ─────────────────────────────────────────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section {
+    padding-bottom: 120px;
+  }
+
+  .titleWrapper {
+    padding: 0 32px;
+  }
+
+  .heading {
+    font-size: 48px;
+    letter-spacing: -1.44px;
+    white-space: normal;
+    margin-left: 0;
+    padding: 8px 0;
+  }
+
+  /* Horizontal scroll rail — same pattern as mobile but with larger cards */
+  .rail {
+    max-width: 100%;
+    margin: 16px 0 0;
+    padding-inline: 32px;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    flex: 0 0 380px;
+    height: 440px;
+    scroll-snap-align: start;
+  }
+}
+
+/* Tablet visual refinement */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section {
+    padding-bottom: 88px;
+  }
+
+  .rail {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    padding-right: 32px;
+    padding-left: 32px;
+    scroll-padding-right: 32px;
+    scroll-padding-left: 32px;
+  }
+}
+
+/* Desktop compacto — 1025px–1399px */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .section {
+    padding-bottom: 160px;
+  }
+
+  .titleWrapper {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  .heading {
+    margin-left: 0;
+    padding: 8px 0;
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: -1.92px;
+    white-space: normal;
+  }
+
+  .rail {
+    width: 100%;
+    max-width: 1440px;
+    margin-top: 20px;
+    padding-right: 40px;
+    padding-left: 40px;
+    gap: 20px;
+  }
+
+  .card {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 420px;
+  }
+
+  .content {
+    right: 24px;
+    bottom: 24px;
+    left: 24px;
+    gap: 18px;
+  }
+
+  .textBlock {
+    gap: 8px;
+  }
+
+  .cardTitle {
+    font-size: clamp(26px, 2.4vw, 32px);
+    line-height: 1.12;
+    letter-spacing: -0.64px;
+    overflow-wrap: anywhere;
+  }
+}

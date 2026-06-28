@@ -185,3 +185,44 @@
     line-height: 1.45;
   }
 }
+
+/* Desktop — composição interna para aproveitar melhor telas amplas */
+@media (min-width: 1025px) {
+  .sectionTitle {
+    width: calc(100% - 96px);
+    max-width: 1344px;
+    margin: 0 auto 24px;
+    padding-left: 0;
+  }
+
+  .card {
+    width: calc(100% - 96px);
+    max-width: 1344px;
+    margin: 0 auto;
+    padding: 40px 48px;
+    box-sizing: border-box;
+  }
+
+  .items {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 64px;
+    row-gap: 36px;
+  }
+
+  .item {
+    align-items: flex-start;
+  }
+
+  .item:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .textGroup {
+    min-width: 0;
+  }
+
+  .itemSubtitleDesktop {
+    max-width: 560px;
+  }
+}

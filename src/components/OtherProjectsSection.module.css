@@ -186,3 +186,82 @@
     font-size: 14px;
   }
 }
+
+/* ─── Tablet: 769px–1024px ─────────────────────────────────────────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 32px;
+  }
+
+  .title {
+    font-size: 64px;
+    letter-spacing: -1.92px;
+    white-space: normal;
+    padding: 0;
+    margin: 24px 0 32px;
+  }
+
+  .grid {
+    padding: 0 32px;
+    gap: 24px;
+  }
+
+  .rightColumn {
+    padding-top: 48px;
+  }
+
+  .card {
+    height: 420px;
+  }
+
+  .cardTitle {
+    font-size: 28px;
+    letter-spacing: -0.56px;
+  }
+}
+
+/* Desktop compacto — 1025px–1399px */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .container,
+  .grid {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  .title {
+    margin: 24px 0 32px;
+    padding: 0;
+    font-size: 72px;
+    line-height: 1;
+    letter-spacing: -2.16px;
+    white-space: normal;
+  }
+
+  .grid {
+    gap: 24px;
+  }
+
+  .leftColumn,
+  .rightColumn {
+    gap: 24px;
+  }
+
+  .rightColumn {
+    padding-top: 56px;
+  }
+
+  .card {
+    height: 440px;
+  }
+
+  .cardTitle {
+    font-size: 30px;
+    line-height: 1.12;
+    letter-spacing: -0.6px;
+  }
+
+  .cardCategory,
+  .cardLink {
+    font-size: 16px;
+  }
+}

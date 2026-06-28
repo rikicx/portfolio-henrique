@@ -429,6 +429,8 @@
 
 .mudouImageCol {
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   justify-content: flex-end;
   min-height: 0;
 }
@@ -441,6 +443,16 @@
   object-position: center;
   border-radius: var(--radius-card);
   display: block;
+}
+
+.mediaCaption {
+  width: 100%;
+  margin: 12px 0 0;
+  color: var(--color-muted);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: center;
 }
 
 .mudouFooter {
@@ -898,6 +910,597 @@
 
   .impactoFooter p {
     font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+/* ─── Desktop compacto: 1025px–1399px ─────────────────────────────── */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  /* Hero — evita colisão entre título e descrição */
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(420px, 0.9fr);
+    gap: 40px;
+    align-items: end;
+    min-height: 430px;
+    padding: 72px 40px 64px;
+  }
+
+  .heroTitle {
+    position: static;
+    align-self: end;
+    margin: 0;
+    font-size: clamp(88px, 8.8vw, 124px);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    white-space: normal;
+  }
+
+  .heroMeta {
+    position: static;
+    width: 100%;
+    align-self: end;
+    padding-bottom: 4px;
+  }
+
+  .heroKicker {
+    margin-bottom: 16px;
+    font-size: 30px;
+    line-height: 1.12;
+    letter-spacing: -0.6px;
+  }
+
+  .heroDesc {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .dividerFull {
+    width: calc(100% - 80px);
+    max-width: calc(var(--max-width) - 80px);
+  }
+
+  .container {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  /* Metadata — mantém duas colunas em escala compacta */
+  .metadata {
+    padding: 64px 0 40px;
+  }
+
+  .metaLayout {
+    grid-template-columns: minmax(320px, 0.8fr) minmax(0, 1.2fr);
+    gap: 40px;
+  }
+
+  .metaImageWrap {
+    height: 480px;
+  }
+
+  .metaFields {
+    min-height: 480px;
+    gap: 28px;
+  }
+
+  .metaRowTop {
+    display: grid;
+    grid-template-columns:
+      minmax(130px, 1fr)
+      minmax(80px, 0.55fr)
+      minmax(170px, 1fr);
+    gap: 24px;
+    width: 100%;
+  }
+
+  .metaRowTop .metaItem {
+    min-width: 0;
+  }
+
+  .metaLabel {
+    font-size: 17px;
+    line-height: 1.4;
+  }
+
+  .metaValue {
+    font-size: 28px;
+    line-height: 1.12;
+    letter-spacing: -0.56px;
+  }
+}
+
+/* ─── Tablet e desktop — tratamento editorial de O problema ───────── */
+/* Nesta etapa, aplicado somente a desktop compacto e desktop amplo. */
+@media (min-width: 1025px) {
+  .problema {
+    padding: 64px 0 40px;
+  }
+
+  .problemaLayout {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 0;
+    align-items: stretch;
+    overflow: hidden;
+    background: var(--color-white);
+    border-radius: 16px;
+  }
+
+  .problemaLabelCol {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    width: 64px;
+    padding-left: 0;
+    background: var(--color-black);
+  }
+
+  .problemaLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 24px 0;
+    box-sizing: border-box;
+    align-self: stretch;
+    color: var(--color-white);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.48px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+  }
+
+  .problemaText {
+    width: 100%;
+    padding: 48px;
+    box-sizing: border-box;
+    background: var(--color-white);
+  }
+
+  .problemaText p {
+    width: 100%;
+    margin: 0;
+  }
+
+  .problemaText .textGap {
+    margin-top: 24px;
+  }
+}
+
+/* Desktop compacto — escala reduzida do tratamento editorial */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .problema {
+    padding-top: 56px;
+  }
+
+  .problemaLayout {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+
+  .problemaLabelCol {
+    width: 64px;
+  }
+
+  .problemaLabel {
+    width: 64px;
+    padding: 20px 0;
+    font-size: 24px;
+    letter-spacing: -0.48px;
+  }
+
+  .problemaText {
+    padding: 40px;
+  }
+
+  .problemaText p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .problemaText .textGap {
+    margin-top: 20px;
+  }
+}
+
+/* ─── Tablet: 769px–1024px ─────────────────────────────────────────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero {
+    padding: 40px 32px;
+    min-height: auto;
+  }
+
+  /* bottom: 64px was the desktop anchor; position: static places it in flow */
+  .heroTitle {
+    position: static;
+    font-size: 80px;
+    letter-spacing: -2.4px;
+    white-space: normal;
+    margin: 0 0 20px;
+  }
+
+  .heroMeta {
+    position: static;
+    width: 100%;
+  }
+
+  .container {
+    padding: 0 32px;
+  }
+}
+
+/* Tablet editorial refinement — metadata */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .metadata {
+    padding: 40px 0;
+  }
+
+  .metaLayout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .metaImageWrap {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+  }
+
+  .metaImageWrap::after {
+    display: none;
+  }
+
+  .metaImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .metaFields {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: start;
+    gap: 28px;
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+  }
+
+  /* Empresa, Ano e Papel */
+  .metaRowTop {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(90px, 0.45fr)
+      minmax(210px, 1fr);
+    gap: 24px;
+    width: 100%;
+  }
+
+  .metaRowTop .metaItem {
+    min-width: 0;
+  }
+
+  .metaRowTop .metaItem:last-child {
+    min-width: 210px;
+  }
+
+  .metaRowTop .metaItem:last-child .metaValue {
+    white-space: nowrap;
+  }
+
+  .metaItem {
+    gap: 6px;
+  }
+
+  .metaLabel {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .metaValue {
+    font-size: 32px;
+    line-height: 1.12;
+    letter-spacing: -0.48px;
+    overflow-wrap: normal;
+  }
+
+  .metaRowTop .metaValue {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .problema {
+    padding: 64px 0;
+  }
+
+  .problemaLayout {
+    grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.6fr);
+    gap: 40px;
+    align-items: start;
+  }
+
+  .problemaLabelCol {
+    padding-left: 0;
+  }
+
+  .problemaLabel {
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  .problemaText {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* Tablet editorial refinement — Como a experiência foi organizada */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .experiencia {
+    padding: 72px 0;
+  }
+
+  .experienciaLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+  }
+
+  /* Faz título e etapas participarem diretamente da ordem do layout. */
+  .experienciaRightCol {
+    display: contents;
+  }
+
+  .experiencia .sectionHeading {
+    order: 1;
+    width: 100%;
+    margin: 0 0 24px;
+    font-size: 48px;
+    line-height: 1.08;
+    letter-spacing: -0.48px;
+  }
+
+  .experienciaImageCol {
+    order: 2;
+    width: 100%;
+    margin: 0 0 32px;
+    padding: 0;
+  }
+
+  .experienciaImg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 560px;
+    aspect-ratio: auto;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 16px;
+  }
+
+  .directionSteps {
+    order: 3;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    width: 100%;
+  }
+
+  .directionBox {
+    min-width: 0;
+    min-height: 160px;
+    padding: 24px;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .directionIcon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .directionTitle {
+    font-size: 20px;
+    line-height: 1.25;
+  }
+
+  .directionDesc {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* Os conectores verticais não fazem sentido no grid 2×2. */
+  .connector {
+    display: none;
+  }
+}
+
+/* Tablet editorial refinement — O que mudou + Impacto */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .mudou {
+    padding: 72px 0 96px;
+  }
+
+  .mudouLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+  }
+
+  /* Título, textos, complemento e impacto entram no fluxo principal. */
+  .mudouTextCol {
+    display: contents;
+  }
+
+  .mudou .sectionHeading {
+    order: 1;
+    width: 100%;
+    margin: 0 0 24px;
+    font-size: 48px;
+    line-height: 1.08;
+    letter-spacing: -0.48px;
+  }
+
+  .mudouImageCol {
+    order: 2;
+    display: block;
+    width: 100%;
+    margin: 0 0 32px;
+  }
+
+  .mudouImg {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center 45%;
+    border-radius: 16px;
+  }
+
+  .mudouText {
+    order: 3;
+    width: 100%;
+    max-width: none;
+  }
+
+  .mudouText p,
+  .mudouFooter p {
+    width: 100%;
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .mudouText .textGap,
+  .mudouFooter .textGap {
+    margin-top: 20px;
+  }
+
+  .mudouFooter {
+    order: 4;
+    width: 100%;
+    max-width: none;
+    margin: 32px 0 0;
+  }
+
+  .impactoBlock {
+    order: 5;
+    width: 100%;
+    margin: 72px 0 0;
+  }
+
+  .impactoTitle {
+    width: 100%;
+    margin: 0 0 24px;
+    font-size: 48px;
+    line-height: 1.08;
+    letter-spacing: -0.48px;
+  }
+
+  .statCards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    width: 100%;
+  }
+
+  .statCardWide,
+  .statCardNarrow {
+    grid-column: auto;
+    width: auto;
+    min-width: 0;
+    min-height: 160px;
+    padding: 24px;
+  }
+
+  .statCardWide:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .statValue {
+    font-size: 40px;
+    line-height: 1.08;
+    letter-spacing: -0.8px;
+  }
+
+  .statLabel {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .statCardWide,
+  .statCardNarrow {
+    min-height: 0;
+    padding: 24px;
+  }
+}
+
+/* Tablet — normalização dos intervalos verticais do case EMR */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Remove a altura herdada do desktop que deixava vazio após Atuação */
+  .metaFields {
+    min-height: 0;
+    justify-content: flex-start;
+    gap: 32px;
+  }
+
+  /* Experiência 40px + O que mudou 40px = intervalo total de 80px */
+  .experiencia {
+    padding-bottom: 40px;
+  }
+}
+
+/* Tablet — padrão editorial da seção O problema */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .problema {
+    padding: 40px 0;
+  }
+
+  .problemaLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
+  }
+
+  .problemaLabelCol {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  /* Neste case, “O problema” é o próprio título da seção. */
+  .problemaLabel {
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -1.68px;
+  }
+
+  .problemaText {
+    width: 100%;
+    gap: 20px;
+  }
+
+  .problemaText p,
+  .problemaText .textGap {
+    margin: 0;
+    font-size: 18px;
     line-height: 1.5;
   }
 }
