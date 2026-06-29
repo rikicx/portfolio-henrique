@@ -117,7 +117,7 @@ export default function ContactPage() {
               <div className={styles.contactItem}>
                 <span className={styles.contactLabel}>LinkedIn</span>
                 <a
-                  href="https://www.linkedin.com/in/henrique-m-silva"
+                  href="https://www.linkedin.com/in/henrique-m-silva/"
                   target="_blank"
                   rel="noreferrer"
                   className={styles.contactLink}

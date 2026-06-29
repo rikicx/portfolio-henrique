@@ -125,7 +125,7 @@ export default function QiPlatformPage() {
     <Layout>
       <Seo
         title="QI Platform — Case de Product Design | Henrique Silva"
-        description="Case de Product Design para uma plataforma de melhoria da qualidade em saúde usada por mais de 270 especialistas em quatro países e responsável por mais de 23 mil análises."
+        description="Case de Product Design para uma plataforma de melhoria da qualidade em saúde, usada por 270+ especialistas em quatro países e 23 mil+ análises."
         path="/trabalhos/qi-platform"
       />
       <article className={styles.page}>

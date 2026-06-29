@@ -278,7 +278,7 @@ export default function Navbar() {
           </NavLink>
 
           <a
-            href="https://linkedin.com/in/henriquemsilva"
+            href="https://www.linkedin.com/in/henrique-m-silva/"
             className={styles.link}
             target="_blank"
             rel="noopener noreferrer"
@@ -394,7 +394,7 @@ export default function Navbar() {
           </NavLink>
 
           <a
-            href="https://linkedin.com/in/henriquemsilva"
+            href="https://www.linkedin.com/in/henrique-m-silva/"
             className={styles.mobileLink}
             target="_blank"
             rel="noopener noreferrer"

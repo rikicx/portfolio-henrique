@@ -101,7 +101,7 @@ export default function Seo({
 
     setMeta('meta[name="twitter:card"]', {
       name: 'twitter:card',
-      content: 'summary',
+      content: 'summary_large_image',
     })
 
     setMeta('meta[name="twitter:title"]', {
@@ -117,6 +117,11 @@ export default function Seo({
     setMeta('meta[name="twitter:image"]', {
       name: 'twitter:image',
       content: image,
+    })
+
+    setMeta('meta[name="twitter:image:alt"]', {
+      name: 'twitter:image:alt',
+      content: title,
     })
 
     setCanonical(canonicalUrl)

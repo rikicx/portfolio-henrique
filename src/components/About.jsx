@@ -51,7 +51,7 @@ export default function About() {
               Ver Currículo ↗
             </a>
             <a
-              href="https://linkedin.com/in/"
+              href="https://www.linkedin.com/in/henrique-m-silva/"
               className={styles.btn}
               target="_blank"
               rel="noopener noreferrer"
