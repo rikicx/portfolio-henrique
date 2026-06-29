@@ -320,6 +320,11 @@
 /* Mobile */
 @media (max-width: 768px) {
 
+  .footer {
+    position: relative;
+    bottom: auto;
+  }
+
   .inner {
 
     padding: 96px 24px 72px;
