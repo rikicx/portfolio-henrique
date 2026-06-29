@@ -1,4 +1,5 @@
 import Layout from '../../components/Layout'
+import Seo from '../../components/Seo'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
 import TypingTitle from '../../components/TypingTitle'
 import RevealSection from '../../components/RevealSection'
@@ -17,6 +18,11 @@ import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
 export default function ItauEmpreendedorPage() {
   return (
     <Layout>
+      <Seo
+        title="Itaú Empreendedora — Case de Product Design | Henrique Silva"
+        description="Case de uma experiência digital de educação financeira e gestão de conteúdo criada para apoiar mulheres empreendedoras."
+        path="/trabalhos/itau-empreendedor"
+      />
       {/* 1. Hero */}
       <section aria-labelledby="itau-title" className={styles.hero}>
         <TypingTitle id="itau-title" className={styles.heroTitle} lines={['Itaú', 'Empreendedora']} />

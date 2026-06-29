@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Layout from '../components/Layout'
+import Seo from '../components/Seo'
 import styles from './ContactPage.module.css'
 
 export default function ContactPage() {
@@ -83,6 +84,11 @@ export default function ContactPage() {
 
   return (
     <Layout>
+      <Seo
+        title="Contato — Henrique Silva"
+        description="Entre em contato com Henrique Silva para conversar sobre Product Design, liderança de Design, estratégia de produto e oportunidades profissionais."
+        path="/contato"
+      />
       <section className={styles.page} aria-labelledby="contact-title">
         <div className={styles.container}>
           <div className={styles.intro}>

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import Layout from '../../components/Layout'
+import Seo from '../../components/Seo'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
 import TypingTitle from '../../components/TypingTitle'
 import RevealSection from '../../components/RevealSection'
@@ -42,6 +43,11 @@ export default function ThreePHHrcrsPage() {
 
   return (
     <Layout>
+      <Seo
+        title="3PH & HRCRS — Case de Product Design | Henrique Silva"
+        description="Case de estratégia, design e implementação de um ecossistema digital para empresas de pesquisa clínica e saúde cardiovascular."
+        path="/trabalhos/3ph-hrcrs-digital-ecosystem"
+      />
 
       {/* 1. Hero */}
       <section aria-labelledby="hero-title" className={styles.hero}>

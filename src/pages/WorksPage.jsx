@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Layout from '../components/Layout'
+import Seo from '../components/Seo'
 import styles from './WorksPage.module.css'
 
 import qiImg from '../media/shared/projects/card-qi-platform.webp'
@@ -139,6 +140,11 @@ export default function WorksPage() {
 
   return (
     <Layout>
+      <Seo
+        title="Projetos de UX e Product Design — Henrique Silva"
+        description="Cases de UX, Product Design e liderança em saúde, indústria e serviços financeiros, da descoberta à implementação e evolução dos produtos."
+        path="/trabalhos"
+      />
       <section className={styles.page} aria-label="Todos os trabalhos">
         <div className={styles.header}>
           <div className={styles.headerText}>

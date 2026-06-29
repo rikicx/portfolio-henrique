@@ -1,4 +1,5 @@
 import Layout from '../../components/Layout'
+import Seo from '../../components/Seo'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
 import TypingTitle from '../../components/TypingTitle'
 import RevealSection from '../../components/RevealSection'
@@ -73,6 +74,11 @@ function VideoWide({ vimeoId, title }) {
 export default function GerdauStoreroomPage() {
   return (
     <Layout>
+      <Seo
+        title="Gerdau Storeroom — Case de Product Design | Henrique Silva"
+        description="Case de Product Design para a operação de almoxarifado da Gerdau, reduzindo uma contagem de inventário de até duas horas para cerca de 15 minutos."
+        path="/trabalhos/gerdau-storeroom"
+      />
       {/* 1. Hero */}
       <section aria-labelledby="hero-title" className={styles.hero}>
         <TypingTitle id="hero-title" className={styles.heroTitle} lines={['Gerdau', 'Storeroom']} />

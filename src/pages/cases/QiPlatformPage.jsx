@@ -1,4 +1,5 @@
 import Layout from '../../components/Layout'
+import Seo from '../../components/Seo'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
 import TypingTitle from '../../components/TypingTitle'
 import RevealSection from '../../components/RevealSection'
@@ -122,6 +123,11 @@ function QuoteBlock({ label = null, children, compact = false }) {
 export default function QiPlatformPage() {
   return (
     <Layout>
+      <Seo
+        title="QI Platform — Case de Product Design | Henrique Silva"
+        description="Case de Product Design para uma plataforma de melhoria da qualidade em saúde usada por mais de 270 especialistas em quatro países e responsável por mais de 23 mil análises."
+        path="/trabalhos/qi-platform"
+      />
       <article className={styles.page}>
         <section className={styles.hero} aria-labelledby="qi-title">
           <TypingTitle id="qi-title" className={styles.heroTitle} lines={['QI', 'Platform']} />

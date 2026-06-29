@@ -1,4 +1,5 @@
 import Layout from '../../components/Layout'
+import Seo from '../../components/Seo'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
 import TypingTitle from '../../components/TypingTitle'
 import RevealSection from '../../components/RevealSection'
@@ -18,6 +19,11 @@ import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
 export default function GerdauSmartlogPage() {
   return (
     <Layout>
+      <Seo
+        title="Gerdau Smartlog — Case de Product Design | Henrique Silva"
+        description="Case de Product Design para organizar fluxos, exceções e decisões de uma operação logística complexa em uma experiência digital implantada."
+        path="/trabalhos/gerdau-smartlog"
+      />
       {/* 1. Hero */}
       <section aria-labelledby="hero-title" className={styles.hero}>
         <TypingTitle id="hero-title" className={styles.heroTitle} lines={['Gerdau', 'Smartlog']} />

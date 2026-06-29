@@ -1,10 +1,17 @@
 import { Link } from 'react-router-dom'
 import Layout from '../components/Layout'
+import Seo from '../components/Seo'
 import styles from './NotFoundPage.module.css'
 
 export default function NotFoundPage() {
   return (
     <Layout>
+      <Seo
+        title="Página não encontrada — Henrique Silva"
+        description="A página que você procura não foi encontrada."
+        path="/404"
+        noIndex
+      />
       <div className={styles.content}>
         <p className={styles.code}>404</p>
         <h1 className={styles.heading}>

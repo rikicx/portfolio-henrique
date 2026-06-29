@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Layout from '../components/Layout'
+import Seo from '../components/Seo'
 import RevealSection from '../components/RevealSection'
 import TypingTitle from '../components/TypingTitle'
 import styles from './AboutPage.module.css'
@@ -73,6 +74,11 @@ function HyperLink({ to = null, href = null, children }) {
 export default function AboutPage() {
   return (
     <Layout>
+      <Seo
+        title="Sobre Henrique Silva — Design, Produto e Liderança"
+        description="Conheça a trajetória, a forma de trabalhar e os princípios de Henrique Silva na construção de produtos, experiências e equipes de Design."
+        path="/sobre"
+      />
 
       {/* ── 1. Hero ─────────────────────────────────────────────────── */}
       {/* Desktop: photo left=calc(50%+65px) top=36px (142-106), title top=123px (229-106).

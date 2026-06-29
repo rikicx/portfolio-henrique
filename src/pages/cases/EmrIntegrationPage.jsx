@@ -1,4 +1,5 @@
 import Layout from '../../components/Layout'
+import Seo from '../../components/Seo'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
 import TypingTitle from '../../components/TypingTitle'
 import RevealSection from '../../components/RevealSection'
@@ -19,6 +20,11 @@ import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
 export default function EmrIntegrationPage() {
   return (
     <Layout>
+      <Seo
+        title="EMR Integration — Case de Product Design | Henrique Silva"
+        description="Case de integração entre prontuários eletrônicos e captura de dados clínicos, reduzindo o SLA de 22 para 3 horas e as queries de 37% para 18%."
+        path="/trabalhos/emr-integration"
+      />
       {/* 1. Hero */}
       <section aria-labelledby="emr-title" className={styles.hero}>
         <TypingTitle id="emr-title" className={styles.heroTitle} lines={['EMR', 'Integration']} />
