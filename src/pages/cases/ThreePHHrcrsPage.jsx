@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import Layout from '../../components/Layout'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
+import TypingTitle from '../../components/TypingTitle'
+import RevealSection from '../../components/RevealSection'
 import styles from './ThreePHHrcrsPage.module.css'
 
 import heroImg from '../../media/cases/3ph-hrcrs/3ph-hrcrs-hero.jpg'
@@ -43,11 +45,7 @@ export default function ThreePHHrcrsPage() {
 
       {/* 1. Hero */}
       <section aria-labelledby="hero-title" className={styles.hero}>
-        <h1 id="hero-title" className={styles.heroTitle}>
-          <span>3PH Alliance &amp;</span>
-          <span>HRCRS</span>
-          <span>Digital Ecosystem</span>
-        </h1>
+        <TypingTitle id="hero-title" className={styles.heroTitle} lines={['3PH Alliance &', 'HRCRS', 'Digital Ecosystem']} />
         <p className={styles.heroDesc}>
           Dois sites conectados por uma mesma base visual e editorial, preparados para evoluir
           sem depender de desenvolvimento a cada atualização.
@@ -57,7 +55,7 @@ export default function ThreePHHrcrsPage() {
       <hr className={styles.dividerFull} aria-hidden="true" />
 
       {/* 2. Metadata */}
-      <section aria-label="Informações do projeto" className={styles.metadata}>
+      <RevealSection as="section" aria-label="Informações do projeto" className={styles.metadata}>
         <div className={styles.container}>
           <div className={styles.metaLayout}>
             <div className={styles.metaImageWrap}>
@@ -90,10 +88,10 @@ export default function ThreePHHrcrsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 3. O problema */}
-      <section aria-labelledby="problema-heading" className={styles.problemaSection}>
+      <RevealSection as="section" aria-labelledby="problema-heading" className={styles.problemaSection}>
         <div className={styles.container}>
           <div className={styles.problemaLayout}>
             <div className={styles.problemaLabelCol}>
@@ -122,10 +120,10 @@ export default function ThreePHHrcrsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 4. Pergunta central */}
-      <section aria-label="Pergunta central do projeto" className={styles.centralQuestion}>
+      <RevealSection as="section" aria-label="Pergunta central do projeto" className={styles.centralQuestion}>
         <div className={styles.container}>
           <img src={quoteOpenImg} alt="" aria-hidden="true" className={styles.quoteIconOpen} />
           <p className={styles.quoteLabel}>A pergunta que orientou o trabalho:</p>
@@ -136,10 +134,10 @@ export default function ThreePHHrcrsPage() {
           </blockquote>
           <img src={quoteCloseImg} alt="" aria-hidden="true" className={styles.quoteIconClose} />
         </div>
-      </section>
+      </RevealSection>
 
       {/* 5. Benchmark */}
-      <section aria-labelledby="benchmark-title" className={styles.benchmarkSection}>
+      <RevealSection as="section" aria-labelledby="benchmark-title" className={styles.benchmarkSection}>
         <div className={styles.container}>
           <div className={styles.benchmarkLayout}>
             <figure className={styles.benchmarkFigure}>
@@ -172,10 +170,10 @@ export default function ThreePHHrcrsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 6. Arquitetura de conteúdo */}
-      <section aria-labelledby="content-structure-title" className={styles.contentStructureSection}>
+      <RevealSection as="section" aria-labelledby="content-structure-title" className={styles.contentStructureSection}>
         <div className={styles.container}>
           <div className={styles.contentStructureLayout}>
             <div className={styles.contentStructureText}>
@@ -215,10 +213,10 @@ export default function ThreePHHrcrsPage() {
             </figure>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 7. Design System */}
-      <section aria-labelledby="design-system-title" className={styles.designSystemSection}>
+      <RevealSection as="section" aria-labelledby="design-system-title" className={styles.designSystemSection}>
         <div className={styles.container}>
           <h2 id="design-system-title" className={styles.designSystemHeading}>
             Uma base visual para os dois sites
@@ -247,10 +245,10 @@ export default function ThreePHHrcrsPage() {
             </figcaption>
           </figure>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 8. CMS — O site precisava continuar vivo */}
-      <section aria-labelledby="cms-title" className={styles.cmsSection}>
+      <RevealSection as="section" aria-labelledby="cms-title" className={styles.cmsSection}>
         <div className={styles.container}>
           <div className={styles.cmsLayout}>
             <div className={styles.cmsText}>
@@ -284,10 +282,10 @@ export default function ThreePHHrcrsPage() {
             </figure>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 9. Governança — Fazer o projeto andar */}
-      <section aria-labelledby="governance-title" className={styles.governanceSection}>
+      <RevealSection as="section" aria-labelledby="governance-title" className={styles.governanceSection}>
         <div className={styles.container}>
           <div className={styles.governanceLayout}>
             <figure className={styles.governanceFigure}>
@@ -319,10 +317,10 @@ export default function ThreePHHrcrsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 10. Implementação e governança */}
-      <section aria-labelledby="implementation-title" className={styles.implementationSection}>
+      <RevealSection as="section" aria-labelledby="implementation-title" className={styles.implementationSection}>
         <div className={styles.container}>
           <h2 id="implementation-title" className={styles.sectionHeading}>
             A entrega incluía implementação e governança
@@ -349,10 +347,10 @@ export default function ThreePHHrcrsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 11. Pós-lançamento */}
-      <section aria-labelledby="post-launch-title" className={styles.postLaunchSection}>
+      <RevealSection as="section" aria-labelledby="post-launch-title" className={styles.postLaunchSection}>
         <div className={styles.container}>
           <div className={styles.postLaunchLayout}>
             <div className={styles.postLaunchText}>
@@ -382,10 +380,10 @@ export default function ThreePHHrcrsPage() {
             </figure>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 12. Impacto além dos sites */}
-      <section aria-labelledby="impact-title" className={styles.impactSection}>
+      <RevealSection as="section" aria-labelledby="impact-title" className={styles.impactSection}>
         <div className={styles.container}>
           <div className={styles.impactLayout}>
             <div className={styles.impactText}>
@@ -431,7 +429,7 @@ export default function ThreePHHrcrsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 13. Outros Projetos */}
       <OtherProjectsSection currentSlug="3ph-hrcrs-digital-ecosystem" />

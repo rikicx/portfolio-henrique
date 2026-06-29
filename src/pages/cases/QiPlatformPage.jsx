@@ -1,5 +1,7 @@
 import Layout from '../../components/Layout'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
+import TypingTitle from '../../components/TypingTitle'
+import RevealSection from '../../components/RevealSection'
 import styles from './QiPlatformPage.module.css'
 import headOfDesignRoleImg from '../../media/cases/qi-platform/head-of-design-role.png'
 import qiMiroCocreationImg from '../../media/cases/qi-platform/QI-Miro-Cocreation.png'
@@ -122,10 +124,7 @@ export default function QiPlatformPage() {
     <Layout>
       <article className={styles.page}>
         <section className={styles.hero} aria-labelledby="qi-title">
-          <h1 id="qi-title" className={styles.heroTitle}>
-            <span>QI</span>
-            <span>Platform</span>
-          </h1>
+          <TypingTitle id="qi-title" className={styles.heroTitle} lines={['QI', 'Platform']} />
 
           <div className={styles.heroMeta}>
             <p className={styles.heroKicker}>
@@ -141,7 +140,7 @@ export default function QiPlatformPage() {
 
         <hr className={styles.dividerFull} aria-hidden="true" />
 
-        <section
+        <RevealSection as="section"
           className={styles.metadata}
           aria-label="Informações do projeto"
         >
@@ -178,9 +177,9 @@ export default function QiPlatformPage() {
               </dl>
             </div>
           </div>
-        </section>
+        </RevealSection>
 
-        <section className={styles.problemSection}>
+        <RevealSection as="section" className={styles.problemSection}>
           <h2>O problema</h2>
           <div className={styles.bodyText}>
             <p>Os dados já existiam. E eram muitos.</p>
@@ -197,7 +196,7 @@ export default function QiPlatformPage() {
               comparado.
             </p>
           </div>
-        </section>
+        </RevealSection>
 
         <QuoteBlock label="A pergunta que orientou o trabalho:">
           Como transformar dados clínicos complexos em comparações claras e
@@ -205,7 +204,7 @@ export default function QiPlatformPage() {
           que precisavam continuar anônimas?
         </QuoteBlock>
 
-        <section
+        <RevealSection as="section"
           className={`${styles.storyGrid} ${styles.imageLeft} ${styles.discoverySection}`}
         >
           <h2>Antes de desenhar qualquer coisa</h2>
@@ -233,14 +232,14 @@ export default function QiPlatformPage() {
               produto:
             </p>
           </div>
-        </section>
+        </RevealSection>
 
         <QuoteBlock compact>
           Depois de identificar uma diferença, o que o especialista precisava
           entender para decidir o próximo passo?
         </QuoteBlock>
 
-        <section className={styles.productSection}>
+        <RevealSection as="section" className={styles.productSection}>
           <div className={styles.productIntro}>
             <h2>Transformando perguntas em produto</h2>
             <p>
@@ -267,9 +266,9 @@ export default function QiPlatformPage() {
             Antes disso, eram necessidades, dados e regras espalhados em várias
             conversas.
           </p>
-        </section>
+        </RevealSection>
 
-        <section
+        <RevealSection as="section"
           className={`${styles.storyGrid} ${styles.imageLeft} ${styles.comparisonSection}`}
         >
           <figure className={`${styles.figure} ${styles.storyFigure}`}>
@@ -295,9 +294,9 @@ export default function QiPlatformPage() {
               </p>
             </div>
           </div>
-        </section>
+        </RevealSection>
 
-        <section
+        <RevealSection as="section"
           className={`${styles.storyGrid} ${styles.imageRight} ${styles.roleMobileSection}`}
         >
           <h2>Meu papel como Head de Design</h2>
@@ -327,9 +326,9 @@ export default function QiPlatformPage() {
               criasse um problema novo.
             </p>
           </div>
-        </section>
+        </RevealSection>
 
-        <section
+        <RevealSection as="section"
           className={`${styles.storyGrid} ${styles.imageLeft} ${styles.evolutionSection}`}
         >
           <h2>Uma plataforma em evolução</h2>
@@ -357,9 +356,9 @@ export default function QiPlatformPage() {
               análise sem perder o contexto.
             </p>
           </div>
-        </section>
+        </RevealSection>
 
-        <section className={styles.impactSection}>
+        <RevealSection as="section" className={styles.impactSection}>
           <div className={styles.impactGrid}>
             <h2>Impacto e Escala</h2>
             {impactStats.map((stat) => (
@@ -387,7 +386,7 @@ export default function QiPlatformPage() {
               plataforma.
             </p>
           </div>
-        </section>
+        </RevealSection>
 
         <OtherProjectsSection currentSlug="qi-platform" />
       </article>

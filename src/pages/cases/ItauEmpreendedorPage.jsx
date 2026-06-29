@@ -1,5 +1,7 @@
 import Layout from '../../components/Layout'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
+import TypingTitle from '../../components/TypingTitle'
+import RevealSection from '../../components/RevealSection'
 import styles from './ItauEmpreendedorPage.module.css'
 
 import metaHeroImg from '../../media/cases/itau-empreendedor/itau-meta-hero.jpg'
@@ -17,9 +19,7 @@ export default function ItauEmpreendedorPage() {
     <Layout>
       {/* 1. Hero */}
       <section aria-labelledby="itau-title" className={styles.hero}>
-        <h1 id="itau-title" className={styles.heroTitle}>
-          Itaú<br aria-hidden="true" />Empreendedora
-        </h1>
+        <TypingTitle id="itau-title" className={styles.heroTitle} lines={['Itaú', 'Empreendedora']} />
         <div className={styles.heroMeta}>
           <p className={styles.heroKicker}>
             Educação financeira · Design de Produto
@@ -35,7 +35,7 @@ export default function ItauEmpreendedorPage() {
       <hr className={styles.dividerFull} aria-hidden="true" />
 
       {/* 2. Metadata */}
-      <section aria-label="Informações do projeto" className={styles.metadata}>
+      <RevealSection as="section" aria-label="Informações do projeto" className={styles.metadata}>
         <div className={styles.container}>
           <div className={styles.metaLayout}>
             <div className={styles.metaImageWrap}>
@@ -69,10 +69,10 @@ export default function ItauEmpreendedorPage() {
             </dl>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 3. O problema */}
-      <section aria-labelledby="itau-problema" className={styles.desafio}>
+      <RevealSection as="section" aria-labelledby="itau-problema" className={styles.desafio}>
         <div className={styles.container}>
           <div className={styles.desafioLayout}>
             <div className={styles.desafioLabelCol}>
@@ -98,10 +98,10 @@ export default function ItauEmpreendedorPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 4. Pergunta central */}
-      <section aria-label="Pergunta central do projeto" className={styles.pergunta}>
+      <RevealSection as="section" aria-label="Pergunta central do projeto" className={styles.pergunta}>
         <div className={styles.container}>
           <img
             src={quoteOpenImg}
@@ -124,10 +124,10 @@ export default function ItauEmpreendedorPage() {
             className={styles.quoteIconClose}
           />
         </div>
-      </section>
+      </RevealSection>
 
       {/* 5. Construindo com as empreendedoras */}
-      <section aria-labelledby="itau-construindo" className={styles.construindo}>
+      <RevealSection as="section" aria-labelledby="itau-construindo" className={styles.construindo}>
         <div className={styles.container}>
           <h2 id="itau-construindo" className={styles.sectionHeading}>
             Construindo com as empreendedoras
@@ -204,10 +204,10 @@ export default function ItauEmpreendedorPage() {
             dúvidas, linguagem e decisões financeiras do dia a dia.
           </p>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 6. Da conversa para o protótipo */}
-      <section aria-labelledby="itau-conversa" className={styles.conversa}>
+      <RevealSection as="section" aria-labelledby="itau-conversa" className={styles.conversa}>
         <div className={styles.container}>
           <div className={styles.conversaLayout}>
             <div className={styles.conversaTextCol}>
@@ -242,10 +242,10 @@ export default function ItauEmpreendedorPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 7. Aprendizado e prática no mesmo produto */}
-      <section aria-labelledby="itau-aprendizado" className={styles.aprendizado}>
+      <RevealSection as="section" aria-labelledby="itau-aprendizado" className={styles.aprendizado}>
         <div className={styles.container}>
           <h2 id="itau-aprendizado" className={styles.sectionHeading}>
             Aprendizado e prática no mesmo produto
@@ -270,7 +270,7 @@ export default function ItauEmpreendedorPage() {
             para a experiência Itaú Empreendedora.
           </p>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 8. Outros Projetos */}
       <OtherProjectsSection currentSlug="itau-empreendedor" />

@@ -1,5 +1,7 @@
 import Layout from '../../components/Layout'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
+import TypingTitle from '../../components/TypingTitle'
+import RevealSection from '../../components/RevealSection'
 import styles from './EmrIntegrationPage.module.css'
 
 import heroImg from '../../media/cases/emr-integration/emr-hero.webp'
@@ -19,9 +21,7 @@ export default function EmrIntegrationPage() {
     <Layout>
       {/* 1. Hero */}
       <section aria-labelledby="emr-title" className={styles.hero}>
-        <h1 id="emr-title" className={styles.heroTitle}>
-          EMR<br aria-hidden="true" />Integration
-        </h1>
+        <TypingTitle id="emr-title" className={styles.heroTitle} lines={['EMR', 'Integration']} />
         <div className={styles.heroMeta}>
           <p className={styles.heroKicker}>
             Integração entre EMR e EDC · Estratégia de produto
@@ -38,7 +38,7 @@ export default function EmrIntegrationPage() {
       <hr className={styles.dividerFull} aria-hidden="true" />
 
       {/* 2. Metadata */}
-      <section aria-label="Informações do projeto" className={styles.metadata}>
+      <RevealSection as="section" aria-label="Informações do projeto" className={styles.metadata}>
         <div className={styles.container}>
           <div className={styles.metaLayout}>
             <div className={styles.metaImageWrap}>
@@ -85,10 +85,10 @@ export default function EmrIntegrationPage() {
             </dl>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 3. O problema */}
-      <section aria-labelledby="emr-problema" className={styles.problema}>
+      <RevealSection as="section" aria-labelledby="emr-problema" className={styles.problema}>
         <div className={styles.container}>
           <div className={styles.problemaLayout}>
             <div className={styles.problemaLabelCol}>
@@ -116,10 +116,10 @@ export default function EmrIntegrationPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 4. Pergunta central */}
-      <section aria-label="Pergunta central do projeto" className={styles.pergunta}>
+      <RevealSection as="section" aria-label="Pergunta central do projeto" className={styles.pergunta}>
         <div className={styles.container}>
           <img
             src={quoteOpenImg}
@@ -141,10 +141,10 @@ export default function EmrIntegrationPage() {
             className={styles.quoteIconClose}
           />
         </div>
-      </section>
+      </RevealSection>
 
       {/* 5. Decidir sem começar do zero */}
-      <section aria-labelledby="emr-decidir" className={styles.decidir}>
+      <RevealSection as="section" aria-labelledby="emr-decidir" className={styles.decidir}>
         <div className={styles.container}>
           <h2 id="emr-decidir" className={styles.sectionHeading}>
             Decidir sem começar do zero
@@ -188,10 +188,10 @@ export default function EmrIntegrationPage() {
             solução com as áreas envolvidas.
           </p>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 6. Como a experiência foi organizada */}
-      <section
+      <RevealSection as="section"
         aria-labelledby="emr-experiencia"
         className={styles.experiencia}
       >
@@ -305,10 +305,10 @@ export default function EmrIntegrationPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 7. O que mudou */}
-      <section aria-labelledby="emr-mudou" className={styles.mudou}>
+      <RevealSection as="section" aria-labelledby="emr-mudou" className={styles.mudou}>
         <div className={styles.container}>
           <div className={styles.mudouLayout}>
             <div className={styles.mudouTextCol}>
@@ -380,7 +380,7 @@ export default function EmrIntegrationPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 9. Outros Projetos */}
       <OtherProjectsSection currentSlug="emr-integration" />

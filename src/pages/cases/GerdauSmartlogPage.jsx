@@ -1,5 +1,7 @@
 import Layout from '../../components/Layout'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
+import TypingTitle from '../../components/TypingTitle'
+import RevealSection from '../../components/RevealSection'
 import styles from './GerdauSmartlogPage.module.css'
 
 import heroImg from '../../media/cases/gerdau-smartlog/smartlog-hero.webp'
@@ -18,10 +20,7 @@ export default function GerdauSmartlogPage() {
     <Layout>
       {/* 1. Hero */}
       <section aria-labelledby="hero-title" className={styles.hero}>
-        <h1 id="hero-title" className={styles.heroTitle}>
-          <span>Gerdau</span>
-          <span>Smartlog</span>
-        </h1>
+        <TypingTitle id="hero-title" className={styles.heroTitle} lines={['Gerdau', 'Smartlog']} />
 
         <div className={styles.heroMeta}>
           <p className={styles.heroDesc}>
@@ -35,7 +34,7 @@ export default function GerdauSmartlogPage() {
       <hr className={styles.dividerFull} aria-hidden="true" />
 
       {/* 2. Metadata */}
-      <section aria-label="Informações do projeto" className={styles.metadata}>
+      <RevealSection as="section" aria-label="Informações do projeto" className={styles.metadata}>
         <div className={styles.container}>
           <div className={styles.metaLayout}>
             <div className={styles.metaImage}>
@@ -67,10 +66,10 @@ export default function GerdauSmartlogPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 3. O problema */}
-      <section aria-labelledby="problema-title" className={styles.problema}>
+      <RevealSection as="section" aria-labelledby="problema-title" className={styles.problema}>
         <div className={styles.container}>
           <div className={styles.problemaLayout}>
             <div className={styles.problemaLeft}>
@@ -92,10 +91,10 @@ export default function GerdauSmartlogPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 4. Pergunta central */}
-      <section aria-label="Pergunta central do projeto" className={styles.centralQuestion}>
+      <RevealSection as="section" aria-label="Pergunta central do projeto" className={styles.centralQuestion}>
         <div className={styles.container}>
           <img src={quoteOpenImg} alt="" aria-hidden="true" className={styles.quoteIconOpen} />
           <p className={styles.quoteLabel}>A pergunta que orientou o trabalho:</p>
@@ -110,10 +109,10 @@ export default function GerdauSmartlogPage() {
             className={styles.quoteIconClose}
           />
         </div>
-      </section>
+      </RevealSection>
 
       {/* 5. Cocriação como parte do processo */}
-      <section aria-labelledby="cocriacao-title" className={styles.cocriacao}>
+      <RevealSection as="section" aria-labelledby="cocriacao-title" className={styles.cocriacao}>
         <div className={styles.container}>
           <div className={styles.cocriacaoLayout}>
             <h2 id="cocriacao-title" className={styles.sectionHeading}>
@@ -147,10 +146,10 @@ export default function GerdauSmartlogPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 6. Estruturando a complexidade */}
-      <section aria-labelledby="estruturando-title" className={styles.estruturando}>
+      <RevealSection as="section" aria-labelledby="estruturando-title" className={styles.estruturando}>
         <div className={styles.container}>
           <div className={styles.estruturandoLayout}>
             <div className={styles.estruturandoText}>
@@ -194,10 +193,10 @@ export default function GerdauSmartlogPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 7. Projetando para a ação */}
-      <section aria-labelledby="projetando-title" className={styles.projetando}>
+      <RevealSection as="section" aria-labelledby="projetando-title" className={styles.projetando}>
         <div className={styles.container}>
           <div className={styles.projetandoLayout}>
             <div className={styles.projetandoMedia}>
@@ -229,10 +228,10 @@ export default function GerdauSmartlogPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 8. Validando a lógica com a operação */}
-      <section aria-labelledby="validando-title" className={styles.validando}>
+      <RevealSection as="section" aria-labelledby="validando-title" className={styles.validando}>
         <div className={styles.container}>
           <div className={styles.validandoLayout}>
             <div className={styles.validandoMedia}>
@@ -263,10 +262,10 @@ export default function GerdauSmartlogPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 9. Produto em operação */}
-      <section aria-labelledby="produto-title" className={styles.produto}>
+      <RevealSection as="section" aria-labelledby="produto-title" className={styles.produto}>
         <div className={styles.container}>
           <h2 id="produto-title" className={styles.sectionHeadingCenter}>
             Produto em operação
@@ -288,7 +287,7 @@ export default function GerdauSmartlogPage() {
             />
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 10. Outros Projetos */}
       <OtherProjectsSection currentSlug="gerdau-smartlog" />

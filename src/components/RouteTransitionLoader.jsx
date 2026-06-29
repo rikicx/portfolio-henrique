@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import PageTransitionLoader from './PageTransitionLoader'
+import { setTransitioning } from '../routeTransitionState'
 
 const TRANSITION_DURATION_MS = 1500
 
@@ -16,9 +17,11 @@ export default function RouteTransitionLoader() {
 
     previousPathname.current = pathname
     setIsVisible(true)
+    setTransitioning(true)
 
     const timeoutId = window.setTimeout(() => {
       setIsVisible(false)
+      setTransitioning(false)
     }, TRANSITION_DURATION_MS)
 
     return () => {

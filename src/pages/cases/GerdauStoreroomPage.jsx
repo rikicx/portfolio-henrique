@@ -1,5 +1,7 @@
 import Layout from '../../components/Layout'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
+import TypingTitle from '../../components/TypingTitle'
+import RevealSection from '../../components/RevealSection'
 import styles from './GerdauStoreroomPage.module.css'
 
 import heroImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-inventory-counting-hero.jpg'
@@ -73,10 +75,7 @@ export default function GerdauStoreroomPage() {
     <Layout>
       {/* 1. Hero */}
       <section aria-labelledby="hero-title" className={styles.hero}>
-        <h1 id="hero-title" className={styles.heroTitle}>
-          <span>Gerdau</span>
-          <span>Storeroom</span>
-        </h1>
+        <TypingTitle id="hero-title" className={styles.heroTitle} lines={['Gerdau', 'Storeroom']} />
         <div className={styles.heroMeta}>
           <p className={styles.heroSubtitle}>Inventário industrial · Design de produto</p>
           <p className={styles.heroDesc}>
@@ -89,7 +88,7 @@ export default function GerdauStoreroomPage() {
       <hr className={styles.dividerFull} aria-hidden="true" />
 
       {/* 2. Metadata */}
-      <section aria-label="Informações do projeto" className={styles.metadata}>
+      <RevealSection as="section" aria-label="Informações do projeto" className={styles.metadata}>
         <div className={styles.container}>
           <div className={styles.metaLayout}>
             <div className={styles.metaImage}>
@@ -128,7 +127,7 @@ export default function GerdauStoreroomPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 3. Panoramic */}
       <div className={styles.panoramic}>
@@ -142,7 +141,7 @@ export default function GerdauStoreroomPage() {
       </div>
 
       {/* 4. O problema */}
-      <section aria-labelledby="problema-title" className={styles.problema}>
+      <RevealSection as="section" aria-labelledby="problema-title" className={styles.problema}>
         <div className={styles.container}>
           <div className={styles.problemaLayout}>
             <h2 id="problema-title" className={styles.sectionHeading}>O problema</h2>
@@ -160,10 +159,10 @@ export default function GerdauStoreroomPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 5. Pergunta central */}
-      <section aria-label="Pergunta central do projeto" className={styles.centralQuestion}>
+      <RevealSection as="section" aria-label="Pergunta central do projeto" className={styles.centralQuestion}>
         <div className={styles.container}>
           <img src={quoteOpenImg} alt="" aria-hidden="true" className={styles.quoteIconOpen} />
           <p className={styles.quoteLabel}>A pergunta que orientou o trabalho:</p>
@@ -178,10 +177,10 @@ export default function GerdauStoreroomPage() {
             className={styles.quoteIconClose}
           />
         </div>
-      </section>
+      </RevealSection>
 
       {/* 6. Processo anterior + shadowing em campo */}
-      <section aria-labelledby="shadowing-title" className={styles.shadowing}>
+      <RevealSection as="section" aria-labelledby="shadowing-title" className={styles.shadowing}>
         <div className={styles.container}>
           <div className={styles.shadowingLayout}>
             <div className={styles.shadowingVideo}>
@@ -264,10 +263,10 @@ export default function GerdauStoreroomPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 8. Mapeando o fluxo real */}
-      <section aria-labelledby="mapping-title" className={styles.mappingSection}>
+      <RevealSection as="section" aria-labelledby="mapping-title" className={styles.mappingSection}>
         <div className={styles.container}>
           <h2 id="mapping-title" className={styles.sectionHeadingLeft}>
             Mapeando o fluxo real
@@ -292,10 +291,10 @@ export default function GerdauStoreroomPage() {
             Mapeamento do fluxo real com operadores e stakeholders da operação.
           </p>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 9. Cocriação */}
-      <section aria-labelledby="cocriacao-title" className={styles.cocriacaoSection}>
+      <RevealSection as="section" aria-labelledby="cocriacao-title" className={styles.cocriacaoSection}>
         <div className={styles.container}>
           <div className={styles.cocriacaoLayout}>
             <div className={styles.cocriacaoText}>
@@ -322,10 +321,10 @@ export default function GerdauStoreroomPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 10. O que precisávamos decidir */}
-      <section aria-labelledby="decidir-title" className={styles.decidirSection}>
+      <RevealSection as="section" aria-labelledby="decidir-title" className={styles.decidirSection}>
         <div className={styles.container}>
           <div className={styles.decidirLayout}>
             <div className={styles.decidirLeft}>
@@ -355,10 +354,10 @@ export default function GerdauStoreroomPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 11. Da ideia ao protótipo */}
-      <section aria-labelledby="prototipo-title" className={styles.prototypeSection}>
+      <RevealSection as="section" aria-labelledby="prototipo-title" className={styles.prototypeSection}>
         <div className={styles.container}>
           <div className={styles.prototypeLayout}>
             <div className={styles.prototypeText}>
@@ -389,11 +388,11 @@ export default function GerdauStoreroomPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 12. Testando com os operadores */}
       {/* Grid: [Video2] [test-02] / [test-04] [Video3] */}
-      <section aria-labelledby="testing-title" className={styles.testingSection}>
+      <RevealSection as="section" aria-labelledby="testing-title" className={styles.testingSection}>
         <div className={styles.container}>
           <h2 id="testing-title" className={styles.sectionHeadingCenter}>
             Testando com os operadores
@@ -443,10 +442,10 @@ export default function GerdauStoreroomPage() {
             dúvidas e oportunidades de melhoria no fluxo.
           </p>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 13. A solução refinada */}
-      <section aria-labelledby="refined-title" className={styles.refinedSection}>
+      <RevealSection as="section" aria-labelledby="refined-title" className={styles.refinedSection}>
         <div className={styles.container}>
           <h2 id="refined-title" className={styles.sectionHeadingCenter}>A solução refinada</h2>
           <div className={styles.refinedText}>
@@ -470,10 +469,10 @@ export default function GerdauStoreroomPage() {
             Principais telas do fluxo refinado para apoiar a contagem de inventário em campo.
           </p>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 14. O produto em operação */}
-      <section aria-labelledby="operation-title" className={styles.operationSection}>
+      <RevealSection as="section" aria-labelledby="operation-title" className={styles.operationSection}>
         <div className={styles.container}>
           <div className={styles.operationLayout}>
             <div className={styles.operationMedia}>
@@ -495,10 +494,10 @@ export default function GerdauStoreroomPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 15. Depoimento */}
-      <section aria-label="Depoimento" className={styles.testimonial}>
+      <RevealSection as="section" aria-label="Depoimento" className={styles.testimonial}>
         <div className={styles.container}>
           <img
             src={quoteOpenImg}
@@ -527,7 +526,7 @@ export default function GerdauStoreroomPage() {
             — Peter, Gerente Logístico da Gerdau North America
           </p>
         </div>
-      </section>
+      </RevealSection>
 
       {/* 16. Foto da equipe */}
       <div className={styles.teamSection}>

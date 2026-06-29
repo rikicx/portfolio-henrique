@@ -1804,3 +1804,15 @@
     padding-bottom: 64px;
   }
 }
+
+/* ─── Gray box hover (desktop pointer only) ─────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  .metricBox {
+    transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1),
+                background-color 200ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .metricBox:hover {
+    transform: translateY(-2px);
+    background-color: #e5e5e5;
+  }
+}
