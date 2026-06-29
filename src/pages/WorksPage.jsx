@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Layout from '../components/Layout'
 import styles from './WorksPage.module.css'
@@ -86,6 +87,23 @@ function ProjectCard({ project }) {
 }
 
 export default function WorksPage() {
+  const infographicRef = useRef(null)
+
+  useEffect(() => {
+    const el = infographicRef.current
+    if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        el.classList.toggle(styles.flowRunning, entry.isIntersecting)
+      },
+      { threshold: 0.1 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
   return (
     <Layout>
       <section className={styles.page} aria-label="Todos os trabalhos">
@@ -103,6 +121,7 @@ export default function WorksPage() {
           </div>
 
           <div
+            ref={infographicRef}
             className={styles.infographic}
             aria-hidden="true"
           >

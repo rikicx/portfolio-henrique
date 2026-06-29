@@ -382,6 +382,72 @@
   }
 }
 
+/* ─── Flowchart sequential loop animation ─────────────────────────────────── */
+
+/* Base: nodes and connections dimmed — "waiting to activate" */
+#flow-n1, #flow-n2, #flow-n3, #flow-n4, #flow-n5, #flow-n6 {
+  opacity: 0.55;
+}
+
+#flow-c1, #flow-c2, #flow-c3, #flow-c4 {
+  opacity: 0.3;
+}
+
+@keyframes flowNodePulse {
+  0%   { opacity: 0.55; }
+  10%  { opacity: 1; }
+  25%  { opacity: 0.55; }
+  100% { opacity: 0.55; }
+}
+
+@keyframes flowConnPulse {
+  0%   { opacity: 0.3; }
+  10%  { opacity: 0.85; }
+  25%  { opacity: 0.3; }
+  100% { opacity: 0.3; }
+}
+
+/*
+  Sequence: N6 → (C2+C4) → (N5+N4) → (C1+C3) → N3 → (N1+N2)
+  Duration: 3500ms  |  Step interval: 440ms  |  Initial offset: 600ms
+  Pause between last-fade and next-N6-peak: ~775ms
+*/
+.flowRunning #flow-n6 {
+  animation: flowNodePulse 3500ms cubic-bezier(0.4, 0, 0.6, 1) 600ms infinite both;
+}
+
+.flowRunning #flow-c2,
+.flowRunning #flow-c4 {
+  animation: flowConnPulse 3500ms cubic-bezier(0.4, 0, 0.6, 1) 1040ms infinite both;
+}
+
+.flowRunning #flow-n5,
+.flowRunning #flow-n4 {
+  animation: flowNodePulse 3500ms cubic-bezier(0.4, 0, 0.6, 1) 1480ms infinite both;
+}
+
+.flowRunning #flow-c1,
+.flowRunning #flow-c3 {
+  animation: flowConnPulse 3500ms cubic-bezier(0.4, 0, 0.6, 1) 1920ms infinite both;
+}
+
+.flowRunning #flow-n3 {
+  animation: flowNodePulse 3500ms cubic-bezier(0.4, 0, 0.6, 1) 2360ms infinite both;
+}
+
+.flowRunning #flow-n1,
+.flowRunning #flow-n2 {
+  animation: flowNodePulse 3500ms cubic-bezier(0.4, 0, 0.6, 1) 2800ms infinite both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #flow-n1, #flow-n2, #flow-n3, #flow-n4, #flow-n5, #flow-n6,
+  #flow-c1, #flow-c2, #flow-c3, #flow-c4 {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}
+
 /* Desktop compacto — 1025px–1399px */
 @media (min-width: 1025px) and (max-width: 1399px) {
   .header {

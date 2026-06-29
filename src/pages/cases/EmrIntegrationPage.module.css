@@ -1489,6 +1489,15 @@
     background-color: #e5e5e5;
   }
 
+  .directionBox {
+    transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1),
+                background-color 200ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .directionBox:hover {
+    transform: translateY(-2px);
+    background-color: #e5e5e5;
+  }
+
   .statCardWide,
   .statCardNarrow {
     transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1),

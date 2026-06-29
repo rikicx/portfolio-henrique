@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import Layout from '../components/Layout'
+import RevealSection from '../components/RevealSection'
+import TypingTitle from '../components/TypingTitle'
 import styles from './AboutPage.module.css'
 
 import heroImg from '../media/about/about-henrique.webp'
@@ -77,9 +79,10 @@ export default function AboutPage() {
           Mobile order: title → photo → divider → desc (uses flex + order). */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <h1 className={styles.heroTitle}>
-            Design é a forma como eu entendo e transformo problemas.
-          </h1>
+          <TypingTitle
+            className={styles.heroTitle}
+            lines={['Design é a forma como eu entendo e transformo problemas.']}
+          />
           <div className={styles.heroBar} aria-hidden="true" />
           <div className={styles.heroPhotoCol}>
             <img
@@ -97,7 +100,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── 2. Carreira ──────────────────────────────────────────────── */}
-      <section className={styles.carreira}>
+      <RevealSection as="section" rootMargin="0px 0px -10% 0px" className={styles.carreira}>
         <div className={styles.carreiraOuter}>
 
           <div className={styles.carreiraIntroRow}>
@@ -175,10 +178,10 @@ export default function AboutPage() {
             "O que aumentou foi a dimensão da responsabilidade, não a distância da prática."
           </blockquote>
         </div>
-      </section>
+      </RevealSection>
 
       {/* ── 3. Princípios ────────────────────────────────────────────── */}
-      <section className={styles.principios}>
+      <RevealSection as="section" rootMargin="0px 0px -10% 0px" className={styles.principios}>
         <div className={styles.principiosOuter}>
           <h2 className={styles.principiosTitle}>
             O processo muda. Alguns princípios permanecem.
@@ -198,10 +201,10 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* ── 4. Liderança ─────────────────────────────────────────────── */}
-      <section className={styles.lideranca}>
+      <RevealSection as="section" rootMargin="0px 0px -10% 0px" className={styles.lideranca}>
         <div className={styles.liderancaOuter}>
           <div className={styles.liderancaInner}>
             <h2 className={styles.liderancaTitle}>Liderar também é criar espaço.</h2>
@@ -222,10 +225,10 @@ export default function AboutPage() {
           </div>
         </div>
         <hr className={styles.liderancaDivider} aria-hidden="true" />
-      </section>
+      </RevealSection>
 
       {/* ── 5. Sempre Iniciante ──────────────────────────────────────── */}
-      <section className={styles.iniciante}>
+      <RevealSection as="section" rootMargin="0px 0px -10% 0px" className={styles.iniciante}>
         <div className={styles.inicianteOuter}>
           <div className={styles.inicianteInner}>
             <div className={styles.iniciantePhotos}>
@@ -262,10 +265,10 @@ export default function AboutPage() {
           </div>
         </div>
         <hr className={styles.inicianteDivider} aria-hidden="true" />
-      </section>
+      </RevealSection>
 
       {/* ── 6. Closing ───────────────────────────────────────────────── */}
-      <section className={styles.closing}>
+      <RevealSection as="section" rootMargin="0px 0px -10% 0px" className={styles.closing}>
         <div className={styles.closingOuter}>
           <h2 className={styles.closingTitle}>
             Continuo interessado nos problemas difíceis.
@@ -281,7 +284,7 @@ export default function AboutPage() {
             <HyperLink href="#contato">Entrar em contato →</HyperLink>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
     </Layout>
   )
