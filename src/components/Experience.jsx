@@ -185,7 +185,7 @@ export default function Experience() {
           rel="noopener noreferrer"
         >
           <span className={styles.linkedinText}>
-            Ver trajetória completa no LinkedIn ↗︎
+            Ver trajetória completa no LinkedIn ↗︎︎
           </span>
         </a>
       </div>

@@ -48,7 +48,7 @@ export default function About() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Ver Currículo ↗
+              Ver Currículo ↗︎
             </a>
             <a
               href="https://www.linkedin.com/in/henrique-m-silva/"
@@ -56,7 +56,7 @@ export default function About() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              LinkedIn ↗
+              LinkedIn ↗︎
             </a>
           </div>
         </div>

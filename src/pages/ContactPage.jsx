@@ -122,7 +122,7 @@ export default function ContactPage() {
                   rel="noreferrer"
                   className={styles.contactLink}
                 >
-                  Ver perfil no LinkedIn ↗
+                  Ver perfil no LinkedIn ↗︎
                 </a>
               </div>
 
