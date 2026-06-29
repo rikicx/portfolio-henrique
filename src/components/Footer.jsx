@@ -38,11 +38,11 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            LinkedIn ↗
+            LinkedIn ↗︎
           </a>
           <span className={styles.dot} aria-hidden="true" />
           <a href="mailto:hello@henriquesilva.design" className={styles.link}>
-            E-mail ↗
+            E-mail ↗︎
           </a>
           <span className={styles.dot} aria-hidden="true" />
           <a
@@ -51,7 +51,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Currículo ↗
+            Currículo ↗︎
           </a>
         </nav>
 
