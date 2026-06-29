@@ -1,0 +1,132 @@
+/* ─── FloatingTools ────────────────────────────────────────────────────────
+   Ícones decorativos que emergem da tela do notebook no Hero.
+   O React controla emissão e ciclo de vida; o CSS executa movimento e fade.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.container {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+
+  --origin-left: 51%;
+  --origin-top: 49%;
+  --icon-size: 44px;
+}
+
+/* Seis pontos amostrados de uma curva quadrática.
+   Os pontos intermediários são calculados no spawn, formando um arco suave
+   em vez de dois segmentos quase retos. */
+@keyframes floatToolPath {
+  0% {
+    transform:
+      translate3d(var(--start-x), var(--start-y), 0)
+      rotate(var(--start-rotation))
+      scale(calc(var(--asset-scale) * 0.84));
+  }
+
+  20% {
+    transform:
+      translate3d(var(--p1-x), var(--p1-y), 0)
+      rotate(var(--p1-rotation))
+      scale(calc(var(--asset-scale) * 0.95));
+  }
+
+  40% {
+    transform:
+      translate3d(var(--p2-x), var(--p2-y), 0)
+      rotate(var(--p2-rotation))
+      scale(calc(var(--asset-scale) * 1.03));
+  }
+
+  60% {
+    transform:
+      translate3d(var(--p3-x), var(--p3-y), 0)
+      rotate(var(--p3-rotation))
+      scale(calc(var(--asset-scale) * 1.06));
+  }
+
+  80% {
+    transform:
+      translate3d(var(--p4-x), var(--p4-y), 0)
+      rotate(var(--p4-rotation))
+      scale(calc(var(--asset-scale) * 1.03));
+  }
+
+  100% {
+    transform:
+      translate3d(var(--end-x), var(--end-y), 0)
+      rotate(var(--end-rotation))
+      scale(var(--asset-scale));
+  }
+}
+
+@keyframes floatToolOpacity {
+  0% {
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  84% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.icon {
+  position: absolute;
+  left: var(--origin-left);
+  top: var(--origin-top);
+  width: var(--icon-size);
+  height: var(--icon-size);
+  margin-left: calc(var(--icon-size) / -2);
+  margin-top: calc(var(--icon-size) / -2);
+  pointer-events: none;
+  will-change: transform;
+
+  animation-name: floatToolPath;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
+.logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  will-change: opacity;
+
+  animation-name: floatToolOpacity;
+  animation-duration: inherit;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    --origin-left: 51%;
+    --origin-top: 49%;
+    --icon-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    --origin-left: 51%;
+    --origin-top: 49%;
+    --icon-size: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container {
+    display: none;
+  }
+}

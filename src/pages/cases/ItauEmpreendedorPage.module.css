@@ -1,0 +1,1138 @@
+/* ─────────────────────────────────────────────
+   Shared utilities
+───────────────────────────────────────────── */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+/* blank-line paragraph gap: 20px × 1.45 = 29px */
+.textGap {
+  margin-top: 29px;
+}
+
+/* shared h2 / section label style */
+.sectionHeading {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.44px;
+  color: var(--color-black);
+  margin: 0 0 24px;
+}
+
+/* ─────────────────────────────────────────────
+   1. Hero
+───────────────────────────────────────────── */
+.hero {
+  position: relative;
+  max-width: var(--max-width);
+  min-height: 442px;
+  margin: 0 auto;
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+.heroTitle {
+  position: absolute;
+  top: 157px;
+  left: 43px;
+  margin: 0;
+  font-size: 96px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -2.88px;
+  color: var(--color-black);
+  white-space: nowrap;
+}
+
+.heroMeta {
+  position: absolute;
+  top: 228px;
+  left: calc(50% + 38px);
+  width: 636px;
+}
+
+.heroKicker {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.54px;
+  color: var(--color-black);
+  margin: 0 0 29px;
+}
+
+.heroDesc {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────
+   Divider (after hero)
+───────────────────────────────────────────── */
+.dividerFull {
+  display: block;
+  border: none;
+  border-top: 1px solid var(--color-border);
+  width: calc(100% - 96px);
+  max-width: calc(var(--max-width) - 96px);
+  margin: 0 auto;
+}
+
+/* ─────────────────────────────────────────────
+   2. Metadata
+───────────────────────────────────────────── */
+.metadata {
+  padding: 80px 0 40px;
+}
+
+.metaLayout {
+  display: grid;
+  grid-template-columns: 659px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.metaImageWrap {
+  height: 383px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.metaImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.metaFields {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 383px;
+}
+
+.metaRowTop {
+  display: flex;
+  gap: 80px;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metaLabel {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.metaValue {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.54px;
+  color: var(--color-black);
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────
+   3. O desafio
+───────────────────────────────────────────── */
+.desafio {
+  padding: 40px 0;
+}
+
+.desafioLayout {
+  display: grid;
+  grid-template-columns: 399px 1fr;
+  align-items: center;
+}
+
+.desafioLabelCol {
+  padding-left: 57px;
+}
+
+.desafioLabel {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.44px;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.desafioText {
+  display: flex;
+  flex-direction: column;
+  max-width: 888px;
+}
+
+.desafioText p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+}
+
+/* ─────────────────────────────────────────────
+   4. Pergunta central
+───────────────────────────────────────────── */
+.pergunta {
+  padding: 40px 0;
+}
+
+.quoteIconOpen {
+  display: block;
+  width: 103px;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.quoteLabel {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.24px;
+  color: var(--color-black);
+  margin: 0 0 16px;
+  padding-left: 0;
+}
+
+.quoteText {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.44px;
+  color: var(--color-black);
+  max-width: 1344px;
+  margin: 0;
+}
+
+.quoteIconClose {
+  display: block;
+  width: 103px;
+  height: auto;
+  margin-top: 24px;
+  margin-left: auto;
+}
+
+/* ─────────────────────────────────────────────
+   5. Construindo com as empreendedoras
+───────────────────────────────────────────── */
+.construindo {
+  padding: 80px 0 24px;
+}
+
+.construindoText {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: none;
+}
+
+.construindoText p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+}
+
+.questionsIntro {
+  margin-top: 24px;
+}
+
+.questionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 12px;
+  margin-top: 20px;
+}
+
+.questionCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 88px;
+  padding: 14px 16px;
+  box-sizing: border-box;
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+}
+
+.questionNumber {
+  color: var(--color-muted);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.questionText {
+  max-width: 520px;
+  margin: 10px 0 0;
+  color: var(--color-black);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.2px;
+}
+
+.fotoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: var(--max-width);
+  margin: 40px auto 0;
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+.fotoItem {
+  width: 100%;
+  height: 372px;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  display: block;
+}
+
+.fotoCaption {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-muted);
+  text-align: center;
+  max-width: 915px;
+  margin: 16px auto 0;
+}
+
+/* ─────────────────────────────────────────────
+   6. Da conversa para o protótipo
+───────────────────────────────────────────── */
+.conversa {
+  padding: 32px 0;
+}
+
+.conversaLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 560px;
+  gap: 32px;
+  align-items: center;
+}
+
+.conversaTextCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.conversaText {
+  display: flex;
+  flex-direction: column;
+}
+
+.conversaText p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+}
+
+.conversa .textGap {
+  margin-top: 20px;
+}
+
+.conversaImageCol {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.conversaImg {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  display: block;
+}
+
+.conversaCaption {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+/* ─────────────────────────────────────────────
+   7. Aprendizado e prática no mesmo produto
+───────────────────────────────────────────── */
+.aprendizado {
+  padding: 32px 0 80px;
+}
+
+.aprendizado .sectionHeading {
+  text-align: center;
+}
+
+.aprendizadoText {
+  max-width: 980px;
+  margin: 0 auto;
+  color: var(--color-black);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.produtoWrap {
+  max-width: var(--max-width);
+  margin: 32px auto 0;
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+.produtoImg {
+  display: block;
+  width: 720px;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-card);
+  margin: 0 auto 12px;
+}
+
+.produtoCaption {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-muted);
+  text-align: center;
+  max-width: 859px;
+  margin: 0 auto;
+}
+
+/* ─────────────────────────────────────────────
+   Mobile — @media (max-width: 768px)
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* ── Container ─────────────────────────────── */
+  .container {
+    padding: 0 24px;
+  }
+
+  /* ── Divider ────────────────────────────────── */
+  .dividerFull {
+    width: calc(100% - 48px);
+    max-width: 100%;
+  }
+
+  /* ── Shared ─────────────────────────────────── */
+  .sectionHeading {
+    font-size: 32px;
+    letter-spacing: -0.32px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .textGap {
+    margin-top: 16px;
+  }
+
+  /* ── 1. Hero ─────────────────────────────────── */
+  .hero {
+    padding: 56px 24px 48px;
+    min-height: auto;
+  }
+
+  .heroTitle {
+    position: static;
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.54px;
+    white-space: normal;
+  }
+
+  .heroMeta {
+    position: static;
+    width: 100%;
+    left: auto;
+    top: auto;
+    margin-top: 16px;
+  }
+
+  .heroKicker {
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.24px;
+    margin-bottom: 8px;
+  }
+
+  .heroDesc {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  /* ── 2. Metadata ─────────────────────────────── */
+  .metadata {
+    padding: 24px 0 32px;
+  }
+
+  .metaLayout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .metaImageWrap {
+    height: 220px;
+  }
+
+  .metaFields {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1.2fr)
+      minmax(48px, 0.55fr)
+      minmax(0, 1.3fr);
+    column-gap: 12px;
+    row-gap: 20px;
+    height: auto;
+  }
+
+  .metaRowTop {
+    display: contents;
+  }
+
+  .metaFields > .metaItem:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .metaItem {
+    min-width: 0;
+    gap: 6px;
+  }
+
+  .metaValue {
+    overflow-wrap: normal;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 1.3;
+  }
+
+  .metaLabel {
+    font-size: 14px;
+  }
+
+  /* ── 3. O desafio ────────────────────────────── */
+  .desafio {
+    padding: 40px 0 24px;
+  }
+
+  .desafioLayout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .desafioLabelCol {
+    padding-left: 0;
+  }
+
+  .desafioLabel {
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+
+  .desafioText p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* ── 4. Pergunta central ─────────────────────── */
+  .pergunta {
+    padding: 24px 0 40px;
+  }
+
+  .quoteIconOpen {
+    width: 44px;
+    margin-bottom: 8px;
+  }
+
+  .quoteLabel {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 12px;
+    padding-left: 0;
+  }
+
+  .quoteText {
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: -0.54px;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .quoteIconClose {
+    width: 44px;
+    margin-top: 12px;
+  }
+
+  /* ── 5. Construindo com as empreendedoras ─────── */
+  .construindo {
+    padding: 40px 0 24px;
+  }
+
+  .construindoText p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .questionsIntro {
+    margin-top: 20px;
+  }
+
+  .questionsGrid {
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+  }
+
+  .questionCard {
+    min-height: auto;
+    padding: 12px 16px;
+  }
+
+  .questionText {
+    font-size: 18px;
+    margin: 6px 0 0;
+  }
+
+  .fotoGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+    padding: 0 24px;
+  }
+
+  .fotoItem {
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .fotoCaption {
+    font-size: 14px;
+    margin-top: 12px;
+    max-width: 100%;
+  }
+
+  /* ── 6. Da conversa para o protótipo ─────────── */
+  /* Ordem mobile: título → imagem → legenda → texto */
+  .conversa {
+    padding: 24px 0 32px;
+  }
+
+  .conversaLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* dissolve os wrappers: filhos tornam-se diretos de conversaLayout */
+  .conversaTextCol {
+    display: contents;
+  }
+
+  .conversa .sectionHeading {
+    order: 1;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .conversaImageCol {
+    display: contents;
+  }
+
+  .conversaImg {
+    order: 2;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-card);
+    margin-bottom: 8px;
+  }
+
+  .conversaCaption {
+    order: 3;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .conversaText {
+    order: 4;
+    width: 100%;
+  }
+
+  .conversaText p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .conversa .textGap {
+    margin-top: 16px;
+  }
+
+  /* ── 7. Aprendizado e prática no mesmo produto ── */
+  .aprendizado {
+    padding: 32px 0 48px;
+  }
+
+  .aprendizadoText {
+    max-width: 100%;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .produtoWrap {
+    padding: 0 24px;
+    margin-top: 20px;
+  }
+
+  .produtoImg {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius-8);
+  }
+
+  .produtoCaption {
+    font-size: 14px;
+    max-width: 100%;
+    margin-top: 8px;
+  }
+
+}
+
+/* ─── Desktop — tratamento editorial de O problema ────────────────── */
+@media (min-width: 1025px) {
+  .desafio {
+    padding: 64px 0 40px;
+  }
+
+  .desafioLayout {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 0;
+    align-items: stretch;
+    overflow: hidden;
+    background: var(--color-white);
+    border-radius: 16px;
+  }
+
+  .desafioLabelCol {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    width: 64px;
+    padding-left: 0;
+    background: var(--color-black);
+  }
+
+  .desafioLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 24px 0;
+    box-sizing: border-box;
+    align-self: stretch;
+    background: var(--color-black);
+    color: var(--color-white);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.48px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+  }
+
+  .desafioText {
+    width: 100%;
+    max-width: none;
+    padding: 48px;
+    box-sizing: border-box;
+    gap: 20px;
+    background: var(--color-white);
+  }
+
+  .desafioText p,
+  .desafioText .textGap {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* ─── Desktop compacto: 1025px–1399px ─────────────────────────────── */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  /* Hero — remove o posicionamento absoluto nas larguras intermediárias */
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(440px, 1fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: end;
+    min-height: 430px;
+    padding: 72px 40px 64px;
+  }
+
+  .heroTitle {
+    position: static;
+    align-self: end;
+    margin: 0;
+    font-size: clamp(60px, 6vw, 84px);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    white-space: normal;
+  }
+
+  .heroMeta {
+    position: static;
+    width: 100%;
+    align-self: end;
+    padding-bottom: 4px;
+  }
+
+  .heroKicker {
+    margin-bottom: 16px;
+    font-size: 30px;
+    line-height: 1.12;
+    letter-spacing: -0.6px;
+  }
+
+  .heroDesc {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .dividerFull {
+    width: calc(100% - 80px);
+    max-width: calc(var(--max-width) - 80px);
+  }
+
+  .container {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  /* Metadata — substitui a coluna fixa de 659px por proporções flexíveis */
+  .metadata {
+    padding: 64px 0 40px;
+  }
+
+  .metaLayout {
+    grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1.1fr);
+    gap: 40px;
+  }
+
+  .metaImageWrap {
+    height: 440px;
+  }
+
+  .metaFields {
+    height: 440px;
+    gap: 28px;
+  }
+
+  .metaRowTop {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(80px, 0.45fr);
+    gap: 24px;
+  }
+
+  .metaItem {
+    min-width: 0;
+    gap: 6px;
+  }
+
+  .metaLabel {
+    font-size: 17px;
+    line-height: 1.4;
+  }
+
+  .metaValue {
+    font-size: 28px;
+    line-height: 1.12;
+    letter-spacing: -0.56px;
+  }
+}
+
+/* ─── Tablet: 769px–1024px ─────────────────────────────────────────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero {
+    padding: 40px 32px;
+    min-height: auto;
+  }
+
+  .heroTitle {
+    position: static;
+    font-size: 56px;
+    letter-spacing: -1.68px;
+    white-space: normal;
+    margin: 0 0 20px;
+  }
+
+  .heroMeta {
+    position: static;
+    width: 100%;
+  }
+
+  /* 659px first column overflows at tablet; equalize to let image scale */
+  .metaLayout {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .metaImageWrap {
+    height: auto;
+  }
+
+  .metaFields {
+    height: auto;
+  }
+
+  .container {
+    padding: 0 32px;
+  }
+}
+
+/* Tablet — metadata em fluxo editorial */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .metadata {
+    padding: 40px 0;
+  }
+
+  .metaLayout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .metaImageWrap {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+  }
+
+  .metaImg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 16px;
+  }
+
+  .metaFields {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(90px, 0.45fr)
+      minmax(240px, 1fr);
+    gap: 28px 24px;
+    width: 100%;
+    height: auto;
+  }
+
+  .metaRowTop {
+    display: contents;
+  }
+
+  /* Papel entra como terceira informação da primeira linha. */
+  .metaFields > .metaItem:nth-child(2) {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  /* Atuação ocupa toda a segunda linha. */
+  .metaFields > .metaItem:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .metaItem {
+    min-width: 0;
+    gap: 6px;
+  }
+
+  .metaLabel {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .metaValue {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.12;
+    letter-spacing: -0.48px;
+  }
+
+  .metaFields > .metaItem:nth-child(2) .metaValue {
+    white-space: nowrap;
+  }
+}
+
+/* Tablet — padrão editorial da seção O problema */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .desafio {
+    padding: 40px 0;
+  }
+
+  .desafioLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
+  }
+
+  .desafioLabelCol {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .desafioLabel {
+    margin: 0;
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -1.68px;
+  }
+
+  .desafioText {
+    width: 100%;
+    max-width: 820px;
+    gap: 20px;
+  }
+
+  .desafioText p,
+  .desafioText .textGap {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+}
+
+/* Tablet — alinha o título da pergunta com o problem statement */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .quoteLabel {
+    padding-left: 0;
+  }
+}
+
+/* Tablet — Da conversa para o protótipo em fluxo editorial */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .conversa {
+    padding: 40px 0;
+  }
+
+  .conversaLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  /* Título e texto passam a participar diretamente da ordenação. */
+  .conversaTextCol,
+  .conversaImageCol {
+    display: contents;
+  }
+
+  .conversa .sectionHeading {
+    order: 1;
+    width: 100%;
+    max-width: 820px;
+    margin: 0 0 24px;
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -1.68px;
+  }
+
+  /* Remove a quebra forçada herdada do desktop. */
+  .conversa .sectionHeading br {
+    display: none;
+  }
+
+  .conversaImg {
+    order: 2;
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 16px;
+    margin: 0;
+  }
+
+  .conversaCaption {
+    order: 3;
+    width: 100%;
+    max-width: 720px;
+    margin: 12px auto 32px;
+    text-align: center;
+  }
+
+  .conversaText {
+    order: 4;
+    width: 100%;
+    max-width: 820px;
+    gap: 20px;
+  }
+
+  .conversaText p,
+  .conversa .textGap {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+}
+
+/* Tablet — ritmo vertical único entre as seções do case Itaú */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .metadata,
+  .desafio,
+  .pergunta,
+  .construindo,
+  .conversa,
+  .aprendizado {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  /* Respiro adicional antes de Outros Projetos. */
+  .aprendizado {
+    padding-bottom: 64px;
+  }
+}
+
+/* ─── Gray box hover (desktop pointer only) ─────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  .questionCard {
+    transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1),
+                background-color 200ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .questionCard:hover {
+    transform: translateY(-2px);
+    background-color: #e5e5e5;
+  }
+}

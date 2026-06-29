@@ -1,0 +1,79 @@
+import { useInView } from '../hooks/useInView'
+import styles from './Skills.module.css'
+import iconEstrategia from '../media/home/experience/icon-estrategia.svg'
+import iconExperiencia from '../media/home/experience/icon-experiencia.svg'
+import iconDados from '../media/home/experience/icon-dados.svg'
+import iconLideranca from '../media/home/experience/icon-lideranca.svg'
+import iconFerramentas from '../media/home/experience/icon-ferramentas.svg'
+
+const items = [
+  {
+    icon: iconEstrategia,
+    title: 'Estratégia e descoberta',
+    subtitleDesktop: 'Estratégia de produto · Discovery· Pesquisa qualitativa · Jornadas · Workshops · Co-criação',
+    subtitleMobile: 'Estratégia de produto · Discovery· Pesquisa qualitativa · Jornadas · Workshops · Cocriação',
+  },
+  {
+    icon: iconExperiencia,
+    title: 'Experiência e interface',
+    subtitleDesktop: 'UX/UI Design · Arquitetura da informação · Fluxos · Prototipação · Testes de usabilidade · Design Systems',
+    subtitleMobile: 'UX/UI Design · Arquitetura da informação · Fluxos · Prototipação · Testes de usabilidade · Design Systems',
+  },
+  {
+    icon: iconDados,
+    title: 'Dados e evolução',
+    subtitleDesktop: 'Métricas de produto· Pesquisa quantitativa · Análise comportamental ·Testes A/B · NPS',
+    subtitleMobile: 'Métricas de produto· Pesquisa quantitativa · Análise comportamental ·Testes A/B · NPS',
+  },
+  {
+    icon: iconLideranca,
+    title: 'Liderança de Design',
+    subtitleDesktop: 'Direção de Design · Desenvolvimento de pessoas · Design Critiques · Contratação · Alinhamento com Stakeholders',
+    subtitleMobile: 'Direção de Design · Desenvolvimento de pessoas · Design Critiques · Contratação · Alinhamento com Stakeholders',
+  },
+  {
+    icon: iconFerramentas,
+    title: 'Ferramentas',
+    subtitleDesktop: 'Figma · Miro · Photoshop · Illustrator · PowerPoint · Jira · Azure · Google Analytics · Hotjar · Claude Code · VS Code',
+    subtitleMobile: 'Figma · Miro · Photoshop · Illustrator · PowerPoint · Jira · Azure · Google Analytics · Hotjar · Claude Code · VS Code',
+  },
+]
+
+export default function Skills() {
+  const [sectionRef, isVisible] = useInView({ threshold: 0.14 })
+
+  return (
+    <section className={styles.section} id="competencias" ref={sectionRef} data-visible={isVisible}>
+      <h2 className={styles.sectionTitle}>
+        Competências &amp;{' '}
+        <br className={styles.mobileBr} />
+        ferramentas
+      </h2>
+      <div className={styles.card}>
+        <ul className={styles.items}>
+          {items.map((item) => (
+            <li key={item.title} className={styles.item}>
+              <div className={styles.iconWrapper}>
+                <img
+                  src={item.icon}
+                  alt=""
+                  aria-hidden="true"
+                  className={styles.icon}
+                />
+              </div>
+              <div className={styles.textGroup}>
+                <span className={styles.itemTitle}>{item.title}</span>
+                <span className={`${styles.itemSubtitle} ${styles.itemSubtitleDesktop}`}>
+                  {item.subtitleDesktop}
+                </span>
+                <span className={`${styles.itemSubtitle} ${styles.itemSubtitleMobile}`}>
+                  {item.subtitleMobile}
+                </span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}

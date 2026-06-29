@@ -1,0 +1,595 @@
+/* ─────────────────────────────────────────────
+   WorksPage — Todos os Trabalhos
+   Desktop reference: 1440px  |  Mobile: 390px
+───────────────────────────────────────────── */
+
+/* ─── Page wrapper ──────────────────────────────────────────────────────── */
+.page {
+  background: var(--color-white);
+}
+
+/* ─── Header ────────────────────────────────────────────────────────────── */
+/*
+  Figma positions are relative to the page content div (which includes the
+  navbar at top: 0). Our .main starts after the sticky navbar (~106px in
+  Figma). All vertical positions are offset by -106px to convert to our
+  coordinate space (where .main top = 0).
+
+  Title:        Figma top 199px → 93px in our .main
+  Description:  Figma top 403px → 297px
+  Infographic:  Figma top 176px → 70px
+  Grid section: Figma top 715px → 609px (= header min-height)
+*/
+.header {
+  position: relative;
+  max-width: var(--max-width);
+  min-height: 609px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.headerText {
+  position: absolute;
+  top: 50%;
+  left: 48px;
+  width: 700px;
+  transform: translateY(-50%);
+}
+
+.pageTitle {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  color: var(--color-black);
+  font-size: 72px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -2.16px;
+  white-space: nowrap;
+}
+
+.pageDescription {
+  width: 700px;
+  margin: 32px 0 0;
+  color: var(--color-black);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.2px;
+}
+
+/* ─── Infographic ──────────────────────────────────────────────────────── */
+.infographic {
+  position: absolute;
+  top: 70px;
+  left: 826px;
+  width: 542px;
+  height: 454px;
+  pointer-events: none;
+}
+
+.infographicSvg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: revealInfographic 600ms ease-out both;
+}
+
+.infographicSvg svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes revealInfographic {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Grid ──────────────────────────────────────────────────────────────── */
+/*
+  Two columns × 640px with 64px gap = 1344px content, fitting within
+  1440px - (2 × 48px) = 1344px container.
+  Right column is offset 120px down per Figma.
+*/
+.grid {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 16px 48px 120px;
+  box-sizing: border-box;
+}
+
+.colLeft,
+.colRight {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 0;
+}
+
+.colRight {
+  padding-top: 80px;
+}
+
+/* ─── Project card ──────────────────────────────────────────────────────── */
+.card {
+  position: relative;
+  display: block;
+  height: 520px;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--color-placeholder);
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+
+@media (hover: hover) {
+  .card:hover {
+    opacity: 0.88;
+  }
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--color-black);
+  outline-offset: 3px;
+}
+
+.cardImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 3%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+}
+
+.cardContent {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--color-white);
+}
+
+.cardTextBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardCategory {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.cardTitle {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.72px;
+}
+
+.cardCta {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+/* ─── Mobile ─────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* ─── Header ─────────────────────────────────────────────────────────── */
+
+  /*
+    Flex column so we can control visual order with the `order` property.
+    headerText gets display:contents so its children (title, description)
+    become direct flex items of .header — the infographic div is already
+    a direct child — allowing order: title → infographic → description.
+  */
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: auto;
+    padding: 40px 24px 0;
+  }
+
+  .headerText {
+    display: contents;
+  }
+
+  .pageTitle {
+    order: 1;
+    position: static;
+    align-items: center;
+    font-size: 36px;
+    letter-spacing: -0.54px;
+    white-space: normal;
+    text-align: center;
+    margin: 0 0 24px;
+  }
+
+  .infographic {
+    order: 2;
+    position: static;
+    width: 100%;
+    height: auto;
+    max-width: 320px;
+    margin: 0 auto 24px;
+  }
+
+  .infographicSvg {
+    height: auto;
+  }
+
+  .infographicSvg svg {
+    height: auto;
+  }
+
+  .pageDescription {
+    order: 3;
+    position: static;
+    width: auto;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.3px;
+    text-align: center;
+    margin: 0 0 40px;
+  }
+
+  /* ─── Grid ───────────────────────────────────────────────────────────── */
+
+  /*
+    display:contents on the column wrappers promotes all 6 cards to direct
+    flex children of .grid, so `order` can interleave them:
+    left[0] right[0] left[1] right[1] left[2] right[2]
+    = QI → Storeroom → Itaú → 3PH → EMR → Smartlog
+  */
+  .grid {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    padding: 0 24px 80px;
+  }
+
+  .colLeft,
+  .colRight {
+    display: contents;
+  }
+
+  .colLeft .card:nth-child(1) { order: 1; }
+  .colLeft .card:nth-child(2) { order: 3; }
+  .colLeft .card:nth-child(3) { order: 5; }
+  .colRight .card:nth-child(1) { order: 2; }
+  .colRight .card:nth-child(2) { order: 4; }
+  .colRight .card:nth-child(3) { order: 6; }
+
+  /* ─── Cards ──────────────────────────────────────────────────────────── */
+
+  .card {
+    height: 360px;
+    width: 100%;
+  }
+
+  .cardContent {
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    gap: 16px;
+  }
+
+  .cardTextBlock {
+    gap: 8px;
+  }
+
+  .cardCategory {
+    font-size: 14px;
+  }
+
+  .cardTitle {
+    font-size: 24px;
+    letter-spacing: -0.24px;
+  }
+
+  .cardCta {
+    font-size: 14px;
+  }
+}
+
+/* ─── Tablet: 769px–1024px ─────────────────────────────────────────── */
+/* Header: flow layout (text left, infographic right) instead of absolute */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .header {
+    display: flex;
+    align-items: center;
+    min-height: auto;
+    padding: 32px 0 0;
+    gap: 24px;
+  }
+
+  /* position: static resets desktop position: absolute; transform: translateY(-50%) */
+  .headerText {
+    position: static;
+    flex: 0 0 360px;
+    transform: none;
+    width: auto;
+    padding: 0 0 0 32px;
+  }
+
+  .pageTitle {
+    font-size: 48px;
+    letter-spacing: -1.44px;
+    white-space: normal;
+  }
+
+  .pageDescription {
+    width: auto;
+    font-size: 28px;
+    letter-spacing: -0.56px;
+    margin-top: 20px;
+  }
+
+  /* Infographic: static flex child, scales to remaining space */
+  .infographic {
+    position: static;
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    height: auto;
+  }
+
+  .infographicSvg,
+  .infographicSvg svg {
+    height: auto;
+  }
+
+  .grid {
+    padding-inline: 32px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
+
+/* ─── Flowchart sequential loop animation ─────────────────────────────────── */
+
+/* Base: nodes and connections dimmed — "waiting to activate" */
+#flow-n1, #flow-n2, #flow-n3, #flow-n4, #flow-n5, #flow-n6 {
+  opacity: 0.55;
+}
+
+#flow-c1, #flow-c2, #flow-c3, #flow-c4 {
+  opacity: 0.3;
+}
+
+@keyframes flowNodePulse {
+  0%   { opacity: 0.55; }
+  10%  { opacity: 1; }
+  25%  { opacity: 0.55; }
+  100% { opacity: 0.55; }
+}
+
+@keyframes flowConnPulse {
+  0%   { opacity: 0.3; }
+  10%  { opacity: 0.85; }
+  25%  { opacity: 0.3; }
+  100% { opacity: 0.3; }
+}
+
+/*
+  Sequence: N6 → (C2+C4) → (N5+N4) → (C1+C3) → N3 → (N1+N2)
+  Duration: 3500ms  |  Step interval: 440ms  |  Initial offset: 600ms
+  Pause between last-fade and next-N6-peak: ~775ms
+*/
+.flowRunning #flow-n6 {
+  animation: flowNodePulse 3500ms cubic-bezier(0.4, 0, 0.6, 1) 600ms infinite both;
+}
+
+.flowRunning #flow-c2,
+.flowRunning #flow-c4 {
+  animation: flowConnPulse 3500ms cubic-bezier(0.4, 0, 0.6, 1) 1040ms infinite both;
+}
+
+.flowRunning #flow-n5,
+.flowRunning #flow-n4 {
+  animation: flowNodePulse 3500ms cubic-bezier(0.4, 0, 0.6, 1) 1480ms infinite both;
+}
+
+.flowRunning #flow-c1,
+.flowRunning #flow-c3 {
+  animation: flowConnPulse 3500ms cubic-bezier(0.4, 0, 0.6, 1) 1920ms infinite both;
+}
+
+.flowRunning #flow-n3 {
+  animation: flowNodePulse 3500ms cubic-bezier(0.4, 0, 0.6, 1) 2360ms infinite both;
+}
+
+.flowRunning #flow-n1,
+.flowRunning #flow-n2 {
+  animation: flowNodePulse 3500ms cubic-bezier(0.4, 0, 0.6, 1) 2800ms infinite both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #flow-n1, #flow-n2, #flow-n3, #flow-n4, #flow-n5, #flow-n6,
+  #flow-c1, #flow-c2, #flow-c3, #flow-c4 {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}
+
+/* Desktop compacto — 1025px–1399px */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .header {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(380px, 0.95fr);
+    align-items: center;
+    min-height: auto;
+    padding: 64px 40px 72px;
+    gap: 40px;
+  }
+
+  .headerText {
+    position: static;
+    width: auto;
+    min-width: 0;
+    transform: none;
+  }
+
+  .pageTitle {
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: -1.92px;
+    white-space: normal;
+  }
+
+  .pageDescription {
+    width: auto;
+    max-width: 620px;
+    margin-top: 24px;
+    font-size: clamp(30px, 3vw, 36px);
+    line-height: 1.1;
+    letter-spacing: -0.72px;
+  }
+
+  .infographic {
+    position: static;
+    width: 100%;
+    height: auto;
+    min-width: 0;
+  }
+
+  .infographicSvg,
+  .infographicSvg svg {
+    height: auto;
+  }
+
+  .grid {
+    gap: 24px;
+    padding: 0 40px 96px;
+  }
+
+  .colLeft,
+  .colRight {
+    gap: 24px;
+  }
+
+  .colRight {
+    padding-top: 56px;
+  }
+
+  .card {
+    height: 440px;
+  }
+
+  .cardTitle {
+    font-size: 30px;
+    line-height: 1.12;
+    letter-spacing: -0.6px;
+  }
+
+  .cardCategory,
+  .cardCta {
+    font-size: 16px;
+  }
+}
+
+/* Tablet estreito — mantém navegação mobile, mas amplia o header da Works */
+@media (min-width: 700px) and (max-width: 768px) {
+  .header {
+    padding: 56px 40px 0;
+  }
+
+  .pageTitle {
+    margin-bottom: 32px;
+    font-size: 48px;
+    line-height: 1.05;
+    letter-spacing: -1.44px;
+  }
+
+  .infographic {
+    max-width: 430px;
+    margin-bottom: 36px;
+  }
+
+  .pageDescription {
+    max-width: 620px;
+    margin-right: auto;
+    margin-bottom: 56px;
+    margin-left: auto;
+    font-size: 24px;
+    line-height: 1.35;
+    letter-spacing: -0.24px;
+  }
+
+  .grid {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+/* ─── Project cards viewport reveal ─────────────────────────────────────── */
+
+.cardReveal {
+  --reveal-delay: 0ms;
+
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 500ms cubic-bezier(0.23, 1, 0.32, 1) var(--reveal-delay),
+    transform 500ms cubic-bezier(0.23, 1, 0.32, 1) var(--reveal-delay);
+}
+
+.cardVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .cardReveal {
+    transform: translateY(10px);
+  }
+
+  .cardVisible {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardReveal,
+  .cardVisible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

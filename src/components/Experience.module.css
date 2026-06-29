@@ -1,0 +1,550 @@
+.section {
+  padding: 0 var(--page-padding) 120px;
+}
+
+.container {
+  max-width: calc(var(--max-width) - 96px);
+  margin: 0 auto;
+}
+
+/* ── Heading ─────────────────────────────────────────────────── */
+
+.heading {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 500;
+  font-size: 72px;
+  line-height: 1;
+  letter-spacing: -2.16px;
+  color: var(--color-black);
+  white-space: nowrap;
+  padding: 10px;
+  margin: 0 0 0 -10px; /* compensate padding so text aligns with container edge */
+}
+
+/* ── Desktop Companies ───────────────────────────────────────── */
+
+.desktopCompanies {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--color-divider);
+}
+
+.companyRow {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: center;
+  padding: 24px 16px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.experienceBody {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.positions {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.position {
+  position: relative;
+  padding: 0 0 32px 32px;
+}
+
+.position:last-child {
+  padding-bottom: 0;
+}
+
+.position::before {
+  position: absolute;
+  top: 14px;
+  bottom: -14px;
+  left: 7px;
+  width: 1px;
+  content: '';
+  background: var(--color-black);
+}
+
+.position:last-child::before {
+  display: none;
+}
+
+.position::after {
+  position: absolute;
+  top: 8px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  content: '';
+  background: var(--color-black);
+  transform: rotate(45deg);
+}
+
+.positionTitle {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.45;
+  color: var(--color-black);
+  margin: 0 0 8px;
+}
+
+.positionDesc {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.companyLogo {
+  width: 144px;
+  height: 100px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* ── Mobile Companies (hidden on desktop) ────────────────────── */
+
+.mobileCompanies {
+  display: none;
+}
+
+/* ── LinkedIn Link ───────────────────────────────────────────── */
+
+.linkedinLink {
+  position: relative;
+  display: inline-block;
+  padding: 4px 0;
+  margin-top: 48px;
+  color: var(--color-black);
+  text-decoration: none;
+}
+
+.linkedinText {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-black);
+  white-space: nowrap;
+}
+
+.linkedinLink::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 320ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.linkedinLink:hover::after,
+.linkedinLink:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* ── Mobile ──────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .section {
+    padding: 0 24px 80px;
+  }
+
+  .heading {
+    font-size: 36px;
+    letter-spacing: -0.54px;
+    line-height: 1.15;
+    white-space: normal;
+    padding: 0;
+    margin: 0 0 16px;
+  }
+
+  .desktopCompanies {
+    display: none;
+  }
+
+  /* Accordion container */
+  .mobileCompanies {
+    display: block;
+    border-top: 1px solid var(--color-divider);
+  }
+
+  .mobileCompany {
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .mobileCompany:last-child {
+    border-bottom: none;
+  }
+
+  /* Clickable header — full width button */
+  .mobileHeader {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 16px 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    text-align: left;
+    color: inherit;
+  }
+
+  /* Left side: position titles */
+  .mobilePositions {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mobileTitleSenior {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-black);
+  }
+
+  .mobileTitleJunior {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-black);
+  }
+
+  /* Logos — visible only in open header, left-aligned, per-brand sizing */
+  .mobileLogo3ph {
+    width: 200px;
+    height: auto;
+    max-height: 56px;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .mobileLogoSciensa {
+    width: 168px;
+    height: auto;
+    max-height: 56px;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .mobileLogoNetfarma {
+  width: 152px;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: left center;
+}
+
+  /* Chevron — isolated top-right, direct child of button */
+  .chevron {
+    display: block;
+    flex-shrink: 0;
+    color: var(--color-black);
+    transition: transform 240ms ease;
+  }
+
+  .chevronOpen {
+    transform: rotate(180deg);
+  }
+
+  /* Expanded content — animated with CSS Grid */
+  .mobileContent {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      grid-template-rows 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 200ms ease,
+      visibility 0s linear 320ms;
+  }
+
+  .mobileContentOpen {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    opacity: 1;
+    transition:
+      grid-template-rows 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 240ms ease 60ms,
+      visibility 0s linear 0s;
+  }
+
+  .mobileContentInner {
+    min-height: 0;
+    overflow: hidden;
+    padding-bottom: 0;
+    transition: padding-bottom 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mobileContentOpen .mobileContentInner {
+    padding-bottom: 16px;
+  }
+
+  .mobilePositionExpanded {
+    position: relative;
+    padding: 16px 0 0 24px;
+  }
+
+  .mobilePositionExpanded::before {
+    position: absolute;
+    top: 26px;
+    bottom: -20px;
+    left: 5px;
+    width: 1px;
+    content: '';
+    background: var(--color-black);
+  }
+
+  .mobilePositionExpanded:last-child::before {
+    display: none;
+  }
+
+  .mobilePositionExpanded::after {
+    position: absolute;
+    top: 21px;
+    left: 1px;
+    width: 9px;
+    height: 9px;
+    content: '';
+    background: var(--color-black);
+    transform: rotate(45deg);
+  }
+
+  .mobilePositionExpanded + .mobilePositionExpanded {
+    padding-top: 24px;
+  }
+
+  .mobileExpandedTitle {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--color-black);
+    margin: 0 0 6px;
+  }
+
+  .mobileExpandedDesc {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-black);
+    margin: 0;
+  }
+
+  .linkedinLink {
+    margin-top: 32px;
+  }
+
+  .linkedinText {
+    font-size: 16px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobileContent,
+    .mobileContentOpen,
+    .mobileContentInner,
+    .chevron {
+      transition: none;
+    }
+  }
+}
+
+/* Tablet visual refinement */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section {
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+
+  .companyRow {
+    align-items: center;
+    padding: 28px 16px;
+  }
+
+  .experienceBody {
+    gap: 0;
+  }
+
+  .positionTitle {
+    margin-bottom: 8px;
+  }
+
+  .companyLogo {
+    width: 120px;
+  }
+}
+
+/* Responsive CSS timeline stabilization */
+.experienceBody,
+.positions,
+.position {
+  min-width: 0;
+}
+
+.position {
+  display: flow-root;
+}
+
+.positionTitle,
+.positionDesc {
+  overflow-wrap: anywhere;
+}
+
+.companyLogo {
+  margin-left: auto;
+}
+
+/* Desktop compacto — 1025px–1399px */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .section {
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-bottom: 96px;
+  }
+
+  .heading {
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: -1.92px;
+  }
+
+  .companyRow {
+    gap: 16px;
+    padding: 24px 8px;
+  }
+
+  .experienceBody {
+    min-width: 0;
+  }
+
+  .position {
+    padding-left: 28px;
+  }
+
+  .positionTitle {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .positionDesc {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .companyLogo {
+    width: 120px;
+    height: 88px;
+  }
+
+  .linkedinLink {
+    margin-top: 40px;
+  }
+
+  .linkedinText {
+    font-size: 22px;
+  }
+}
+
+/* ─── Experience entrance animation (desktop + tablet only) ───────────── */
+/* Scoped entirely to min-width: 769px so the mobile accordion is untouched.
+   opacity + translateY only — no layout shift, no clip-path, no height changes.
+   Timeline dots and lines (::before/::after) are children of .position inside
+   .companyRow — they fade in as part of the row, not separately. */
+
+@media (min-width: 769px) {
+  .heading {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 360ms cubic-bezier(0.23, 1, 0.32, 1),
+      transform 360ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .companyRow {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 380ms cubic-bezier(0.23, 1, 0.32, 1),
+      transform 380ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .section[data-visible='true'] .heading {
+    opacity: 1;
+    transform: none;
+    transition-delay: 220ms;
+  }
+
+  .section[data-visible='true'] .companyRow:nth-child(1) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 320ms;
+  }
+
+  .section[data-visible='true'] .companyRow:nth-child(2) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 420ms;
+  }
+
+  .section[data-visible='true'] .companyRow:nth-child(3) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 520ms;
+  }
+}
+
+/* Hover: subtle background shift on pointer devices only.
+   Re-declares the full transition list to preserve opacity + transform from
+   the entrance animation — a partial transition: would override them. */
+@media (min-width: 769px) and (hover: hover) and (pointer: fine) {
+  .companyRow {
+    transition:
+      opacity 380ms cubic-bezier(0.23, 1, 0.32, 1),
+      transform 380ms cubic-bezier(0.23, 1, 0.32, 1),
+      background-color 200ms ease-out;
+  }
+
+  .companyRow:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
+
+/* Reduced motion: immediate reveal, no transform.
+   Comes after hover so transition: none wins over the hover's transition list.
+   The hover background-color still applies (instant, no animation). */
+@media (min-width: 769px) and (prefers-reduced-motion: reduce) {
+  .heading,
+  .companyRow {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hyperlineImg {
+    transition: none;
+  }
+}

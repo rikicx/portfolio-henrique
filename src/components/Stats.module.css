@@ -1,0 +1,231 @@
+/* ─── Desktop: 1440px reference (Figma 130:208) ─────────────────────── */
+/* Cards: left=48 | 318px | gap 24px | 318px | gap 24px | 660px | right=48 */
+/* Total grid content: 318+24+318+24+660 = 1344px. Container: 1344+96 = 1440px. */
+/* Gap below cards to Projects SectionTitle (page 1112 − card bottom 992) = 120px. */
+
+.section {
+  padding-bottom: 120px;
+}
+
+/* Container aligns with the page's max-width: 1440px inner, same as Hero.
+   Horizontal padding (48px each side) lives on the container — not the section —
+   so centering at 1920px works without double offset. box-sizing: border-box
+   keeps the 48px padding inside the 1440px max-width budget. */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 318px 318px 660px;
+  gap: 24px;
+}
+
+/* StatCard: bg #efefef, radius 16px, padding 24px, gap 8px */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+/* Heading/H1: 48px, 500, lh 1.1, ls -1.44px */
+.valueDesktop {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.44px;
+  color: var(--color-black);
+}
+
+.valueMobile {
+  display: none;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.24px;
+  color: var(--color-black);
+}
+
+/* Body/L: 20px, 500, lh 1.45 */
+.label {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-black);
+}
+
+/* ─── Mobile: 390px reference (Figma 417:2598) ─────────────────────── */
+/* Row 1: card1 132px + 8px gap + card2 202px = 342px (side by side).         */
+/* Row 2: card3 342px spans both columns (full content width).                 */
+/* Container: 24px padding each side → content = 390−48 = 342px.              */
+/* Radius: 8px. Padding: 16px. No internal gap. Content centered.             */
+
+@media (max-width: 768px) {
+  .section {
+    padding-bottom: 48px;
+  }
+
+  /* Two fixed columns: 132px | 8px gap | 202px = 342px = content width.
+     Grid prevents wrapping; cards stay side by side at any viewport. */
+  .container {
+    padding: 0 24px;
+    grid-template-columns: minmax(0, 132fr) minmax(0, 202fr);
+    gap: 8px;
+  }
+
+  /* Radius 8px, padding 16px, no gap between heading and label.
+     align-items: center centers content horizontally within each card. */
+  .card {
+    border-radius: 8px;
+    padding: 16px;
+    gap: 0;
+    align-items: center;
+  }
+
+  /* Wide card spans both columns → 132 + 8 + 202 = 342px = full content width. */
+  .cardWide {
+    grid-column: 1 / -1;
+  }
+
+  .valueDesktop {
+    display: none;
+  }
+
+  /* Heading/H3: 24px, Regular (400), lh 1.25, ls -0.24px. Centered. */
+  .valueMobile {
+    display: block;
+    text-align: center;
+  }
+
+  /* Label/S: 14px, 500, lh 1.45. Centered. */
+  .label {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.45;
+    text-align: center;
+  }
+}
+
+/* ─── Tablet: 769px–1024px ─────────────────────────────────────────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section {
+    padding-bottom: 80px;
+  }
+
+  .container {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 0 32px;
+  }
+
+  /* Third card spans both columns */
+  .cardWide {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Tablet — reduz a escala visual dos cards de métricas */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .card {
+    gap: 6px;
+    padding: 20px;
+  }
+
+  .valueDesktop {
+    font-size: 40px;
+    line-height: 1.08;
+    letter-spacing: -0.8px;
+  }
+
+  .label {
+    font-size: 18px;
+    line-height: 1.45;
+  }
+}
+
+/* Desktop compacto — grade fluida antes do desktop de 1440px */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .section {
+    padding-bottom: 96px;
+  }
+
+  .container {
+    padding: 0 40px;
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr)
+      minmax(0, 1.6fr);
+    gap: 16px;
+  }
+
+  .card {
+    gap: 6px;
+    padding: 20px;
+  }
+
+  .valueDesktop {
+    font-size: 40px;
+    line-height: 1.08;
+    letter-spacing: -0.8px;
+  }
+
+  .label {
+    font-size: 18px;
+    line-height: 1.45;
+  }
+}
+
+/* ─── Stats entrance animation ────────────────────────────────────────── */
+
+/* Initial state: cards hidden. opacity + transform only — no layout shift. */
+.card {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 380ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 380ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Visible state: all cards revealed */
+.section[data-visible='true'] .card {
+  opacity: 1;
+  transform: none;
+}
+
+/* Desktop + tablet: espera breve antes da entrada e mantém
+   o stagger da esquerda para a direita. */
+.section[data-visible='true'] .card:nth-child(1) {
+  transition-delay: 260ms;
+}
+
+.section[data-visible='true'] .card:nth-child(2) {
+  transition-delay: 340ms;
+}
+
+.section[data-visible='true'] .card:nth-child(3) {
+  transition-delay: 420ms;
+}
+
+/* Mobile: os três cards entram juntos, após uma espera curta. */
+@media (max-width: 768px) {
+  .section[data-visible='true'] .card:nth-child(1),
+  .section[data-visible='true'] .card:nth-child(2),
+  .section[data-visible='true'] .card:nth-child(3) {
+    transition-delay: 220ms;
+  }
+}
+
+/* Reduced motion: show immediately with no animation.
+   transition: none stops all transitions; trigger rules don't set transition,
+   so this wins for that property regardless of specificity order. */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

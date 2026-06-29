@@ -1,0 +1,442 @@
+/* ─── Desktop: 1440px reference (Figma 130:208) ─────────────────────── */
+/* SectionTitle: page left=32px. Cards: page left=48px. Title is 16px left of cards. */
+/* Cards: 420×480px, gap 42px. 3×420+2×42+2×48=1440px content budget.     */
+/* Stats provides 120px bottom spacing → no section padding-top needed.     */
+/* After cards (page y=1732) to Quote (y=1972): padding-bottom=240px.       */
+
+.section {
+  padding-bottom: 240px;
+}
+
+/* Same max-width/margin pattern as Hero and Stats. */
+.titleWrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+/* Display/XL: 96px, 500, lh 1, ls -2.88px. SectionTitle has p-[10px] in Figma.
+   margin-left: -16px moves title left edge to 48-16=32px from page edge (Figma: left=32). */
+.heading {
+  font-size: 72px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -2.16px;
+  color: var(--color-black);
+  margin-left: -16px;
+  padding: 10px;
+  white-space: nowrap;
+}
+
+/* Rail: flex row, centered. margin-top: 24px = gap from title to cards.
+   Title div bottom (y=1228) + 24px gap = cards at y=1252 (Figma). */
+.rail {
+  max-width: 1440px;
+  margin: 24px auto 0;
+  padding: 0 48px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  gap: 42px;
+}
+
+/* Project Card: 420×480px, radius 16px. Position relative for image/overlay stacking.
+   display: block and text-decoration: none reset <a> element defaults from Link. */
+.card {
+  display: block;
+  position: relative;
+  flex: 0 0 420px;
+  height: 480px;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+/* Keyboard focus ring — outline follows border-radius in modern browsers.
+   Appears outside the card in the page background (not clipped by overflow: hidden). */
+.card:focus-visible {
+  outline: 2px solid var(--color-black);
+  outline-offset: 3px;
+}
+
+/* Full-bleed images — stacked via absolute; EMR uses two (bg + overlay). */
+.cardImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-width: none;
+  display: block;
+  pointer-events: none;
+}
+
+/* Gradient: transparent at 3% top → rgba(0,0,0,0.75) at bottom (Figma overlay). */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 3%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+/* Content: bottom=33px, sides=32px. Figma: bottom-[33px] left-[32px] right-[32px]. */
+.content {
+  position: absolute;
+  bottom: 33px;
+  left: 32px;
+  right: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+/* Text block: category + title. gap 12px (Figma: gap-[12px]). */
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Label/S: 14px, 500, lh 1.25 */
+.category {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-white);
+}
+
+/* Heading/H2: 36px, 500, lh 1.15, ls -0.54px */
+.cardTitle {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.54px;
+  color: var(--color-white);
+}
+
+/* Label/M: 16px, 500, lh 1.25. gap-[8px] between "Ver Projeto" and "→". */
+.link {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-white);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* ─── Mobile: 390px reference (Figma 417:2598) ─────────────────────── */
+/* Title: left-aligned at 24px, 36px font.                                 */
+/* Slider: overflow-x auto, snap, padding-inline 24px, gap 16px.          */
+/* Card: 342×360px. Order: Gerdau(2nd in data)→first, QI(1st)→second, EMR(3rd)→third. */
+
+@media (max-width: 768px) {
+  .section {
+    padding-bottom: 40px;
+  }
+
+  .titleWrapper {
+    padding: 0 24px;
+    margin-bottom: 8px;
+  }
+
+  /* Heading/H2: 36px on mobile. Reset desktop margin-left offset and padding. */
+  .heading {
+    font-size: 36px;
+    letter-spacing: -0.54px;
+    line-height: 1.15;
+    margin-left: 0;
+    padding: 0;
+    white-space: normal;
+  }
+
+  /* Horizontal slider: edge-to-edge, scroll-snap. Hide scrollbar chrome only. */
+  .rail {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    padding-inline: 24px;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Card: 342×360px. scroll-snap-align center so first card snaps at x=24. */
+  .card {
+    flex: 0 0 342px;
+    height: 360px;
+    scroll-snap-align: center;
+  }
+
+  /* Mobile order differs from desktop:
+     data[0]=QI(→ order 1), data[1]=Gerdau(→ order 0), data[2]=EMR(→ order 2) */
+  .card:nth-child(1) { order: 1; }
+  .card:nth-child(2) { order: 0; }
+  .card:nth-child(3) { order: 2; }
+
+  /* Mobile card content: tighter gaps. */
+  .content {
+    gap: 16px;
+  }
+
+  .textBlock {
+    gap: 8px;
+  }
+
+  /* Heading/H3: 24px Regular on mobile cards (Figma: text-[24px] leading-[1.25] tracking-[-0.24px]). */
+  .cardTitle {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.24px;
+  }
+
+  /* Link: 14px on mobile (Figma: text-[14px]), gap 6px. */
+  .link {
+    font-size: 14px;
+    gap: 6px;
+  }
+}
+
+/* ─── Tablet: 769px–1024px ─────────────────────────────────────────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .titleWrapper {
+    padding: 0 32px;
+  }
+
+  .heading {
+    font-size: 48px;
+    letter-spacing: -1.44px;
+    white-space: normal;
+    margin-left: 0;
+    padding: 8px 0;
+  }
+
+  /* Horizontal scroll rail — same pattern as mobile but with larger cards */
+  .rail {
+    max-width: 100%;
+    margin: 16px 0 0;
+    padding-inline: 32px;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    flex: 0 0 380px;
+    height: 440px;
+    scroll-snap-align: start;
+  }
+}
+
+/* Tablet visual refinement */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section {
+    padding-bottom: 88px;
+  }
+
+  .rail {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    padding-right: 32px;
+    padding-left: 32px;
+    scroll-padding-right: 32px;
+    scroll-padding-left: 32px;
+  }
+}
+
+/* Desktop compacto — 1025px–1399px */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .section {
+    padding-bottom: 160px;
+  }
+
+  .titleWrapper {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  .heading {
+    margin-left: 0;
+    padding: 8px 0;
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: -1.92px;
+    white-space: normal;
+  }
+
+  .rail {
+    width: 100%;
+    max-width: 1440px;
+    margin-top: 20px;
+    padding-right: 40px;
+    padding-left: 40px;
+    gap: 20px;
+  }
+
+  .card {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 420px;
+  }
+
+  .content {
+    right: 24px;
+    bottom: 24px;
+    left: 24px;
+    gap: 18px;
+  }
+
+  .textBlock {
+    gap: 8px;
+  }
+
+  .cardTitle {
+    font-size: clamp(26px, 2.4vw, 32px);
+    line-height: 1.12;
+    letter-spacing: -0.64px;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* ─── Projects hover effects ─────────────────────────────────────────── */
+
+/* Pointer devices only — no hover effects on touch */
+@media (hover: hover) and (pointer: fine) {
+  /* Image scale — contained by card overflow: hidden; card itself does not move */
+  .cardImg {
+    transition: transform 280ms ease-out;
+  }
+
+  .card:hover .cardImg {
+    transform: scale(1.05);
+  }
+
+  /* "Ver Projeto" visual element responds to card hover */
+  .link {
+    transition: opacity 200ms ease-out;
+  }
+
+  .card:hover .link {
+    opacity: 0.8;
+  }
+
+  /* Arrow responds to card hover */
+  .link span:last-child {
+    transition: transform 200ms ease-out;
+  }
+
+  .card:hover .link span:last-child {
+    transform: translateX(6px);
+  }
+}
+
+/* Arrow also responds to keyboard focus-visible on the card (all devices) */
+.card:focus-visible .link span:last-child {
+  transform: translateX(4px);
+}
+
+/* Within hover context: disable motion transforms for reduced motion */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
+  .cardImg,
+  .link span:last-child {
+    transition: none;
+  }
+
+  .card:hover .cardImg,
+  .card:hover .link span:last-child {
+    transform: none;
+  }
+}
+
+/* Focus-visible arrow: no transform in reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .card:focus-visible .link span:last-child {
+    transform: none;
+  }
+}
+
+/* ─── Projects entrance animation ────────────────────────────────────── */
+
+/* Heading hidden across all breakpoints */
+.heading {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 380ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 380ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Cards hidden on desktop + tablet only.
+   Mobile slider cards stay visible to signal horizontal scrollability. */
+@media (min-width: 769px) {
+  .card {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 420ms cubic-bezier(0.23, 1, 0.32, 1),
+      transform 420ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+}
+
+/* Heading reveal — 220ms base delay so user perceives the entry on arrival */
+.section[data-visible='true'] .heading {
+  opacity: 1;
+  transform: none;
+  transition-delay: 220ms;
+}
+
+/* Cards reveal with stagger — desktop + tablet only.
+   Stagger of 80ms; 320ms base keeps cards behind the heading. */
+@media (min-width: 769px) {
+  .section[data-visible='true'] .card:nth-child(1) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 320ms;
+  }
+
+  .section[data-visible='true'] .card:nth-child(2) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 400ms;
+  }
+
+  .section[data-visible='true'] .card:nth-child(3) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 480ms;
+  }
+}
+
+/* Reduced motion: show everything immediately, no transitions */
+@media (prefers-reduced-motion: reduce) {
+  .heading {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 769px) {
+  .card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
