@@ -321,8 +321,9 @@
 @media (max-width: 768px) {
 
   .footer {
-    position: relative;
-    bottom: auto;
+    position: sticky;
+    bottom: 0;
+    overflow: visible;
   }
 
   .inner {
