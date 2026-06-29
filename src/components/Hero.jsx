@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react'
 import styles from './Hero.module.css'
 import heroUrl from '../media/home/hero/henrique-hero.webp'
+import FloatingTools from './FloatingTools'
 
 const LETTERS = 'Henrique'.split('')
 
@@ -148,7 +149,10 @@ export default function Hero() {
 
         {/* Desktop: absolute left=831px top=32px. Mobile: in-flow, pulled up to overlap name */}
         <div className={styles.photoWrapper} aria-hidden="true" ref={photoWrapperRef}>
-          <img src={heroUrl} alt="" className={styles.photo} />
+          <div className={styles.photoInner}>
+            <img src={heroUrl} alt="" className={styles.photo} />
+            <FloatingTools />
+          </div>
         </div>
 
         <div className={styles.textStack}>

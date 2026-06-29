@@ -179,16 +179,13 @@ export default function Experience() {
         </div>
 
         <a
-          href="https://linkedin.com/in/"
+          href="https://www.linkedin.com/in/henrique-m-silva/"
           className={styles.linkedinLink}
           target="_blank"
           rel="noopener noreferrer"
         >
           <span className={styles.linkedinText}>
             Ver trajetória completa no LinkedIn ↗
-          </span>
-          <span className={styles.hyperlineDecor} aria-hidden="true">
-            <img src={hyperlineSvg} alt="" className={styles.hyperlineImg} />
           </span>
         </a>
       </div>

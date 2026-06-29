@@ -33,7 +33,7 @@ export default function Footer() {
 
         <nav className={styles.links} aria-label="Links de contato">
           <a
-            href="https://linkedin.com/in/"
+            href="https://www.linkedin.com/in/henrique-m-silva/"
             className={styles.link}
             target="_blank"
             rel="noopener noreferrer"
@@ -45,7 +45,12 @@ export default function Footer() {
             E-mail ↗
           </a>
           <span className={styles.dot} aria-hidden="true" />
-          <a href="#" className={styles.link} aria-label="Currículo (em breve)">
+          <a
+            href="/curriculo/index.html"
+            className={styles.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Currículo ↗
           </a>
         </nav>

@@ -137,6 +137,8 @@
 
 /* Link — Label/L: 24px, 500 */
 .link {
+  position: relative;
+  display: inline-block;
   font-size: 24px;
   font-weight: 500;
   line-height: 1.25;
@@ -144,11 +146,25 @@
   color: var(--color-white);
   text-decoration: none;
   white-space: nowrap;
-  transition: opacity var(--transition);
 }
 
-.link:hover {
-  opacity: 0.6;
+.link::after {
+  position: absolute;
+  right: 0;
+  bottom: -4px;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 320ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.link:hover::after,
+.link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
 }
 
 /* Separator dot — 11px circle */
@@ -416,5 +432,11 @@
   .inner {
     animation: none;
     transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link::after {
+    transition: none;
   }
 }

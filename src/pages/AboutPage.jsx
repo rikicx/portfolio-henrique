@@ -60,12 +60,7 @@ const principles = [
 
 function HyperLink({ to = null, href = null, children }) {
   const inner = (
-    <>
-      <span className={styles.hyperlinkText}>{children}</span>
-      <span className={styles.hyperlineDecor} aria-hidden="true">
-        <img src={hyperlineSvg} alt="" className={styles.hyperlineImg} />
-      </span>
-    </>
+    <span className={styles.hyperlinkText}>{children}</span>
   )
   if (to) {
     return <Link to={to} className={styles.hyperlink}>{inner}</Link>

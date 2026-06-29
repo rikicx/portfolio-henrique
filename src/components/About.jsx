@@ -42,8 +42,13 @@ export default function About() {
             </p>
           </div>
           <div className={styles.actions}>
-            <a href="#" className={styles.btn}>
-              Ver Currículo →
+            <a
+              href="/curriculo/index.html"
+              className={styles.btn}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver Currículo ↗
             </a>
             <a
               href="https://linkedin.com/in/"
@@ -51,7 +56,7 @@ export default function About() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              LinkedIn →
+              LinkedIn ↗
             </a>
           </div>
         </div>
