@@ -328,7 +328,7 @@
 
   .inner {
 
-    padding: 96px 24px 72px;
+    padding: 96px 24px 32px;
 
   }
 
@@ -338,7 +338,7 @@
 
     align-items: center;
 
-    gap: 56px;
+    gap: 32px;
 
     padding: 144px 0 72px;
 
