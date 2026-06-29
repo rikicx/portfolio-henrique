@@ -24,3 +24,6 @@ pnpm-debug.log*
 
 # Cache local do Impeccable
 .impeccable/
+
+# Arquivos brutos não publicados
+src/media/Fotos Storeroom/
