@@ -216,6 +216,27 @@
   }
 }
 
+/* ─── Image hover (pointer devices only) ─────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  .cardImg {
+    transition: transform 280ms ease-out;
+  }
+
+  .card:hover .cardImg {
+    transform: scale(1.05);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
+  .cardImg {
+    transition: none;
+  }
+
+  .card:hover .cardImg {
+    transform: none;
+  }
+}
+
 /* Desktop compacto — 1025px–1399px */
 @media (min-width: 1025px) and (max-width: 1399px) {
   .container,
