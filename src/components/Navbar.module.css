@@ -49,10 +49,6 @@
   transition: opacity var(--transition);
 }
 
-.brand:hover {
-  opacity: 0.6;
-}
-
 .brand img {
   display: block;
   width: auto;
@@ -76,10 +72,6 @@
     font-size 240ms ease;
 }
 
-.link:hover {
-  opacity: 0.55;
-}
-
 .linkActive {
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -101,12 +93,13 @@
   white-space: nowrap;
   transition:
     opacity var(--transition),
+    transform 100ms ease-out,
     padding 240ms ease,
     font-size 240ms ease;
 }
 
-.ctaBtn:hover {
-  opacity: 0.75;
+.ctaBtn:active {
+  transform: scale(0.97);
 }
 
 /* Hamburger */
@@ -127,8 +120,8 @@
   border-radius: 2px;
   background: var(--color-black);
   transition:
-    transform 0.2s ease,
-    opacity 0.2s ease;
+    transform 200ms cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 200ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 /* X transformation when open */
@@ -169,10 +162,6 @@
     font-size 240ms ease;
 }
 
-.dropdownTrigger:hover {
-  opacity: 0.55;
-}
-
 .dropdownTriggerActive {
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -181,13 +170,14 @@
 
 .chevron {
   flex-shrink: 0;
-  transition: transform 0.15s ease;
+  transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .chevronOpen {
   transform: rotate(180deg);
 }
 
+/* Dropdown — always in DOM, visibility/opacity controlled by class */
 .dropdown {
   position: fixed;
   z-index: 200;
@@ -208,7 +198,33 @@
   background: rgba(255, 255, 255, 0.62);
   backdrop-filter: blur(24px) saturate(120%);
   -webkit-backdrop-filter: blur(24px) saturate(120%);
-  transition: top 240ms ease;
+
+  /* Closed state */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+
+  /* Exit transition — faster than entry */
+  transition:
+    opacity 160ms ease-in,
+    transform 160ms ease-in,
+    visibility 0s linear 160ms,
+    top 240ms ease;
+}
+
+/* Entry transition — applied when open class is present */
+.dropdownOpen {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+
+  transition:
+    opacity 220ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 220ms cubic-bezier(0.23, 1, 0.32, 1),
+    visibility 0s linear 0s,
+    top 240ms ease;
 }
 
 .dropdownContent {
@@ -232,8 +248,21 @@
   transition: opacity var(--transition);
 }
 
-.dropdownItem:hover {
-  opacity: 0.5;
+/* Stagger entry animation for dropdown items */
+@keyframes dropdownItemFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdownOpen .dropdownItem {
+  animation: dropdownItemFadeUp 200ms cubic-bezier(0.23, 1, 0.32, 1) both;
+  animation-delay: calc(var(--item-index, 0) * 35ms);
 }
 
 .dropdownItemFirst {
@@ -255,6 +284,29 @@
   font-weight: 400;
   line-height: 1.4;
   text-align: center;
+}
+
+/* ── Hover — only on pointer-capable devices ────────── */
+@media (hover: hover) and (pointer: fine) {
+  .brand:hover {
+    opacity: 0.6;
+  }
+
+  .link:hover {
+    opacity: 0.55;
+  }
+
+  .dropdownTrigger:hover {
+    opacity: 0.55;
+  }
+
+  .dropdownItem:hover {
+    opacity: 0.5;
+  }
+
+  .ctaBtn:hover {
+    opacity: 0.75;
+  }
 }
 
 /* Compact desktop state after page scroll */
@@ -401,10 +453,11 @@
     opacity: 0;
     transform: translateY(-8px);
 
+    /* Exit transition */
     transition:
-      opacity 0.2s ease,
-      transform 0.2s ease,
-      visibility 0s linear 0.2s;
+      opacity 160ms ease-in,
+      transform 160ms ease-in,
+      visibility 0s linear 160ms;
   }
 
   .mobilePanelOpen {
@@ -412,9 +465,10 @@
     opacity: 1;
     transform: translateY(0);
 
+    /* Entry transition */
     transition:
-      opacity 0.2s ease,
-      transform 0.2s ease,
+      opacity 220ms cubic-bezier(0.23, 1, 0.32, 1),
+      transform 220ms cubic-bezier(0.23, 1, 0.32, 1),
       visibility 0s linear 0s;
   }
 
@@ -434,6 +488,38 @@
     text-align: center;
   }
 
+  /* Stagger entry for main nav items */
+  .mobileNav > button,
+  .mobileNav > a {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  .mobilePanelOpen .mobileNav > button,
+  .mobilePanelOpen .mobileNav > a {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 200ms cubic-bezier(0.23, 1, 0.32, 1),
+      transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .mobilePanelOpen .mobileNav > button {
+    transition-delay: 40ms;
+  }
+
+  .mobilePanelOpen .mobileNav > a:nth-of-type(1) {
+    transition-delay: 80ms;
+  }
+
+  .mobilePanelOpen .mobileNav > a:nth-of-type(2) {
+    transition-delay: 120ms;
+  }
+
+  .mobilePanelOpen .mobileNav > a:nth-of-type(3) {
+    transition-delay: 160ms;
+  }
+
   /* Mobile nav links */
   .mobileLink {
     display: block;
@@ -444,10 +530,6 @@
     line-height: 1.2;
     text-decoration: none;
     transition: opacity var(--transition);
-  }
-
-  .mobileLink:hover {
-    opacity: 0.55;
   }
 
   /* Mobile CTA */
@@ -463,11 +545,13 @@
     font-weight: 500;
     line-height: 1.25;
     text-decoration: none;
-    transition: opacity var(--transition);
+    transition:
+      opacity var(--transition),
+      transform 100ms ease-out;
   }
 
-  .mobileCta:hover {
-    opacity: 0.75;
+  .mobileCta:active {
+    transform: scale(0.97);
   }
 
   /* Mobile accordion trigger */
@@ -489,18 +573,41 @@
     transition: opacity var(--transition);
   }
 
-  .accordionTrigger:hover {
-    opacity: 0.55;
+  /* Accordion — grid-template-rows technique for smooth height animation */
+  .accordionContent {
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    transition: grid-template-rows 260ms cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  /* Accordion content */
-  .accordionContent {
-    display: none;
+  .accordionInner {
+    min-height: 0;
   }
 
   .accordionContentOpen {
-    display: block;
+    grid-template-rows: 1fr;
+  }
+
+  .accordionContentOpen .accordionInner {
     padding-bottom: 8px;
+  }
+
+  /* Stagger entry for accordion items */
+  @keyframes accordionItemFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .accordionContentOpen .accordionSubItem {
+    animation: accordionItemFadeUp 180ms ease both;
+    animation-delay: calc(var(--item-index, 0) * 28ms);
   }
 
   .accordionSubItem {
@@ -515,15 +622,32 @@
     transition: opacity var(--transition);
   }
 
-  .accordionSubItem:hover {
-    opacity: 0.55;
-  }
-
+  /* Preserves font-weight on first item (first-child of accordionInner) */
   .accordionContent .accordionSubItem:first-child {
     font-weight: 700;
   }
+
+  /* Mobile hover — only on pointer-capable devices */
+  @media (hover: hover) and (pointer: fine) {
+    .mobileLink:hover {
+      opacity: 0.55;
+    }
+
+    .mobileCta:hover {
+      opacity: 0.75;
+    }
+
+    .accordionTrigger:hover {
+      opacity: 0.55;
+    }
+
+    .accordionSubItem:hover {
+      opacity: 0.55;
+    }
+  }
 }
 
+/* ── Reduced motion ─────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .bar,
   .mobilePanel,
@@ -532,7 +656,34 @@
   .accordionTrigger {
     transition: none;
   }
+
+  /* Remove stagger delays so items don't wait before appearing */
+  .dropdownOpen .dropdownItem {
+    animation-delay: 0ms !important;
+  }
+
+  .mobilePanelOpen .mobileNav > button,
+  .mobilePanelOpen .mobileNav > a {
+    transition-delay: 0ms;
+  }
+
+  .accordionContentOpen .accordionSubItem {
+    animation-delay: 0ms !important;
+  }
+
+  /* Dropdown: no positional shift, only opacity */
+  .dropdown,
+  .dropdownOpen {
+    transform: none;
+  }
+
+  /* No scale on press */
+  .ctaBtn:active,
+  .mobileCta:active {
+    transform: none;
+  }
 }
+
 /* Desktop compacto — 1025px–1399px */
 @media (min-width: 1025px) and (max-width: 1399px) {
   .inner {

@@ -36,55 +36,72 @@ export default function Navbar() {
     }
   }, [])
 
-  // Mobile menu
+  // ── Mobile menu ───────────────────────────────────────
   const [openedAtPathname, setOpenedAtPathname] = useState(null)
   const isOpen =
-    openedAtPathname !== null &&
-    openedAtPathname === location.pathname
+    openedAtPathname !== null && openedAtPathname === location.pathname
 
   const [accordionOpen, setAccordionOpen] = useState(false)
 
-  const open = () => setOpenedAtPathname(location.pathname)
+  const hamburgerRef = useRef(null)
+  const firstMobileItemRef = useRef(null)
+
+  const open = useCallback(
+    (byKeyboard = false) => {
+      setOpenedAtPathname(location.pathname)
+      if (byKeyboard) {
+        requestAnimationFrame(() => {
+          firstMobileItemRef.current?.focus()
+        })
+      }
+    },
+    [location.pathname]
+  )
 
   const close = useCallback(() => {
     setOpenedAtPathname(null)
     setAccordionOpen(false)
+    hamburgerRef.current?.focus()
   }, [])
 
-  const toggle = () => (isOpen ? close() : open())
+  const toggle = (event) => (isOpen ? close() : open(event.detail === 0))
 
-  // Desktop works menu
+  // ── Desktop works dropdown ────────────────────────────
   const [dropdownOpenedAt, setDropdownOpenedAt] = useState(null)
 
   const dropdownOpen =
-    dropdownOpenedAt !== null &&
-    dropdownOpenedAt === location.pathname
+    dropdownOpenedAt !== null && dropdownOpenedAt === location.pathname
 
   const dropdownRef = useRef(null)
+  const dropdownFirstItemRef = useRef(null)
 
   const closeDropdown = useCallback(() => {
     setDropdownOpenedAt(null)
   }, [])
 
-  const toggleDropdown = () => {
+  const toggleDropdown = (event) => {
     if (dropdownOpen) {
       closeDropdown()
       return
     }
 
     setDropdownOpenedAt(location.pathname)
+
+    if (event.detail === 0) {
+      requestAnimationFrame(() => {
+        dropdownFirstItemRef.current?.focus()
+      })
+    }
   }
 
   const isTrabalhos = location.pathname.startsWith('/trabalhos')
 
-  // Close desktop menu with Escape
+  // Close desktop dropdown with Escape
   useEffect(() => {
     if (!dropdownOpen) return undefined
 
     const onKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        closeDropdown()
-      }
+      if (event.key === 'Escape') closeDropdown()
     }
 
     document.addEventListener('keydown', onKeyDown)
@@ -94,7 +111,7 @@ export default function Navbar() {
     }
   }, [dropdownOpen, closeDropdown])
 
-  // Close desktop menu when clicking outside
+  // Close desktop dropdown when clicking outside
   useEffect(() => {
     if (!dropdownOpen) return undefined
 
@@ -111,13 +128,17 @@ export default function Navbar() {
     }
   }, [dropdownOpen, closeDropdown])
 
-  // Close mobile menu with Escape
+  // Close mobile menu with Escape — accordion first if open
   useEffect(() => {
     if (!isOpen) return undefined
 
     const onKeyDown = (event) => {
       if (event.key === 'Escape') {
-        close()
+        if (accordionOpen) {
+          setAccordionOpen(false)
+        } else {
+          close()
+        }
       }
     }
 
@@ -126,7 +147,7 @@ export default function Navbar() {
     return () => {
       document.removeEventListener('keydown', onKeyDown)
     }
-  }, [isOpen, close])
+  }, [isOpen, accordionOpen, close])
 
   // Lock page scrolling while either menu is open
   useEffect(() => {
@@ -191,9 +212,7 @@ export default function Navbar() {
 
               <svg
                 className={`${styles.chevron}${
-                  dropdownOpen
-                    ? ` ${styles.chevronOpen}`
-                    : ''
+                  dropdownOpen ? ` ${styles.chevronOpen}` : ''
                 }`}
                 width="12"
                 height="12"
@@ -211,41 +230,44 @@ export default function Navbar() {
               </svg>
             </button>
 
-            {dropdownOpen && (
-              <div
-                id="desktop-dropdown"
-                className={styles.dropdown}
-                onMouseDown={(event) => {
-                  if (event.target === event.currentTarget) {
-                    closeDropdown()
-                  }
-                }}
-              >
-                <div className={styles.dropdownContent}>
-                  {TRABALHOS_ITEMS.map((item, index) => (
-                    <Link
-                      key={item.to}
-                      to={item.to}
-                      className={`${styles.dropdownItem}${
-                        index === 0
-                          ? ` ${styles.dropdownItemFirst}`
-                          : ''
-                      }`}
-                      onClick={closeDropdown}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-
-                <div className={styles.desktopMenuFooter}>
-                  <span>
-                    © 2026 Henrique M. Silva. Todos os direitos
-                    reservados.
-                  </span>
-                </div>
+            {/* Always in DOM — visibility controlled by CSS class */}
+            <div
+              id="desktop-dropdown"
+              className={`${styles.dropdown}${
+                dropdownOpen ? ` ${styles.dropdownOpen}` : ''
+              }`}
+              aria-hidden={!dropdownOpen}
+              onMouseDown={(event) => {
+                if (event.target === event.currentTarget) {
+                  closeDropdown()
+                }
+              }}
+            >
+              <div className={styles.dropdownContent}>
+                {TRABALHOS_ITEMS.map((item, index) => (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    ref={index === 0 ? dropdownFirstItemRef : undefined}
+                    className={`${styles.dropdownItem}${
+                      index === 0 ? ` ${styles.dropdownItemFirst}` : ''
+                    }`}
+                    style={{ '--item-index': index }}
+                    onClick={closeDropdown}
+                    tabIndex={dropdownOpen ? 0 : -1}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
               </div>
-            )}
+
+              <div className={styles.desktopMenuFooter}>
+                <span>
+                  © 2026 Henrique M. Silva. Todos os direitos
+                  reservados.
+                </span>
+              </div>
+            </div>
           </div>
 
           <NavLink
@@ -274,11 +296,10 @@ export default function Navbar() {
           </Link>
 
           <button
+            ref={hamburgerRef}
             type="button"
             className={`${styles.hamburger}${
-              isOpen
-                ? ` ${styles.hamburgerOpen}`
-                : ''
+              isOpen ? ` ${styles.hamburgerOpen}` : ''
             }`}
             onClick={toggle}
             aria-label={
@@ -299,9 +320,7 @@ export default function Navbar() {
       <div
         id="mobile-nav"
         className={`${styles.mobilePanel}${
-          isOpen
-            ? ` ${styles.mobilePanelOpen}`
-            : ''
+          isOpen ? ` ${styles.mobilePanelOpen}` : ''
         }`}
         aria-hidden={!isOpen}
       >
@@ -310,10 +329,11 @@ export default function Navbar() {
           aria-label="Menu mobile"
         >
           <button
+            ref={firstMobileItemRef}
             type="button"
             className={styles.accordionTrigger}
             onClick={() => {
-              setAccordionOpen((previousValue) => !previousValue)
+              setAccordionOpen((prev) => !prev)
             }}
             aria-expanded={accordionOpen}
             aria-controls="mobile-accordion"
@@ -323,9 +343,7 @@ export default function Navbar() {
 
             <svg
               className={`${styles.chevron}${
-                accordionOpen
-                  ? ` ${styles.chevronOpen}`
-                  : ''
+                accordionOpen ? ` ${styles.chevronOpen}` : ''
               }`}
               width="16"
               height="16"
@@ -346,21 +364,24 @@ export default function Navbar() {
           <div
             id="mobile-accordion"
             className={`${styles.accordionContent}${
-              accordionOpen
-                ? ` ${styles.accordionContentOpen}`
-                : ''
+              accordionOpen ? ` ${styles.accordionContentOpen}` : ''
             }`}
           >
-            {TRABALHOS_ITEMS.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className={styles.accordionSubItem}
-                onClick={close}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {/* Wrapper required for grid-template-rows animation */}
+            <div className={styles.accordionInner}>
+              {TRABALHOS_ITEMS.map((item, index) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className={styles.accordionSubItem}
+                  style={{ '--item-index': index }}
+                  onClick={close}
+                  tabIndex={accordionOpen && isOpen ? 0 : -1}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
           </div>
 
           <NavLink
