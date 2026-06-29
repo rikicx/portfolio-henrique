@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Layout from '../components/Layout'
 import styles from './WorksPage.module.css'
@@ -60,10 +60,43 @@ const LEFT_PROJECTS = PROJECTS.filter((_, index) => index % 2 === 0)
 const RIGHT_PROJECTS = PROJECTS.filter((_, index) => index % 2 !== 0)
 
 function ProjectCard({ project }) {
+  const cardRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const card = cardRef.current
+    if (!card) return
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setIsVisible(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+
+        setIsVisible(true)
+        observer.disconnect()
+      },
+      {
+        threshold: 0.18,
+        rootMargin: '0px 0px -8% 0px',
+      }
+    )
+
+    observer.observe(card)
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <Link
+      ref={cardRef}
       to={`/trabalhos/${project.slug}`}
-      className={styles.card}
+      className={`${styles.card} ${styles.cardReveal} ${
+        isVisible ? styles.cardVisible : ''
+      }`}
       aria-label={`Ver projeto ${project.title}`}
     >
       <img
