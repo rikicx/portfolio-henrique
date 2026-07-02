@@ -13,6 +13,7 @@ import ThreePHHrcrsPage from './pages/cases/ThreePHHrcrsPage'
 import BackToTopButton from './components/BackToTopButton'
 import ScrollToTop from './components/ScrollToTop'
 import RouteTransitionLoader from './components/RouteTransitionLoader'
+import { LanguageProvider } from './context/LanguageContext'
 
 export default function App() {
   return (
@@ -20,21 +21,24 @@ export default function App() {
       <ScrollToTop />
       <RouteTransitionLoader />
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/sobre" element={<AboutPage />} />
-        <Route path="/trabalhos" element={<WorksPage />} />
-        <Route path="/contato" element={<ContactPage />} />
-        <Route path="/trabalhos/qi-platform" element={<QiPlatformPage />} />
-        <Route path="/trabalhos/emr-integration" element={<EmrIntegrationPage />} />
-        <Route path="/trabalhos/gerdau-storeroom" element={<GerdauStoreroomPage />} />
-        <Route path="/trabalhos/gerdau-smartlog" element={<GerdauSmartlogPage />} />
-        <Route path="/trabalhos/itau-empreendedor" element={<ItauEmpreendedorPage />} />
-        <Route path="/trabalhos/3ph-hrcrs-digital-ecosystem" element={<ThreePHHrcrsPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <LanguageProvider>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/en" element={<HomePage />} />
+          <Route path="/sobre" element={<AboutPage />} />
+          <Route path="/trabalhos" element={<WorksPage />} />
+          <Route path="/contato" element={<ContactPage />} />
+          <Route path="/trabalhos/qi-platform" element={<QiPlatformPage />} />
+          <Route path="/trabalhos/emr-integration" element={<EmrIntegrationPage />} />
+          <Route path="/trabalhos/gerdau-storeroom" element={<GerdauStoreroomPage />} />
+          <Route path="/trabalhos/gerdau-smartlog" element={<GerdauSmartlogPage />} />
+          <Route path="/trabalhos/itau-empreendedor" element={<ItauEmpreendedorPage />} />
+          <Route path="/trabalhos/3ph-hrcrs-digital-ecosystem" element={<ThreePHHrcrsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
 
-      <BackToTopButton />
+        <BackToTopButton />
+      </LanguageProvider>
     </BrowserRouter>
   )
 }

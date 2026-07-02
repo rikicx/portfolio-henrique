@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom'
 import styles from './Footer.module.css'
 import photoUrl from '../media/home/hero/henrique-footer.webp'
+import { useLanguage } from '../context/LanguageContext'
+import pt from '../content/pt/footer'
+import en from '../content/en/footer'
 
 export default function Footer() {
+  const { lang } = useLanguage()
+  const c = lang === 'en' ? en : pt
+
   return (
     <footer id="contato" className={styles.footer}>
       <div className={styles.inner}>
@@ -10,56 +16,52 @@ export default function Footer() {
           <div className={styles.profile}>
             <img
               src={photoUrl}
-              alt="Foto de Henrique M. Silva"
+              alt={c.photoAlt}
               className={styles.photo}
               width="159"
               height="159"
             />
             <div className={styles.profileText}>
-              <p className={styles.name}>Henrique M. Silva</p>
-              <p className={styles.role}>Design Leader &amp; Product Strategist</p>
+              <p className={styles.name}>{c.name}</p>
+              <p className={styles.role}>{c.role}</p>
             </div>
           </div>
 
           <div className={styles.cta}>
-            <h2 className={styles.ctaHeading}>
-              Tem um desafio complexo para resolver?
-            </h2>
-            <Link to="/contato" className={styles.ctaBtn}>
-              Vamos conversar →
+            <h2 className={styles.ctaHeading}>{c.ctaHeading}</h2>
+            <Link to={c.ctaTo} className={styles.ctaBtn}>
+              {c.ctaLabel}
             </Link>
           </div>
         </div>
 
-        <nav className={styles.links} aria-label="Links de contato">
+        <nav className={styles.links} aria-label={c.linksAriaLabel}>
           <a
             href="https://www.linkedin.com/in/henrique-m-silva/"
             className={styles.link}
             target="_blank"
             rel="noopener noreferrer"
           >
-            LinkedIn ↗︎︎
+            {c.linkedinLabel}
           </a>
           <span className={styles.dot} aria-hidden="true" />
           <a href="mailto:hello@henriquesilva.design" className={styles.link}>
-            E-mail ↗︎︎
+            {c.emailLabel}
           </a>
           <span className={styles.dot} aria-hidden="true" />
           <a
-            href="/curriculo/index.html"
+            href={c.curriculoHref}
             className={styles.link}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Currículo ↗︎︎
+            {c.curriculoLabel}
           </a>
         </nav>
 
         <hr className={styles.divider} />
 
-        <p className={styles.copyright}>
-          © 2026 Henrique M. Silva - São Paulo, Brasil
-        </p>
+        <p className={styles.copyright}>{c.copyright}</p>
       </div>
     </footer>
   )

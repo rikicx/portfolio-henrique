@@ -10,7 +10,7 @@ export default function NotFoundPage() {
         title="Página não encontrada — Henrique Silva"
         description="A página que você procura não foi encontrada."
         path="/404"
-        noIndex
+        robots="noindex, nofollow"
       />
       <div className={styles.content}>
         <p className={styles.code}>404</p>

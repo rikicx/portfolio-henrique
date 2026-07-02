@@ -7,14 +7,22 @@ import Quote from '../components/Quote'
 import About from '../components/About'
 import Skills from '../components/Skills'
 import Experience from '../components/Experience'
+import { useLanguage } from '../context/LanguageContext'
+import ptSeo from '../content/pt/home-seo'
+import enSeo from '../content/en/home-seo'
 
 export default function HomePage() {
+  const { lang } = useLanguage()
+  const seo = lang === 'en' ? enSeo : ptSeo
+
   return (
     <Layout>
       <Seo
-        title="Henrique Silva — Product Designer e Líder de Design"
-        description="Product Designer e líder de Design com 19 anos de experiência em produtos digitais, estratégia, pesquisa, experiência e desenvolvimento de equipes."
-        path="/"
+        title={seo.title}
+        description={seo.description}
+        path={seo.path}
+        lang={seo.lang}
+        robots={seo.robots}
       />
       <Hero />
       <Stats />

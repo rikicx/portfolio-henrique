@@ -1,32 +1,18 @@
 import { useInView } from '../hooks/useInView'
 import styles from './Stats.module.css'
-
-const items = [
-  {
-    value: '19 Anos',
-    mobileValue: '19 Anos',
-    label: 'De experiência',
-  },
-  {
-    value: '8+ Anos',
-    mobileValue: '8 Anos +',
-    label: 'Em posições de Liderança',
-  },
-  {
-    value: 'Brasil + EUA',
-    mobileValue: 'Brasil + EUA',
-    label: 'Atuando com produtos e stakeholders internacionais',
-    wide: true,
-  },
-]
+import { useLanguage } from '../context/LanguageContext'
+import pt from '../content/pt/stats'
+import en from '../content/en/stats'
 
 export default function Stats() {
+  const { lang } = useLanguage()
+  const c = lang === 'en' ? en : pt
   const [sectionRef, isVisible] = useInView({ threshold: 0.28 })
 
   return (
     <section className={styles.section} ref={sectionRef} data-visible={isVisible}>
       <div className={styles.container}>
-        {items.map((item) => (
+        {c.items.map((item) => (
           <div
             key={item.label}
             className={item.wide ? `${styles.card} ${styles.cardWide}` : styles.card}

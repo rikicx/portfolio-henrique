@@ -2,10 +2,16 @@ import { useRef, useEffect } from 'react'
 import styles from './Hero.module.css'
 import heroUrl from '../media/home/hero/henrique-hero.webp'
 import FloatingTools from './FloatingTools'
+import { useLanguage } from '../context/LanguageContext'
+import pt from '../content/pt/hero'
+import en from '../content/en/hero'
 
 const LETTERS = 'Henrique'.split('')
 
 export default function Hero() {
+  const { lang } = useLanguage()
+  const c = lang === 'en' ? en : pt
+
   const sectionRef      = useRef(null)
   const nameRef         = useRef(null)
   const photoWrapperRef = useRef(null)
@@ -158,13 +164,11 @@ export default function Hero() {
         <div className={styles.textStack}>
           {/* textParallax wraps subtitle+body for parallax; CTA stays outside */}
           <div className={styles.textParallax} ref={textParallaxRef}>
-            <h1 className={styles.subtitle}>Design Leader · Product Strategist</h1>
-            <p className={styles.body}>
-              Transformo contextos complexos em experiências digitais mais claras, combinando dados, pesquisa e visão de produto.
-            </p>
+            <h1 className={styles.subtitle}>{c.subtitle}</h1>
+            <p className={styles.body}>{c.body}</p>
           </div>
           <a href="#projetos" className={styles.cta}>
-            Ver projetos selecionados&nbsp;↓
+            {c.ctaLabel}
           </a>
         </div>
       </div>

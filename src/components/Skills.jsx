@@ -5,57 +5,37 @@ import iconExperiencia from '../media/home/experience/icon-experiencia.svg'
 import iconDados from '../media/home/experience/icon-dados.svg'
 import iconLideranca from '../media/home/experience/icon-lideranca.svg'
 import iconFerramentas from '../media/home/experience/icon-ferramentas.svg'
+import { useLanguage } from '../context/LanguageContext'
+import pt from '../content/pt/skills'
+import en from '../content/en/skills'
 
-const items = [
-  {
-    icon: iconEstrategia,
-    title: 'Estratégia e descoberta',
-    subtitleDesktop: 'Estratégia de produto · Discovery· Pesquisa qualitativa · Jornadas · Workshops · Co-criação',
-    subtitleMobile: 'Estratégia de produto · Discovery· Pesquisa qualitativa · Jornadas · Workshops · Cocriação',
-  },
-  {
-    icon: iconExperiencia,
-    title: 'Experiência e interface',
-    subtitleDesktop: 'UX/UI Design · Arquitetura da informação · Fluxos · Prototipação · Testes de usabilidade · Design Systems',
-    subtitleMobile: 'UX/UI Design · Arquitetura da informação · Fluxos · Prototipação · Testes de usabilidade · Design Systems',
-  },
-  {
-    icon: iconDados,
-    title: 'Dados e evolução',
-    subtitleDesktop: 'Métricas de produto· Pesquisa quantitativa · Análise comportamental ·Testes A/B · NPS',
-    subtitleMobile: 'Métricas de produto· Pesquisa quantitativa · Análise comportamental ·Testes A/B · NPS',
-  },
-  {
-    icon: iconLideranca,
-    title: 'Liderança de Design',
-    subtitleDesktop: 'Direção de Design · Desenvolvimento de pessoas · Design Critiques · Contratação · Alinhamento com Stakeholders',
-    subtitleMobile: 'Direção de Design · Desenvolvimento de pessoas · Design Critiques · Contratação · Alinhamento com Stakeholders',
-  },
-  {
-    icon: iconFerramentas,
-    title: 'Ferramentas',
-    subtitleDesktop: 'Figma · Miro · Photoshop · Illustrator · PowerPoint · Jira · Azure · Google Analytics · Hotjar · Claude Code · VS Code',
-    subtitleMobile: 'Figma · Miro · Photoshop · Illustrator · PowerPoint · Jira · Azure · Google Analytics · Hotjar · Claude Code · VS Code',
-  },
-]
+const ICONS_BY_KEY = {
+  estrategia: iconEstrategia,
+  experiencia: iconExperiencia,
+  dados: iconDados,
+  lideranca: iconLideranca,
+  ferramentas: iconFerramentas,
+}
 
 export default function Skills() {
+  const { lang } = useLanguage()
+  const c = lang === 'en' ? en : pt
   const [sectionRef, isVisible] = useInView({ threshold: 0.14 })
 
   return (
     <section className={styles.section} id="competencias" ref={sectionRef} data-visible={isVisible}>
       <h2 className={styles.sectionTitle}>
-        Competências &amp;{' '}
+        {c.titleBeforeBreak}{' '}
         <br className={styles.mobileBr} />
-        ferramentas
+        {c.titleAfterBreak}
       </h2>
       <div className={styles.card}>
         <ul className={styles.items}>
-          {items.map((item) => (
-            <li key={item.title} className={styles.item}>
+          {c.items.map((item) => (
+            <li key={item.key} className={styles.item}>
               <div className={styles.iconWrapper}>
                 <img
-                  src={item.icon}
+                  src={ICONS_BY_KEY[item.key]}
                   alt=""
                   aria-hidden="true"
                   className={styles.icon}

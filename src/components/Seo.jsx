@@ -36,7 +36,8 @@ export default function Seo({
   description = DEFAULT_DESCRIPTION,
   image = DEFAULT_IMAGE,
   path = '/',
-  noIndex = false,
+  robots = 'index, follow',
+  lang = 'pt',
 }) {
   useLayoutEffect(() => {
     const canonicalUrl =
@@ -51,7 +52,7 @@ export default function Seo({
 
     setMeta('meta[name="robots"]', {
       name: 'robots',
-      content: noIndex ? 'noindex, nofollow' : 'index, follow',
+      content: robots,
     })
 
     setMeta('meta[property="og:title"]', {
@@ -77,6 +78,11 @@ export default function Seo({
     setMeta('meta[property="og:site_name"]', {
       property: 'og:site_name',
       content: 'Henrique Silva Design',
+    })
+
+    setMeta('meta[property="og:locale"]', {
+      property: 'og:locale',
+      content: lang === 'en' ? 'en_US' : 'pt_BR',
     })
 
     setMeta('meta[property="og:image"]', {
@@ -125,7 +131,7 @@ export default function Seo({
     })
 
     setCanonical(canonicalUrl)
-  }, [title, description, image, path, noIndex])
+  }, [title, description, image, path, robots, lang])
 
   return null
 }

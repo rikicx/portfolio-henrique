@@ -5,48 +5,35 @@ import qiImg from '../media/shared/projects/card-qi-platform.webp'
 import gerdauImg from '../media/shared/projects/card-gerdau-storeroom.png'
 import emrBgImg from '../media/shared/projects/card-emr-bg.png'
 import emrOverlayImg from '../media/shared/projects/card-emr-overlay.jpg'
+import { useLanguage } from '../context/LanguageContext'
+import pt from '../content/pt/projects'
+import en from '../content/en/projects'
 
 // Desktop order: QI Platform → Gerdau Storeroom → EMR Integration (Figma left=48/510/972)
 // Mobile order:  Gerdau → QI → EMR (via CSS nth-child order override)
-const projects = [
-  {
-    slug: 'qi-platform',
-    title: 'QI Platform',
-    category: 'Saúde · Head of Design',
-    images: [{ src: qiImg, alt: 'QI Platform — plataforma de dados clínicos' }],
-  },
-  {
-    slug: 'gerdau-storeroom',
-    title: 'Gerdau Storeroom',
-    category: 'Indústria · Product Designer',
-    images: [{ src: gerdauImg, alt: 'Gerdau Storeroom — gestão de almoxarifado' }],
-  },
-  {
-    slug: 'emr-integration',
-    title: 'EMR Integration',
-    category: 'Saúde · Head of Design',
-    images: [
-      { src: emrBgImg, alt: 'EMR Integration — integração de prontuários' },
-      { src: emrOverlayImg, alt: '' },
-    ],
-  },
-]
+const IMAGES_BY_SLUG = {
+  'qi-platform': [{ src: qiImg }],
+  'gerdau-storeroom': [{ src: gerdauImg }],
+  'emr-integration': [{ src: emrBgImg }, { src: emrOverlayImg }],
+}
 
 // Card is the link — no nested anchors.
 // aria-label provides the accessible name from the project title.
 // "Ver Projeto →" is a visual affordance only (aria-hidden).
-function ProjectCard({ project }) {
+function ProjectCard({ project, viewProjectLabel }) {
+  const images = IMAGES_BY_SLUG[project.slug]
+
   return (
     <Link
       to={`/trabalhos/${project.slug}`}
       className={styles.card}
       aria-label={project.title}
     >
-      {project.images.map((img, i) => (
+      {images.map((img, i) => (
         <img
           key={i}
           src={img.src}
-          alt={img.alt}
+          alt={project.imageAlts[i]}
           className={styles.cardImg}
           aria-hidden={i > 0 ? 'true' : undefined}
         />
@@ -58,7 +45,7 @@ function ProjectCard({ project }) {
           <h3 className={styles.cardTitle}>{project.title}</h3>
         </div>
         <div className={styles.link} aria-hidden="true">
-          <span>Ver Projeto</span>
+          <span>{viewProjectLabel}</span>
           <span>→</span>
         </div>
       </div>
@@ -67,16 +54,18 @@ function ProjectCard({ project }) {
 }
 
 export default function Projects() {
+  const { lang } = useLanguage()
+  const c = lang === 'en' ? en : pt
   const [sectionRef, isVisible] = useInView({ threshold: 0.16 })
 
   return (
     <section id="projetos" className={styles.section} ref={sectionRef} data-visible={isVisible}>
       <div className={styles.titleWrapper}>
-        <h2 className={styles.heading}>Projetos selecionados</h2>
+        <h2 className={styles.heading}>{c.heading}</h2>
       </div>
       <div className={styles.rail}>
-        {projects.map((p) => (
-          <ProjectCard key={p.slug} project={p} />
+        {c.items.map((p) => (
+          <ProjectCard key={p.slug} project={p} viewProjectLabel={c.viewProjectLabel} />
         ))}
       </div>
     </section>

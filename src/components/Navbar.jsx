@@ -2,21 +2,14 @@ import { NavLink, Link, useLocation } from 'react-router-dom'
 import { useState, useEffect, useCallback, useRef } from 'react'
 import styles from './Navbar.module.css'
 import logoUrl from '../media/shared/branding/hsd-logo.svg'
-
-const TRABALHOS_ITEMS = [
-  { label: 'Ver todos os trabalhos', to: '/trabalhos' },
-  { label: 'Gerdau Storeroom', to: '/trabalhos/gerdau-storeroom' },
-  { label: 'QI Platform', to: '/trabalhos/qi-platform' },
-  { label: 'EMR Integration', to: '/trabalhos/emr-integration' },
-  { label: 'Gerdau Smartlog', to: '/trabalhos/gerdau-smartlog' },
-  {
-    label: '3PH / HRCRS Ecosystem',
-    to: '/trabalhos/3ph-hrcrs-digital-ecosystem',
-  },
-  { label: 'Itaú Empreendedora', to: '/trabalhos/itau-empreendedor' },
-]
+import { useLanguage } from '../context/LanguageContext'
+import pt from '../content/pt/nav'
+import en from '../content/en/nav'
 
 export default function Navbar() {
+  const { lang } = useLanguage()
+  const c = lang === 'en' ? en : pt
+
   const location = useLocation()
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -174,9 +167,9 @@ export default function Navbar() {
       <div className={styles.inner}>
         <div className={styles.leftArea}>
           <NavLink
-            to="/"
+            to={c.logoTo}
             className={styles.brand}
-            aria-label="Henrique M. Silva — página inicial"
+            aria-label={c.brandAriaLabel}
           >
             <img
               src={logoUrl}
@@ -190,7 +183,7 @@ export default function Navbar() {
 
         <nav
           className={styles.centerArea}
-          aria-label="Navegação principal"
+          aria-label={c.navAriaLabel}
         >
           <div
             ref={dropdownRef}
@@ -208,7 +201,7 @@ export default function Navbar() {
               aria-controls="desktop-dropdown"
               aria-haspopup="true"
             >
-              Trabalhos
+              {c.trabalhosLabel}
 
               <svg
                 className={`${styles.chevron}${
@@ -244,7 +237,7 @@ export default function Navbar() {
               }}
             >
               <div className={styles.dropdownContent}>
-                {TRABALHOS_ITEMS.map((item, index) => (
+                {c.trabalhosItems.map((item, index) => (
                   <Link
                     key={item.to}
                     to={item.to}
@@ -262,19 +255,16 @@ export default function Navbar() {
               </div>
 
               <div className={styles.desktopMenuFooter}>
-                <span>
-                  © 2026 Henrique M. Silva. Todos os direitos
-                  reservados.
-                </span>
+                <span>{c.copyright}</span>
               </div>
             </div>
           </div>
 
           <NavLink
-            to="/sobre"
+            to={c.sobreTo}
             className={navLinkClass}
           >
-            Sobre Mim
+            {c.sobreLabelDesktop}
           </NavLink>
 
           <a
@@ -283,16 +273,16 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Linkedin
+            {c.linkedinLabelDesktop}
           </a>
         </nav>
 
         <div className={styles.rightArea}>
           <Link
-            to="/contato"
+            to={c.ctaTo}
             className={styles.ctaBtn}
           >
-            Entre em contato
+            {c.ctaLabel}
           </Link>
 
           <button
@@ -304,8 +294,8 @@ export default function Navbar() {
             onClick={toggle}
             aria-label={
               isOpen
-                ? 'Fechar menu de navegação'
-                : 'Abrir menu de navegação'
+                ? c.closeMenuAriaLabel
+                : c.openMenuAriaLabel
             }
             aria-expanded={isOpen}
             aria-controls="mobile-nav"
@@ -326,7 +316,7 @@ export default function Navbar() {
       >
         <nav
           className={styles.mobileNav}
-          aria-label="Menu mobile"
+          aria-label={c.mobileNavAriaLabel}
         >
           <button
             ref={firstMobileItemRef}
@@ -339,7 +329,7 @@ export default function Navbar() {
             aria-controls="mobile-accordion"
             tabIndex={isOpen ? 0 : -1}
           >
-            Trabalhos
+            {c.trabalhosLabel}
 
             <svg
               className={`${styles.chevron}${
@@ -369,7 +359,7 @@ export default function Navbar() {
           >
             {/* Wrapper required for grid-template-rows animation */}
             <div className={styles.accordionInner}>
-              {TRABALHOS_ITEMS.map((item, index) => (
+              {c.trabalhosItems.map((item, index) => (
                 <Link
                   key={item.to}
                   to={item.to}
@@ -385,12 +375,12 @@ export default function Navbar() {
           </div>
 
           <NavLink
-            to="/sobre"
+            to={c.sobreTo}
             className={styles.mobileLink}
             onClick={close}
             tabIndex={isOpen ? 0 : -1}
           >
-            Sobre mim
+            {c.sobreLabelMobile}
           </NavLink>
 
           <a
@@ -401,23 +391,21 @@ export default function Navbar() {
             onClick={close}
             tabIndex={isOpen ? 0 : -1}
           >
-            LinkedIn
+            {c.linkedinLabelMobile}
           </a>
 
           <Link
-            to="/contato"
+            to={c.ctaTo}
             className={styles.mobileCta}
             onClick={close}
             tabIndex={isOpen ? 0 : -1}
           >
-            Entre em contato
+            {c.ctaLabel}
           </Link>
         </nav>
 
         <div className={styles.mobileFooter}>
-          <span>
-            © 2026 Henrique M. Silva. Todos os direitos reservados.
-          </span>
+          <span>{c.copyright}</span>
         </div>
       </div>
     </header>
