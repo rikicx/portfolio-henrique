@@ -61,7 +61,9 @@ export default function Footer() {
 
         <hr className={styles.divider} />
 
-        <p className={styles.copyright}>{c.copyright}</p>
+        <p className={styles.copyright}>
+          {c.copyright} · {c.version}
+        </p>
       </div>
     </footer>
   )

@@ -1,0 +1,65 @@
+export default {
+  seo: {
+    title: 'Projetos de UX e Product Design — Henrique Silva',
+    description:
+      'Cases de UX, Product Design e liderança em saúde, indústria e serviços financeiros, da descoberta à implementação e evolução dos produtos.',
+    path: '/trabalhos',
+    lang: 'pt',
+    robots: 'index, follow',
+  },
+  pageAriaLabel: 'Todos os trabalhos',
+  titleLines: ['Trabalhos', 'Selecionados'],
+  description:
+    'Uma seleção de projetos em que atuei entre estratégia, pesquisa, produto, experiência e liderança de design.',
+  viewProjectLabel: 'Ver Projeto →',
+  items: [
+    {
+      slug: 'gerdau-storeroom',
+      to: '/trabalhos/gerdau-storeroom',
+      title: 'Gerdau Storeroom',
+      category: 'Indústria · Product Designer',
+      alt: 'Gerdau Storeroom — gestão de almoxarifado industrial',
+      ariaLabel: 'Ver projeto Gerdau Storeroom',
+    },
+    {
+      slug: 'qi-platform',
+      to: '/trabalhos/qi-platform',
+      title: 'QI Platform',
+      category: 'Saúde · Head of Design',
+      alt: 'Interface da QI Platform — plataforma de dados clínicos',
+      ariaLabel: 'Ver projeto QI Platform',
+    },
+    {
+      slug: 'emr-integration',
+      to: '/trabalhos/emr-integration',
+      title: 'EMR Integration',
+      category: 'Saúde · Head of Design',
+      alt: 'EMR Integration — integração de prontuários eletrônicos',
+      ariaLabel: 'Ver projeto EMR Integration',
+    },
+    {
+      slug: 'gerdau-smartlog',
+      to: '/trabalhos/gerdau-smartlog',
+      title: 'Gerdau Smartlog',
+      category: 'Indústria · Product Designer',
+      alt: 'Gerdau Smartlog — logística e rastreamento industrial',
+      ariaLabel: 'Ver projeto Gerdau Smartlog',
+    },
+    {
+      slug: '3ph-hrcrs-digital-ecosystem',
+      to: '/trabalhos/3ph-hrcrs-digital-ecosystem',
+      title: '3PH Alliance & HRCRS Digital Ecosystem',
+      category: 'Saúde · Head of Design',
+      alt: '3PH Alliance e HRCRS Digital Ecosystem — ecossistema digital na saúde',
+      ariaLabel: 'Ver projeto 3PH Alliance & HRCRS Digital Ecosystem',
+    },
+    {
+      slug: 'itau-empreendedor',
+      to: '/trabalhos/itau-empreendedor',
+      title: 'Itaú Empreendedora',
+      category: 'Finanças · Product Designer',
+      alt: 'Itaú Empreendedora — experiência financeira para mulheres empreendedoras',
+      ariaLabel: 'Ver projeto Itaú Empreendedora',
+    },
+  ],
+}

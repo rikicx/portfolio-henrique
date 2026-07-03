@@ -3,6 +3,9 @@ import Seo from '../../components/Seo'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
 import TypingTitle from '../../components/TypingTitle'
 import RevealSection from '../../components/RevealSection'
+import { useLanguage } from '../../context/LanguageContext'
+import ptContent from '../../content/pt/case-gerdau-smartlog'
+import enContent from '../../content/en/case-gerdau-smartlog'
 import styles from './GerdauSmartlogPage.module.css'
 
 import heroImg from '../../media/cases/gerdau-smartlog/smartlog-hero.webp'
@@ -17,22 +20,25 @@ import quoteOpenImg from '../../media/shared/quotes/quote-open.png'
 import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
 
 export default function GerdauSmartlogPage() {
+  const { lang } = useLanguage()
+  const c = lang === 'en' ? enContent : ptContent
+
   return (
     <Layout>
       <Seo
-        title="Gerdau Smartlog — Case de Product Design | Henrique Silva"
-        description="Case de Product Design para organizar fluxos, exceções e decisões de uma operação logística complexa em uma experiência digital implantada."
-        path="/trabalhos/gerdau-smartlog"
+        title={c.seo.title}
+        description={c.seo.description}
+        path={c.seo.path}
+        lang={c.seo.lang}
+        robots={c.seo.robots}
       />
       {/* 1. Hero */}
       <section aria-labelledby="hero-title" className={styles.hero}>
-        <TypingTitle id="hero-title" className={styles.heroTitle} lines={['Gerdau', 'Smartlog']} />
+        <TypingTitle id="hero-title" className={styles.heroTitle} lines={c.hero.titleLines} />
 
         <div className={styles.heroMeta}>
           <p className={styles.heroDesc}>
-            Uma ferramenta para transformar informações espalhadas entre SAP, Neolog, Excel e
-            e-mail em alertas que a operação pudesse assumir, acompanhar e resolver em um único
-            lugar.
+            {c.hero.description}
           </p>
         </div>
       </section>
@@ -40,35 +46,23 @@ export default function GerdauSmartlogPage() {
       <hr className={styles.dividerFull} aria-hidden="true" />
 
       {/* 2. Metadata */}
-      <RevealSection as="section" aria-label="Informações do projeto" className={styles.metadata}>
+      <RevealSection as="section" aria-label={c.metadata.ariaLabel} className={styles.metadata}>
         <div className={styles.container}>
           <div className={styles.metaLayout}>
             <div className={styles.metaImage}>
               <img
                 src={heroImg}
-                alt="Interface do Gerdau Smartlog com painel de alertas e exceções logísticas"
+                alt={c.metadata.imageAlt}
                 className={styles.metaImg}
               />
             </div>
             <div className={styles.metaFields}>
-              <div className={styles.metaItem}>
-                <p className={styles.metaLabel}>Empresa</p>
-                <p className={styles.metaValue}>Gerdau</p>
-              </div>
-              <div className={styles.metaItem}>
-                <p className={styles.metaLabel}>Ano</p>
-                <p className={styles.metaValue}>2019</p>
-              </div>
-              <div className={styles.metaItem}>
-                <p className={styles.metaLabel}>Papel</p>
-                <p className={styles.metaValue}>Product Designer Specialist</p>
-              </div>
-              <div className={styles.metaItem}>
-                <p className={styles.metaLabel}>Atuação</p>
-                <p className={styles.metaValue}>
-                  Estratégia · Pesquisa · Prototipação · UX · UI · Cocriação · Fluxos
-                </p>
-              </div>
+              {c.metadata.fields.map((field) => (
+                <div key={field.label} className={styles.metaItem}>
+                  <p className={styles.metaLabel}>{field.label}</p>
+                  <p className={styles.metaValue}>{field.value}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -79,34 +73,27 @@ export default function GerdauSmartlogPage() {
         <div className={styles.container}>
           <div className={styles.problemaLayout}>
             <div className={styles.problemaLeft}>
-              <p className={styles.problemaLabelText}>O problema</p>
+              <p className={styles.problemaLabelText}>{c.problem.label}</p>
               <h2 id="problema-title" className={styles.sectionHeading}>
-                O problema estava espalhado entre várias ferramentas
+                {c.problem.title}
               </h2>
             </div>
             <div className={styles.problemaText}>
-              <p>
-                A operação logística dependia de SAP, Neolog, Excel e e-mail para identificar e
-                tratar exceções. O usuário precisava cruzar informações, confirmar divergências e
-                acionar responsáveis em diferentes sistemas.
-              </p>
-              <p>
-                O Smartlog já existia, mas nem sempre chegava no tempo certo. Em alguns casos,
-                quando o alerta aparecia, o problema já tinha sido resolvido por outro caminho.
-              </p>
+              {c.problem.paragraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
             </div>
           </div>
         </div>
       </RevealSection>
 
       {/* 4. Pergunta central */}
-      <RevealSection as="section" aria-label="Pergunta central do projeto" className={styles.centralQuestion}>
+      <RevealSection as="section" aria-label={c.centralQuestion.ariaLabel} className={styles.centralQuestion}>
         <div className={styles.container}>
           <img src={quoteOpenImg} alt="" aria-hidden="true" className={styles.quoteIconOpen} />
-          <p className={styles.quoteLabel}>A pergunta que orientou o trabalho:</p>
+          <p className={styles.quoteLabel}>{c.centralQuestion.label}</p>
           <blockquote className={styles.quoteText}>
-            Como transformar informações dispersas em alertas confiáveis e acionáveis, que
-            chegassem antes que a operação resolvesse o problema fora do sistema?
+            {c.centralQuestion.text}
           </blockquote>
           <img
             src={quoteCloseImg}
@@ -122,32 +109,26 @@ export default function GerdauSmartlogPage() {
         <div className={styles.container}>
           <div className={styles.cocriacaoLayout}>
             <h2 id="cocriacao-title" className={styles.sectionHeading}>
-              Cocriação como parte do processo
+              {c.cocreation.title}
             </h2>
 
             <div className={styles.cocriacaoText}>
-              <p>O Smartlog não foi desenhado de forma isolada.</p>
-              <p>
-                Ao longo do projeto, trabalhamos lado a lado com pessoas da operação para discutir
-                cenários reais, mapear decisões, revisar fluxos e priorizar oportunidades.
-              </p>
+              {c.cocreation.paragraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
               <p className={styles.cocriacaoBreak}>
-                Essas conversas aconteciam em ciclos de cocriação, usando quadros, anotações,
-                simulações e fluxos desenhados em conjunto. Isso ajudou a transformar problemas
-                operacionais em funcionalidades mais aderentes à rotina do time e fez com que o
-                produto evoluísse sempre em construção conjunta.
+                {c.cocreation.breakParagraph}
               </p>
             </div>
 
             <div className={styles.cocriacaoPanoramica}>
               <img
                 src={cocriacaoPanoramicaImg}
-                alt="Sessão de cocriação com a equipe de operação, mapeando decisões e fluxos do Smartlog"
+                alt={c.cocreation.imgAlt}
                 className={styles.panoramicImg}
               />
               <p className={styles.mediaCaption}>
-                Cocriação com as áreas envolvidas para mapear exceções, responsabilidades e
-                decisões da operação.
+                {c.cocreation.caption}
               </p>
             </div>
           </div>
@@ -160,18 +141,14 @@ export default function GerdauSmartlogPage() {
           <div className={styles.estruturandoLayout}>
             <div className={styles.estruturandoText}>
               <h2 id="estruturando-title" className={styles.sectionHeading}>
-                Estruturando a complexidade
+                {c.structuring.title}
               </h2>
               <div className={styles.bodyBlock}>
                 <p>
-                  Boa parte do trabalho era transformar discussões complexas em fluxos claros.
-                  Mapeávamos exceções, responsabilidades, critérios de decisão e possíveis
-                  desdobramentos até que o problema ficasse compreensível o suficiente para virar
-                  solução.
+                  {c.structuring.paragraphs[0]}
                 </p>
                 <p className={styles.textGap}>
-                  Esse processo ajudou a sair de conversas abstratas sobre operação e chegar em
-                  caminhos concretos para o produto.
+                  {c.structuring.paragraphs[1]}
                 </p>
               </div>
             </div>
@@ -179,21 +156,21 @@ export default function GerdauSmartlogPage() {
               <div className={styles.processFigure}>
                 <img
                 src={estruturando01Img}
-                alt="Papéis com fluxos e anotações mapeando exceções e decisões do processo logístico"
+                alt={c.structuring.img1Alt}
                 className={styles.estruturandoImg}
               />
                 <p className={styles.mediaCaption}>
-                  Organização dos cenários e fluxos levantados durante as sessões de trabalho.
+                  {c.structuring.caption1}
                 </p>
               </div>
               <div className={styles.processFigure}>
                 <img
                 src={estruturando02Img}
-                alt="Diagramas e fluxos estruturando cenários operacionais do Smartlog"
+                alt={c.structuring.img2Alt}
                 className={styles.estruturandoImg}
               />
                 <p className={styles.mediaCaption}>
-                  Discussão dos caminhos possíveis com a operação antes de levar as decisões para a interface.
+                  {c.structuring.caption2}
                 </p>
               </div>
             </div>
@@ -208,28 +185,21 @@ export default function GerdauSmartlogPage() {
             <div className={styles.projetandoMedia}>
               <img
                 src={projetandoImg}
-                alt="Monitor com o painel de alertas do Smartlog, mostrando exceções logísticas em tratamento"
+                alt={c.designing.imgAlt}
                 className={styles.projetandoImg}
               />
               <p className={styles.mediaCaption}>
-                Interface do Smartlog projetada para centralizar alertas, evidências e ações da
-                operação.
+                {c.designing.caption}
               </p>
             </div>
             <div className={styles.projetandoText}>
               <h2 id="projetando-title" className={styles.sectionHeading}>
-                Projetando para a ação
+                {c.designing.title}
               </h2>
               <div className={styles.bodyBlock}>
-                <p>
-                  Com os cenários mais maduros, transformei esses fluxos em telas e componentes
-                  que ajudassem a operação a identificar, assumir e tratar alertas em um único
-                  lugar.
-                </p>
-                <p>
-                  O objetivo não era apenas organizar informação, mas reduzir a dependência de
-                  planilhas, e-mails e verificações espalhadas entre sistemas.
-                </p>
+                {c.designing.paragraphs.map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
               </div>
             </div>
           </div>
@@ -243,26 +213,23 @@ export default function GerdauSmartlogPage() {
             <div className={styles.validandoMedia}>
               <img
                 src={validandoImg}
-                alt="Quadro branco com fluxo de decisão logística mapeado em sessão com a operação"
+                alt={c.validating.imgAlt}
                 className={styles.validandoImg}
               />
               <p className={styles.mediaCaption}>
-                Fluxo de decisão revisado com a operação antes dos ajustes finais na interface.
+                {c.validating.caption}
               </p>
             </div>
             <div className={styles.validandoText}>
               <h2 id="validando-title" className={styles.sectionHeading}>
-                Validando a lógica com a operação
+                {c.validating.title}
               </h2>
               <div className={styles.bodyBlock}>
                 <p>
-                  Nas sessões com a operação, exceções, decisões, pessoas e sistemas apareciam de
-                  forma solta. Meu trabalho era organizar esse material em fluxos que o time
-                  reconhecesse e conseguisse discutir.
+                  {c.validating.paragraphs[0]}
                 </p>
                 <p className={styles.textGap}>
-                  A partir desses fluxos, desenhávamos cenários, revisávamos caminhos possíveis e
-                  ajustávamos regras em conjunto para sustentar as decisões de interface.
+                  {c.validating.paragraphs[1]}
                 </p>
               </div>
             </div>
@@ -274,21 +241,18 @@ export default function GerdauSmartlogPage() {
       <RevealSection as="section" aria-labelledby="produto-title" className={styles.produto}>
         <div className={styles.container}>
           <h2 id="produto-title" className={styles.sectionHeadingCenter}>
-            Produto em operação
+            {c.product.title}
           </h2>
           <p className={styles.produtoDesc}>
-            O Smartlog foi implantado e passou a concentrar alertas, responsáveis, comentários,
-            status e tempos de tratamento em um único ambiente. Depois do lançamento, o produto
-            continuou evoluindo em novas versões, incorporando dashboards, acompanhamento de
-            veículos e outras frentes da logística.
+            {c.product.description}
           </p>
           <div className={styles.smartlogLogoWrap}>
-            <img src={smartlogLogoSvg} alt="Logo Smartlog" className={styles.smartlogLogo} />
+            <img src={smartlogLogoSvg} alt={c.product.logoAlt} className={styles.smartlogLogo} />
           </div>
           <div className={styles.produtoImgWrap}>
             <img
               src={produtoImg}
-              alt="Smartlog em operação: painel unificado de alertas, responsáveis, status e tempos de tratamento logístico"
+              alt={c.product.imgAlt}
               className={styles.produtoImg}
             />
           </div>

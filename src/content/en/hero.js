@@ -1,5 +1,5 @@
 export default {
   subtitle: 'Design Leader · Product Strategist',
   body: 'I turn complex contexts into clearer digital experiences, combining data, research and product vision.',
-  ctaLabel: 'See selected projects ↓',
+  ctaLabel: 'View selected work ↓',
 }

@@ -1,0 +1,60 @@
+/* Language Switcher — PT | EN
+   Approved Design System spec (§21 — Component Behaviors):
+   Label/M 16 · active in black Medium · divider "|" in #D9D9D9 ·
+   unavailable option visible but non-interactive in #D9D9D9 ·
+   focus-visible ring applies to the whole group (never permanent). */
+
+.switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.active {
+  color: var(--color-black);
+  font-weight: 500;
+}
+
+.link {
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+}
+
+/* Ring belongs to the group — suppress the link's own outline */
+.link:focus-visible {
+  outline: none;
+}
+
+.switcher:has(:focus-visible) {
+  outline: 2px solid var(--color-black);
+  outline-offset: 4px;
+}
+
+.disabled {
+  color: var(--color-divider);
+}
+
+.separator {
+  color: var(--color-divider);
+}
+
+/* Mobile: touch target ≥44px without changing the visual footprint */
+@media (max-width: 768px) {
+  .link,
+  .active,
+  .disabled {
+    padding: 14px 13px;
+    margin: -14px -13px;
+  }
+}

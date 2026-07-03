@@ -25,7 +25,7 @@ function ProjectCard({ project, viewProjectLabel }) {
 
   return (
     <Link
-      to={`/trabalhos/${project.slug}`}
+      to={project.to}
       className={styles.card}
       aria-label={project.title}
     >

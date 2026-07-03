@@ -10,6 +10,7 @@ export default {
   bodyMobile:
     'Conecto usuários, negócio e tecnologia para orientar decisões, desenhar experiências e acompanhar sua evolução do primeiro entendimento ao produto em operação e escala.',
   curriculoLabel: 'Ver Currículo ↗︎',
-  curriculoHref: '/curriculo/index.html',
+  curriculoHref:
+    'https://docs.google.com/document/d/1H3rRz6IN_5NLHGYK8FqgWAFS8_DpEkbW/edit?usp=drive_link&ouid=110536839809774461332&rtpof=true&sd=true',
   linkedinLabel: 'LinkedIn ↗︎',
 }

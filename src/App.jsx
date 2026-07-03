@@ -28,13 +28,21 @@ export default function App() {
           <Route path="/sobre" element={<AboutPage />} />
           <Route path="/en/about" element={<AboutPage />} />
           <Route path="/trabalhos" element={<WorksPage />} />
+          <Route path="/en/work" element={<WorksPage />} />
           <Route path="/contato" element={<ContactPage />} />
+          <Route path="/en/contact" element={<ContactPage />} />
           <Route path="/trabalhos/qi-platform" element={<QiPlatformPage />} />
+          <Route path="/en/work/qi-platform" element={<QiPlatformPage />} />
           <Route path="/trabalhos/emr-integration" element={<EmrIntegrationPage />} />
+          <Route path="/en/work/emr-integration" element={<EmrIntegrationPage />} />
           <Route path="/trabalhos/gerdau-storeroom" element={<GerdauStoreroomPage />} />
+          <Route path="/en/work/gerdau-storeroom" element={<GerdauStoreroomPage />} />
           <Route path="/trabalhos/gerdau-smartlog" element={<GerdauSmartlogPage />} />
+          <Route path="/en/work/gerdau-smartlog" element={<GerdauSmartlogPage />} />
           <Route path="/trabalhos/itau-empreendedor" element={<ItauEmpreendedorPage />} />
+          <Route path="/en/work/itau-empreendedor" element={<ItauEmpreendedorPage />} />
           <Route path="/trabalhos/3ph-hrcrs-digital-ecosystem" element={<ThreePHHrcrsPage />} />
+          <Route path="/en/work/3ph-hrcrs-digital-ecosystem" element={<ThreePHHrcrsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
 

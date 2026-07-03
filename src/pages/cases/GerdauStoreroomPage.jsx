@@ -3,6 +3,9 @@ import Seo from '../../components/Seo'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
 import TypingTitle from '../../components/TypingTitle'
 import RevealSection from '../../components/RevealSection'
+import { useLanguage } from '../../context/LanguageContext'
+import ptContent from '../../content/pt/case-gerdau-storeroom'
+import enContent from '../../content/en/case-gerdau-storeroom'
 import styles from './GerdauStoreroomPage.module.css'
 
 import heroImg from '../../media/cases/gerdau-storeroom/gerdau-storeroom-inventory-counting-hero.jpg'
@@ -24,20 +27,6 @@ const VIMEO_SHADOWING = '1202496239'
 const VIMEO_TEST_OPERATOR = '1204273143'
 const VIMEO_STAKEHOLDER = '1204273144'
 const VIMEO_OPERATION = '1204342753'
-
-const FLOW_TOP = [
-  'Receber a lista de itens',
-  'Procurar cada item no SAP',
-  'Congelar Inventário no SAP',
-  'Imprimir lista de itens',
-]
-
-const FLOW_BOTTOM = [
-  'Validar no SAP',
-  'Voltar ao computador',
-  'Contar manualmente no papel',
-  'Procurar itens no galpão',
-]
 
 
 function VideoPortrait({ vimeoId, title }) {
@@ -72,21 +61,25 @@ function VideoWide({ vimeoId, title }) {
 
 
 export default function GerdauStoreroomPage() {
+  const { lang } = useLanguage()
+  const c = lang === 'en' ? enContent : ptContent
+
   return (
     <Layout>
       <Seo
-        title="Gerdau Storeroom — Case de Product Design | Henrique Silva"
-        description="Case de Product Design para a operação de almoxarifado da Gerdau, reduzindo uma contagem de inventário de até duas horas para cerca de 15 minutos."
-        path="/trabalhos/gerdau-storeroom"
+        title={c.seo.title}
+        description={c.seo.description}
+        path={c.seo.path}
+        lang={c.seo.lang}
+        robots={c.seo.robots}
       />
       {/* 1. Hero */}
       <section aria-labelledby="hero-title" className={styles.hero}>
-        <TypingTitle id="hero-title" className={styles.heroTitle} lines={['Gerdau', 'Storeroom']} />
+        <TypingTitle id="hero-title" className={styles.heroTitle} lines={c.hero.titleLines} />
         <div className={styles.heroMeta}>
-          <p className={styles.heroSubtitle}>Inventário industrial · Design de produto</p>
+          <p className={styles.heroSubtitle}>{c.hero.subtitle}</p>
           <p className={styles.heroDesc}>
-            Uma experiência cocriada com a operação para reduzir tempo e retrabalho na contagem
-            de inventário, sem descolar da realidade do processo e das regras do SAP.
+            {c.hero.description}
           </p>
         </div>
       </section>
@@ -94,40 +87,34 @@ export default function GerdauStoreroomPage() {
       <hr className={styles.dividerFull} aria-hidden="true" />
 
       {/* 2. Metadata */}
-      <RevealSection as="section" aria-label="Informações do projeto" className={styles.metadata}>
+      <RevealSection as="section" aria-label={c.metadata.ariaLabel} className={styles.metadata}>
         <div className={styles.container}>
           <div className={styles.metaLayout}>
             <div className={styles.metaImage}>
               <img
                 src={heroImg}
-                alt="Interface do Storeroom App com a marca Gerdau, exibindo contagem de inventário"
+                alt={c.metadata.imageAlt}
                 className={styles.metaImg}
               />
             </div>
             <div className={styles.metaFields}>
               <div className={styles.metaRow}>
-                <div className={styles.metaItem}>
-                  <p className={styles.metaLabel}>Cliente</p>
-                  <p className={styles.metaValue}>Gerdau Steel</p>
-                </div>
-                <div className={styles.metaItem}>
-                  <p className={styles.metaLabel}>Ano</p>
-                  <p className={styles.metaValue}>2018</p>
-                </div>
-                <div className={styles.metaItem}>
-                  <p className={styles.metaLabel}>Papel</p>
-                  <p className={styles.metaValue}>Product Designer</p>
-                </div>
+                {c.metadata.fields.map((field) => (
+                  <div key={field.label} className={styles.metaItem}>
+                    <p className={styles.metaLabel}>{field.label}</p>
+                    <p className={styles.metaValue}>{field.value}</p>
+                  </div>
+                ))}
               </div>
               <div className={styles.metaResultBlock}>
-                <p className={styles.metaLabel}>Resultado</p>
-                <p className={styles.metaResultMain}>90~120 min → ~15 min</p>
-                <p className={styles.metaResultSub}>Mais de 80% de redução no tempo de contagem</p>
+                <p className={styles.metaLabel}>{c.metadata.result.label}</p>
+                <p className={styles.metaResultMain}>{c.metadata.result.main}</p>
+                <p className={styles.metaResultSub}>{c.metadata.result.sub}</p>
               </div>
               <div className={styles.metaAtuacao}>
-                <p className={styles.metaLabel}>Minha atuação</p>
+                <p className={styles.metaLabel}>{c.metadata.contribution.label}</p>
                 <p className={styles.metaAtuacaoVal}>
-                  Pesquisa · Cocriação · Prototipação · Testes de usabilidade
+                  {c.metadata.contribution.value}
                 </p>
               </div>
             </div>
@@ -140,7 +127,7 @@ export default function GerdauStoreroomPage() {
         <div className={styles.container}>
           <img
             src={panoramicImg}
-            alt="Parede de post-its com mapeamento e síntese do projeto Gerdau Storeroom"
+            alt={c.panoramic.alt}
             className={styles.panoramicImg}
           />
         </div>
@@ -150,31 +137,23 @@ export default function GerdauStoreroomPage() {
       <RevealSection as="section" aria-labelledby="problema-title" className={styles.problema}>
         <div className={styles.container}>
           <div className={styles.problemaLayout}>
-            <h2 id="problema-title" className={styles.sectionHeading}>O problema</h2>
+            <h2 id="problema-title" className={styles.sectionHeading}>{c.problem.title}</h2>
             <div className={styles.problemaText}>
-              <p>
-                Em tese, o trabalho era simples: localizar os itens, conferir as quantidades e
-                atualizar o SAP.
-              </p>
-              <p>
-                Na prática, a contagem dependia de listas impressas, deslocamentos por um galpão
-                enorme e conferências manuais. Quando alguma informação não batia, o operador
-                precisava voltar ao computador, revisar os dados e refazer a validação do
-                inventário.
-              </p>
+              {c.problem.paragraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
             </div>
           </div>
         </div>
       </RevealSection>
 
       {/* 5. Pergunta central */}
-      <RevealSection as="section" aria-label="Pergunta central do projeto" className={styles.centralQuestion}>
+      <RevealSection as="section" aria-label={c.centralQuestion.ariaLabel} className={styles.centralQuestion}>
         <div className={styles.container}>
           <img src={quoteOpenImg} alt="" aria-hidden="true" className={styles.quoteIconOpen} />
-          <p className={styles.quoteLabel}>A pergunta que orientou o trabalho:</p>
+          <p className={styles.quoteLabel}>{c.centralQuestion.label}</p>
           <blockquote className={styles.quoteText}>
-            Como reduzir o tempo e o retrabalho na contagem de inventário sem ignorar as regras
-            do SAP e a realidade da operação em campo?
+            {c.centralQuestion.text}
           </blockquote>
           <img
             src={quoteCloseImg}
@@ -192,41 +171,39 @@ export default function GerdauStoreroomPage() {
             <div className={styles.shadowingVideo}>
               <VideoPortrait
                 vimeoId={VIMEO_SHADOWING}
-                title="Shadowing com os operadores durante a contagem de inventário, acompanhando o processo real e os pontos de atrito em campo."
+                title={c.shadowing.videoTitle}
               />
               <p className={styles.caption}>
-                Acompanhando a conferência em campo para entender onde o processo travava na prática.
+                {c.shadowing.videoCaption}
               </p>
             </div>
 
             <div className={styles.shadowingText}>
               <h2 id="shadowing-title" className={styles.sectionHeading}>
-                Como o processo funcionava antes:
+                {c.shadowing.title}
               </h2>
 
               <p className={styles.bodyTextWide}>
-                Para entender onde esse fluxo realmente travava, acompanhei a contagem junto aos
-                operadores — do congelamento do inventário no SAP à atualização dos dados depois
-                da ida ao galpão.
+                {c.shadowing.body}
               </p>
 
               <div className={styles.flowDiagram}>
                 <img
                   src={fluxogramaImg}
-                  alt="Fluxo anterior da contagem de inventário, da lista de itens até a validação final no SAP."
+                  alt={c.shadowing.flowAlt}
                   className={styles.flowDiagramImage}
                 />
 
                 <div
                   className={styles.flowDiagramMobile}
-                  aria-label="Fluxo anterior da contagem de inventário"
+                  aria-label={c.shadowing.flowMobileAriaLabel}
                 >
                   <div className={styles.flowRow}>
-                    {FLOW_TOP.map((step, i) => (
+                    {c.shadowing.flowTop.map((step, i) => (
                       <span key={step} className={styles.flowPillGroup}>
                         <span className={styles.flowPill}>{step}</span>
 
-                        {i < FLOW_TOP.length - 1 && (
+                        {i < c.shadowing.flowTop.length - 1 && (
                           <span className={styles.flowArrow} aria-hidden="true">
                             ↓
                           </span>
@@ -243,7 +220,7 @@ export default function GerdauStoreroomPage() {
                   </span>
 
                   <div className={styles.flowRow}>
-                    {FLOW_BOTTOM.slice().reverse().map((step, i, steps) => (
+                    {c.shadowing.flowBottom.slice().reverse().map((step, i, steps) => (
                       <span key={step} className={styles.flowPillGroup}>
                         <span className={styles.flowPill}>{step}</span>
 
@@ -259,11 +236,11 @@ export default function GerdauStoreroomPage() {
               </div>
 
               <div className={styles.excecaoBlock}>
-                <p className={styles.bodyTextLabel}>Onde o processo quebrava?</p>
+                <p className={styles.bodyTextLabel}>{c.shadowing.breakLabel}</p>
                 <p className={styles.excecaoText}>
-                  Qualquer exceção virava retrabalho:
+                  {c.shadowing.breakLines[0]}
                   <br />
-                  Item fora do lugar, quantidade divergente ou nova validação no SAP.
+                  {c.shadowing.breakLines[1]}
                 </p>
               </div>
             </div>
@@ -275,26 +252,20 @@ export default function GerdauStoreroomPage() {
       <RevealSection as="section" aria-labelledby="mapping-title" className={styles.mappingSection}>
         <div className={styles.container}>
           <h2 id="mapping-title" className={styles.sectionHeadingLeft}>
-            Mapeando o fluxo real
+            {c.mapping.title}
           </h2>
           <div className={styles.mappingText}>
-            <p>
-              Depois do acompanhamento em campo, organizei as etapas, exceções e decisões que
-              faziam parte da contagem.
-            </p>
-            <p>
-              O mapa ajudou a separar o que era uma regra necessária da operação do que existia
-              apenas para contornar limitações do processo atual. Com isso, ficou mais fácil
-              discutir onde simplificar sem perder controle.
-            </p>
+            {c.mapping.paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
           <img
             src={processMappingImg}
-            alt="Mapeamento do fluxo real da contagem de inventário com operadores e stakeholders"
+            alt={c.mapping.imgAlt}
             className={styles.sectionImg}
           />
           <p className={styles.caption}>
-            Mapeamento do fluxo real com operadores e stakeholders da operação.
+            {c.mapping.caption}
           </p>
         </div>
       </RevealSection>
@@ -304,25 +275,19 @@ export default function GerdauStoreroomPage() {
         <div className={styles.container}>
           <div className={styles.cocriacaoLayout}>
             <div className={styles.cocriacaoText}>
-              <h2 id="cocriacao-title" className={styles.sectionHeading}>Cocriação</h2>
-              <p className={styles.bodyText}>
-                Com os principais atritos mapeados, reuni operadores e áreas envolvidas para
-                imaginar um processo com menos retrabalho.
-              </p>
-              <p className={styles.bodyText}>
-                Em vez de começar pelas telas, discutimos as decisões que estruturavam o fluxo:
-                quais etapas precisavam permanecer no SAP, onde os operadores precisavam de mais
-                clareza e o que poderia ser resolvido pelo próprio produto.
-              </p>
+              <h2 id="cocriacao-title" className={styles.sectionHeading}>{c.cocreation.title}</h2>
+              {c.cocreation.paragraphs.map((paragraph, index) => (
+                <p key={index} className={styles.bodyText}>{paragraph}</p>
+              ))}
             </div>
             <div className={styles.cocriacaoRight}>
               <img
                 src={cocreationSessionImg}
-                alt="Sessão de cocriação com a equipe e operadores, explorando ideias de solução"
+                alt={c.cocreation.imgAlt}
                 className={styles.twoColImg}
               />
               <p className={styles.caption}>
-                Explorando ideias de solução com quem vivia o processo no dia a dia.
+                {c.cocreation.caption}
               </p>
             </div>
           </div>
@@ -336,26 +301,24 @@ export default function GerdauStoreroomPage() {
             <div className={styles.decidirLeft}>
               <img
                 src={cocreationSynthesisImg}
-                alt="Síntese da cocriação com atritos e oportunidades identificadas pelos operadores"
+                alt={c.decide.imgAlt}
                 className={styles.twoColImg}
               />
               <p className={styles.caption}>
-                Síntese dos principais atritos, exceções e oportunidades identificadas durante
-                a cocriação.
+                {c.decide.caption}
               </p>
             </div>
             <div className={styles.decidirText}>
               <h2 id="decidir-title" className={styles.sectionHeading}>
-                O que precisávamos decidir
+                {c.decide.title}
               </h2>
               <ul className={styles.decisionList}>
-                <li>Quais regras precisavam permanecer no SAP</li>
-                <li>Que etapas poderiam ser resolvidas no próprio fluxo</li>
-                <li>Como orientar o operador diante das exceções</li>
+                {c.decide.list.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
               </ul>
               <p className={styles.bodyText}>
-                Foi quando as regras do sistema encontraram o conhecimento de quem vivia a
-                operação que a solução começou a tomar forma.
+                {c.decide.body}
               </p>
             </div>
           </div>
@@ -368,28 +331,20 @@ export default function GerdauStoreroomPage() {
           <div className={styles.prototypeLayout}>
             <div className={styles.prototypeText}>
               <h2 id="prototipo-title" className={styles.sectionHeading}>
-                Da ideia ao protótipo
+                {c.prototype.title}
               </h2>
-              <p className={styles.bodyText}>
-                As ideias levantadas na cocriação foram combinadas em uma primeira versão da
-                solução — quase um Frankenstein feito com as partes que pareciam funcionar
-                melhor.
-              </p>
-              <p className={styles.bodyText}>
-                Naquele momento, a preocupação não era o acabamento. Era colocar o fluxo de pé
-                rapidamente, levar o protótipo de volta aos operadores e descobrir onde a lógica
-                ainda precisava mudar.
-              </p>
+              {c.prototype.paragraphs.map((paragraph, index) => (
+                <p key={index} className={styles.bodyText}>{paragraph}</p>
+              ))}
             </div>
             <div className={styles.prototypeRight}>
               <img
                 src={prototypeSketchImg}
-                alt="Wireframes de baixa fidelidade do fluxo do Storeroom App desenhados em quadro branco"
+                alt={c.prototype.imgAlt}
                 className={styles.twoColImg}
               />
               <p className={styles.caption}>
-                Primeira versão do fluxo, construída a partir das ideias priorizadas durante
-                a cocriação.
+                {c.prototype.caption}
               </p>
             </div>
           </div>
@@ -401,29 +356,26 @@ export default function GerdauStoreroomPage() {
       <RevealSection as="section" aria-labelledby="testing-title" className={styles.testingSection}>
         <div className={styles.container}>
           <h2 id="testing-title" className={styles.sectionHeadingCenter}>
-            Testando com os operadores
+            {c.testing.title}
           </h2>
           <div className={styles.testingText}>
-            <p>
-              Testamos a primeira versão com diferentes operadores, tanto em sala quanto no
-              ambiente real de trabalho. Observei onde surgiam dúvidas, quais informações
-              procuravam e quais decisões ainda precisavam de explicação.
-            </p>
-            <p>Cada rodada ajudou a ajustar a sequência e o conteúdo antes da implementação.</p>
+            {c.testing.paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
           <div className={styles.testGrid}>
             {/* Top-left: Video 2 (Vimeo 1204273143) */}
             <div className={styles.testCell}>
               <VideoWide
                 vimeoId={VIMEO_TEST_OPERATOR}
-                title="Teste do protótipo de baixa fidelidade com operador, validando a sequência, o conteúdo e as decisões do fluxo."
+                title={c.testing.video1Title}
               />
             </div>
             {/* Top-right: test-02.jpg */}
             <div className={styles.testCell}>
               <img
                 src={testImg02}
-                alt="Operador testando o app em ambiente real de galpão durante o inventário"
+                alt={c.testing.img02Alt}
                 className={styles.testImg}
               />
             </div>
@@ -431,7 +383,7 @@ export default function GerdauStoreroomPage() {
             <div className={styles.testCell}>
               <img
                 src={testImg04}
-                alt="Teste do protótipo com operador em sala, verificando compreensão do fluxo"
+                alt={c.testing.img04Alt}
                 className={styles.testImg}
               />
             </div>
@@ -439,13 +391,12 @@ export default function GerdauStoreroomPage() {
             <div className={styles.testCell}>
               <VideoWide
                 vimeoId={VIMEO_STAKEHOLDER}
-                title="Validação do protótipo com a principal stakeholder, alinhando o fluxo às necessidades da operação e do negócio."
+                title={c.testing.video2Title}
               />
             </div>
           </div>
           <p className={styles.caption}>
-            Testes realizados com diferentes operadores, em sala e no campo, para identificar
-            dúvidas e oportunidades de melhoria no fluxo.
+            {c.testing.caption}
           </p>
         </div>
       </RevealSection>
@@ -453,26 +404,21 @@ export default function GerdauStoreroomPage() {
       {/* 13. A solução refinada */}
       <RevealSection as="section" aria-labelledby="refined-title" className={styles.refinedSection}>
         <div className={styles.container}>
-          <h2 id="refined-title" className={styles.sectionHeadingCenter}>A solução refinada</h2>
+          <h2 id="refined-title" className={styles.sectionHeadingCenter}>{c.refined.title}</h2>
           <div className={styles.refinedText}>
-            <p>
-              A solução final reuniu consulta, contagem e atualização das informações em um
-              único fluxo no tablet.
-            </p>
-            <p>
-              Com isso, o operador podia concluir o processo em campo, sem precisar voltar ao
-              computador a cada etapa.
-            </p>
+            {c.refined.paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
           <div className={styles.refinedImgWrap}>
             <img
               src={refinedInterfaceImg}
-              alt="Telas do fluxo refinado do Storeroom App para contagem de inventário em tablet"
+              alt={c.refined.imgAlt}
               className={styles.refinedImg}
             />
           </div>
           <p className={styles.caption}>
-            Principais telas do fluxo refinado para apoiar a contagem de inventário em campo.
+            {c.refined.caption}
           </p>
         </div>
       </RevealSection>
@@ -484,18 +430,16 @@ export default function GerdauStoreroomPage() {
             <div className={styles.operationMedia}>
               <VideoWide
                 vimeoId={VIMEO_OPERATION}
-                title="Gerdau Storeroom em operação durante a contagem de inventário em campo."
+                title={c.operation.videoTitle}
               />
             </div>
 
             <div className={styles.operationText}>
               <h2 id="operation-title" className={styles.sectionHeading}>
-                O produto em operação
+                {c.operation.title}
               </h2>
               <p className={styles.bodyText}>
-                A solução foi implementada pela Gerdau e passou a ser utilizada na operação de
-                Cartersville. Com o novo fluxo, uma contagem que levava entre 90 e 120 minutos
-                passou a ser concluída em aproximadamente 15.
+                {c.operation.body}
               </p>
             </div>
           </div>
@@ -503,7 +447,7 @@ export default function GerdauStoreroomPage() {
       </RevealSection>
 
       {/* 15. Depoimento */}
-      <RevealSection as="section" aria-label="Depoimento" className={styles.testimonial}>
+      <RevealSection as="section" aria-label={c.testimonial.ariaLabel} className={styles.testimonial}>
         <div className={styles.container}>
           <img
             src={quoteOpenImg}
@@ -512,15 +456,9 @@ export default function GerdauStoreroomPage() {
             className={styles.testimonialQuoteOpen}
           />
           <blockquote className={styles.testimonialText}>
-            <p>
-              Vocês não foram os primeiros a vir até aqui e tentar nos ajudar. A diferença é
-              que as empresas anteriores queriam mudar nossos processos e nos ensinar uma nova
-              forma de trabalhar.
-            </p>
-            <p>
-              Vocês nos ouviram, e nós participamos ativamente do processo de criação. Isso foi
-              muito enriquecedor.
-            </p>
+            {c.testimonial.paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </blockquote>
           <img
             src={quoteCloseImg}
@@ -529,7 +467,7 @@ export default function GerdauStoreroomPage() {
             className={styles.testimonialQuoteClose}
           />
           <p className={styles.testimonialAuthor}>
-            — Peter, Gerente Logístico da Gerdau North America
+            {c.testimonial.author}
           </p>
         </div>
       </RevealSection>
@@ -539,11 +477,11 @@ export default function GerdauStoreroomPage() {
         <div className={styles.container}>
           <img
             src={projectTeamImg}
-            alt="Equipe que participou da pesquisa, cocriação e validação do Gerdau Storeroom em Cartersville"
+            alt={c.team.imgAlt}
             className={styles.teamImg}
           />
           <p className={styles.caption}>
-            O time que participou da pesquisa, cocriação e validação da solução em Cartersville.
+            {c.team.caption}
           </p>
         </div>
       </div>

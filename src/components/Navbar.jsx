@@ -2,6 +2,7 @@ import { NavLink, Link, useLocation } from 'react-router-dom'
 import { useState, useEffect, useCallback, useRef } from 'react'
 import styles from './Navbar.module.css'
 import logoUrl from '../media/shared/branding/hsd-logo.svg'
+import LanguageSwitcher from './LanguageSwitcher'
 import { useLanguage } from '../context/LanguageContext'
 import pt from '../content/pt/nav'
 import en from '../content/en/nav'
@@ -146,10 +147,22 @@ export default function Navbar() {
   useEffect(() => {
     const shouldLockScroll = isOpen || dropdownOpen
 
-    document.body.style.overflow = shouldLockScroll ? 'hidden' : ''
+    if (!shouldLockScroll) return undefined
+
+    const previousOverflow = document.body.style.overflow
+    const previousPaddingRight = document.body.style.paddingRight
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth
+
+    document.body.style.overflow = 'hidden'
+
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`
+    }
 
     return () => {
-      document.body.style.overflow = ''
+      document.body.style.overflow = previousOverflow
+      document.body.style.paddingRight = previousPaddingRight
     }
   }, [isOpen, dropdownOpen])
 
@@ -278,6 +291,8 @@ export default function Navbar() {
         </nav>
 
         <div className={styles.rightArea}>
+          <LanguageSwitcher className={styles.navSwitcher} />
+
           <Link
             to={c.ctaTo}
             className={styles.ctaBtn}
@@ -405,6 +420,10 @@ export default function Navbar() {
         </nav>
 
         <div className={styles.mobileFooter}>
+          <LanguageSwitcher
+            onNavigate={close}
+            tabIndex={isOpen ? 0 : -1}
+          />
           <span>{c.copyright}</span>
         </div>
       </div>

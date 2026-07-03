@@ -3,6 +3,9 @@ import Seo from '../../components/Seo'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
 import TypingTitle from '../../components/TypingTitle'
 import RevealSection from '../../components/RevealSection'
+import { useLanguage } from '../../context/LanguageContext'
+import ptContent from '../../content/pt/case-qi-platform'
+import enContent from '../../content/en/case-qi-platform'
 import styles from './QiPlatformPage.module.css'
 import headOfDesignRoleImg from '../../media/cases/qi-platform/head-of-design-role.png'
 import qiMiroCocreationImg from '../../media/cases/qi-platform/QI-Miro-Cocreation.png'
@@ -17,70 +20,12 @@ import investigationIcon from '../../media/cases/qi-platform/investigacao.svg'
 import quoteOpenImg from '../../media/shared/quotes/quote-open.png'
 import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
 
-const metaItems = [
-  { label: 'Empresa', value: '3PH Alliance' },
-  { label: 'Ano', value: '2024' },
-  { label: 'Papel', value: 'Head of Design' },
-  {
-    label: 'Impacto Medido',
-    value: '23.000+ análises comparativas em 12 meses',
-  },
-  {
-    label: 'Escala',
-    value: ['270+ especialistas', '4 países', '3+ novos centros por mês'],
-  },
-  {
-    label: 'Atuação',
-    value:
-      'Estratégia de produto · Discovery · Liderança de design · Pesquisa · Validação',
-  },
-]
-
-const productQuestions = [
-  {
-    icon: myEvolutionIcon,
-    title: 'Minha evolução',
-    text: 'Como meus resultados mudaram ao longo do tempo?',
-  },
-  {
-    icon: groupsIcon,
-    title: 'Grupos de referência',
-    text:
-      'Como minha performance se compara com especialistas ou centros semelhantes?',
-  },
-  {
-    icon: networkIcon,
-    title: 'Visão da rede',
-    text: 'Onde existem padrões ou diferenças em um conjunto maior?',
-  },
-  {
-    icon: investigationIcon,
-    title: 'Investigação',
-    text:
-      'Que recortes ajudam a entender por que determinado resultado aconteceu?',
-  },
-]
-
-const impactStats = [
-  {
-    value: '23.000+',
-    label: 'Análises comparativas em 12 meses',
-    wide: true,
-  },
-  {
-    value: '270+',
-    label: 'Especialistas cardiovasculares',
-  },
-  {
-    value: '4 Países',
-    label: 'Utilizando a plataforma',
-  },
-  {
-    value: '3+ novos centros por mês',
-    label: 'Incorporados à operação',
-    wide: true,
-  },
-]
+const QUESTION_ICONS = {
+  evolution: myEvolutionIcon,
+  groups: groupsIcon,
+  network: networkIcon,
+  investigation: investigationIcon,
+}
 
 function MetaValue({ value }) {
   if (Array.isArray(value)) {
@@ -121,25 +66,28 @@ function QuoteBlock({ label = null, children, compact = false }) {
 
 
 export default function QiPlatformPage() {
+  const { lang } = useLanguage()
+  const c = lang === 'en' ? enContent : ptContent
+
   return (
     <Layout>
       <Seo
-        title="QI Platform — Case de Product Design | Henrique Silva"
-        description="Case de Product Design para uma plataforma de melhoria da qualidade em saúde, usada por 270+ especialistas em quatro países e 23 mil+ análises."
-        path="/trabalhos/qi-platform"
+        title={c.seo.title}
+        description={c.seo.description}
+        path={c.seo.path}
+        lang={c.seo.lang}
+        robots={c.seo.robots}
       />
       <article className={styles.page}>
         <section className={styles.hero} aria-labelledby="qi-title">
-          <TypingTitle id="qi-title" className={styles.heroTitle} lines={['QI', 'Platform']} />
+          <TypingTitle id="qi-title" className={styles.heroTitle} lines={c.hero.titleLines} />
 
           <div className={styles.heroMeta}>
             <p className={styles.heroKicker}>
-              Benchmarking clínico · Estratégia de produto
+              {c.hero.kicker}
             </p>
             <p className={styles.heroDescription}>
-              Uma plataforma criada para ajudar especialistas cardiovasculares a
-              entender a própria performance, comparar resultados com referências
-              relevantes e decidir onde valia investigar mais.
+              {c.hero.description}
             </p>
           </div>
         </section>
@@ -148,21 +96,21 @@ export default function QiPlatformPage() {
 
         <RevealSection as="section"
           className={styles.metadata}
-          aria-label="Informações do projeto"
+          aria-label={c.metadata.ariaLabel}
         >
           <div className={styles.container}>
             <div className={styles.metaLayout}>
               <figure className={`${styles.figure} ${styles.metaImage}`}>
                 <img
                   src={heroTabletImg}
-                  alt="Tela do QI Platform em um tablet"
+                  alt={c.metadata.imageAlt}
                   className={styles.metaImg}
                 />
               </figure>
 
               <dl className={styles.metaFields}>
                 <div className={styles.metaRow}>
-                  {metaItems.slice(0, 3).map((item) => (
+                  {c.metadata.items.slice(0, 3).map((item) => (
                     <div key={item.label} className={styles.metaItem}>
                       <dt className={styles.metaLabel}>{item.label}</dt>
                       <dd>
@@ -172,7 +120,7 @@ export default function QiPlatformPage() {
                   ))}
                 </div>
 
-                {metaItems.slice(3).map((item) => (
+                {c.metadata.items.slice(3).map((item) => (
                   <div key={item.label} className={styles.metaBlock}>
                     <dt className={styles.metaLabel}>{item.label}</dt>
                     <dd>
@@ -186,78 +134,52 @@ export default function QiPlatformPage() {
         </RevealSection>
 
         <RevealSection as="section" className={styles.problemSection}>
-          <h2>O problema</h2>
+          <h2>{c.problem.title}</h2>
           <div className={styles.bodyText}>
-            <p>Os dados já existiam. E eram muitos.</p>
-            <p>
-              O problema era transformar aquele volume de informação em
-              comparações que os especialistas conseguissem entender e usar. Não
-              adiantava colocar mais gráficos na tela. Uma comparação clínica
-              depende de contexto: período, perfil dos pacientes, tipo de
-              procedimento, centro e grupo de referência.
-            </p>
-            <p>
-              E havia outra camada: a comparação precisava ser útil sem permitir
-              que um centro descobrisse exatamente contra quem estava sendo
-              comparado.
-            </p>
+            {c.problem.paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
         </RevealSection>
 
-        <QuoteBlock label="A pergunta que orientou o trabalho:">
-          Como transformar dados clínicos complexos em comparações claras e
-          confiáveis, sem esconder diferenças importantes nem expor informações
-          que precisavam continuar anônimas?
+        <QuoteBlock label={c.centralQuestion.label}>
+          {c.centralQuestion.text}
         </QuoteBlock>
 
         <RevealSection as="section"
           className={`${styles.storyGrid} ${styles.imageLeft} ${styles.discoverySection}`}
         >
-          <h2>Antes de desenhar qualquer coisa</h2>
+          <h2>{c.discovery.title}</h2>
           <figure className={`${styles.figure} ${styles.storyFigure}`}>
             <img
               src={qiMiroCocreationImg}
-              alt="Quadro colaborativo no Miro utilizado nas sessões de cocriação do QI Platform"
+              alt={c.discovery.imgAlt}
               className={`${styles.imageCover} ${styles.miroImage}`}
             />
           </figure>
           <div className={styles.bodyText}>
-            <p>
-              Todo o trabalho aconteceu remotamente, conectando especialistas,
-              pesquisadores, designers, Produto e Tecnologia em diferentes
-              localidades.
-            </p>
-            <p>
-              Nas entrevistas e sessões de trabalho, não queríamos descobrir
-              apenas quais indicadores deveriam aparecer. Precisávamos entender
-              como os especialistas liam os resultados, quais comparações faziam
-              sentido e o que procuravam quando alguma coisa saía do padrão.
-            </p>
-            <p>
-              Foi daí que surgiu uma pergunta mais concreta, capaz de organizar o
-              produto:
-            </p>
+            {c.discovery.paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
         </RevealSection>
 
         <QuoteBlock compact>
-          Depois de identificar uma diferença, o que o especialista precisava
-          entender para decidir o próximo passo?
+          {c.compactQuote}
         </QuoteBlock>
 
         <RevealSection as="section" className={styles.productSection}>
           <div className={styles.productIntro}>
-            <h2>Transformando perguntas em produto</h2>
+            <h2>{c.product.title}</h2>
             <p>
-              A plataforma precisava apoiar diferentes tipos de análise sem
-              colocar tudo dentro de um dashboard gigante.
+              {c.product.intro}
             </p>
           </div>
 
           <div className={styles.questionGrid}>
-            {productQuestions.map((item) => (
-              <article key={item.title} className={styles.questionCard}>
-                <img src={item.icon} alt="" className={styles.questionIcon} />
+            {c.product.questions.map((item) => (
+              <article key={item.key} className={styles.questionCard}>
+                <img src={QUESTION_ICONS[item.key]} alt="" className={styles.questionIcon} />
                 <div>
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
@@ -267,10 +189,9 @@ export default function QiPlatformPage() {
           </div>
 
           <p className={styles.productNote}>
-            Parece simples quando está organizado assim.
+            {c.product.noteLines[0]}
             <br />
-            Antes disso, eram necessidades, dados e regras espalhados em várias
-            conversas.
+            {c.product.noteLines[1]}
           </p>
         </RevealSection>
 
@@ -280,23 +201,19 @@ export default function QiPlatformPage() {
           <figure className={`${styles.figure} ${styles.storyFigure}`}>
             <img
               src={comparisonImg}
-              alt="Tela de comparação entre grupos no QI Platform"
+              alt={c.comparison.imgAlt}
               className={`${styles.imageCover} ${styles.comparisonImage}`}
             />
             <figcaption className={styles.caption}>
-              Comparação por quartis com proteção de anonimato.
+              {c.comparison.caption}
             </figcaption>
           </figure>
 
           <div className={styles.comparisonContent}>
-            <h2>Comparar sem expor</h2>
+            <h2>{c.comparison.title}</h2>
             <div className={styles.bodyText}>
               <p>
-                Quanto mais filtros eram aplicados, menor ficava o grupo. Quando o
-                recorte se tornava específico demais, a plataforma interrompia a
-                análise e pedia que alguns filtros fossem removidos para proteger o
-                anonimato. A regra era simples: permitir investigação sem abrir
-                brecha para identificação.
+                {c.comparison.body}
               </p>
             </div>
           </div>
@@ -305,69 +222,48 @@ export default function QiPlatformPage() {
         <RevealSection as="section"
           className={`${styles.storyGrid} ${styles.imageRight} ${styles.roleMobileSection}`}
         >
-          <h2>Meu papel como Head de Design</h2>
+          <h2>{c.role.title}</h2>
 
           <figure className={`${styles.figure} ${styles.storyFigure}`}>
             <img
               src={headOfDesignRoleImg}
-              alt="Representação da atuação do Head de Design conectando pesquisa, produto, experiência e engenharia"
+              alt={c.role.imgAlt}
               className={`${styles.imageCover} ${styles.roleImage}`}
             />
           </figure>
 
           <div className={styles.bodyText}>
-            <p>
-              Meu papel era manter pesquisa, produto, experiência e viabilidade
-              conectados. Eu orientava o time e ajudava a organizar as decisões
-              entre especialistas, Produto e Engenharia.
-            </p>
-            <p>
-              Os especialistas traziam o contexto clínico. Produto traduzia as
-              necessidades em estratégia. Engenharia mostrava o que os dados
-              permitiam — e onde estavam os limites.
-            </p>
-            <p>
-              Minha atuação acontecia no meio dessas conversas: fazendo perguntas,
-              reduzindo ruído e evitando que uma solução aparentemente simples
-              criasse um problema novo.
-            </p>
+            {c.role.paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
         </RevealSection>
 
         <RevealSection as="section"
           className={`${styles.storyGrid} ${styles.imageLeft} ${styles.evolutionSection}`}
         >
-          <h2>Uma plataforma em evolução</h2>
+          <h2>{c.evolution.title}</h2>
           <figure className={`${styles.figure} ${styles.storyFigure}`}>
             <img
               src={evolutionImg}
-              alt="Gráficos do QI Platform mostrando a evolução dos resultados ao longo do tempo"
+              alt={c.evolution.imgAlt}
               className={`${styles.imageCover} ${styles.evolutionImage}`}
             />
             <figcaption className={styles.caption}>
-              Evolução dos resultados ao longo do tempo, com comparação entre grupos
-              de referência.
+              {c.evolution.caption}
             </figcaption>
           </figure>
           <div className={styles.bodyText}>
-            <p>A plataforma não parou na primeira versão.</p>
-            <p>
-              Novos centros, indicadores e necessidades continuavam chegando. O
-              desafio era incorporar tudo isso sem espalhar a experiência em
-              análises desconectadas.
-            </p>
-            <p>
-              A experiência precisava continuar coerente: começar por uma visão
-              mais ampla, encontrar alguma diferença relevante e aprofundar a
-              análise sem perder o contexto.
-            </p>
+            {c.evolution.paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
         </RevealSection>
 
         <RevealSection as="section" className={styles.impactSection}>
           <div className={styles.impactGrid}>
-            <h2>Impacto e Escala</h2>
-            {impactStats.map((stat) => (
+            <h2>{c.impact.title}</h2>
+            {c.impact.stats.map((stat) => (
               <article
                 key={stat.value}
                 className={`${styles.statCard}${stat.wide ? ` ${styles.statWide}` : ''}`}
@@ -379,18 +275,9 @@ export default function QiPlatformPage() {
           </div>
 
           <div className={`${styles.bodyText} ${styles.impactText}`}>
-            <p>
-              A plataforma não foi validada apenas porque foi entregue. Em 12
-              meses, os especialistas realizaram mais de 23 mil análises
-              comparativas. Em um produto desse tipo, o uso recorrente era o sinal
-              mais claro de que as comparações estavam ajudando a responder
-              perguntas reais.
-            </p>
-            <p>
-              A escala confirmou que as comparações não eram apenas tecnicamente
-              possíveis: elas passaram a fazer parte do uso recorrente da
-              plataforma.
-            </p>
+            {c.impact.paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
         </RevealSection>
 

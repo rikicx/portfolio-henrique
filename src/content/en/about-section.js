@@ -10,6 +10,7 @@ export default {
   bodyMobile:
     'I connect users, business and technology to guide decisions, design experiences and follow their evolution from first understanding to a product running and scaling.',
   curriculoLabel: 'View Resume ↗︎',
-  curriculoHref: '/curriculo/index.html',
+  curriculoHref:
+    'https://docs.google.com/document/d/1PldfLYc2USyW2F70VKxvtkvLaQeTIUQl/edit?usp=drive_link&ouid=110536839809774461332&rtpof=true&sd=true',
   linkedinLabel: 'LinkedIn ↗︎',
 }

@@ -3,6 +3,9 @@ import Seo from '../../components/Seo'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
 import TypingTitle from '../../components/TypingTitle'
 import RevealSection from '../../components/RevealSection'
+import { useLanguage } from '../../context/LanguageContext'
+import ptContent from '../../content/pt/case-itau-empreendedor'
+import enContent from '../../content/en/case-itau-empreendedor'
 import styles from './ItauEmpreendedorPage.module.css'
 
 import metaHeroImg from '../../media/cases/itau-empreendedor/itau-meta-hero.jpg'
@@ -15,24 +18,30 @@ import produtoImg from '../../media/cases/itau-empreendedor/itau-produto.webp'
 import quoteOpenImg from '../../media/shared/quotes/quote-open.png'
 import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
 
+const COCRIACAO_PHOTOS = [cocriacao01, cocriacao02, cocriacao03, cocriacao04]
+
 export default function ItauEmpreendedorPage() {
+  const { lang } = useLanguage()
+  const c = lang === 'en' ? enContent : ptContent
+
   return (
     <Layout>
       <Seo
-        title="Itaú Empreendedora — Case de Product Design | Henrique Silva"
-        description="Case de uma experiência digital de educação financeira e gestão de conteúdo criada para apoiar mulheres empreendedoras."
-        path="/trabalhos/itau-empreendedor"
+        title={c.seo.title}
+        description={c.seo.description}
+        path={c.seo.path}
+        lang={c.seo.lang}
+        robots={c.seo.robots}
       />
       {/* 1. Hero */}
       <section aria-labelledby="itau-title" className={styles.hero}>
-        <TypingTitle id="itau-title" className={styles.heroTitle} lines={['Itaú', 'Empreendedora']} />
+        <TypingTitle id="itau-title" className={styles.heroTitle} lines={c.hero.titleLines} />
         <div className={styles.heroMeta}>
           <p className={styles.heroKicker}>
-            Educação financeira · Design de Produto
+            {c.hero.kicker}
           </p>
           <p className={styles.heroDesc}>
-            Uma experiência criada para ajudar mulheres empreendedoras a
-            entender e organizar melhor o fluxo de caixa dos próprios negócios.
+            {c.hero.description}
           </p>
         </div>
       </section>
@@ -41,37 +50,33 @@ export default function ItauEmpreendedorPage() {
       <hr className={styles.dividerFull} aria-hidden="true" />
 
       {/* 2. Metadata */}
-      <RevealSection as="section" aria-label="Informações do projeto" className={styles.metadata}>
+      <RevealSection as="section" aria-label={c.metadata.ariaLabel} className={styles.metadata}>
         <div className={styles.container}>
           <div className={styles.metaLayout}>
             <div className={styles.metaImageWrap}>
               <img
                 src={metaHeroImg}
-                alt="Telas do aplicativo Itaú Empreendedora com funcionalidades de controle de fluxo de caixa"
+                alt={c.metadata.imageAlt}
                 className={styles.metaImg}
               />
             </div>
             <dl className={styles.metaFields}>
               <div className={styles.metaRowTop}>
-                <div className={styles.metaItem}>
-                  <dt className={styles.metaLabel}>Cliente</dt>
-                  <dd className={styles.metaValue}>Itaú Unibanco</dd>
+                {c.metadata.topFields.map((field) => (
+                  <div key={field.label} className={styles.metaItem}>
+                    <dt className={styles.metaLabel}>{field.label}</dt>
+                    <dd className={styles.metaValue}>{field.value}</dd>
+                  </div>
+                ))}
+              </div>
+              {c.metadata.fields.map((field) => (
+                <div key={field.label} className={styles.metaItem}>
+                  <dt className={styles.metaLabel}>{field.label}</dt>
+                  <dd className={styles.metaValue}>
+                    {field.value}
+                  </dd>
                 </div>
-                <div className={styles.metaItem}>
-                  <dt className={styles.metaLabel}>Ano</dt>
-                  <dd className={styles.metaValue}>2020</dd>
-                </div>
-              </div>
-              <div className={styles.metaItem}>
-                <dt className={styles.metaLabel}>Papel</dt>
-                <dd className={styles.metaValue}>Product Designer</dd>
-              </div>
-              <div className={styles.metaItem}>
-                <dt className={styles.metaLabel}>Atuação</dt>
-                <dd className={styles.metaValue}>
-                  Pesquisa · Cocriação · Prototipação · Testes de usabilidade
-                </dd>
-              </div>
+              ))}
             </dl>
           </div>
         </div>
@@ -83,23 +88,19 @@ export default function ItauEmpreendedorPage() {
           <div className={styles.desafioLayout}>
             <div className={styles.desafioLabelCol}>
               <p id="itau-problema" className={styles.desafioLabel}>
-                O problema
+                {c.problem.label}
               </p>
             </div>
             <div className={styles.desafioText}>
               <p>
-                Falar de fluxo de caixa parece simples para quem já domina o
-                assunto.
+                {c.problem.paragraphs[0]}
               </p>
-              <p>Para muitas empreendedoras, não era.</p>
+              <p>{c.problem.paragraphs[1]}</p>
               <p className={styles.textGap}>
-                A dificuldade não estava apenas em registrar entradas e saídas.
-                Era entender o que aqueles números diziam sobre o negócio e como
-                poderiam ajudar nas decisões do dia a dia.
+                {c.problem.paragraphs[2]}
               </p>
               <p className={styles.textGap}>
-                O risco era criar mais uma ferramenta financeira correta, mas
-                difícil de usar.
+                {c.problem.paragraphs[3]}
               </p>
             </div>
           </div>
@@ -107,7 +108,7 @@ export default function ItauEmpreendedorPage() {
       </RevealSection>
 
       {/* 4. Pergunta central */}
-      <RevealSection as="section" aria-label="Pergunta central do projeto" className={styles.pergunta}>
+      <RevealSection as="section" aria-label={c.centralQuestion.ariaLabel} className={styles.pergunta}>
         <div className={styles.container}>
           <img
             src={quoteOpenImg}
@@ -116,12 +117,10 @@ export default function ItauEmpreendedorPage() {
             className={styles.quoteIconOpen}
           />
           <p className={styles.quoteLabel}>
-            A pergunta que orientou o trabalho:
+            {c.centralQuestion.label}
           </p>
           <blockquote className={styles.quoteText}>
-            Como tornar o fluxo de caixa mais fácil de entender e útil para
-            quem precisava administrar o negócio enquanto também cuidava de
-            quase todo o resto?
+            {c.centralQuestion.text}
           </blockquote>
           <img
             src={quoteCloseImg}
@@ -136,78 +135,44 @@ export default function ItauEmpreendedorPage() {
       <RevealSection as="section" aria-labelledby="itau-construindo" className={styles.construindo}>
         <div className={styles.container}>
           <h2 id="itau-construindo" className={styles.sectionHeading}>
-            Construindo com as empreendedoras
+            {c.building.title}
           </h2>
           <div className={styles.construindoText}>
             <p>
-              O trabalho foi desenvolvido a partir de workshops e sessões de
-              cocriação com mulheres que viviam essa realidade. As conversas
-              ajudaram a entender como elas organizavam as finanças, onde
-              surgiam dúvidas e que tipo de linguagem fazia sentido.
+              {c.building.paragraphs[0]}
             </p>
             <p className={styles.questionsIntro}>
-              Em vez de começar por categorias contábeis, começamos por
-              perguntas mais simples e concretas:
+              {c.building.questionsIntro}
             </p>
 
             <div
               className={styles.questionsGrid}
-              aria-label="Perguntas financeiras exploradas no projeto"
+              aria-label={c.building.questionsAriaLabel}
             >
-              <div className={styles.questionCard}>
-                <span className={styles.questionNumber}>01</span>
-                <p className={styles.questionText}>Quanto entrou?</p>
-              </div>
-
-              <div className={styles.questionCard}>
-                <span className={styles.questionNumber}>02</span>
-                <p className={styles.questionText}>Quanto saiu?</p>
-              </div>
-
-              <div className={styles.questionCard}>
-                <span className={styles.questionNumber}>03</span>
-                <p className={styles.questionText}>
-                  O que ainda precisava ser pago?
-                </p>
-              </div>
-
-              <div className={styles.questionCard}>
-                <span className={styles.questionNumber}>04</span>
-                <p className={styles.questionText}>
-                  O dinheiro disponível seria suficiente?
-                </p>
-              </div>
+              {c.building.questions.map((question) => (
+                <div key={question.number} className={styles.questionCard}>
+                  <span className={styles.questionNumber}>{question.number}</span>
+                  <p className={styles.questionText}>{question.text}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
         <div className={styles.fotoGrid}>
-          <img
-            src={cocriacao01}
-            alt="Sessão de cocriação com empreendedoras"
-            className={styles.fotoItem}
-          />
-          <img
-            src={cocriacao02}
-            alt="Workshop com empreendedoras explorando ideias e soluções"
-            className={styles.fotoItem}
-          />
-          <img
-            src={cocriacao03}
-            alt="Material e anotações produzidos nas sessões de cocriação"
-            className={styles.fotoItem}
-          />
-          <img
-            src={cocriacao04}
-            alt="Empreendedoras participando ativamente das sessões de cocriação"
-            className={styles.fotoItem}
-          />
+          {COCRIACAO_PHOTOS.map((photo, index) => (
+            <img
+              key={index}
+              src={photo}
+              alt={c.building.photoAlts[index]}
+              className={styles.fotoItem}
+            />
+          ))}
         </div>
 
         <div className={styles.container}>
           <p className={styles.fotoCaption}>
-            Registros das sessões de cocriação com empreendedoras para entender
-            dúvidas, linguagem e decisões financeiras do dia a dia.
+            {c.building.photoCaption}
           </p>
         </div>
       </RevealSection>
@@ -218,32 +183,28 @@ export default function ItauEmpreendedorPage() {
           <div className={styles.conversaLayout}>
             <div className={styles.conversaTextCol}>
               <h2 id="itau-conversa" className={styles.sectionHeading}>
-                Da conversa{' '}<br aria-hidden="true" />para o protótipo
+                {c.conversation.titleLines[0]}{' '}<br aria-hidden="true" />{c.conversation.titleLines[1]}
               </h2>
               <div className={styles.conversaText}>
                 <p>
-                  Os aprendizados foram transformados em uma experiência mais
-                  simples, com menos linguagem técnica e mais clareza sobre o
-                  que cada informação significava.
+                  {c.conversation.paragraphs[0]}
                 </p>
                 <p className={styles.textGap}>
-                  O objetivo não era ensinar contabilidade.
+                  {c.conversation.paragraphs[1]}
                 </p>
                 <p className={styles.textGap}>
-                  Era ajudar a empreendedora a olhar para o próprio negócio e
-                  entender melhor o que estava acontecendo com o dinheiro.
+                  {c.conversation.paragraphs[2]}
                 </p>
               </div>
             </div>
             <div className={styles.conversaImageCol}>
               <img
                 src={daConversaImg}
-                alt="Explorando ideias de solução com quem vivia o processo no dia a dia"
+                alt={c.conversation.imgAlt}
                 className={styles.conversaImg}
               />
               <p className={styles.conversaCaption}>
-                Explorando ideias de solução com quem vivia o processo no dia a
-                dia.
+                {c.conversation.caption}
               </p>
             </div>
           </div>
@@ -254,26 +215,21 @@ export default function ItauEmpreendedorPage() {
       <RevealSection as="section" aria-labelledby="itau-aprendizado" className={styles.aprendizado}>
         <div className={styles.container}>
           <h2 id="itau-aprendizado" className={styles.sectionHeading}>
-            Aprendizado e prática no mesmo produto
+            {c.learning.title}
           </h2>
           <p className={styles.aprendizadoText}>
-            Da cocriação surgiu uma experiência que conectava orientação e uso
-            prático: no aplicativo, as empreendedoras podiam registrar entradas
-            e saídas e acompanhar o dinheiro do negócio; na plataforma
-            administrativa, era possível organizar e publicar conteúdos,
-            trilhas e materiais da experiência.
+            {c.learning.body}
           </p>
         </div>
 
         <div className={styles.produtoWrap}>
           <img
             src={produtoImg}
-            alt="Aplicativo mobile e plataforma de gestão de conteúdo desenvolvidos para a experiência Itaú Empreendedora"
+            alt={c.learning.imgAlt}
             className={styles.produtoImg}
           />
           <p className={styles.produtoCaption}>
-            Aplicativo mobile e plataforma de gestão de conteúdo desenvolvidos
-            para a experiência Itaú Empreendedora.
+            {c.learning.caption}
           </p>
         </div>
       </RevealSection>

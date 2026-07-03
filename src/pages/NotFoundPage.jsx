@@ -1,30 +1,37 @@
 import { Link } from 'react-router-dom'
 import Layout from '../components/Layout'
 import Seo from '../components/Seo'
+import { useLanguage } from '../context/LanguageContext'
+import ptContent from '../content/pt/not-found'
+import enContent from '../content/en/not-found'
 import styles from './NotFoundPage.module.css'
 
 export default function NotFoundPage() {
+  const { lang } = useLanguage()
+  const c = lang === 'en' ? enContent : ptContent
+
   return (
     <Layout>
       <Seo
-        title="Página não encontrada — Henrique Silva"
-        description="A página que você procura não foi encontrada."
-        path="/404"
-        robots="noindex, nofollow"
+        title={c.seo.title}
+        description={c.seo.description}
+        path={c.seo.path}
+        lang={c.seo.lang}
+        robots={c.seo.robots}
       />
       <div className={styles.content}>
         <p className={styles.code}>404</p>
         <h1 className={styles.heading}>
-          Parece que este caminho não leva a uma página.
+          {c.heading}
         </h1>
         <p className={styles.body}>
-          O conteúdo que você procura pode ter mudado de lugar ou simplesmente não existir mais.
+          {c.bodyLine1}
           <br />
-          Você pode continuar pelos meus trabalhos ou conhecer um pouco mais sobre minha trajetória.
+          {c.bodyLine2}
         </p>
         <div className={styles.links}>
-          <Link to="/trabalhos" className={styles.hyperlink}>Ver meus trabalhos →</Link>
-          <Link to="/sobre" className={styles.hyperlink}>Sobre mim →</Link>
+          <Link to={c.worksTo} className={styles.hyperlink}>{c.worksLabel}</Link>
+          <Link to={c.aboutTo} className={styles.hyperlink}>{c.aboutLabel}</Link>
         </div>
       </div>
     </Layout>

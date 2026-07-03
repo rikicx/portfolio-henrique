@@ -91,7 +91,7 @@ export default {
       'The role may change. The way I contribute remains: close to the problem, to the people and to the decisions that shape the experience.',
     ],
     worksLabel: 'View my work →',
-    worksTo: '/trabalhos',
+    worksTo: '/en/work',
     contactLabel: 'Get in touch →',
     contactHref: '#contato',
   },

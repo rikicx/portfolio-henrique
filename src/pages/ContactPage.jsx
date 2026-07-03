@@ -1,9 +1,15 @@
 import { useState } from 'react'
 import Layout from '../components/Layout'
 import Seo from '../components/Seo'
+import { useLanguage } from '../context/LanguageContext'
+import ptContent from '../content/pt/contact'
+import enContent from '../content/en/contact'
 import styles from './ContactPage.module.css'
 
 export default function ContactPage() {
+  const { lang } = useLanguage()
+  const c = lang === 'en' ? enContent : ptContent
+
   const [formStatus, setFormStatus] = useState('idle')
   const [formMessage, setFormMessage] = useState('')
   const [fieldErrors, setFieldErrors] = useState({})
@@ -28,21 +34,21 @@ export default function ContactPage() {
     const nextErrors = {}
 
     if (!name) {
-      nextErrors.name = 'Digite seu nome.'
+      nextErrors.name = c.form.errors.name
     }
 
     if (!email) {
-      nextErrors.email = 'Digite seu e-mail.'
+      nextErrors.email = c.form.errors.email.required
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      nextErrors.email = 'Digite um e-mail válido.'
+      nextErrors.email = c.form.errors.email.invalid
     }
 
     if (!subject) {
-      nextErrors.subject = 'Digite o assunto.'
+      nextErrors.subject = c.form.errors.subject
     }
 
     if (!message) {
-      nextErrors.message = 'Escreva uma mensagem.'
+      nextErrors.message = c.form.errors.message
     }
 
     if (Object.keys(nextErrors).length > 0) {
@@ -71,41 +77,38 @@ export default function ContactPage() {
 
       form.reset()
       setFormStatus('success')
-      setFormMessage(
-        'Mensagem enviada. Obrigado pelo contato — responderei assim que possível.',
-      )
+      setFormMessage(c.form.successMessage)
     } catch {
       setFormStatus('error')
-      setFormMessage(
-        'Não foi possível enviar sua mensagem agora. Tente novamente ou escreva para hello@henriquesilva.design.',
-      )
+      setFormMessage(c.form.errorMessage)
     }
   }
 
   return (
     <Layout>
       <Seo
-        title="Contato — Henrique Silva"
-        description="Entre em contato com Henrique Silva para conversar sobre Product Design, liderança de Design, estratégia de produto e oportunidades profissionais."
-        path="/contato"
+        title={c.seo.title}
+        description={c.seo.description}
+        path={c.seo.path}
+        lang={c.seo.lang}
+        robots={c.seo.robots}
       />
       <section className={styles.page} aria-labelledby="contact-title">
         <div className={styles.container}>
           <div className={styles.intro}>
             <div className={styles.introText}>
               <h1 id="contact-title" className={styles.title}>
-                Vamos conversar?
+                {c.title}
               </h1>
 
               <p className={styles.description}>
-                Se você tem uma oportunidade, projeto ou parceria em mente,
-                me conte um pouco sobre o contexto.
+                {c.description}
               </p>
             </div>
 
             <div className={styles.contactDetails}>
               <div className={styles.contactItem}>
-                <span className={styles.contactLabel}>E-mail</span>
+                <span className={styles.contactLabel}>{c.details.emailLabel}</span>
                 <a
                   href="mailto:hello@henriquesilva.design"
                   className={styles.contactLink}
@@ -115,21 +118,21 @@ export default function ContactPage() {
               </div>
 
               <div className={styles.contactItem}>
-                <span className={styles.contactLabel}>LinkedIn</span>
+                <span className={styles.contactLabel}>{c.details.linkedinLabel}</span>
                 <a
                   href="https://www.linkedin.com/in/henrique-m-silva/"
                   target="_blank"
                   rel="noreferrer"
                   className={styles.contactLink}
                 >
-                  Ver perfil no LinkedIn ↗︎
+                  {c.details.linkedinValue}
                 </a>
               </div>
 
               <div className={styles.contactItem}>
-                <span className={styles.contactLabel}>Localização</span>
+                <span className={styles.contactLabel}>{c.details.locationLabel}</span>
                 <span className={styles.contactValue}>
-                  São Paulo, Brasil
+                  {c.details.locationValue}
                 </span>
               </div>
             </div>
@@ -144,9 +147,9 @@ export default function ContactPage() {
             <input
               type="hidden"
               name="subject"
-              value="Novo contato pelo portfólio — {{ nome }}"
+              value={c.form.subjectHidden}
             />
-            <input type="hidden" name="_language" value="pt-BR" />
+            <input type="hidden" name="_language" value={c.form.formLanguage} />
             {(formStatus === 'sending' || formStatus === 'success') && (
               <div
                 className={styles.formOverlay}
@@ -160,17 +163,17 @@ export default function ContactPage() {
                       aria-hidden="true"
                     />
                     <p className={styles.overlayTitle}>
-                      Enviando mensagem…
+                      {c.form.sendingTitle}
                     </p>
                   </div>
                 ) : (
                   <div className={styles.overlayContent}>
                     <p className={styles.overlayTitle}>
-                      Mensagem enviada.
+                      {c.form.successTitle}
                     </p>
 
                     <p className={styles.overlayDescription}>
-                      Obrigado pelo contato. Responderei assim que possível.
+                      {c.form.successDescription}
                     </p>
 
                     <button
@@ -178,7 +181,7 @@ export default function ContactPage() {
                       className={styles.overlayAction}
                       onClick={resetFormStatus}
                     >
-                      Enviar outra mensagem →
+                      {c.form.successAction}
                     </button>
                   </div>
                 )}
@@ -186,7 +189,7 @@ export default function ContactPage() {
             )}
 
             <div className={styles.honeypot} aria-hidden="true">
-              <label htmlFor="website">Não preencha este campo</label>
+              <label htmlFor="website">{c.form.honeypotLabel}</label>
               <input
                 id="website"
                 name="_gotcha"
@@ -198,7 +201,7 @@ export default function ContactPage() {
 
             <div className={styles.field}>
               <label htmlFor="name" className={styles.label}>
-                Nome
+                {c.form.nameLabel}
               </label>
               <input
                 id="name"
@@ -221,7 +224,7 @@ export default function ContactPage() {
 
             <div className={styles.field}>
               <label htmlFor="email" className={styles.label}>
-                E-mail
+                {c.form.emailLabel}
               </label>
               <input
                 id="email"
@@ -244,7 +247,7 @@ export default function ContactPage() {
 
             <div className={styles.field}>
               <label htmlFor="company" className={styles.label}>
-                Empresa <span className={styles.optional}>— opcional</span>
+                {c.form.companyLabel} <span className={styles.optional}>{c.form.companyOptional}</span>
               </label>
               <input
                 id="company"
@@ -257,7 +260,7 @@ export default function ContactPage() {
 
             <div className={styles.field}>
               <label htmlFor="subject" className={styles.label}>
-                Assunto
+                {c.form.subjectLabel}
               </label>
               <input
                 id="subject"
@@ -269,7 +272,7 @@ export default function ContactPage() {
                 className={`${styles.input}${
                   fieldErrors.subject ? ` ${styles.inputError}` : ''
                 }`}
-                placeholder="Oportunidade, projeto, parceria..."
+                placeholder={c.form.subjectPlaceholder}
               />
               {fieldErrors.subject && (
                 <span id="subject-error" className={styles.fieldError}>
@@ -280,7 +283,7 @@ export default function ContactPage() {
 
             <div className={`${styles.field} ${styles.messageField}`}>
               <label htmlFor="message" className={styles.label}>
-                Mensagem
+                {c.form.messageLabel}
               </label>
               <textarea
                 id="message"
@@ -316,8 +319,8 @@ export default function ContactPage() {
               disabled={formStatus === 'sending'}
             >
               {formStatus === 'sending'
-                ? 'Enviando…'
-                : 'Enviar mensagem →'}
+                ? c.form.submitLabelSending
+                : c.form.submitLabel}
             </button>
           </form>
         </div>

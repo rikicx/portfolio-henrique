@@ -43,6 +43,11 @@
   justify-content: flex-end;
 }
 
+/* Language Switcher — desktop: rightArea, before the CTA (approved DS spec) */
+.navSwitcher {
+  margin-right: 32px;
+}
+
 .brand {
   display: inline-flex;
   align-items: flex-start;
@@ -426,6 +431,11 @@
     display: none;
   }
 
+  /* Higher specificity than the component's own display rule */
+  .rightArea .navSwitcher {
+    display: none;
+  }
+
   .hamburger {
     display: flex;
   }
@@ -476,6 +486,8 @@
     width: 100%;
   }
 
+  /* Mobile menu footer — Language Switcher on the left, copyright on the
+     right, per the approved DS spec (menu panel footer). */
   .mobileFooter {
     width: 100%;
     margin-top: auto;
@@ -485,7 +497,10 @@
     font-size: 12px;
     font-weight: 400;
     line-height: 1.4;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
   }
 
   /* Stagger entry for main nav items */
