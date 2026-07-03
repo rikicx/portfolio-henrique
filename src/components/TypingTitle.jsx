@@ -26,7 +26,7 @@ function tokenizeLine(chars, startIndex) {
   return tokens
 }
 
-export default function TypingTitle({ lines, className = '', id, as: Tag = 'h1', waitForVisible = false }) {
+export default function TypingTitle({ lines, className = '', id, as: Tag = 'h1', waitForVisible = false, underline = null }) {
   const computed = lines.map((line, lineIdx) => ({
     lineIdx,
     chars: line.split(''),
@@ -56,23 +56,64 @@ export default function TypingTitle({ lines, className = '', id, as: Tag = 'h1',
     >
       {computed.map(({ lineIdx, chars, startIndex }) => {
         const tokens = tokenizeLine(chars, startIndex)
+
+        // Optional phrase underline: word tokens overlapping the substring
+        // (plus the spaces between them) get wrapped in a display:inline span
+        // so the underline hugs the phrase and word wrapping stays intact.
+        let uFirst = -1
+        let uLast = -1
+        if (underline) {
+          const uStart = lines[lineIdx].indexOf(underline)
+          if (uStart !== -1) {
+            const uEnd = uStart + underline.length
+            tokens.forEach((token, ti) => {
+              if (token.type !== 'word') return
+              const wStart = token.chars[0].idx - startIndex
+              const wEnd = wStart + token.chars.length
+              if (wStart < uEnd && wEnd > uStart) {
+                if (uFirst === -1) uFirst = ti
+                uLast = ti
+              }
+            })
+          }
+        }
+
+        const rendered = tokens.map((token, ti) => {
+          if (token.type === 'space') {
+            // Inline span so the browser treats it as a word-break opportunity
+            return <span key={`sp${ti}`}>{' '.repeat(token.count)}</span>
+          }
+          return (
+            <span key={`w${ti}`} className={styles.word}>
+              {token.chars.map(({ char, idx }) => (
+                <span key={idx} className={styles.char} style={{ '--char-i': idx }}>
+                  {char}
+                </span>
+              ))}
+            </span>
+          )
+        })
+
+        if (uFirst !== -1) {
+          const lastToken = tokens[uLast]
+          const lastCharIdx = lastToken.chars[lastToken.chars.length - 1].idx
+          return (
+            <span key={lineIdx} className={styles.line} aria-hidden="true">
+              {rendered.slice(0, uFirst)}
+              <span
+                className={styles.underline}
+                style={{ '--u-end': lastCharIdx }}
+              >
+                {rendered.slice(uFirst, uLast + 1)}
+              </span>
+              {rendered.slice(uLast + 1)}
+            </span>
+          )
+        }
+
         return (
           <span key={lineIdx} className={styles.line} aria-hidden="true">
-            {tokens.map((token, ti) => {
-              if (token.type === 'space') {
-                // Inline span so the browser treats it as a word-break opportunity
-                return <span key={`sp${ti}`}>{' '.repeat(token.count)}</span>
-              }
-              return (
-                <span key={`w${ti}`} className={styles.word}>
-                  {token.chars.map(({ char, idx }) => (
-                    <span key={idx} className={styles.char} style={{ '--char-i': idx }}>
-                      {char}
-                    </span>
-                  ))}
-                </span>
-              )
-            })}
+            {rendered}
           </span>
         )
       })}

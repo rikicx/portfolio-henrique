@@ -2,7 +2,7 @@ export default {
   photoAlt: 'Henrique Silva working',
   overlayHeading: 'About me',
   saibaMaisLabel: 'Learn more',
-  saibaMaisTo: '/sobre',
+  saibaMaisTo: '/en/about',
   methodTitle: 'Method',
   highlight: 'My work is bringing clarity to complex problems.',
   bodyDesktop:

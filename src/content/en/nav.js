@@ -18,7 +18,7 @@ export default {
   ],
   sobreLabelDesktop: 'About Me',
   sobreLabelMobile: 'About me',
-  sobreTo: '/sobre',
+  sobreTo: '/en/about',
   linkedinLabelDesktop: 'Linkedin',
   linkedinLabelMobile: 'LinkedIn',
   ctaLabel: 'Get in touch',

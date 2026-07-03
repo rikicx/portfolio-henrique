@@ -3,6 +3,11 @@ import Layout from '../components/Layout'
 import Seo from '../components/Seo'
 import RevealSection from '../components/RevealSection'
 import TypingTitle from '../components/TypingTitle'
+import { useLanguage } from '../context/LanguageContext'
+import ptContent from '../content/pt/about'
+import enContent from '../content/en/about'
+import ptSeo from '../content/pt/about-seo'
+import enSeo from '../content/en/about-seo'
 import styles from './AboutPage.module.css'
 
 import heroImg from '../media/about/about-henrique.webp'
@@ -13,53 +18,11 @@ import aproxPersImg from '../media/about/aproximacao-com-pessoas.png'
 import uxImg from '../media/about/ux.png'
 import hyperlineSvg from '../media/home/experience/hyperline.svg'
 
-const timeline = [
-  {
-    key: '3ph',
-    name: '3PH Alliance',
-    role: 'Product Designer Specialist → Head of Design',
-    description:
-      'Entrei como designer e assumi a liderança de Design durante o crescimento da empresa, mantendo participação em discovery, estratégia, direção de produto e desenvolvimento da equipe.',
-    side: 'right',
-  },
-  {
-    key: 'sciensa',
-    name: 'Sciensa',
-    role: 'Product Designer Specialist → Head of Design',
-    description:
-      'Atuei diretamente em projetos e, depois, passei a liderar a disciplina de Design em oito squads, apoiando profissionais e fortalecendo a prática dentro da consultoria.',
-    side: 'left',
-  },
-  {
-    key: 'netfarma',
-    name: 'Netfarma',
-    role: 'Designer → Coordenação de Design',
-    description:
-      'Comecei desenhando produtos e experiências e, mais tarde, passei a coordenar a equipe e participar de decisões mais amplas sobre o negócio digital.',
-    side: 'right',
-  },
-]
-
-const principles = [
-  {
-    key: 'problem',
-    img: comeceProbImg,
-    title: 'Começo pelo problema',
-    text: 'Antes de pensar em uma solução, procuro entender o que estamos tentando resolver, para quem aquilo importa e qual mudança esperamos provocar.',
-  },
-  {
-    key: 'perspectives',
-    img: aproxPersImg,
-    title: 'Aproximo perspectivas',
-    text: 'Meu trabalho acontece entre usuários, negócio, produto e tecnologia, tornando decisões, riscos e limitações mais claros para todos.',
-  },
-  {
-    key: 'close',
-    img: uxImg,
-    title: 'Lidero de perto',
-    text: 'Mesmo em posições de liderança, continuo envolvido nas hipóteses, fluxos, protótipos, validações e decisões que definem a experiência.',
-  },
-]
+const principleIcons = {
+  problem: comeceProbImg,
+  perspectives: aproxPersImg,
+  close: uxImg,
+}
 
 function HyperLink({ to = null, href = null, children }) {
   const inner = (
@@ -72,12 +35,21 @@ function HyperLink({ to = null, href = null, children }) {
 }
 
 export default function AboutPage() {
+  const { lang } = useLanguage()
+  const c = lang === 'en' ? enContent : ptContent
+  const seo = lang === 'en' ? enSeo : ptSeo
+
+  const timeline = c.career.timeline
+  const principles = c.principles.items
+
   return (
     <Layout>
       <Seo
-        title="Sobre Henrique Silva — Design, Produto e Liderança"
-        description="Conheça a trajetória, a forma de trabalhar e os princípios de Henrique Silva na construção de produtos, experiências e equipes de Design."
-        path="/sobre"
+        title={seo.title}
+        description={seo.description}
+        path={seo.path}
+        lang={seo.lang}
+        robots={seo.robots}
       />
 
       {/* ── 1. Hero ─────────────────────────────────────────────────── */}
@@ -87,19 +59,19 @@ export default function AboutPage() {
         <div className={styles.heroInner}>
           <TypingTitle
             className={styles.heroTitle}
-            lines={['Design é a forma como eu entendo e transformo problemas.']}
+            lines={c.hero.titleLines}
+            underline={c.hero.titleUnderline}
           />
-          <div className={styles.heroBar} aria-hidden="true" />
           <div className={styles.heroPhotoCol}>
             <img
               src={heroImg}
-              alt="Retrato de Henrique M. Silva"
+              alt={c.hero.photoAlt}
               className={styles.heroImg}
             />
           </div>
           <hr className={styles.heroMobileDivider} aria-hidden="true" />
           <p className={styles.heroDesc}>
-            Os papéis mudaram ao longo da minha carreira, mas meu ponto de partida permaneceu o mesmo: compreender contextos, organizar complexidade e construir soluções que façam sentido para as pessoas e para o negócio.
+            {c.hero.description}
           </p>
         </div>
         <hr className={styles.heroDivider} aria-hidden="true" />
@@ -112,14 +84,13 @@ export default function AboutPage() {
           <div className={styles.carreiraIntroRow}>
             <div className={styles.carreiraIntroContent}>
               <h2 className={styles.carreiraTitle}>
-                Minha carreira cresceu ao redor do Design, não para longe dele.
+                {c.career.title}
               </h2>
-              <p className={styles.carreiraDesc}>
-                A liderança apareceu quando comecei a assumir responsabilidades além da minha própria entrega: apoiar outros designers, conectar áreas, organizar decisões e criar condições para que equipes trabalhassem melhor.
-              </p>
-              <p className={styles.carreiraDesc}>
-                Isso ampliou meu campo de atuação sem me afastar do Design.
-              </p>
+              {c.career.paragraphs.map((paragraph, index) => (
+                <p key={index} className={styles.carreiraDesc}>
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </div>
 
@@ -181,7 +152,7 @@ export default function AboutPage() {
           </div>
 
           <blockquote className={styles.carreiraPullquote}>
-            "O que aumentou foi a dimensão da responsabilidade, não a distância da prática."
+            {c.career.pullquote}
           </blockquote>
         </div>
       </RevealSection>
@@ -190,13 +161,13 @@ export default function AboutPage() {
       <RevealSection as="section" rootMargin="0px 0px -10% 0px" className={styles.principios}>
         <div className={styles.principiosOuter}>
           <h2 className={styles.principiosTitle}>
-            O processo muda. Alguns princípios permanecem.
+            {c.principles.title}
           </h2>
           <div className={styles.principiosGrid}>
             {principles.map((p) => (
               <div key={p.key} className={styles.principio}>
                 <img
-                  src={p.img}
+                  src={principleIcons[p.key]}
                   alt=""
                   aria-hidden="true"
                   className={styles.principioIcon}
@@ -213,19 +184,15 @@ export default function AboutPage() {
       <RevealSection as="section" rootMargin="0px 0px -10% 0px" className={styles.lideranca}>
         <div className={styles.liderancaOuter}>
           <div className={styles.liderancaInner}>
-            <h2 className={styles.liderancaTitle}>Liderar também é criar espaço.</h2>
+            <h2 className={styles.liderancaTitle}>{c.leadership.title}</h2>
             <div className={styles.liderancaRight}>
-              <p className={styles.liderancaText}>
-                Quando o contexto pede liderança, eu assumo esse espaço.
-              </p>
-              <p className={styles.liderancaText}>
-                Acredito que equipes maduras não são construídas apenas com processos e ferramentas, mas com confiança, contexto e autonomia. Como líder, procuro criar ambientes em que as pessoas possam expor dúvidas, discordar com respeito e assumir responsabilidade pelo próprio trabalho.
-              </p>
-              <p className={styles.liderancaText}>
-                Liderar, para mim, não significa ter todas as respostas. Significa fazer perguntas melhores e criar condições para que outras pessoas façam um ótimo trabalho.
-              </p>
+              {c.leadership.paragraphs.map((paragraph, index) => (
+                <p key={index} className={styles.liderancaText}>
+                  {paragraph}
+                </p>
+              ))}
               <blockquote className={styles.liderancaPullquote}>
-                "Tento ser o líder que gostaria de ter encontrado ao longo da minha carreira."
+                {c.leadership.pullquote}
               </blockquote>
             </div>
           </div>
@@ -240,33 +207,29 @@ export default function AboutPage() {
             <div className={styles.iniciantePhotos}>
               <img
                 src={karateImg}
-                alt="Henrique M. Silva praticando Karatê Shotokan"
+                alt={c.beginner.karateAlt}
                 className={styles.inicianteKarateImg}
               />
               <img
                 src={manemShohoImg}
-                alt="Faixa com a expressão Manen Shōho"
+                alt={c.beginner.shohoAlt}
                 className={styles.inicianteShohoImg}
               />
             </div>
             <div className={styles.inicianteText}>
-              <h2 className={styles.inicianteTitle}>Sempre Iniciante.</h2>
-              <p className={styles.inicianteBody}>
-                Sou pai de três, casado com uma gaúcha e pratico Karatê Shotokan há mais de dez anos.
-              </p>
-              <p className={styles.inicianteBody}>
-                No dojo onde treino existe uma faixa com a expressão Manen Shōho: um lembrete para preservar a postura de quem continua aprendendo, principalmente quando a experiência começa a nos convencer de que já sabemos o suficiente.
-              </p>
-              <p className={styles.inicianteBody}>
-                Essa ideia também me acompanha no trabalho.
-              </p>
+              <h2 className={styles.inicianteTitle}>{c.beginner.title}</h2>
+              {c.beginner.paragraphs.map((paragraph, index) => (
+                <p key={index} className={styles.inicianteBody}>
+                  {paragraph}
+                </p>
+              ))}
               <p className={styles.inicianteBodyDesktop}>
-                A experiência ajuda a reconhecer padrões, mas não deveria nos tornar rápidos demais para concluir. Cada produto, equipe e contexto exige disposição para observar, escutar e perguntar novamente.
+                {c.beginner.lastParagraph}
               </p>
             </div>
 
             <p className={styles.inicianteBodyFull}>
-              A experiência ajuda a reconhecer padrões, mas não deveria nos tornar rápidos demais para concluir. Cada produto, equipe e contexto exige disposição para observar, escutar e perguntar novamente.
+              {c.beginner.lastParagraph}
             </p>
           </div>
         </div>
@@ -277,17 +240,16 @@ export default function AboutPage() {
       <RevealSection as="section" rootMargin="0px 0px -10% 0px" className={styles.closing}>
         <div className={styles.closingOuter}>
           <h2 className={styles.closingTitle}>
-            Continuo interessado nos problemas difíceis.
+            {c.closing.title}
           </h2>
-          <p className={styles.closingText}>
-            Aqueles que ainda não têm uma resposta clara e exigem estratégia, colaboração e coragem para decidir.
-          </p>
-          <p className={styles.closingText}>
-            O papel pode mudar. Minha forma de contribuir permanece: perto do problema, das pessoas e das decisões que moldam a experiência.
-          </p>
+          {c.closing.paragraphs.map((paragraph, index) => (
+            <p key={index} className={styles.closingText}>
+              {paragraph}
+            </p>
+          ))}
           <div className={styles.closingLinks}>
-            <HyperLink to="/trabalhos">Ver meus trabalhos →</HyperLink>
-            <HyperLink href="#contato">Entrar em contato →</HyperLink>
+            <HyperLink to={c.closing.worksTo}>{c.closing.worksLabel}</HyperLink>
+            <HyperLink href={c.closing.contactHref}>{c.closing.contactLabel}</HyperLink>
           </div>
         </div>
       </RevealSection>

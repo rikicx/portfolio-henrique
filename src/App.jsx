@@ -26,6 +26,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/en" element={<HomePage />} />
           <Route path="/sobre" element={<AboutPage />} />
+          <Route path="/en/about" element={<AboutPage />} />
           <Route path="/trabalhos" element={<WorksPage />} />
           <Route path="/contato" element={<ContactPage />} />
           <Route path="/trabalhos/qi-platform" element={<QiPlatformPage />} />

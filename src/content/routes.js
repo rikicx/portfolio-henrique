@@ -1,6 +1,6 @@
 export const ROUTE_PAIRS = [
   { pt: '/', en: '/en', enabled: true },
-  { pt: '/sobre', en: '/en/about', enabled: false },
+  { pt: '/sobre', en: '/en/about', enabled: true },
   { pt: '/trabalhos', en: '/en/work', enabled: false },
   { pt: '/contato', en: '/en/contact', enabled: false },
   { pt: '/trabalhos/qi-platform', en: '/en/work/qi-platform', enabled: false },

@@ -25,7 +25,9 @@
   min-height: 653px;
 }
 
-/* Title + bar + desc share the left column via absolute positioning */
+/* Title + bar + desc share the left column via absolute positioning.
+   --title-underline-h: thickness of the phrase underline rendered by
+   TypingTitle (3px bar under the highlighted phrase; 0 hides it). */
 .heroTitle {
   position: absolute;
   left: 94px;
@@ -37,16 +39,7 @@
   letter-spacing: -0.72px;
   color: var(--color-black);
   margin: 0;
-}
-
-/* 3px decorative bar — below title block (title ≈3 lines × 72px = 216px → top 339px) */
-.heroBar {
-  position: absolute;
-  left: 94px;
-  top: 339px;
-  width: 702px;
-  height: 3px;
-  background: var(--color-black);
+  --title-underline-h: 3px;
 }
 
 .heroDesc {
@@ -614,10 +607,7 @@
     letter-spacing: -0.54px;
     text-align: center;
     order: 1;
-  }
-
-  .heroBar {
-    display: none;
+    --title-underline-h: 2px;
   }
 
   .heroPhotoCol {
@@ -1282,10 +1272,7 @@
     line-height: 1.05;
     letter-spacing: -0.48px;
     padding-right: 320px;
-  }
-
-  .heroBar {
-    display: none;
+    --title-underline-h: 2px;
   }
 
   .heroDesc {
@@ -1568,10 +1555,7 @@
     font-size: clamp(54px, 5vw, 64px);
     line-height: 1;
     letter-spacing: -1.28px;
-  }
-
-  .heroBar {
-    display: none;
+    --title-underline-h: 2px;
   }
 
   .heroDesc {
