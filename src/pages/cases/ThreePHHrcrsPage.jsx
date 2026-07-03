@@ -106,13 +106,11 @@ export default function ThreePHHrcrsPage() {
       <RevealSection as="section" aria-labelledby="problema-heading" className={styles.problemaSection}>
         <div className={styles.container}>
           <div className={styles.problemaLayout}>
-            <div className={styles.problemaLabelCol}>
-              <p className={styles.problemaLabel}>{c.problem.label}</p>
-              <h2 id="problema-heading" className={styles.problemaHeading}>
-                {c.problem.title}
-              </h2>
-            </div>
+            <h2 id="problema-heading" className={styles.sectionHeading}>
+              {c.problem.label}
+            </h2>
             <div className={styles.problemaText}>
+              <p>{c.problem.title}</p>
               {c.problem.paragraphs.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}

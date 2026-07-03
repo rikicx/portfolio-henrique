@@ -1266,3 +1266,161 @@
     line-height: 1.5;
   }
 }
+
+/* ─── O problema — padrão canônico do Storeroom ─────────────────────── */
+.problema .problemaLayout {
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+@media (min-width: 1025px) {
+  .problema {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .problema .problemaLayout {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 0;
+    min-height: 310px;
+    align-items: stretch;
+  }
+
+  .problema .sectionHeading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 100%;
+    margin: 0;
+    padding: 24px 0;
+    box-sizing: border-box;
+    background: var(--color-black);
+    color: var(--color-white);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.48px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+  }
+
+  .problema .problemaText {
+    justify-content: center;
+    width: 100%;
+    max-width: none;
+    gap: 16px;
+    padding: 48px 56px;
+    box-sizing: border-box;
+    background: var(--color-white);
+  }
+
+  .problema .problemaText p {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.45;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .problema {
+    padding: 56px 0;
+  }
+
+  .problema .problemaLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: auto;
+    gap: 32px;
+  }
+
+  .problema .sectionHeading {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--color-black);
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -1.68px;
+    writing-mode: horizontal-tb;
+    transform: none;
+    white-space: normal;
+  }
+
+  .problema .problemaText {
+    width: 100%;
+    max-width: none;
+    gap: 20px;
+    padding: 0;
+  }
+
+  .problema .problemaText p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .problema {
+    padding: 32px 0 48px;
+  }
+
+  .problema .problemaLayout {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    gap: 16px;
+    border-radius: 8px;
+  }
+
+  .problema .sectionHeading {
+    display: block;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--color-black);
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -0.32px;
+    writing-mode: horizontal-tb;
+    transform: none;
+    white-space: normal;
+  }
+
+  .problema .problemaText {
+    width: 100%;
+    gap: 24px;
+    padding: 0;
+  }
+
+  .problema .problemaText p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+}
+/* ─── Fim — O problema ───────────────────────────────────────────────── */
+
+/* Correção — neutraliza o grid antigo de O problema */
+@media (min-width: 1025px) {
+  .problema .problemaLayout {
+    grid-template-areas: none;
+    grid-template-rows: auto;
+  }
+
+  .problema .sectionHeading,
+  .problema .problemaText {
+    grid-area: auto;
+  }
+}

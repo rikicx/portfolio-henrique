@@ -72,13 +72,11 @@ export default function GerdauSmartlogPage() {
       <RevealSection as="section" aria-labelledby="problema-title" className={styles.problema}>
         <div className={styles.container}>
           <div className={styles.problemaLayout}>
-            <div className={styles.problemaLeft}>
-              <p className={styles.problemaLabelText}>{c.problem.label}</p>
-              <h2 id="problema-title" className={styles.sectionHeading}>
-                {c.problem.title}
-              </h2>
-            </div>
+            <h2 id="problema-title" className={styles.sectionHeading}>
+              {c.problem.label}
+            </h2>
             <div className={styles.problemaText}>
+              <p>{c.problem.title}</p>
               {c.problem.paragraphs.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
