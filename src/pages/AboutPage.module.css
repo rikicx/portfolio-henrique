@@ -484,11 +484,12 @@
 
 .inicianteDivider {
   display: block;
+  width: calc(100% - 96px);
+  max-width: calc(1440px - 96px);
   height: 1px;
+  margin: 80px auto 0;
   background: var(--color-black);
   border: none;
-  margin: 80px 48px 0;
-  max-width: calc(1440px - 96px);
 }
 
 /* ── 6. Closing ───────────────────────────────────────────────────── */
