@@ -32,6 +32,42 @@
   --page-padding: clamp(24px, 4vw, 48px);
 
   --transition: 0.2s ease;
+
+  /* Semantic tokens — V3 Design System Lite */
+
+  /* page / background */
+  --color-bg-page: var(--color-bg);
+  --color-bg-surface: var(--color-surface);
+  --color-bg-elevated: var(--color-white);
+
+  /* text */
+  --color-text-primary: var(--color-black);
+  --color-text-secondary: var(--color-muted);
+  --color-text-muted: var(--color-muted);
+  --color-text-inverse: var(--color-white);
+
+  /* border */
+  --color-border-primary: var(--color-border);
+  --color-border-subtle: var(--color-divider);
+  --color-border-strong: var(--color-black);
+
+  /* icon */
+  --color-icon-primary: var(--color-black);
+  --color-icon-inverse: var(--color-white);
+
+  /* link */
+  --color-link: var(--color-black);
+  --color-link-hover: #1a1a1a;
+
+  /* focus */
+  --color-focus-ring: var(--color-black);
+
+  /* inverse */
+  --color-bg-inverse: #010302;
+  --color-text-on-inverse: var(--color-white);
+
+  /* feedback */
+  --color-danger: #b42318;
 }
 
 html {
