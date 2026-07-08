@@ -14,12 +14,12 @@
 }
 
 .active {
-  color: var(--color-black);
+  color: var(--color-text-primary);
   font-weight: 500;
 }
 
 .link {
-  color: var(--color-muted);
+  color: var(--color-text-secondary);
   text-decoration: none;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .switcher:has(:focus-visible) {
-  outline: 2px solid var(--color-black);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 4px;
 }
 

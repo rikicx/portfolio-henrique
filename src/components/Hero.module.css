@@ -22,7 +22,7 @@
   font-weight: 500;
   line-height: 0.88;
   letter-spacing: -8px;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   white-space: nowrap;
   padding-top: 95px;
   padding-left: 99px;
@@ -79,7 +79,7 @@
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -1.44px;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   max-width: 822px;
 }
 
@@ -88,7 +88,7 @@
   font-size: 20px;
   font-weight: 500;
   line-height: 1.45;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   max-width: 684px;
 }
 

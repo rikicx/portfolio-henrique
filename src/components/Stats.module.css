@@ -27,7 +27,7 @@
   flex-direction: column;
   gap: 8px;
   padding: 24px;
-  background: var(--color-surface);
+  background: var(--color-bg-surface);
   border-radius: var(--radius-card);
   overflow: hidden;
 }
@@ -38,7 +38,7 @@
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -1.44px;
-  color: var(--color-black);
+  color: var(--color-text-primary);
 }
 
 .valueMobile {
@@ -47,7 +47,7 @@
   font-weight: 400;
   line-height: 1.25;
   letter-spacing: -0.24px;
-  color: var(--color-black);
+  color: var(--color-text-primary);
 }
 
 /* Body/L: 20px, 500, lh 1.45 */
@@ -55,7 +55,7 @@
   font-size: 20px;
   font-weight: 500;
   line-height: 1.45;
-  color: var(--color-black);
+  color: var(--color-text-primary);
 }
 
 /* ─── Mobile: 390px reference (Figma 417:2598) ─────────────────────── */
