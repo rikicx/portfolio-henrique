@@ -19,7 +19,7 @@
 
 .logoPath {
   fill: transparent;
-  stroke: var(--color-black, #010302);
+  stroke: var(--color-icon-primary, #010302);
   stroke-width: 7;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -49,7 +49,7 @@
 
 @keyframes fillLogo {
   to {
-    fill: var(--color-black, #010302);
+    fill: var(--color-icon-primary, #010302);
     stroke-width: 0;
   }
 }
@@ -68,7 +68,7 @@
   }
 
   .logoPath {
-    fill: var(--color-black, #010302);
+    fill: var(--color-icon-primary, #010302);
     stroke: none;
     stroke-dasharray: none;
     stroke-dashoffset: 0;
