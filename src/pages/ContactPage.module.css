@@ -198,14 +198,14 @@
 
 .fieldError {
   margin-top: -2px;
-  color: #b42318;
+  color: var(--color-danger);
   font-size: 14px;
   font-weight: 500;
   line-height: 1.35;
 }
 
 .inputError {
-  border-bottom-color: #b42318;
+  border-bottom-color: var(--color-danger);
 }
 
 .formOverlay {
@@ -295,7 +295,7 @@
 }
 
 .formStatusError {
-  color: #b42318;
+  color: var(--color-danger);
 }
 
 .submitButton:disabled {
