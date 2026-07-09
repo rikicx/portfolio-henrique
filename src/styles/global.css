@@ -79,6 +79,7 @@
 
   /* media */
   --color-bg-media-placeholder: #000000;
+  --color-bg-project-placeholder: var(--color-placeholder);
 
   /* overlay */
   --color-overlay-scrim: rgba(0, 0, 0, 0.9);
