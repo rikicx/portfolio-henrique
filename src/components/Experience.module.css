@@ -15,7 +15,7 @@
   font-size: 72px;
   line-height: 1;
   letter-spacing: -2.16px;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   white-space: nowrap;
   padding: 10px;
   margin: 0 0 0 -10px; /* compensate padding so text aligns with container edge */
@@ -26,7 +26,7 @@
 .desktopCompanies {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid var(--color-divider);
+  border-top: 1px solid var(--color-border-subtle);
 }
 
 .companyRow {
@@ -35,7 +35,7 @@
   gap: 24px;
   align-items: center;
   padding: 24px 16px;
-  border-bottom: 1px solid var(--color-divider);
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .experienceBody {
@@ -69,7 +69,7 @@
   left: 7px;
   width: 1px;
   content: '';
-  background: var(--color-black);
+  background: var(--color-border-strong);
 }
 
 .position:last-child::before {
@@ -83,7 +83,7 @@
   width: 10px;
   height: 10px;
   content: '';
-  background: var(--color-black);
+  background: var(--color-icon-primary);
   transform: rotate(45deg);
 }
 
@@ -92,7 +92,7 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 1.45;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   margin: 0 0 8px;
 }
 
@@ -101,7 +101,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   margin: 0;
 }
 
@@ -125,7 +125,7 @@
   display: inline-block;
   padding: 4px 0;
   margin-top: 48px;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   text-decoration: none;
 }
 
@@ -134,7 +134,7 @@
   font-size: 24px;
   font-weight: 500;
   line-height: 1.25;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   white-space: nowrap;
 }
 
@@ -180,11 +180,11 @@
   /* Accordion container */
   .mobileCompanies {
     display: block;
-    border-top: 1px solid var(--color-divider);
+    border-top: 1px solid var(--color-border-subtle);
   }
 
   .mobileCompany {
-    border-bottom: 1px solid var(--color-divider);
+    border-bottom: 1px solid var(--color-border-subtle);
   }
 
   .mobileCompany:last-child {
@@ -220,7 +220,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 1.5;
-    color: var(--color-black);
+    color: var(--color-text-primary);
   }
 
   .mobileTitleJunior {
@@ -228,7 +228,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 1.5;
-    color: var(--color-black);
+    color: var(--color-text-primary);
   }
 
   /* Logos — visible only in open header, left-aligned, per-brand sizing */
@@ -260,7 +260,7 @@
   .chevron {
     display: block;
     flex-shrink: 0;
-    color: var(--color-black);
+    color: var(--color-text-primary);
     transition: transform 240ms ease;
   }
 
@@ -313,7 +313,7 @@
     left: 5px;
     width: 1px;
     content: '';
-    background: var(--color-black);
+    background: var(--color-border-strong);
   }
 
   .mobilePositionExpanded:last-child::before {
@@ -327,7 +327,7 @@
     width: 9px;
     height: 9px;
     content: '';
-    background: var(--color-black);
+    background: var(--color-icon-primary);
     transform: rotate(45deg);
   }
 
@@ -340,7 +340,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 1.45;
-    color: var(--color-black);
+    color: var(--color-text-primary);
     margin: 0 0 6px;
   }
 
@@ -349,7 +349,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 1.6;
-    color: var(--color-black);
+    color: var(--color-text-primary);
     margin: 0;
   }
 
