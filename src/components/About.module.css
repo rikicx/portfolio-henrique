@@ -1,5 +1,5 @@
 .section {
-  background: #fff;
+  background: var(--color-bg-page);
   padding: 80px var(--page-padding);
 }
 
@@ -51,7 +51,7 @@
   font-weight: 500;
   line-height: 1;
   letter-spacing: -2.88px;
-  color: #fff;
+  color: var(--color-text-on-inverse);
   width: 430px;
   margin: 0;
 }
@@ -60,7 +60,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #fff;
+  color: var(--color-text-on-inverse);
   text-decoration: none;
   font-size: 20px;
   font-weight: 400;
