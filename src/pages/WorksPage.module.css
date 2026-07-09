@@ -5,7 +5,7 @@
 
 /* ─── Page wrapper ──────────────────────────────────────────────────────── */
 .page {
-  background: var(--color-white);
+  background: var(--color-bg-elevated);
 }
 
 /* ─── Header ────────────────────────────────────────────────────────────── */
@@ -40,7 +40,7 @@
   display: flex;
   flex-direction: column;
   margin: 0;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   font-size: 72px;
   font-weight: 500;
   line-height: 1;
@@ -51,7 +51,7 @@
 .pageDescription {
   width: 700px;
   margin: 32px 0 0;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   font-size: 40px;
   font-weight: 500;
   line-height: 1.1;
@@ -141,7 +141,7 @@
 }
 
 .card:focus-visible {
-  outline: 2px solid var(--color-black);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 3px;
 }
 
@@ -173,7 +173,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  color: var(--color-white);
+  color: var(--color-text-on-inverse);
 }
 
 .cardTextBlock {
