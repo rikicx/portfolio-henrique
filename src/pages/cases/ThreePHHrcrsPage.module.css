@@ -649,7 +649,7 @@
 }
 
 .lightboxClose:focus-visible {
-  outline: 2px solid #ffffff;
+  outline: 2px solid var(--color-focus-ring-inverse);
   outline-offset: 3px;
 }
 
@@ -1815,7 +1815,7 @@
   }
   .implementationBox:hover {
     transform: translateY(-2px);
-    background-color: #e5e5e5;
+    background-color: var(--color-bg-hover-subtle);
   }
 
   .metricBox {
@@ -1824,7 +1824,7 @@
   }
   .metricBox:hover {
     transform: translateY(-2px);
-    background-color: #e5e5e5;
+    background-color: var(--color-bg-hover-subtle);
   }
 }
 

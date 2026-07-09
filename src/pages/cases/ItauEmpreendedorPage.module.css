@@ -1133,6 +1133,6 @@
   }
   .questionCard:hover {
     transform: translateY(-2px);
-    background-color: #e5e5e5;
+    background-color: var(--color-bg-hover-subtle);
   }
 }
