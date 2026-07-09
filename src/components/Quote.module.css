@@ -51,7 +51,7 @@
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.72px;
-  color: var(--color-black);
+  color: var(--color-text-primary);
 }
 
 /* Closing quote mark: 103×86px at left=899 (947-48), top=99. */
@@ -85,7 +85,7 @@
   top: 222px;
   width: 1116px;
   height: 1px;
-  background: var(--color-black);
+  background: var(--color-border-strong);
   border: none;
   margin: 0;
   padding: 0;
