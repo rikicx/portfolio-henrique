@@ -1904,8 +1904,8 @@
     margin: 0;
     padding: 24px 0;
     align-self: stretch;
-    background: var(--color-black);
-    color: var(--color-white);
+    background: var(--color-bg-editorial-label);
+    color: var(--color-text-on-editorial-label);
     font-size: 24px;
     font-weight: 500;
     line-height: 1;

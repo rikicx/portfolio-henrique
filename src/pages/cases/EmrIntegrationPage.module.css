@@ -1006,7 +1006,7 @@
     justify-content: center;
     width: 64px;
     padding-left: 0;
-    background: var(--color-black);
+    background: var(--color-bg-editorial-label);
   }
 
   .problemaLabel {
@@ -1020,7 +1020,7 @@
     padding: 24px 0;
     box-sizing: border-box;
     align-self: stretch;
-    color: var(--color-white);
+    color: var(--color-text-on-editorial-label);
     font-size: 24px;
     font-weight: 500;
     line-height: 1;
