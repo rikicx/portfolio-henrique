@@ -68,6 +68,42 @@
 
   /* feedback */
   --color-danger: #b42318;
+
+  /* action */
+  --color-bg-action-primary: var(--color-black);
+  --color-text-on-action-primary: var(--color-white);
+
+  /* editorial */
+  --color-bg-editorial-label: var(--color-black);
+  --color-text-on-editorial-label: var(--color-white);
+
+  /* media */
+  --color-bg-media-placeholder: #000000;
+
+  /* overlay */
+  --color-overlay-scrim: rgba(0, 0, 0, 0.9);
+  --color-overlay-card-gradient-start: rgba(0, 0, 0, 0);
+  --color-overlay-card-gradient-end: rgba(0, 0, 0, 0.75);
+
+  /* focus */
+  --color-focus-ring-inverse: var(--color-white);
+
+  /* border alpha */
+  --color-border-translucent-light: rgba(255, 255, 255, 0.4);
+  --color-border-translucent-dark: rgba(0, 0, 0, 0.08);
+
+  /* hover */
+  --color-bg-hover-subtle: #e5e5e5;
+  --color-bg-hover-alpha: rgba(0, 0, 0, 0.04);
+
+  /* text extras */
+  --color-text-strong: #1a1a1a;
+  --color-text-soft: #b6b6b6;
+
+  /* shadow */
+  --shadow-floating-action: 0 20px 60px rgba(0, 0, 0, 0.24);
+  --shadow-header: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lightbox-action: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 html {
