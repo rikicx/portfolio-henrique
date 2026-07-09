@@ -3,7 +3,7 @@
   z-index: 0;
   bottom: 0;
   overflow: hidden;
-  background: var(--color-black);
+  background: var(--color-bg-structural-dark);
   color: var(--color-text-on-inverse);
 }
 
