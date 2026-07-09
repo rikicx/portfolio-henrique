@@ -110,6 +110,64 @@
   --shadow-lightbox-action: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
+[data-theme="dark"] {
+  /* page / background */
+  --color-bg-page: #0b0b0b;
+  --color-bg-surface: #151515;
+  --color-bg-elevated: #1f1f1f;
+
+  /* text */
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #b8b8b8;
+  --color-text-muted: #8f8f8f;
+  --color-text-inverse: #000000;
+
+  /* border */
+  --color-border-primary: #2a2a2a;
+  --color-border-subtle: #333333;
+  --color-border-strong: #f5f5f5;
+
+  /* icon */
+  --color-icon-primary: #f5f5f5;
+  --color-icon-inverse: #000000;
+
+  /* link */
+  --color-link: #f5f5f5;
+  --color-link-hover: #ffffff;
+
+  /* focus */
+  --color-focus-ring: #f5f5f5;
+  --color-focus-ring-inverse: #000000;
+
+  /* inverse / structural */
+  --color-bg-inverse: #f5f5f5;
+  --color-text-on-inverse: #000000;
+  --color-bg-structural-dark: #000000;
+
+  /* action */
+  --color-bg-action-primary: #f5f5f5;
+  --color-text-on-action-primary: #000000;
+
+  /* editorial */
+  --color-bg-editorial-label: #f5f5f5;
+  --color-text-on-editorial-label: #000000;
+
+  /* media */
+  --color-bg-media-placeholder: #000000;
+  --color-bg-project-placeholder: #151515;
+
+  /* hover */
+  --color-bg-hover-subtle: #242424;
+  --color-bg-hover-alpha: rgba(255, 255, 255, 0.08);
+
+  /* text extras */
+  --color-text-strong: #f5f5f5;
+  --color-text-soft: #8f8f8f;
+
+  /* feedback */
+  --color-danger: #ff6b6b;
+}
+
 html {
   scroll-behavior: smooth;
 }
