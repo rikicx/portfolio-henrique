@@ -63,7 +63,7 @@
   height: 520px;
   overflow: hidden;
   border-radius: var(--radius-card);
-  background: var(--color-placeholder);
+  background: var(--color-bg-project-placeholder);
   text-decoration: none;
 }
 
