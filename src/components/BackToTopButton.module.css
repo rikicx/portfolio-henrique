@@ -12,7 +12,7 @@
   padding: 0;
 
   color: var(--color-icon-inverse, #fff);
-  background: var(--color-black, #000);
+  background: var(--color-bg-action-primary, #000);
   border: 0;
   border-radius: 50%;
   cursor: pointer;

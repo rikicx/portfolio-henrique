@@ -97,8 +97,8 @@
   display: inline-flex;
   align-items: center;
   padding: 17px 32px;
-  background: var(--color-black);
-  color: var(--color-white);
+  background: var(--color-bg-action-primary);
+  color: var(--color-text-on-action-primary);
   font-size: 24px;
   font-weight: 500;
   line-height: 1.25;

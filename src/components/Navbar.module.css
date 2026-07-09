@@ -89,8 +89,8 @@
   align-items: center;
   padding: 14px 24px;
   border-radius: var(--radius-pill);
-  background: var(--color-black);
-  color: var(--color-white);
+  background: var(--color-bg-action-primary);
+  color: var(--color-text-on-action-primary);
   font-size: 16px;
   font-weight: 500;
   line-height: 1.25;
@@ -554,8 +554,8 @@
     margin-top: 32px;
     padding: 14px 24px;
     border-radius: var(--radius-pill);
-    background: var(--color-black);
-    color: var(--color-white);
+    background: var(--color-bg-action-primary);
+    color: var(--color-text-on-action-primary);
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
