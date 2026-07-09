@@ -66,6 +66,9 @@
   --color-bg-inverse: #010302;
   --color-text-on-inverse: var(--color-white);
 
+  /* structural */
+  --color-bg-structural-dark: var(--color-black);
+
   /* feedback */
   --color-danger: #b42318;
 
