@@ -1825,3 +1825,9 @@
     transition: none;
   }
 }
+
+/* Dark theme: About principle icons become monochrome white */
+[data-theme="dark"] .principioIcon {
+  filter: brightness(0) invert(1);
+  opacity: 0.88;
+}

@@ -548,3 +548,18 @@
     transition: none;
   }
 }
+
+/* Dark theme: company logos become monochrome white across desktop and mobile */
+[data-theme="dark"] .companyLogo,
+[data-theme="dark"] .companyLogo img {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+/* Dark theme: mobile company logos become monochrome white */
+[data-theme="dark"] .mobileLogo3ph,
+[data-theme="dark"] .mobileLogoSciensa,
+[data-theme="dark"] .mobileLogoNetfarma {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}

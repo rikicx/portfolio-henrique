@@ -1981,3 +1981,77 @@
     background-color: var(--color-bg-hover-subtle);
   }
 }
+
+/* Dark theme: shared quote PNG assets become white */
+[data-theme="dark"] .quoteIcon,
+[data-theme="dark"] .quoteIconOpen,
+[data-theme="dark"] .quoteIconClose,
+[data-theme="dark"] .testimonialQuoteOpen,
+[data-theme="dark"] .testimonialQuoteClose {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+/* Dark theme: QI Platform question card icons become monochrome white */
+[data-theme="dark"] .questionIcon {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+/* Case quote icons: shared sizing across all case pages */
+.quoteIcon,
+.quoteIconOpen,
+.quoteIconClose {
+  width: clamp(40px, 5vw, 72px);
+  height: auto;
+}
+
+
+/* QI Platform impact stats: align number scale with EMR Integration */
+.impactGrid .statCard,
+.impactGrid .statWide {
+  min-height: 104px;
+  gap: 4px;
+  padding: 16px;
+}
+
+.impactGrid .statValue {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.72px;
+}
+
+.impactGrid .statLabel {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* QI Platform impact stats: mobile/tablet scale */
+@media (max-width: 1024px) {
+  .impactGrid .statValue {
+    font-size: 28px;
+    letter-spacing: -0.56px;
+  }
+
+  .impactGrid .statLabel {
+    font-size: 14px;
+  }
+}
+
+/* QI Platform impact stats: compact desktop */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .impactGrid .statValue {
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -0.32px;
+  }
+
+  .impactGrid .statLabel {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+}

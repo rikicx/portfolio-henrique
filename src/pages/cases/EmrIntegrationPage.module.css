@@ -1509,3 +1509,29 @@
     background-color: var(--color-bg-hover-subtle);
   }
 }
+
+/* Dark theme: shared quote PNG assets become white */
+[data-theme="dark"] .quoteIcon,
+[data-theme="dark"] .quoteIconOpen,
+[data-theme="dark"] .quoteIconClose,
+[data-theme="dark"] .testimonialQuoteOpen,
+[data-theme="dark"] .testimonialQuoteClose {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+/* Case quote icons: shared sizing across all case pages */
+.quoteIcon,
+.quoteIconOpen,
+.quoteIconClose {
+  width: clamp(40px, 5vw, 72px);
+  height: auto;
+}
+
+
+/* Dark theme: EMR Integration editorial icons become monochrome white */
+[data-theme="dark"] .clinicalIcon,
+[data-theme="dark"] .directionIcon {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}

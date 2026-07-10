@@ -3,6 +3,10 @@
   padding: 80px var(--page-padding);
 }
 
+[data-theme="dark"] .section {
+  background: var(--color-bg-elevated);
+}
+
 .container {
   max-width: 1344px;
   margin: 0 auto;
@@ -445,4 +449,20 @@
   .saibaMaisLink:hover .arrowIcon {
     transform: translateY(-4px);
   }
+}
+
+/* Dark theme: About image card text and icons stay white over media */
+[data-theme="dark"] .overlayHeading,
+[data-theme="dark"] .saibaMaisLink,
+[data-theme="dark"] .saibaMaisLink *,
+[data-theme="dark"] .saibaMaisLink::before,
+[data-theme="dark"] .saibaMaisLink::after {
+  color: var(--color-white);
+}
+
+[data-theme="dark"] .saibaMaisLink svg,
+[data-theme="dark"] .saibaMaisLink path {
+  color: var(--color-white);
+  stroke: currentColor;
+  fill: none;
 }

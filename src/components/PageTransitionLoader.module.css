@@ -75,3 +75,8 @@
     animation: none;
   }
 }
+
+/* Dark theme: page transition loader uses dark background */
+[data-theme="dark"] .overlay {
+  background: var(--color-bg-structural-dark);
+}

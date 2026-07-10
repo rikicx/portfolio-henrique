@@ -440,3 +440,9 @@
     transition: none;
   }
 }
+
+/* Dark theme: project cards keep media-overlay text white */
+[data-theme="dark"] .card,
+[data-theme="dark"] .card * {
+  color: var(--color-white);
+}

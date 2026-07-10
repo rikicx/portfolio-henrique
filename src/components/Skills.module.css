@@ -5,6 +5,10 @@
   background: var(--color-bg-page);
 }
 
+[data-theme="dark"] .section {
+  background: var(--color-bg-elevated);
+}
+
 .sectionTitle {
   padding-left: 48px;
   font-size: 72px;
@@ -265,4 +269,10 @@
     transform: none;
     transition: none;
   }
+}
+
+/* Dark theme: skill icons stay visible on dark cards */
+[data-theme="dark"] .icon {
+  filter: invert(1);
+  opacity: 0.9;
 }

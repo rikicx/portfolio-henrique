@@ -446,3 +446,22 @@
     transition: none;
   }
 }
+
+/* Dark theme: invert footer to contrast with the dark page */
+[data-theme="dark"] .footer {
+  background: var(--color-bg-inverse);
+  color: var(--color-text-on-inverse);
+}
+
+[data-theme="dark"] .divider {
+  border-top-color: rgba(0, 0, 0, 0.16);
+}
+
+[data-theme="dark"] .dot {
+  background: var(--color-text-on-inverse);
+}
+
+[data-theme="dark"] .ctaBtn {
+  background: var(--color-bg-structural-dark);
+  color: var(--color-text-primary);
+}

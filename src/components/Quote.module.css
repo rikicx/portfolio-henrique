@@ -474,3 +474,14 @@
     transition: none;
   }
 }
+
+/* Dark theme: quote marks are PNG assets, so invert them instead of recoloring */
+[data-theme="dark"] .quoteOpen,
+[data-theme="dark"] .quoteClose {
+  filter: invert(1);
+}
+
+[data-theme="dark"] .author {
+  color: var(--color-text-primary);
+  opacity: 1;
+}

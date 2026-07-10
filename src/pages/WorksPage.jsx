@@ -15,6 +15,8 @@ import threePhImg from '../media/shared/projects/3ph-hrcrs-cover.jpg'
 import smartlogImg from '../media/shared/projects/gerdau-smartlog-cover.webp'
 import worksInfographicPt from '../media/works/works-infographic.svg?raw'
 import worksInfographicEn from '../media/works/works-infographic-en.svg?raw'
+import worksInfographicPtDark from '../media/works/works-infographic-dark.svg?raw'
+import worksInfographicEnDark from '../media/works/works-infographic-en-dark.svg?raw'
 
 const IMAGES_BY_SLUG = {
   'gerdau-storeroom': storeroomImg,
@@ -89,6 +91,7 @@ export default function WorksPage() {
   const { lang } = useLanguage()
   const c = lang === 'en' ? enContent : ptContent
   const worksInfographic = lang === 'en' ? worksInfographicEn : worksInfographicPt
+  const worksInfographicDark = lang === 'en' ? worksInfographicEnDark : worksInfographicPtDark
 
   const leftProjects = c.items.filter((_, index) => index % 2 === 0)
   const rightProjects = c.items.filter((_, index) => index % 2 !== 0)
@@ -139,8 +142,12 @@ export default function WorksPage() {
             aria-hidden="true"
           >
             <div
-              className={styles.infographicSvg}
+              className={`${styles.infographicSvg} ${styles.infographicLight}`}
               dangerouslySetInnerHTML={{ __html: worksInfographic }}
+            />
+            <div
+              className={`${styles.infographicSvg} ${styles.infographicDark}`}
+              dangerouslySetInnerHTML={{ __html: worksInfographicDark }}
             />
           </div>
         </div>

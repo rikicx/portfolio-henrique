@@ -282,3 +282,9 @@
     font-size: 16px;
   }
 }
+
+/* Dark theme: other project media cards keep text white */
+[data-theme="dark"] .card,
+[data-theme="dark"] .card * {
+  color: var(--color-white);
+}

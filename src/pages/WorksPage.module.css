@@ -81,6 +81,18 @@
   height: 100%;
 }
 
+.infographicDark {
+  display: none;
+}
+
+[data-theme="dark"] .infographicLight {
+  display: none;
+}
+
+[data-theme="dark"] .infographicDark {
+  display: block;
+}
+
 @keyframes revealInfographic {
   from {
     opacity: 0;
@@ -592,4 +604,10 @@
     transform: none;
     transition: none;
   }
+}
+
+/* Dark theme: works page media cards keep text white */
+[data-theme="dark"] .card,
+[data-theme="dark"] .card * {
+  color: var(--color-white);
 }

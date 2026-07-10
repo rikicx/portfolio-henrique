@@ -61,16 +61,14 @@ export default function Navbar() {
   const toggle = (event) => (isOpen ? close() : open(event.detail === 0))
 
   // ── Desktop works dropdown ────────────────────────────
-  const [dropdownOpenedAt, setDropdownOpenedAt] = useState(null)
-
-  const dropdownOpen =
-    dropdownOpenedAt !== null && dropdownOpenedAt === location.pathname
+  const [dropdownOpen, setDropdownOpen] = useState(false)
 
   const dropdownRef = useRef(null)
+  const dropdownPanelRef = useRef(null)
   const dropdownFirstItemRef = useRef(null)
 
   const closeDropdown = useCallback(() => {
-    setDropdownOpenedAt(null)
+    setDropdownOpen(false)
   }, [])
 
   const toggleDropdown = (event) => {
@@ -79,7 +77,7 @@ export default function Navbar() {
       return
     }
 
-    setDropdownOpenedAt(location.pathname)
+    setDropdownOpen(true)
 
     if (event.detail === 0) {
       requestAnimationFrame(() => {
@@ -110,7 +108,10 @@ export default function Navbar() {
     if (!dropdownOpen) return undefined
 
     const onMouseDown = (event) => {
-      if (!dropdownRef.current?.contains(event.target)) {
+      const clickedTrigger = dropdownRef.current?.contains(event.target)
+      const clickedPanel = dropdownPanelRef.current?.contains(event.target)
+
+      if (!clickedTrigger && !clickedPanel) {
         closeDropdown()
       }
     }
@@ -172,7 +173,8 @@ export default function Navbar() {
       : styles.link
 
   return (
-    <header
+    <>
+      <header
       className={`${styles.header}${
         isScrolled ? ` ${styles.headerScrolled}` : ''
       }`}
@@ -236,41 +238,7 @@ export default function Navbar() {
               </svg>
             </button>
 
-            {/* Always in DOM — visibility controlled by CSS class */}
-            <div
-              id="desktop-dropdown"
-              className={`${styles.dropdown}${
-                dropdownOpen ? ` ${styles.dropdownOpen}` : ''
-              }`}
-              aria-hidden={!dropdownOpen}
-              onMouseDown={(event) => {
-                if (event.target === event.currentTarget) {
-                  closeDropdown()
-                }
-              }}
-            >
-              <div className={styles.dropdownContent}>
-                {c.trabalhosItems.map((item, index) => (
-                  <Link
-                    key={item.to}
-                    to={item.to}
-                    ref={index === 0 ? dropdownFirstItemRef : undefined}
-                    className={`${styles.dropdownItem}${
-                      index === 0 ? ` ${styles.dropdownItemFirst}` : ''
-                    }`}
-                    style={{ '--item-index': index }}
-                    onClick={closeDropdown}
-                    tabIndex={dropdownOpen ? 0 : -1}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
 
-              <div className={styles.desktopMenuFooter}>
-                <span>{c.copyright}</span>
-              </div>
-            </div>
           </div>
 
           <NavLink
@@ -321,6 +289,44 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+      </header>
+
+      {/* Always in DOM — visibility controlled by CSS class */}
+      <div
+        ref={dropdownPanelRef}
+        id="desktop-dropdown"
+        className={`${styles.dropdown}${
+          dropdownOpen ? ` ${styles.dropdownOpen}` : ''
+        }${isScrolled ? ` ${styles.dropdownScrolled}` : ''}`}
+        aria-hidden={!dropdownOpen}
+        onMouseDown={(event) => {
+          if (event.target === event.currentTarget) {
+            closeDropdown()
+          }
+        }}
+      >
+        <div className={styles.dropdownContent}>
+          {c.trabalhosItems.map((item, index) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              ref={index === 0 ? dropdownFirstItemRef : undefined}
+              className={`${styles.dropdownItem}${
+          index === 0 ? ` ${styles.dropdownItemFirst}` : ''
+              }`}
+              style={{ '--item-index': index }}
+              onClick={closeDropdown}
+              tabIndex={dropdownOpen ? 0 : -1}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+
+        <div className={styles.desktopMenuFooter}>
+          <span>{c.copyright}</span>
+        </div>
+            </div>
 
       <div
         id="mobile-nav"
@@ -427,6 +433,6 @@ export default function Navbar() {
           <span>{c.copyright}</span>
         </div>
       </div>
-    </header>
+    </>
   )
 }

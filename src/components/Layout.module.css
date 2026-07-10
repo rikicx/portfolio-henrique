@@ -23,3 +23,12 @@
     border-radius: 0 0 32px 32px;
   }
 }
+/* Dark theme: main content sheet casts shadow over the footer */
+[data-theme="dark"] .main {
+  box-shadow: 0 32px 96px rgba(0, 0, 0, 0.42);
+}
+
+/* Dark theme: page background follows the inverted footer surface */
+[data-theme="dark"] .pageBackground {
+  background: var(--color-bg-inverse);
+}
