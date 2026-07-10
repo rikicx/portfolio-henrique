@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import styles from './Navbar.module.css'
 import logoUrl from '../media/shared/branding/hsd-logo.svg'
 import LanguageSwitcher from './LanguageSwitcher'
+import ThemeToggle from './ThemeToggle'
 import { useLanguage } from '../context/LanguageContext'
 import pt from '../content/pt/nav'
 import en from '../content/en/nav'
@@ -259,7 +260,10 @@ export default function Navbar() {
         </nav>
 
         <div className={styles.rightArea}>
-          <LanguageSwitcher className={styles.navSwitcher} />
+          <div className={styles.navControls}>
+            <ThemeToggle />
+            <LanguageSwitcher className={styles.navSwitcher} />
+          </div>
 
           <Link
             to={c.ctaTo}
@@ -426,10 +430,13 @@ export default function Navbar() {
         </nav>
 
         <div className={styles.mobileFooter}>
-          <LanguageSwitcher
-            onNavigate={close}
-            tabIndex={isOpen ? 0 : -1}
-          />
+          <div className={styles.mobileControls}>
+            <ThemeToggle compact />
+            <LanguageSwitcher
+              onNavigate={close}
+              tabIndex={isOpen ? 0 : -1}
+            />
+          </div>
           <span>{c.copyright}</span>
         </div>
       </div>

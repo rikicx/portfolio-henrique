@@ -1,60 +1,97 @@
-/* Language Switcher — PT | EN
-   Approved Design System spec (§21 — Component Behaviors):
-   Label/M 16 · active in black Medium · divider "|" in #D9D9D9 ·
-   unavailable option visible but non-interactive in #D9D9D9 ·
-   focus-visible ring applies to the whole group (never permanent). */
-
 .switcher {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1;
-}
-
-.active {
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  border: 1px solid var(--color-border-primary);
+  border-radius: 999px;
+  background: transparent;
   color: var(--color-text-primary);
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    border-color var(--transition),
+    background var(--transition),
+    color var(--transition),
+    opacity var(--transition),
+    transform var(--transition);
 }
 
-.link {
-  color: var(--color-text-secondary);
-  text-decoration: none;
+.label {
+  letter-spacing: 0.02em;
+}
+
+.tooltip {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  z-index: 10001;
+  width: max-content;
+  max-width: 180px;
+  padding: 7px 9px;
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -4px);
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
+}
+
+.tooltip::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-top: 1px solid var(--color-border-primary);
+  border-left: 1px solid var(--color-border-primary);
+  background: var(--color-bg-elevated);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.disabled {
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+  opacity: 0.48;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .link:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
+  .switcher:hover {
+    background: var(--color-bg-hover-subtle);
+    opacity: 0.86;
+  }
+
+  .switcher:hover .tooltip {
+    opacity: 1;
+    transform: translate(-50%, 0);
   }
 }
 
-/* Ring belongs to the group — suppress the link's own outline */
-.link:focus-visible {
-  outline: none;
-}
-
-.switcher:has(:focus-visible) {
+.switcher:focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 4px;
 }
 
-.disabled {
-  color: var(--color-divider);
+.switcher:focus-visible .tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
-.separator {
-  color: var(--color-divider);
-}
-
-/* Mobile: touch target ≥44px without changing the visual footprint */
-@media (max-width: 768px) {
-  .link,
-  .active,
-  .disabled {
-    padding: 14px 13px;
-    margin: -14px -13px;
-  }
+.switcher:active {
+  transform: scale(0.96);
 }

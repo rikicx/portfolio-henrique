@@ -1,17 +1,9 @@
-import { Fragment } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import { getAlternateRoute } from '../content/routes'
 import styles from './LanguageSwitcher.module.css'
 
 const LABELS = { pt: 'PT', en: 'EN' }
-
-// Accessible names follow the approved Design System spec:
-// "Mudar idioma para English / para Português".
-const SWITCH_ARIA_LABELS = {
-  pt: 'Mudar idioma para Português',
-  en: 'Mudar idioma para English',
-}
 
 export default function LanguageSwitcher({
   className = '',
@@ -21,56 +13,46 @@ export default function LanguageSwitcher({
   const { lang } = useLanguage()
   const location = useLocation()
 
-  const items = ['pt', 'en'].map((target) => {
-    if (target === lang) {
-      return { target, type: 'active' }
-    }
+  const target = lang === 'pt' ? 'en' : 'pt'
+  const to = getAlternateRoute(location.pathname, target)
 
-    const to = getAlternateRoute(location.pathname, target)
+  const label =
+    target === 'en'
+      ? 'Switch language to English'
+      : 'Mudar idioma para português'
 
-    return to
-      ? { target, type: 'link', to }
-      : { target, type: 'disabled' }
-  })
+  const tooltip =
+    target === 'en'
+      ? 'View in English'
+      : 'Ver em português'
+
+  const classNames = `${styles.switcher}${className ? ` ${className}` : ''}`
+
+  if (!to) {
+    return (
+      <span
+        className={`${classNames} ${styles.disabled}`}
+        aria-disabled="true"
+        title={tooltip}
+      >
+        {LABELS[target]}
+      </span>
+    )
+  }
 
   return (
-    <nav
-      className={`${styles.switcher}${className ? ` ${className}` : ''}`}
-      aria-label={lang === 'en' ? 'Language selection' : 'Seleção de idioma'}
+    <Link
+      to={to}
+      className={classNames}
+      aria-label={label}
+      onClick={onNavigate ?? undefined}
+      tabIndex={tabIndex}
+      title={tooltip}
     >
-      {items.map((item, index) => (
-        <Fragment key={item.target}>
-          {index > 0 && (
-            <span className={styles.separator} aria-hidden="true">
-              |
-            </span>
-          )}
-
-          {item.type === 'active' && (
-            <span className={styles.active} aria-current="page">
-              {LABELS[item.target]}
-            </span>
-          )}
-
-          {item.type === 'link' && (
-            <Link
-              to={item.to}
-              className={styles.link}
-              aria-label={SWITCH_ARIA_LABELS[item.target]}
-              onClick={onNavigate ?? undefined}
-              tabIndex={tabIndex}
-            >
-              {LABELS[item.target]}
-            </Link>
-          )}
-
-          {item.type === 'disabled' && (
-            <span className={styles.disabled} aria-disabled="true">
-              {LABELS[item.target]}
-            </span>
-          )}
-        </Fragment>
-      ))}
-    </nav>
+      <span className={styles.label}>{LABELS[target]}</span>
+      <span className={styles.tooltip} role="tooltip">
+        {tooltip}
+      </span>
+    </Link>
   )
 }

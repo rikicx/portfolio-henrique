@@ -515,7 +515,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
+    gap: 14px;
   }
 
   /* Stagger entry for main nav items */
@@ -837,5 +837,29 @@
     color: var(--color-text-primary);
     backdrop-filter: blur(24px) saturate(120%);
     -webkit-backdrop-filter: blur(24px) saturate(120%);
+  }
+}
+
+/* Theme/language controls */
+.navControls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-right: 32px;
+}
+
+.navControls .navSwitcher {
+  margin-right: 0;
+}
+
+.mobileControls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+@media (max-width: 768px) {
+  .rightArea .navControls {
+    display: none;
   }
 }
