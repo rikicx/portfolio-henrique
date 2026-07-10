@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import WorksPage from './pages/WorksPage'
 import ContactPage from './pages/ContactPage'
+import DesignSystemPage from './pages/DesignSystemPage'
 import NotFoundPage from './pages/NotFoundPage'
 import QiPlatformPage from './pages/cases/QiPlatformPage'
 import EmrIntegrationPage from './pages/cases/EmrIntegrationPage'
@@ -43,6 +44,8 @@ export default function App() {
           <Route path="/en/work/itau-empreendedor" element={<ItauEmpreendedorPage />} />
           <Route path="/trabalhos/3ph-hrcrs-digital-ecosystem" element={<ThreePHHrcrsPage />} />
           <Route path="/en/work/3ph-hrcrs-digital-ecosystem" element={<ThreePHHrcrsPage />} />
+          <Route path="/design-system" element={<DesignSystemPage />} />
+          <Route path="/en/design-system" element={<DesignSystemPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
 

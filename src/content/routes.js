@@ -29,6 +29,7 @@ export const ROUTE_PAIRS = [
     en: '/en/work/3ph-hrcrs-digital-ecosystem',
     enabled: true,
   },
+  { pt: '/design-system', en: '/en/design-system', enabled: true },
 ]
 
 export function getAlternateRoute(pathname, targetLang) {
