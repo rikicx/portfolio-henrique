@@ -12,6 +12,11 @@
   margin-bottom: 12px;
 }
 
+.previewLarge {
+  height: 180px;
+  border-radius: var(--radius-card);
+}
+
 .meta {
   display: flex;
   flex-direction: column;

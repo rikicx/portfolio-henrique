@@ -57,6 +57,10 @@ export default function Footer() {
           >
             {c.curriculoLabel}
           </a>
+          <span className={styles.dot} aria-hidden="true" />
+          <Link to={c.designSystemTo} className={styles.link}>
+            {c.designSystemLabel}
+          </Link>
         </nav>
 
         <hr className={styles.divider} />

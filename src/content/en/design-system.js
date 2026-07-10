@@ -2,21 +2,39 @@ export default {
   seo: {
     title: 'Design System — Henrique Silva',
     description:
-      "How this portfolio's design system connects product, code, and Figma — foundations, principles, and decisions.",
+      "How this portfolio's design system connects product, code, and Figma: foundations, components, themes, and the decisions between them.",
     path: '/en/design-system',
     lang: 'en',
     robots: 'noindex, nofollow',
   },
   hero: {
-    heading: 'Design System',
-    lead: "This portfolio's editorial language, documented: black and white, expressive typography, a strict grid, and generous negative space — organized as a reusable system.",
+    label: 'Design System',
+    heading: 'Kihon',
+    kanji: '基本',
+    paragraphs: [
+      'In Karate, Kihon (基本) means fundamentals — the basic techniques practiced until they become second nature. I chose this name because I believe good digital products are built the same way: mastering the essentials before chasing complexity.',
+      "Everything documented here starts from that idea — and it's the same system that builds this very page.",
+    ],
+  },
+  sectionNav: {
+    label: 'Sections on this page',
+    items: [
+      { id: 'overview', label: 'Overview' },
+      { id: 'principles', label: 'Principles' },
+      { id: 'foundations', label: 'Foundations' },
+      { id: 'themes', label: 'Themes' },
+      { id: 'components', label: 'Components' },
+      { id: 'responsive', label: 'Responsive' },
+      { id: 'accessibility', label: 'Accessibility' },
+      { id: 'evolution', label: 'Evolution' },
+      { id: 'adapted', label: 'Adaptation' },
+    ],
   },
   overview: {
     title: 'Overview',
     paragraphs: [
-      "This Design System documents what is already in production — not a parallel system, and not a proposal waiting to be validated. Every token, component, and decision referenced here exists today at henriquesilva.design.",
-      'The documentation follows a clear order of priority: the published product leads; the code on the main branch confirms how it was implemented; the Design System file in Figma records the decision and the reasoning behind it. When the three sources diverge, that divergence is documented here as part of the system — not hidden.',
-      "This process exists because visual consistency doesn't maintain itself. It depends on tracing how a design decision reaches the code, and on honestly reviewing where the system still has gaps.",
+      'Kihon documents the foundations behind this portfolio. More than a component catalogue, it brings together the decisions that keep the interface consistent as the product evolves.',
+      'Every principle shown here has been applied to the real product. The goal is not to reproduce a specific interface, but to show how simple, well-defined decisions can become an adaptable system.',
     ],
   },
   principles: {
@@ -64,7 +82,6 @@ export default {
       intro: 'A neutral palette. Primitives are the raw values; semantic tokens give those values a role and are what components should consume — that layer is what changes between themes.',
       primitivesTitle: 'Primitives',
       semanticTitle: 'Semantic',
-      divergenceNote: "One real point worth flagging: --color-border-primary currently resolves to #D7D7D7 in code, while Figma already consolidated the official border value at #D9D9D9 (the same as --color-border-subtle). The difference is barely perceptible (ΔE≈1), and the migration is already logged as a technical task inside the Design System itself — it wasn't fixed here.",
       roles: {
         '--color-black': 'Black — base for text, inverse backgrounds, and actions',
         '--color-white': 'White — default background, inverse text',
@@ -93,9 +110,23 @@ export default {
 
     typography: {
       title: 'Typography',
-      intro: "A single family (Inter Tight, two weights) and an expressive scale — the variation is in size, not in variety. None of these names exist as CSS variables in the code: every font-size is written locally, per component. The table shows the Figma spec next to what's actually in production.",
-      columns: { figma: 'Figma', spec: 'Weight · line-height', usage: 'Used in production for', token: 'Token in code' },
+      intro: 'A single family (Inter Tight, two weights) and an expressive scale — the variation is in size, not in variety. None of these names exist as CSS variables in the code: every font-size is written locally, per component. The specimens below render at true size.',
       tokenAbsent: '—',
+      specimens: {
+        displayXXL: 'Henrique',
+        displayHero: 'Kihon',
+        displayXL: 'Design System',
+        displayL: 'Selected work',
+        h1: 'Selected projects',
+        h2: 'Skills & tools',
+        h3: 'Strategy and discovery',
+        bodyL: 'I turn complex contexts into clearer digital experiences.',
+        bodyM: 'I connect user needs, business goals, and technical feasibility.',
+        bodyS: 'Short description of the selected project.',
+        labelL: 'View selected projects ↓',
+        labelM: 'Get in touch',
+        labelS: 'Healthcare · Head of Design',
+      },
       usage: {
         displayXXL: '"Henrique" name in the desktop Hero',
         displayHero: 'Case study titles (TypingTitle)',
@@ -115,8 +146,7 @@ export default {
 
     spacing: {
       title: 'Spacing and grid',
-      intro: "An 8-based scale (4px as the minimum exception). Like typography, there's no --space-* token in the code — the values below are what production actually uses, read straight from the components.",
-      columns: { figma: 'Figma', value: 'Value', token: 'Token in code' },
+      intro: "An 8-based scale (4px as the minimum exception). Like typography, there's no --space-* token in the code — the values below are what production actually uses, read straight from the components. Bars drawn to proportional scale.",
       tokenAbsent: '—',
       usageTitle: 'Canonical applications',
       usageItems: [
@@ -133,7 +163,6 @@ export default {
     radiusElevation: {
       title: 'Radius and elevation',
       intro: 'An essentially flat system: a small radius for buttons and fields, a larger one for cards, and pill for CTAs and chips. A single shadow level, reserved for cards.',
-      columns: { token: 'Token', value: 'Value', usage: 'Used for' },
       rows: {
         '--radius-8': 'Buttons, fields',
         '--radius-card': 'Cards',
@@ -147,11 +176,11 @@ export default {
   themes: {
     title: 'Themes',
     paragraphs: [
-      'The color system has two layers: primitives (raw values, like --color-black) and semantic tokens (roles, like --color-text-primary). Components should only consume the semantic layer — that is what changes value between themes; primitives stay fixed.',
-      'Light is the default theme. Dark is switched on by a data-theme="dark" attribute on the <html> tag, which redefines the same semantic token names with new values — no component needs to know which theme is active, it just reads the variable.',
-      "The preference is saved to localStorage (key portfolio-theme) and applied before the first render, to avoid a flash of the wrong theme on load.",
-      "Figma today only documents the light layer — dark mode, and the Theme Toggle itself, were built after the Design System page in Figma was last updated. That is a real gap, not a documentation mistake.",
+      'The system separates raw values from semantic roles. Components consume tokens such as --color-text-primary and --color-bg-surface, allowing the same structure to work across light and dark themes.',
+      'The visitor preference is applied before the first render. The entire interface can therefore respond to the active theme without each component needing to know which theme is selected.',
     ],
+    demoTitle: 'This page is the demo',
+    demoText: 'Switch themes and watch the colors, specimens, and surfaces respond through the same tokens used by the product.',
     previewLabel: 'The real component — the same one that appears in the Navbar.',
   },
 
@@ -166,12 +195,26 @@ export default {
         "The code has no shared <Button> or <Link> component. Every CTA — the one in the Hero, the one in the contact form, the one in the footer — is styled locally in that page's own CSS Module. The visual language is consistent because the decisions (radius, typography, hover tone, focus) are the same everywhere; the implementation, today, is distributed.",
         'The only disabled/loading state observed in production is the contact form\'s submit button: a quieter surface and text, with the label switching to "Sending…".',
       ],
-      columns: { pattern: 'Pattern', sizes: 'Sizes', states: 'States', usage: 'Where it appears' },
-      rows: [
-        { pattern: 'Button', sizes: 'S 38px · M 48px · L 64px', states: 'Default, Hover, Focus, Disabled/Loading', usage: 'Hero CTA, form submit, footer CTA' },
-        { pattern: 'Text Link', sizes: 'S/M/L — same heights as Button', states: 'Default, Hover', usage: 'Navigation, "Read more"' },
-        { pattern: 'HyperLink', sizes: 'Single height', states: 'Default, Hover', usage: 'External links (LinkedIn), target="_blank" + rel="noopener noreferrer"' },
+      specimenLabel: 'Get in touch',
+      sizesTitle: 'Sizes',
+      sizes: [
+        { key: 's', label: 'S · 38px' },
+        { key: 'm', label: 'M · 48px' },
+        { key: 'l', label: 'L · 64px' },
       ],
+      statesTitle: 'States',
+      states: [
+        { key: 'default', label: 'Default' },
+        { key: 'hover', label: 'Hover — shifts tone, never shape' },
+        { key: 'focus', label: 'Focus — global ring, 2px, 3px offset' },
+        { key: 'disabled', label: 'Disabled — 0.55 opacity' },
+      ],
+      linksTitle: 'Links',
+      linkSpecimens: [
+        { key: 'textLink', label: 'View all work', caption: 'Text Link — internal navigation, underline on hover' },
+        { key: 'hyperLink', label: 'LinkedIn ↗︎', caption: 'HyperLink — external, always with rel="noopener noreferrer"' },
+      ],
+      specimenNote: 'Documentation specimens — not interactive. The real CTAs live on their own pages.',
     },
 
     navigation: {
@@ -193,32 +236,130 @@ export default {
       ],
       previewLabel: 'Language switcher — a real instance, the same one that appears in the Navbar (this is the second simultaneous instance; the first already lives in the bar above).',
     },
+
+    cardsMetrics: {
+      title: 'Cards and metrics',
+      paragraphs: [
+        'Project Card is a grid on desktop and a horizontal slider on mobile. Hover darkens the image and reveals "View Project →"; the whole card is the link, with an aria-label matching the project title — there is no separate button inside it.',
+        'Stat Card shows the Home metrics (19 Years, 8+ Years, Brazil + US): a large value in Heading/H1, a short label in Body. The Wide variant spans two columns.',
+        "Like Button and Link, these cards aren't standalone, reusable React components outside where they already live — Project Card sits in Projects.jsx and OtherProjectsSection.jsx, Stat Card in Stats.jsx. Documenting them here doesn't mean remounting them with made-up data.",
+      ],
+      projectSpecimen: {
+        title: 'Gerdau Storeroom',
+        meta: 'Industry · Product Design',
+        overlay: 'View Project →',
+        captionDefault: 'Project Card — Default · 420×480, radius 16',
+        captionHover: 'Hover — overlay darkens, "View Project →" reveals',
+      },
+      statSpecimen: {
+        value: '19',
+        suffix: 'Years',
+        label: 'of experience in digital products',
+        caption: 'Stat Card — value in Heading/H1, label in Body',
+      },
+      rulesTitle: 'Metric rules',
+      rulesItems: [
+        'Metrics always come from approved content — never invented or rounded.',
+        'Desktop and mobile variants can diverge by design decision (e.g. "8+ Years" on desktop, "8 Years +" on mobile in the Portuguese copy).',
+        'No superfluous ARIA: value and label already form a readable sentence in the order they appear in the DOM.',
+      ],
+    },
+
+    forms: {
+      title: 'Form',
+      intro: 'The form prioritizes clarity at every stage — completion, validation, submission, success, and error. The examples below show its structure and key states without creating a second functional instance.',
+      fieldSpecimens: {
+        defaultField: { label: 'Name', value: 'Henrique Silva', caption: 'Field — bottom line only, no box' },
+        errorField: { label: 'Email', value: 'henrique@', error: 'Enter a valid email.', caption: 'Error — text message + color, never color alone' },
+      },
+      fieldsTitle: 'Fields',
+      columns: { field: 'Field', type: 'Type', required: 'Required', notes: 'Notes' },
+      fields: [
+        { field: 'Name', type: 'text', required: 'Yes', notes: 'autoComplete="name"' },
+        { field: 'Email', type: 'email', required: 'Yes', notes: 'Regex validation on top of required' },
+        { field: 'Company', type: 'text', required: 'No', notes: 'Labeled "— optional"' },
+        { field: 'Subject', type: 'text', required: 'Yes', notes: 'Filled in by the visitor — different from the hidden "subject" field sent to Formspree' },
+        { field: 'Message', type: 'textarea', required: 'Yes', notes: '3 visible rows, vertically resizable' },
+      ],
+      statesTitle: 'States and submission',
+      statesItems: [
+        'Validation happens on submission, with messages directly associated with each invalid field.',
+        'While processing, the form communicates its submission state and prevents duplicate actions.',
+        'Success and failure receive distinct, accessible feedback without relying on color alone.',
+        'An invisible spam protection reduces automated submissions without interfering with keyboard navigation.',
+        'Portuguese and English share the same flow while adapting the messages to each language.',
+      ],
+    },
+
+    footer: {
+      title: 'Footer',
+      intro: 'A single Footer, reused on every page through Layout — per-page variations are not allowed. The real instance is already at the bottom of this very page; what follows is its anatomy, not a second mount.',
+      anatomyTitle: 'Anatomy',
+      anatomyItems: [
+        'Identity block — photo (159×159), name, and role',
+        'Final CTA — a Display-scale heading and a pill button to /contact',
+        'Contact links — LinkedIn, Email, and Resume, separated by dots, opening in a new tab with rel="noopener noreferrer"',
+        'A divider, then the copyright line with the site version (e.g. "Version 3.0") on the same line',
+      ],
+      behaviorTitle: 'Behavior',
+      behaviorItems: [
+        'Desktop: identity on the left, CTA on the right. Mobile: everything centered and stacked, with the photo never cropping the head on iOS Safari.',
+        "The footer stays sticky behind the page content and is revealed by scrolling — it doesn't animate on its own, the content above it slides up.",
+        'With prefers-reduced-motion, the reveal effect is preserved because it is native scrolling, not an extra transition to turn off.',
+        'PT and EN only change the copy — same structure, same behavior.',
+      ],
+    },
   },
 
   responsive: {
     title: 'Responsive behavior',
-    intro: "The rule is recompose, not just shrink: on smaller screens the composition changes on purpose — order, hierarchy, and even content adjust. It's not the same screen with smaller fonts.",
-    columns: { section: 'Section', desktop: 'Desktop', mobile: 'Mobile' },
+    intro: "The rule is recompose, not just shrink: on smaller screens the composition changes on purpose — order, hierarchy, and even content adjust.",
+    deviceLabels: { desktop: 'Desktop', tablet: 'Tablet', mobile: 'Mobile' },
+    tabletNote: "Tablet compresses the desktop composition — it doesn't recompose it.",
     rows: [
-      { section: 'Hero', desktop: 'Name in Display/XXL bleeding off the right edge, photo overlapping with parallax', mobile: "Name at its own scale (96px — not a shrunk desktop version), photo in normal flow, full-width CTA" },
-      { section: 'Featured projects', desktop: 'A 3-column grid', mobile: 'Horizontal scroll, with card order changing (Gerdau · QI · EMR) — a design decision, not an accident' },
-      { section: 'Experience', desktop: 'Horizontal composition, every role visible at once', mobile: 'Accordion per company, one open at a time' },
-      { section: 'Navigation', desktop: 'Logo + center nav + CTA', mobile: 'Logo + hamburger; full-screen panel with accordion' },
+      { section: 'Hero', insight: "The name gets its own scale on mobile — never a shrunk desktop." },
+      { section: 'Featured projects', insight: 'From grid to horizontal slider — and card order changes by design, not by accident.' },
+      { section: 'Experience', insight: 'From horizontal composition to accordion — one role open at a time.' },
+      { section: 'Navigation', insight: 'From a full bar to logo + hamburger, with a full-screen panel.' },
     ],
-    breakpointsNote: 'Real breakpoints in the code: 768px (mobile ↔ tablet) and 1024px (tablet ↔ desktop).',
+    breakpointsNote: 'Real breakpoints in the code: 768px and 1024px.',
   },
 
   accessibility: {
     title: 'Accessibility',
     intro: 'Practices verifiable in the code and in the published product — not a formal WCAG conformance audit.',
+    contrastTitle: 'Measured contrast',
+    contrastTiles: [
+      { value: '21:1', badge: 'AAA', pair: '#000 on #FFF' },
+      { value: '4.9:1', badge: 'AA', pair: '#6D6D6D on #FFF' },
+      { value: '3.5:1', badge: 'large text', pair: '#888 on #FFF' },
+      { value: '15:1', badge: 'AAA', pair: '#D9D9D9 on #000' },
+    ],
+    focusDemo: {
+      label: 'Get in touch',
+      caption: 'Global focus ring — 2px outline, 3px offset, in either theme',
+    },
     items: [
-      { label: 'Global visible focus', detail: ':focus-visible { outline: 2px solid #000; outline-offset: 3px }, applied to every focusable element, in either theme.' },
       { label: 'Keyboard flow', detail: 'Tab moves through the Navbar in visual order; Escape closes the dropdown/menu; closed panels use tabIndex -1 so they never trap focus on invisible content.' },
-      { label: 'Measured contrast', detail: 'Black on white 21:1 (AAA) · gray 600 on white 4.9:1 (AA normal text) · gray 500 on white 3.5:1 (large text only) · gray 200 on black 15:1 (AAA).' },
       { label: 'Reduced motion', detail: 'prefers-reduced-motion zeroes every duration (0.01ms) globally; the Hero\'s parallax and floating elements are fully disabled.' },
       { label: 'Heading hierarchy', detail: 'One H1 per route, with no skipped levels — including on this page.' },
       { label: 'External links', detail: 'target="_blank" is always paired with rel="noopener noreferrer".' },
       { label: 'Decorative elements', detail: 'Purely visual icons and images use aria-hidden="true" or alt="".' },
+    ],
+  },
+  evolution: {
+    title: 'Continuous evolution',
+    kanjiName: 'Manen Shoho',
+    kanji: '万年初歩',
+    intro: 'Another principle behind this system is Manen Shoho (万年初歩) — remain a beginner. It is a reminder that every component, pattern, and decision can be questioned, refined, and improved. The system evolves without treating any solution as final.',
+  },
+
+  adapted: {
+    title: 'Built to be adapted',
+    paragraphs: [
+      "Kihon was built for this portfolio. But its foundations weren't built only for it.",
+      'Swap the brand, the colors, the typography — keep the architecture: semantic tokens before fixed values, decisions documented before they\'re implemented, accessibility as part of the system, not a final review.',
+      "Kihon isn't meant to be copied. It is a starting point for new design systems: adapt the identity, preserve the foundations, and build something that is truly your own.",
     ],
   },
 }

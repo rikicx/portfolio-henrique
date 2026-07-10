@@ -2,21 +2,39 @@ export default {
   seo: {
     title: 'Design System — Henrique Silva',
     description:
-      'Como o sistema de design deste portfólio conecta produto, código e Figma — fundamentos, princípios e decisões.',
+      'Como o sistema de design deste portfólio conecta produto, código e Figma: fundamentos, componentes, temas e as decisões entre eles.',
     path: '/design-system',
     lang: 'pt',
-    robots: 'noindex, nofollow',
+    robots: 'index, follow',
   },
   hero: {
-    heading: 'Design System',
-    lead: 'A linguagem editorial deste portfólio, documentada: preto e branco, tipografia expressiva, grid rigoroso e espaço negativo generoso — organizados como sistema reutilizável.',
+    label: 'Design System',
+    heading: 'Kihon',
+    kanji: '基本',
+    paragraphs: [
+      'No karatê, Kihon (基本) são os fundamentos — as técnicas básicas repetidas até se tornarem naturais. Escolhi esse nome porque acredito que bons produtos digitais nascem do mesmo jeito: dominando o essencial antes de buscar complexidade.',
+      'Tudo o que está documentado aqui parte dessa ideia — e é o mesmo sistema que constrói esta própria página.',
+    ],
+  },
+  sectionNav: {
+    label: 'Seções desta página',
+    items: [
+      { id: 'overview', label: 'Visão geral' },
+      { id: 'principles', label: 'Princípios' },
+      { id: 'foundations', label: 'Foundations' },
+      { id: 'themes', label: 'Temas' },
+      { id: 'components', label: 'Componentes' },
+      { id: 'responsive', label: 'Responsivo' },
+      { id: 'accessibility', label: 'Acessibilidade' },
+      { id: 'evolution', label: 'Evolução' },
+      { id: 'adapted', label: 'Adaptação' },
+    ],
   },
   overview: {
     title: 'Visão geral',
     paragraphs: [
-      'Este Design System documenta o que já está em produção — não é um sistema paralelo nem uma proposta à espera de validação. Cada token, componente e decisão citados aqui existem hoje em henriquesilva.design.',
-      'A documentação segue uma ordem de prioridade: o produto publicado manda; o código na branch main confirma como isso foi implementado; o arquivo de Design System no Figma registra a decisão e o raciocínio por trás dela. Quando as três fontes divergem, a divergência é registrada aqui como parte do sistema — não escondida.',
-      'Esse processo existe porque consistência visual não se mantém sozinha. Ela depende de rastrear como uma decisão de design chega ao código, e de revisar com honestidade onde o sistema ainda tem lacunas.',
+      'Kihon documenta os fundamentos que sustentam este portfólio. Mais do que um catálogo de componentes, ele reúne as decisões que mantêm a interface consistente à medida que o produto evolui.',
+      'Cada princípio apresentado aqui foi aplicado no produto real. O objetivo não é reproduzir uma interface específica, mas mostrar como decisões simples e bem definidas podem formar um sistema adaptável.',
     ],
   },
   principles: {
@@ -64,7 +82,6 @@ export default {
       intro: 'Paleta neutra. Primitivas são os valores brutos; tokens semânticos dão papel a esses valores e são o que os componentes deveriam consumir — é essa camada que muda entre os temas.',
       primitivesTitle: 'Primitivas',
       semanticTitle: 'Semânticos',
-      divergenceNote: 'Um ponto real de atenção: --color-border-primary aponta hoje para #D7D7D7 no código, enquanto o Figma já consolidou o valor oficial de borda em #D9D9D9 (o mesmo de --color-border-subtle). A diferença é quase imperceptível (ΔE≈1), e a migração já está registrada como tarefa técnica no próprio Design System — não foi corrigida aqui.',
       roles: {
         '--color-black': 'Preto — base de texto, fundos inversos e ações',
         '--color-white': 'Branco — fundo padrão, texto inverso',
@@ -93,9 +110,23 @@ export default {
 
     typography: {
       title: 'Tipografia',
-      intro: 'Uma única família (Inter Tight, dois pesos) e uma escala expressiva — a variação está no tamanho, não na variedade. Nenhum desses nomes existe como CSS variable no código: cada font-size é escrito localmente, por componente. A tabela mostra a especificação do Figma ao lado do que está de fato em produção.',
-      columns: { figma: 'Figma', spec: 'Peso · line-height', usage: 'Uso em produção', token: 'Token no código' },
+      intro: 'Uma única família (Inter Tight, dois pesos) e uma escala expressiva — a variação está no tamanho, não na variedade. Nenhum desses nomes existe como CSS variable no código: cada font-size é escrito localmente, por componente. Os specimens abaixo são renderizados no tamanho real.',
       tokenAbsent: '—',
+      specimens: {
+        displayXXL: 'Henrique',
+        displayHero: 'Kihon',
+        displayXL: 'Design System',
+        displayL: 'Trabalhos',
+        h1: 'Projetos selecionados',
+        h2: 'Competências & ferramentas',
+        h3: 'Estratégia e descoberta',
+        bodyL: 'Transformo contextos complexos em experiências mais claras.',
+        bodyM: 'Conecto necessidades dos usuários, objetivos de negócio e viabilidade técnica.',
+        bodyS: 'Descrição breve do projeto selecionado.',
+        labelL: 'Ver projetos selecionados ↓',
+        labelM: 'Entre em contato',
+        labelS: 'Saúde · Head of Design',
+      },
       usage: {
         displayXXL: 'Nome "Henrique" no Hero desktop',
         displayHero: 'Títulos de case (TypingTitle)',
@@ -115,8 +146,7 @@ export default {
 
     spacing: {
       title: 'Espaçamento e grid',
-      intro: 'Escala em múltiplos de 8 (4px como exceção mínima). Como a tipografia, não existe --space-* no código — os valores abaixo são o que a produção usa, lidos direto dos componentes.',
-      columns: { figma: 'Figma', value: 'Valor', token: 'Token no código' },
+      intro: 'Escala em múltiplos de 8 (4px como exceção mínima). Como a tipografia, não existe --space-* no código — os valores abaixo são o que a produção usa, lidos direto dos componentes. Barras em escala proporcional.',
       tokenAbsent: '—',
       usageTitle: 'Aplicações canônicas',
       usageItems: [
@@ -133,7 +163,6 @@ export default {
     radiusElevation: {
       title: 'Raio e elevação',
       intro: 'Sistema essencialmente flat: um raio pequeno para botões e campos, um raio maior para cards, e pill para CTAs e chips. Um único nível de sombra, reservado para cards.',
-      columns: { token: 'Token', value: 'Valor', usage: 'Uso' },
       rows: {
         '--radius-8': 'Botões, campos',
         '--radius-card': 'Cards',
@@ -147,11 +176,11 @@ export default {
   themes: {
     title: 'Temas',
     paragraphs: [
-      'O sistema de cor tem duas camadas: primitivas (valores brutos, como --color-black) e tokens semânticos (papéis, como --color-text-primary). Componentes deveriam consumir só a camada semântica — é ela que muda de valor entre os temas; as primitivas continuam fixas.',
-      'Light é o tema padrão. Dark ativa por um atributo data-theme="dark" na tag <html>, que redefine os mesmos nomes de token semântico com novos valores — nenhum componente precisa saber qual tema está ativo, ele só lê a variável.',
-      'A preferência é salva em localStorage (chave portfolio-theme) e aplicada antes da primeira renderização, para evitar o flash de tema errado no carregamento.',
-      'O Figma hoje documenta só a camada light — o dark theme e o próprio Theme Toggle foram implementados depois da última atualização da página de Design System no Figma. É uma lacuna real, não um erro de documentação.',
+      'O sistema separa valores brutos de papéis semânticos. Os componentes consomem tokens como --color-text-primary e --color-bg-surface, permitindo que a mesma estrutura funcione em light e dark.',
+      'A preferência acompanha o visitante e é aplicada antes da primeira renderização. Assim, toda a interface responde ao tema sem que cada componente precise conhecer o estado ativo.',
     ],
+    demoTitle: 'Esta página é a demonstração',
+    demoText: 'Alterne o tema e observe como cores, specimens e superfícies respondem usando os mesmos tokens do produto.',
     previewLabel: 'Componente real — o mesmo que aparece na Navbar.',
   },
 
@@ -166,12 +195,26 @@ export default {
         'O código não tem um componente <Button> ou <Link> compartilhado. Cada CTA — o do Hero, o do formulário de contato, o do Footer — é estilizado localmente no CSS Module da própria página. A linguagem visual é consistente porque as decisões (raio, tipografia, tom de hover, foco) são as mesmas em todo lugar; a implementação, hoje, está distribuída.',
         'O único estado disabled/loading observado em produção é o botão de envio do formulário de contato: superfície e texto discretos, com o rótulo mudando para "Enviando…".',
       ],
-      columns: { pattern: 'Padrão', sizes: 'Tamanhos', states: 'Estados', usage: 'Onde aparece' },
-      rows: [
-        { pattern: 'Button', sizes: 'S 38px · M 48px · L 64px', states: 'Default, Hover, Focus, Disabled/Loading', usage: 'CTA do Hero, envio do formulário, CTA do Footer' },
-        { pattern: 'Text Link', sizes: 'S/M/L — mesmas alturas do Button', states: 'Default, Hover', usage: 'Navegação, "Ver mais"' },
-        { pattern: 'HyperLink', sizes: 'Altura única', states: 'Default, Hover', usage: 'Links externos (LinkedIn), target="_blank" + rel="noopener noreferrer"' },
+      specimenLabel: 'Entre em contato',
+      sizesTitle: 'Tamanhos',
+      sizes: [
+        { key: 's', label: 'S · 38px' },
+        { key: 'm', label: 'M · 48px' },
+        { key: 'l', label: 'L · 64px' },
       ],
+      statesTitle: 'Estados',
+      states: [
+        { key: 'default', label: 'Default' },
+        { key: 'hover', label: 'Hover — muda tom, nunca forma' },
+        { key: 'focus', label: 'Focus — anel global 2px, offset 3px' },
+        { key: 'disabled', label: 'Disabled — opacidade 0.55' },
+      ],
+      linksTitle: 'Links',
+      linkSpecimens: [
+        { key: 'textLink', label: 'Ver todos os trabalhos', caption: 'Text Link — navegação interna, sublinhado no hover' },
+        { key: 'hyperLink', label: 'LinkedIn ↗︎', caption: 'HyperLink — externo, sempre com rel="noopener noreferrer"' },
+      ],
+      specimenNote: 'Espécimes de documentação — não interativos. Os CTAs reais vivem nas próprias páginas.',
     },
 
     navigation: {
@@ -193,32 +236,130 @@ export default {
       ],
       previewLabel: 'Seletor de idioma — instância real, a mesma que aparece na Navbar (aqui é a segunda instância simultânea; a primeira já vive na barra acima).',
     },
+
+    cardsMetrics: {
+      title: 'Cards e métricas',
+      paragraphs: [
+        'Project Card é grid no desktop e slider horizontal no mobile. O hover escurece a imagem e revela "Ver Projeto →"; o card inteiro é o link, com aria-label igual ao título do projeto — não há um botão separado dentro dele.',
+        'Stat Card mostra as métricas da Home (19 Anos, 8+ Anos, Brasil + EUA): valor grande em Heading/H1, rótulo curto em Body. A variante Wide ocupa duas colunas.',
+        'Como Button e Link, esses cards não são componentes React isolados e reaproveitáveis fora de onde já aparecem — Project Card vive em Projects.jsx e OtherProjectsSection.jsx, Stat Card em Stats.jsx. Documentar aqui não significa remontar com dados fictícios.',
+      ],
+      projectSpecimen: {
+        title: 'Gerdau Storeroom',
+        meta: 'Indústria · Product Design',
+        overlay: 'Ver Projeto →',
+        captionDefault: 'Project Card — Default · 420×480, radius 16',
+        captionHover: 'Hover — overlay escurece, "Ver Projeto →" revela',
+      },
+      statSpecimen: {
+        value: '19',
+        suffix: 'Anos',
+        label: 'de experiência em produtos digitais',
+        caption: 'Stat Card — valor em Heading/H1, rótulo em Body',
+      },
+      rulesTitle: 'Regras de métricas',
+      rulesItems: [
+        'Métricas vêm sempre do conteúdo aprovado — nunca inventadas ou arredondadas.',
+        'Variantes desktop e mobile podem divergir por decisão de design (ex.: "8+ Anos" no desktop, "8 Anos +" no mobile em PT).',
+        'Sem aria supérflua: valor e rótulo já formam uma frase legível na ordem em que aparecem no DOM.',
+      ],
+    },
+
+    forms: {
+      title: 'Formulário',
+      intro: 'O formulário prioriza clareza em cada etapa — preenchimento, validação, envio, sucesso e erro. Os exemplos abaixo mostram sua estrutura e seus principais estados sem criar uma segunda instância funcional.',
+      fieldSpecimens: {
+        defaultField: { label: 'Nome', value: 'Henrique Silva', caption: 'Campo — linha inferior, sem caixa' },
+        errorField: { label: 'E-mail', value: 'henrique@', error: 'Informe um e-mail válido.', caption: 'Erro — mensagem textual + cor, nunca só cor' },
+      },
+      fieldsTitle: 'Campos',
+      columns: { field: 'Campo', type: 'Tipo', required: 'Obrigatório', notes: 'Notas' },
+      fields: [
+        { field: 'Nome', type: 'text', required: 'Sim', notes: 'autoComplete="name"' },
+        { field: 'E-mail', type: 'email', required: 'Sim', notes: 'Validação por regex além do required' },
+        { field: 'Empresa', type: 'text', required: 'Não', notes: 'Rotulado "— opcional"' },
+        { field: 'Assunto', type: 'text', required: 'Sim', notes: 'Preenchido pelo visitante — diferente do campo oculto "subject" enviado ao Formspree' },
+        { field: 'Mensagem', type: 'textarea', required: 'Sim', notes: '3 linhas visíveis, redimensionável na vertical' },
+      ],
+      statesTitle: 'Estados e envio',
+      statesItems: [
+        'A validação acontece no envio, com mensagens associadas diretamente a cada campo inválido.',
+        'Durante o processamento, o formulário informa o estado de envio e evita ações duplicadas.',
+        'Sucesso e erro recebem feedback próprio, claro e acessível, sem depender apenas de cor.',
+        'Uma proteção invisível contra spam reduz envios automatizados sem interferir na navegação por teclado.',
+        'Português e inglês compartilham o mesmo fluxo, preservando a estrutura e adaptando as mensagens.',
+      ],
+    },
+
+    footer: {
+      title: 'Footer',
+      intro: 'Um único Footer, reutilizado em todas as páginas via Layout — variações por página não são permitidas. A instância real já está no rodapé desta própria página; o que segue é a anatomia, não uma segunda montagem.',
+      anatomyTitle: 'Anatomia',
+      anatomyItems: [
+        'Bloco de identidade — foto (159×159), nome e cargo',
+        'CTA final — heading em Display + botão pill para /contato',
+        'Links de contato — LinkedIn, E-mail e Currículo, separados por pontos, abrindo em nova aba com rel="noopener noreferrer"',
+        'Divisor, depois copyright com a versão do site (ex.: "Versão 3.0") na mesma linha',
+      ],
+      behaviorTitle: 'Comportamento',
+      behaviorItems: [
+        'Desktop: identidade à esquerda, CTA à direita. Mobile: tudo centralizado e empilhado, com a foto sem cortar a cabeça no Safari iOS.',
+        'O Footer fica sticky atrás do conteúdo da página e é revelado pela rolagem — ele não anima sozinho, é o conteúdo acima que sobe.',
+        'Com prefers-reduced-motion, o efeito de revelação é preservado porque é rolagem nativa do navegador, não uma transição extra a desligar.',
+        'PT e EN mudam apenas o texto — mesma estrutura, mesmo comportamento.',
+      ],
+    },
   },
 
   responsive: {
     title: 'Comportamento responsivo',
-    intro: 'A regra é recompor, não só encolher: em telas menores a composição muda de forma intencional — ordem, hierarquia e até conteúdo se ajustam. Não é a mesma tela com fontes menores.',
-    columns: { section: 'Seção', desktop: 'Desktop', mobile: 'Mobile' },
+    intro: 'A regra é recompor, não só encolher: em telas menores a composição muda de forma intencional — ordem, hierarquia e até conteúdo se ajustam.',
+    deviceLabels: { desktop: 'Desktop', tablet: 'Tablet', mobile: 'Mobile' },
+    tabletNote: 'Tablet comprime a composição do desktop — não a recompõe.',
     rows: [
-      { section: 'Hero', desktop: 'Nome em Display/XXL sangrando à direita, foto sobreposta com parallax', mobile: 'Nome em escala própria (96px — não é uma redução do desktop), foto no fluxo normal, CTA em largura total' },
-      { section: 'Projetos selecionados', desktop: 'Grid de 3 colunas', mobile: 'Scroll horizontal, com a ordem dos cards mudando (Gerdau · QI · EMR) — decisão de design, não acidente' },
-      { section: 'Experiência', desktop: 'Composição horizontal, todos os cargos visíveis ao mesmo tempo', mobile: 'Accordion por empresa, um aberto por vez' },
-      { section: 'Navegação', desktop: 'Logo + nav central + CTA', mobile: 'Logo + hambúrguer; painel full-screen com accordion' },
+      { section: 'Hero', insight: 'O nome ganha escala própria no mobile — nunca é o desktop encolhido.' },
+      { section: 'Projetos selecionados', insight: 'De grid a slider horizontal — e a ordem dos cards muda por decisão, não acidente.' },
+      { section: 'Experiência', insight: 'De composição horizontal a accordion — um cargo aberto por vez.' },
+      { section: 'Navegação', insight: 'De barra completa a logo + hambúrguer, com painel full-screen.' },
     ],
-    breakpointsNote: 'Breakpoints reais do código: 768px (mobile ↔ tablet) e 1024px (tablet ↔ desktop).',
+    breakpointsNote: 'Breakpoints reais do código: 768px e 1024px.',
   },
 
   accessibility: {
     title: 'Acessibilidade',
     intro: 'Práticas verificáveis no código e no produto publicado — não uma auditoria formal de conformidade com WCAG.',
+    contrastTitle: 'Contraste medido',
+    contrastTiles: [
+      { value: '21:1', badge: 'AAA', pair: '#000 sobre #FFF' },
+      { value: '4.9:1', badge: 'AA', pair: '#6D6D6D sobre #FFF' },
+      { value: '3.5:1', badge: 'texto grande', pair: '#888 sobre #FFF' },
+      { value: '15:1', badge: 'AAA', pair: '#D9D9D9 sobre #000' },
+    ],
+    focusDemo: {
+      label: 'Entre em contato',
+      caption: 'Anel de foco global — outline 2px, offset 3px, em qualquer tema',
+    },
     items: [
-      { label: 'Foco visível global', detail: ':focus-visible { outline: 2px solid #000; outline-offset: 3px }, aplicado a qualquer elemento focável, em qualquer tema.' },
       { label: 'Fluxo por teclado', detail: 'Tab percorre a Navbar na ordem visual; Escape fecha dropdown/menu; painéis fechados usam tabIndex -1 para não capturar foco invisível.' },
-      { label: 'Contraste medido', detail: 'Preto sobre branco 21:1 (AAA) · cinza 600 sobre branco 4,9:1 (AA texto normal) · cinza 500 sobre branco 3,5:1 (só texto grande) · cinza 200 sobre preto 15:1 (AAA).' },
       { label: 'Motion reduzido', detail: 'prefers-reduced-motion zera todas as durações (0.01ms) globalmente; parallax e elementos flutuantes do Hero são desativados por completo.' },
       { label: 'Hierarquia de headings', detail: 'Um H1 por rota, sem pular níveis — inclusive nesta página.' },
       { label: 'Links externos', detail: 'target="_blank" sempre acompanhado de rel="noopener noreferrer".' },
       { label: 'Elementos decorativos', detail: 'Ícones e imagens puramente visuais usam aria-hidden="true" ou alt="".' },
+    ],
+  },
+  evolution: {
+    title: 'Evolução contínua',
+    kanjiName: 'Manen Shoho',
+    kanji: '万年初歩',
+    intro: 'Outro princípio por trás deste sistema é o Manen Shoho (万年初歩) — permanecer iniciante. É um lembrete de que cada componente, cada padrão e cada decisão pode ser questionado, refinado e melhorado. O sistema evolui sem tratar nenhuma solução como definitiva.',
+  },
+
+  adapted: {
+    title: 'Feito para ser adaptado',
+    paragraphs: [
+      'Kihon nasceu para este portfólio. Mas seus fundamentos não foram pensados só para ele.',
+      'Troque a marca, as cores, a tipografia — mantenha a arquitetura: tokens semânticos antes de valores fixos, decisões documentadas antes de implementadas, acessibilidade como parte do sistema, não como revisão final.',
+      'Kihon não existe para ser copiado. Existe como ponto de partida para novos sistemas de design: adapte a identidade, preserve os fundamentos e construa algo que seja verdadeiramente seu.',
     ],
   },
 }
