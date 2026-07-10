@@ -12,5 +12,5 @@ export default {
   curriculoHref:
     'https://docs.google.com/document/d/1H3rRz6IN_5NLHGYK8FqgWAFS8_DpEkbW/edit?usp=drive_link&ouid=110536839809774461332&rtpof=true&sd=true',
   copyright: '© 2026 Henrique M. Silva - São Paulo, Brasil',
-  version: 'Versão 2.0',
+  version: 'Versão 3.0',
 }
