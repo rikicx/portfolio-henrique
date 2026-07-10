@@ -1,6 +1,23 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
+    <script>
+      ;(() => {
+        try {
+          const storedTheme = window.localStorage.getItem('portfolio-theme')
+          const theme = storedTheme === 'dark' || storedTheme === 'light'
+            ? storedTheme
+            : 'light'
+
+          document.documentElement.setAttribute('data-theme', theme)
+          document.documentElement.style.colorScheme = theme
+        } catch {
+          document.documentElement.setAttribute('data-theme', 'light')
+          document.documentElement.style.colorScheme = 'light'
+        }
+      })()
+    </script>
+
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
