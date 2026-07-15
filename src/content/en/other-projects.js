@@ -1,6 +1,6 @@
 export default {
   title: 'Other Projects',
-  viewProjectLabel: 'View Project →',
+  viewProjectLabel: 'View Project',
   items: [
     {
       slug: 'qi-platform',

@@ -105,10 +105,13 @@
   color: var(--color-text-on-inverse);
 }
 
-/* CTA button — Label/L: 24px, 500; px-32 py-17; white pill */
+/* CTA button — Label/L: 24px, 500; px-32 py-17; white pill.
+   Hover/focus-visible/pressed match the site-wide Button contract
+   (opacity 0.75, scale(0.98) on press) — see About .btn / Hero .cta. */
 .ctaBtn {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   padding: 17px 32px;
   background: var(--color-bg-elevated);
   color: var(--color-text-primary);
@@ -118,11 +121,53 @@
   border-radius: var(--radius-pill);
   white-space: nowrap;
   text-decoration: none;
-  transition: opacity var(--transition);
+  transition:
+    opacity var(--transition),
+    transform 100ms ease-out;
 }
 
-.ctaBtn:hover {
-  opacity: 0.85;
+.ctaBtn:hover,
+.ctaBtn:focus-visible {
+  opacity: 0.75;
+}
+
+.ctaBtn:active {
+  transform: scale(0.98);
+}
+
+/* Arrow nudge — → = internal navigation to /contato. */
+.ctaBtn span:last-child {
+  transition: transform 200ms ease-out;
+}
+
+.ctaBtn:focus-visible span:last-child {
+  transform: translateX(4px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ctaBtn:hover span:last-child {
+    transform: translateX(6px);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
+  .ctaBtn span:last-child {
+    transition: none;
+  }
+
+  .ctaBtn:hover span:last-child {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctaBtn:focus-visible span:last-child {
+    transform: none;
+  }
+
+  .ctaBtn:active {
+    transform: none;
+  }
 }
 
 /* Links row */

@@ -129,6 +129,7 @@ z-index: 1;
 .cta {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   padding: 17px 32px;
   background: var(--color-bg-action-primary);
   color: var(--color-text-on-action-primary);
@@ -140,11 +141,29 @@ z-index: 1;
   white-space: nowrap;
   width: fit-content;
   margin-top: 8px;
-  transition: opacity var(--transition);
+  transition:
+    opacity var(--transition),
+    transform 100ms ease-out;
 }
 
-.cta:hover {
+.cta:hover,
+.cta:focus-visible {
   opacity: 0.75;
+}
+
+.cta:active {
+  transform: scale(0.98);
+}
+
+/* Arrow nudge — downward (↓ = scroll down to #projetos on this same page).
+   Same mechanism/magnitude as the other CTA arrows on the site. */
+.cta span:last-child {
+  transition: transform 200ms ease-out;
+}
+
+.cta:hover span:last-child,
+.cta:focus-visible span:last-child {
+  transform: translateY(4px);
 }
 
 /* ─── Tablet: 769px–1024px ─────────────────────────────────────────── */
@@ -383,6 +402,19 @@ z-index: 1;
   .subtitle,
   .body,
   .cta {
+    transform: none;
+  }
+
+  .cta span:last-child {
+    transition: none;
+  }
+
+  .cta:hover span:last-child,
+  .cta:focus-visible span:last-child {
+    transform: none;
+  }
+
+  .cta:active {
     transform: none;
   }
 }

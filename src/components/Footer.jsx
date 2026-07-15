@@ -10,7 +10,7 @@ export default function Footer() {
   const c = lang === 'en' ? en : pt
 
   return (
-    <footer id="contato" className={styles.footer}>
+    <footer id="contato" className={styles.footer} data-cursor-theme="light">
       <div className={styles.inner}>
         <div className={styles.profileCta}>
           <div className={styles.profile}>
@@ -30,7 +30,8 @@ export default function Footer() {
           <div className={styles.cta}>
             <h2 className={styles.ctaHeading}>{c.ctaHeading}</h2>
             <Link to={c.ctaTo} className={styles.ctaBtn}>
-              {c.ctaLabel}
+              <span>{c.ctaLabel}</span>
+              <span>→</span>
             </Link>
           </div>
         </div>

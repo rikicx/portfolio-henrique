@@ -1,0 +1,60 @@
+/* Only meant for precise-pointer devices — the component itself already
+   bails out on touch, this is a second line of defense at the CSS level. */
+@media (hover: hover) and (pointer: fine) {
+  .ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--color-text-primary);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    will-change: transform, opacity;
+  }
+
+  .dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    width: 6px;
+    height: 6px;
+    background: var(--color-text-primary);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    will-change: transform, opacity;
+  }
+
+  /* Contextual contrast — surfaces marked [data-cursor-theme="light"]
+     (e.g. Footer) always sit at the inverse luminosity of the current
+     theme, so --color-text-on-inverse already resolves to the correct
+     contrasting color in both Light and Dark without computing anything.
+     Swapped instantly (no transition): the underlying surface can toggle
+     rapidly during boundary crossings, and an eased color transition would
+     get caught mid-flight as a muddy gray between the two pure tokens. */
+  .ring.inverse {
+    border-color: var(--color-text-on-inverse);
+  }
+
+  .dot.inverse {
+    background: var(--color-text-on-inverse);
+  }
+
+  /* Toggled on <body> only while the cursor is active — forces the native
+     cursor off everywhere, then restores the text-insertion cursor where a
+     native one is actually expected (inputs, textareas, editable content). */
+  .hideNativeCursor,
+  .hideNativeCursor * {
+    cursor: none !important;
+  }
+
+  .hideNativeCursor input,
+  .hideNativeCursor textarea,
+  .hideNativeCursor [contenteditable='true'] {
+    cursor: text !important;
+  }
+}

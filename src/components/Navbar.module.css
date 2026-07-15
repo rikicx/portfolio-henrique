@@ -91,6 +91,42 @@
   text-underline-offset: 4px;
 }
 
+/* Two-line nav label — primary stays visible, secondary is a reserved-space
+   hint revealed on hover/focus-visible. Reserving the space up front (instead
+   of animating height) is what keeps the reveal from shifting the header. */
+.navLabelStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.25;
+}
+
+.navLabelSecondary {
+  height: 15px;
+  overflow: hidden;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.link:hover .navLabelSecondary,
+.link:focus-visible .navLabelSecondary,
+.dropdownTrigger:hover .navLabelSecondary,
+.dropdownTrigger:focus-visible .navLabelSecondary {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.headerScrolled .navLabelSecondary {
+  font-size: 11px;
+}
+
 /* CTA button */
 .ctaBtn {
   display: inline-flex;
@@ -112,7 +148,11 @@
 }
 
 .ctaBtn:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
+}
+
+.ctaBtn:focus-visible {
+  opacity: 0.75;
 }
 
 /* Hamburger */
@@ -159,7 +199,6 @@
 .dropdownTrigger {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
   padding: 6px 0;
   border: none;
   background: none;
@@ -173,6 +212,14 @@
   transition:
     opacity var(--transition),
     font-size 240ms ease;
+}
+
+/* Primary label + chevron share one row, so the chevron aligns with the
+   first line only — not with the full two-line NavLabel stack height. */
+.triggerPrimaryRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .dropdownTriggerActive {
@@ -550,6 +597,10 @@
     transition-delay: 160ms;
   }
 
+  .mobilePanelOpen .mobileNav > a:nth-of-type(4) {
+    transition-delay: 200ms;
+  }
+
   /* Mobile nav links */
   .mobileLink {
     display: block;
@@ -560,6 +611,26 @@
     line-height: 1.2;
     text-decoration: none;
     transition: opacity var(--transition);
+  }
+
+  /* Mobile: no hover, so the two-line stack is permanently expanded —
+     first line = main label, second line = smaller text-secondary hint */
+  .mobileLink .navLabelStack,
+  .accordionTrigger .navLabelStack {
+    align-items: center;
+    line-height: 1.2;
+  }
+
+  .mobileLink .navLabelSecondary,
+  .accordionTrigger .navLabelSecondary {
+    height: auto;
+    margin-top: 4px;
+    overflow: visible;
+    font-size: 16px;
+    line-height: 1.3;
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 
   /* Mobile CTA */
@@ -581,7 +652,7 @@
   }
 
   .mobileCta:active {
-    transform: scale(0.97);
+    transform: scale(0.98);
   }
 
   /* Mobile accordion trigger */
@@ -589,7 +660,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
     width: 100%;
     padding-block: 16px;
     border: none;
@@ -601,6 +671,10 @@
     line-height: 1.2;
     cursor: pointer;
     transition: opacity var(--transition);
+  }
+
+  .accordionTrigger .triggerPrimaryRow {
+    gap: 8px;
   }
 
   /* Accordion — grid-template-rows technique for smooth height animation */
@@ -683,7 +757,8 @@
   .mobilePanel,
   .mobilePanelOpen,
   .chevron,
-  .accordionTrigger {
+  .accordionTrigger,
+  .navLabelSecondary {
     transition: none;
   }
 

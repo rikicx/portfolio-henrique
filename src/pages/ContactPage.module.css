@@ -176,16 +176,23 @@
   font-weight: 500;
   line-height: 1.25;
   cursor: pointer;
-  transition: opacity var(--transition);
+  transition:
+    opacity var(--transition),
+    transform 100ms ease-out;
 }
 
-.submitButton:hover {
+.submitButton:hover,
+.submitButton:focus-visible {
   opacity: 0.75;
 }
 
 .submitButton:focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 4px;
+}
+
+.submitButton:active {
+  transform: scale(0.98);
 }
 
 .honeypot {
@@ -383,6 +390,10 @@
 
   .loadingIndicator {
     animation-duration: 1.4s;
+  }
+
+  .submitButton:active {
+    transform: none;
   }
 }
 

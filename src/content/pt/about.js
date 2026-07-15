@@ -92,7 +92,7 @@ export default {
     ],
     worksLabel: 'Ver meus trabalhos →',
     worksTo: '/trabalhos',
-    contactLabel: 'Entrar em contato →',
+    contactLabel: 'Entrar em contato ↓',
     contactHref: '#contato',
   },
 }

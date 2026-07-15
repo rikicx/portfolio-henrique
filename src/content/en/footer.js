@@ -4,7 +4,7 @@ export default {
   name: 'Henrique M. Silva',
   role: 'Design Leader & Product Strategist',
   ctaHeading: 'Got a complex challenge to solve?',
-  ctaLabel: "Let's talk →",
+  ctaLabel: "Let's talk",
   ctaTo: '/en/contact',
   linkedinLabel: 'LinkedIn ↗︎︎',
   emailLabel: 'Email ↗︎︎',

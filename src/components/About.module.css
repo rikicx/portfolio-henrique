@@ -139,6 +139,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   background: var(--color-bg-action-primary);
   color: var(--color-text-on-action-primary);
   border-radius: 999px;
@@ -148,10 +149,53 @@
   line-height: 1;
   text-decoration: none;
   white-space: nowrap;
+  transition:
+    opacity var(--transition),
+    transform 100ms ease-out;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus-visible {
   opacity: 0.75;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Arrow nudge — diagonal (↗ = external link), same mechanism as Quote's .cta. */
+.btn span:last-child {
+  transition: transform 200ms ease-out;
+}
+
+.btn:focus-visible span:last-child {
+  transform: translate(3px, -3px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover span:last-child {
+    transform: translate(3px, -3px);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
+  .btn span:last-child {
+    transition: none;
+  }
+
+  .btn:hover span:last-child {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn:focus-visible span:last-child {
+    transform: none;
+  }
+
+  .btn:active {
+    transform: none;
+  }
 }
 
 /* ── Mobile ── */
