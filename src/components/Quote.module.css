@@ -112,6 +112,7 @@
   top: 311px;
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   padding: 17px 32px;
   background: var(--color-bg-action-primary);
   color: var(--color-text-on-action-primary);
@@ -121,6 +122,54 @@
   border-radius: var(--radius-pill);
   text-decoration: none;
   white-space: nowrap;
+  transition:
+    opacity 200ms ease-out,
+    transform 100ms ease-out;
+}
+
+/* Pressed — same value already approved for .ctaBtn (Navbar).
+   Scoped to .section[data-visible='true'] to out-specificity the entrance
+   reveal rule below (line ~493), which also sets .cta's own transform. */
+.section[data-visible='true'] .cta:active {
+  transform: scale(0.98);
+}
+
+/* Focus-visible mirrors hover (works without a hover-capable pointer).
+   Same specificity note as above, for .cta's own opacity. */
+.section[data-visible='true'] .cta:focus-visible {
+  opacity: 0.75;
+}
+
+/* Arrow nudge — diagonal (↗ = external link): up + right. Same mechanism
+   and magnitude already shipped on Project Card links (→), just diagonal.
+   Targets a child (span), so it doesn't collide with the reveal rule. */
+.cta span:last-child {
+  transition: transform 200ms ease-out;
+}
+
+.cta:focus-visible span:last-child {
+  transform: translate(3px, -3px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  /* Same opacity dip already approved for .ctaBtn (Navbar). */
+  .section[data-visible='true'] .cta:hover {
+    opacity: 0.75;
+  }
+
+  .cta:hover span:last-child {
+    transform: translate(4px, -4px);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
+  .cta span:last-child {
+    transition: none;
+  }
+
+  .cta:hover span:last-child {
+    transform: none;
+  }
 }
 
 /* ─── Mobile: 390px reference (Figma 417:2598) ─────────────────────── */
@@ -472,6 +521,11 @@
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .section[data-visible='true'] .cta:active,
+  .cta:focus-visible span:last-child {
+    transform: none;
   }
 }
 

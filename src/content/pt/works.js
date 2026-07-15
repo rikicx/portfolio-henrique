@@ -11,7 +11,7 @@ export default {
   titleLines: ['Trabalhos', 'Selecionados'],
   description:
     'Uma seleção de projetos em que atuei entre estratégia, pesquisa, produto, experiência e liderança de design.',
-  viewProjectLabel: 'Ver Projeto →',
+  viewProjectLabel: 'Ver Projeto',
   items: [
     {
       slug: 'gerdau-storeroom',

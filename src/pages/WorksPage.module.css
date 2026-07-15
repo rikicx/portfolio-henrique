@@ -157,6 +157,22 @@
   outline-offset: 3px;
 }
 
+/* Arrow nudge — same mechanism/magnitude already shipped on the Home
+   Project Card links. */
+.cardCta span:last-child {
+  transition: transform 200ms ease-out;
+}
+
+.card:focus-visible .cardCta span:last-child {
+  transform: translateX(4px);
+}
+
+@media (hover: hover) {
+  .card:hover .cardCta span:last-child {
+    transform: translateX(6px);
+  }
+}
+
 .cardImg {
   position: absolute;
   inset: 0;
@@ -208,6 +224,9 @@
 }
 
 .cardCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.25;
@@ -391,6 +410,15 @@
 @media (prefers-reduced-motion: reduce) {
   .card {
     transition: none;
+  }
+
+  .cardCta span:last-child {
+    transition: none;
+  }
+
+  .card:hover .cardCta span:last-child,
+  .card:focus-visible .cardCta span:last-child {
+    transform: none;
   }
 }
 

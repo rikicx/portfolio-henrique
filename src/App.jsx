@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import WorksPage from './pages/WorksPage'
 import ContactPage from './pages/ContactPage'
+import DesignSystemPage from './pages/DesignSystemPage'
 import NotFoundPage from './pages/NotFoundPage'
 import QiPlatformPage from './pages/cases/QiPlatformPage'
 import EmrIntegrationPage from './pages/cases/EmrIntegrationPage'
@@ -13,6 +14,7 @@ import ThreePHHrcrsPage from './pages/cases/ThreePHHrcrsPage'
 import BackToTopButton from './components/BackToTopButton'
 import ScrollToTop from './components/ScrollToTop'
 import RouteTransitionLoader from './components/RouteTransitionLoader'
+import CustomCursor from './components/CustomCursor'
 import { LanguageProvider } from './context/LanguageContext'
 
 export default function App() {
@@ -20,6 +22,7 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <RouteTransitionLoader />
+      <CustomCursor />
 
       <LanguageProvider>
         <Routes>
@@ -43,6 +46,8 @@ export default function App() {
           <Route path="/en/work/itau-empreendedor" element={<ItauEmpreendedorPage />} />
           <Route path="/trabalhos/3ph-hrcrs-digital-ecosystem" element={<ThreePHHrcrsPage />} />
           <Route path="/en/work/3ph-hrcrs-digital-ecosystem" element={<ThreePHHrcrsPage />} />
+          <Route path="/design-system" element={<DesignSystemPage />} />
+          <Route path="/en/design-system" element={<DesignSystemPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
 

@@ -8,6 +8,37 @@ import { useLanguage } from '../context/LanguageContext'
 import pt from '../content/pt/nav'
 import en from '../content/en/nav'
 
+// Two-line nav label: primary stays always visible; secondary is a
+// complementary hint (aria-hidden — the link's accessible name stays just
+// the primary label, unchanged from before this was added).
+function NavLabel({ primary, secondary }) {
+  return (
+    <span className={styles.navLabelStack}>
+      <span>{primary}</span>
+      <span className={styles.navLabelSecondary} aria-hidden="true">
+        {secondary}
+      </span>
+    </span>
+  )
+}
+
+// Same two-line stack as NavLabel, but for triggers that also carry a
+// chevron — the chevron sits inside the primary-line row so it aligns with
+// "Trabalhos", not with the full two-line block height.
+function NavTriggerLabel({ primary, secondary, chevron }) {
+  return (
+    <span className={styles.navLabelStack}>
+      <span className={styles.triggerPrimaryRow}>
+        <span>{primary}</span>
+        {chevron}
+      </span>
+      <span className={styles.navLabelSecondary} aria-hidden="true">
+        {secondary}
+      </span>
+    </span>
+  )
+}
+
 export default function Navbar() {
   const { lang } = useLanguage()
   const c = lang === 'en' ? en : pt
@@ -217,26 +248,30 @@ export default function Navbar() {
               aria-controls="desktop-dropdown"
               aria-haspopup="true"
             >
-              {c.trabalhosLabel}
-
-              <svg
-                className={`${styles.chevron}${
-                  dropdownOpen ? ` ${styles.chevronOpen}` : ''
-                }`}
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M2 4L6 8L10 4"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <NavTriggerLabel
+                primary={c.trabalhosLabel}
+                secondary={c.trabalhosDescription}
+                chevron={
+                  <svg
+                    className={`${styles.chevron}${
+                      dropdownOpen ? ` ${styles.chevronOpen}` : ''
+                    }`}
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M2 4L6 8L10 4"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                }
+              />
             </button>
 
 
@@ -246,7 +281,20 @@ export default function Navbar() {
             to={c.sobreTo}
             className={navLinkClass}
           >
-            {c.sobreLabelDesktop}
+            <NavLabel
+              primary={c.sobreLabelDesktop}
+              secondary={c.sobreDescription}
+            />
+          </NavLink>
+
+          <NavLink
+            to={c.kihonTo}
+            className={navLinkClass}
+          >
+            <NavLabel
+              primary={c.kihonLabel}
+              secondary={c.kihonDescription}
+            />
           </NavLink>
 
           <a
@@ -255,7 +303,10 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {c.linkedinLabelDesktop}
+            <NavLabel
+              primary={c.linkedinLabelDesktop}
+              secondary={c.linkedinDescription}
+            />
           </a>
         </nav>
 
@@ -354,26 +405,30 @@ export default function Navbar() {
             aria-controls="mobile-accordion"
             tabIndex={isOpen ? 0 : -1}
           >
-            {c.trabalhosLabel}
-
-            <svg
-              className={`${styles.chevron}${
-                accordionOpen ? ` ${styles.chevronOpen}` : ''
-              }`}
-              width="16"
-              height="16"
-              viewBox="0 0 12 12"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M2 4L6 8L10 4"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <NavTriggerLabel
+              primary={c.trabalhosLabel}
+              secondary={c.trabalhosDescription}
+              chevron={
+                <svg
+                  className={`${styles.chevron}${
+                    accordionOpen ? ` ${styles.chevronOpen}` : ''
+                  }`}
+                  width="16"
+                  height="16"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2 4L6 8L10 4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              }
+            />
           </button>
 
           <div
@@ -405,7 +460,22 @@ export default function Navbar() {
             onClick={close}
             tabIndex={isOpen ? 0 : -1}
           >
-            {c.sobreLabelMobile}
+            <NavLabel
+              primary={c.sobreLabelMobile}
+              secondary={c.sobreDescription}
+            />
+          </NavLink>
+
+          <NavLink
+            to={c.kihonTo}
+            className={styles.mobileLink}
+            onClick={close}
+            tabIndex={isOpen ? 0 : -1}
+          >
+            <NavLabel
+              primary={c.kihonLabel}
+              secondary={c.kihonDescription}
+            />
           </NavLink>
 
           <a
@@ -416,7 +486,10 @@ export default function Navbar() {
             onClick={close}
             tabIndex={isOpen ? 0 : -1}
           >
-            {c.linkedinLabelMobile}
+            <NavLabel
+              primary={c.linkedinLabelMobile}
+              secondary={c.linkedinDescription}
+            />
           </a>
 
           <Link

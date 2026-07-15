@@ -9,8 +9,8 @@ export default {
     'I connect user needs, business goals and technical feasibility to guide decisions, structure experiences and follow solutions from discovery through implementation and evolution.',
   bodyMobile:
     'I connect users, business and technology to guide decisions, design experiences and follow their evolution from first understanding to a product running and scaling.',
-  curriculoLabel: 'View Resume ↗︎',
+  curriculoLabel: 'View Resume',
   curriculoHref:
     'https://docs.google.com/document/d/1PldfLYc2USyW2F70VKxvtkvLaQeTIUQl/edit?usp=drive_link&ouid=110536839809774461332&rtpof=true&sd=true',
-  linkedinLabel: 'LinkedIn ↗︎',
+  linkedinLabel: 'LinkedIn',
 }

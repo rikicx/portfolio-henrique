@@ -81,7 +81,10 @@ function ProjectCard({ project, viewProjectLabel }) {
           <span className={styles.cardTitle}>{project.title}</span>
         </span>
 
-        <span className={styles.cardCta}>{viewProjectLabel}</span>
+        <span className={styles.cardCta}>
+          <span>{viewProjectLabel}</span>
+          <span>→</span>
+        </span>
       </span>
     </Link>
   )

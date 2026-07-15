@@ -27,7 +27,8 @@ export default function Quote() {
         <p className={styles.description}>{c.description}</p>
 
         <a href="#" className={styles.cta} aria-label={c.ctaAriaLabel}>
-          {c.ctaLabel}
+          <span>{c.ctaLabel}</span>
+          <span>↗</span>
         </a>
       </div>
     </section>

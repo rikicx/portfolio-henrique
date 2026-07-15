@@ -170,7 +170,8 @@ export default function Hero() {
             <p className={styles.body}>{c.body}</p>
           </div>
           <a href="#projetos" className={styles.cta}>
-            {c.ctaLabel}
+            <span>{c.ctaLabel}</span>
+            <span>↓</span>
           </a>
         </div>
       </div>
