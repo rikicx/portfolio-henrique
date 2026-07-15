@@ -31,5 +31,5 @@ export default {
   ctaTo: '/en/contact',
   openMenuAriaLabel: 'Open navigation menu',
   closeMenuAriaLabel: 'Close navigation menu',
-  copyright: '© 2026 Henrique M. Silva. All rights reserved.',
+  copyright: '© 2026 Henrique M. Silva · v4.0. All rights reserved.',
 }

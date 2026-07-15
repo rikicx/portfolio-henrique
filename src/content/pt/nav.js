@@ -31,5 +31,5 @@ export default {
   ctaTo: '/contato',
   openMenuAriaLabel: 'Abrir menu de navegação',
   closeMenuAriaLabel: 'Fechar menu de navegação',
-  copyright: '© 2026 Henrique M. Silva. Todos os direitos reservados.',
+  copyright: '© 2026 Henrique M. Silva · v4.0. Todos os direitos reservados.',
 }
