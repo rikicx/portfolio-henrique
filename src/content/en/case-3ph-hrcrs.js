@@ -30,25 +30,11 @@ export default {
   problem: {
     label: 'The problem',
     title: 'The website was born outdated',
-    blocks: [
-      {
-        paragraphs: [
-          'The 3PH Alliance and HRCRS websites had been built in plain HTML. Any content change depended on development. That would already be a problem in any company. For us it was even worse, because the business model changed practically every month.',
-          'Every week there was a new service, a different priority or another way of explaining what the company did. By the time the content was published, it often already needed another update.',
-        ],
-      },
-      {
-        heading: 'The relationship between the two companies was also unclear',
-        paragraphs: [
-          'HRCRS is part of the 3PH Alliance, but many people understood it the other way around. Others did not even realize there was a relationship between them.',
-        ],
-      },
-      {
-        heading: 'The work also began under schedule pressure',
-        paragraphs: [
-          'Beyond redesigning the experience, we would need to organize a discourse that was still evolving and create a sustainable way to publish its next versions.',
-        ],
-      },
+    paragraphs: [
+      'The 3PH Alliance and HRCRS websites did not meet our expectations.',
+      'They had been built in plain HTML, and any content change depended on development. That would already be a problem in any company. For us it was even worse, because our business model changed practically every month.',
+      'Every week there was a new service, a different priority or another way of explaining what the company did. By the time the content was published, it often needed to be changed again.',
+      'The relationship between the two companies did not help either. HRCRS is part of the 3PH Alliance, but many people understood it the other way around. Others did not even realize there was a relationship between them.',
     ],
   },
   centralQuestion: {

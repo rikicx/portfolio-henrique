@@ -30,25 +30,11 @@ export default {
   problem: {
     label: 'O problema',
     title: 'O site já nascia desatualizado',
-    blocks: [
-      {
-        paragraphs: [
-          'Os sites da 3PH Alliance e da HRCRS tinham sido construídos em HTML puro. Qualquer mudança de conteúdo dependia de desenvolvimento. Isso já seria um problema em qualquer empresa. Para nós era ainda pior, porque o modelo de negócio mudava praticamente todo mês.',
-          'Toda semana surgia um serviço novo, uma prioridade diferente ou outra forma de explicar o que a empresa fazia. Quando o conteúdo finalmente era publicado, muitas vezes já precisava ser alterado novamente.',
-        ],
-      },
-      {
-        heading: 'A relação entre as duas empresas também não estava clara',
-        paragraphs: [
-          'A HRCRS faz parte da 3PH Alliance, mas muitas pessoas entendiam o contrário. Outras nem percebiam que existia uma relação entre elas.',
-        ],
-      },
-      {
-        heading: 'O trabalho também começou com o cronograma pressionado',
-        paragraphs: [
-          'Além de redesenhar a experiência, precisaríamos organizar um discurso ainda em transformação e criar uma forma sustentável de publicar suas próximas versões.',
-        ],
-      },
+    paragraphs: [
+      'Os sites da 3PH Alliance e da HRCRS não atendiam nossas expectativas.',
+      'Tinham sido feitos em HTML puro e qualquer mudança de conteúdo dependia de desenvolvimento. Isso já seria um problema em qualquer empresa. Para nós era ainda pior, porque nosso modelo de negócio mudava praticamente todo mês.',
+      'Toda semana surgia um serviço novo, uma prioridade diferente ou outra forma de explicar o que a empresa fazia. Quando o conteúdo finalmente era publicado, muitas vezes já precisava ser alterado de novo.',
+      'A relação entre as duas empresas também não ajudava. A HRCRS faz parte da 3PH Alliance, mas muita gente entendia o contrário. Outras pessoas nem percebiam que existia uma relação entre elas.',
     ],
   },
   centralQuestion: {

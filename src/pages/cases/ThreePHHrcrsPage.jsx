@@ -143,8 +143,10 @@ export default function ThreePHHrcrsPage() {
               {c.problem.label}
             </h2>
             <div className={styles.problemaText}>
-              <h3 className={styles.editorialSectionLead}>{c.problem.title}</h3>
-              <EditorialBlocks blocks={c.problem.blocks} />
+              <p>{c.problem.title}</p>
+              {c.problem.paragraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
             </div>
           </div>
         </div>
