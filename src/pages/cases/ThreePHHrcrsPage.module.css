@@ -262,10 +262,6 @@
   align-items: center;
 }
 
-.benchmarkMedia {
-  min-width: 0;
-}
-
 .benchmarkFigure {
   margin: 0;
 }
@@ -286,6 +282,18 @@
 
 .benchmarkText .sectionHeading {
   margin-bottom: 24px;
+}
+
+.benchmarkReviewLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+  margin-top: 48px;
+}
+
+.benchmarkReviewText {
+  min-width: 0;
 }
 
 /* ─── 6. Arquitetura de conteúdo ─────────────────────────────────────────── */
@@ -460,18 +468,16 @@
   margin-bottom: 24px;
 }
 
-.implementationLayout {
+.implementationContent {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 48px;
-  align-items: start;
-}
-
-.implementationCopy {
-  min-width: 0;
+  gap: 40px 48px;
+  align-items: center;
 }
 
 .implementationBox {
+  grid-column: 1 / -1;
+  grid-row: 1;
   display: flex;
   align-items: center;
   gap: 64px;
@@ -2069,7 +2075,7 @@
 
 .benchmarkEvidence {
   width: 76%;
-  margin: 24px 0 0 auto;
+  margin: 0 0 0 auto;
 }
 
 .benchmarkEvidence .evidencePlaceholder {
@@ -2088,19 +2094,23 @@
 }
 
 .designSystemEvidence .evidencePlaceholder {
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 2 / 1;
 }
 
 .implementationEvidence {
+  grid-column: 2;
+  grid-row: 2;
   width: 100%;
 }
 
 .implementationEvidence .evidencePlaceholder {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 16 / 9;
 }
 
 .implementationContinuation {
-  margin: 32px 0 0;
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
 }
 
 .metricIconPlaceholder {
@@ -2131,18 +2141,26 @@
     font-size: 14px;
   }
 
-  .benchmarkMedia {
-    display: contents;
-  }
-
   .benchmarkEvidence {
-    order: 4;
+    order: 1;
     width: 82%;
-    margin: 16px 0 0 auto;
+    margin: 0 0 0 auto;
   }
 
   .benchmarkText .bodyTextBlock {
-    order: 5;
+    order: 4;
+  }
+
+  .benchmarkReviewLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 24px;
+  }
+
+  .benchmarkReviewText {
+    order: 2;
+    margin-top: 16px;
   }
 
   .designSystemBaseText {
@@ -2172,7 +2190,7 @@
     width: 100%;
   }
 
-  .implementationLayout {
+  .implementationContent {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -2184,12 +2202,13 @@
     margin: 0 auto;
   }
 
-  .implementationCopy {
+  .implementationBox {
     order: 2;
   }
 
   .implementationContinuation {
-    margin-top: 24px;
+    order: 3;
+    margin-top: 0;
   }
 
   .metricIconPlaceholder {
@@ -2201,18 +2220,26 @@
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .benchmarkMedia {
-    display: contents;
-  }
-
   .benchmarkEvidence {
-    order: 4;
+    order: 1;
     width: 64%;
-    margin: 0 0 32px auto;
+    margin: 0 0 0 auto;
   }
 
   .benchmarkText .bodyTextBlock {
-    order: 5;
+    order: 4;
+  }
+
+  .benchmarkReviewLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 32px;
+  }
+
+  .benchmarkReviewText {
+    order: 2;
+    margin-top: 24px;
   }
 
   .designSystemSection .container {
@@ -2242,18 +2269,24 @@
     margin: 0;
   }
 
-  .implementationLayout {
+  .implementationContent {
     display: flex;
     flex-direction: column;
     gap: 32px;
   }
 
   .implementationEvidence {
+    order: 1;
     width: 68%;
     margin: 0 auto;
   }
 
+  .implementationBox {
+    order: 2;
+  }
+
   .implementationContinuation {
-    margin-top: 32px;
+    order: 3;
+    margin-top: 0;
   }
 }

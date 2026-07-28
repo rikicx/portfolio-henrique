@@ -146,22 +146,16 @@ export default function ThreePHHrcrsPage() {
       <RevealSection as="section" aria-labelledby="benchmark-title" className={styles.benchmarkSection}>
         <div className={styles.container}>
           <div className={styles.benchmarkLayout}>
-            <div className={styles.benchmarkMedia}>
-              <figure className={styles.benchmarkFigure}>
-                <img
-                  src={benchmarkImg}
-                  alt={c.benchmark.imgAlt}
-                  className={styles.benchmarkImg}
-                />
-                <figcaption className={styles.caption}>
-                  {c.benchmark.caption}
-                </figcaption>
-              </figure>
-              <EvidencePlaceholder
-                evidence={c.benchmark.evidence}
-                className={styles.benchmarkEvidence}
+            <figure className={styles.benchmarkFigure}>
+              <img
+                src={benchmarkImg}
+                alt={c.benchmark.imgAlt}
+                className={styles.benchmarkImg}
               />
-            </div>
+              <figcaption className={styles.caption}>
+                {c.benchmark.caption}
+              </figcaption>
+            </figure>
             <div className={styles.benchmarkText}>
               <p className={styles.sectionKicker}>
                 {c.benchmark.kicker}
@@ -170,11 +164,22 @@ export default function ThreePHHrcrsPage() {
                 {c.benchmark.title}
               </h2>
               <div className={styles.bodyTextBlock}>
-                {c.benchmark.paragraphs.map((paragraph, index) => (
+                {c.benchmark.paragraphs.slice(0, 2).map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
                 ))}
               </div>
             </div>
+          </div>
+          <div className={styles.benchmarkReviewLayout}>
+            <div className={`${styles.bodyTextBlock} ${styles.benchmarkReviewText}`}>
+              {c.benchmark.paragraphs.slice(2).map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
+            <EvidencePlaceholder
+              evidence={c.benchmark.evidence}
+              className={styles.benchmarkEvidence}
+            />
           </div>
         </div>
       </RevealSection>
@@ -312,31 +317,29 @@ export default function ThreePHHrcrsPage() {
           <h2 id="implementation-title" className={styles.sectionHeading}>
             {c.implementation.title}
           </h2>
-          <div className={styles.implementationLayout}>
+          <div className={styles.implementationContent}>
             <EvidencePlaceholder
               evidence={c.implementation.evidence}
               className={styles.implementationEvidence}
             />
-            <div className={styles.implementationCopy}>
-              <div className={styles.implementationBox}>
-                <div className={styles.webflowLogoWrap} aria-hidden="true">
-                  <img
-                    src={implementationIconImg}
-                    alt=""
-                    className={styles.webflowLogo}
-                  />
-                </div>
-                <div className={styles.implementationText}>
-                  {c.implementation.introParagraphs.map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
-                  ))}
-                </div>
+            <div className={styles.implementationBox}>
+              <div className={styles.webflowLogoWrap} aria-hidden="true">
+                <img
+                  src={implementationIconImg}
+                  alt=""
+                  className={styles.webflowLogo}
+                />
               </div>
-              <div className={`${styles.implementationText} ${styles.implementationContinuation}`}>
-                {c.implementation.continuationParagraphs.map((paragraph, index) => (
+              <div className={styles.implementationText}>
+                {c.implementation.introParagraphs.map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
                 ))}
               </div>
+            </div>
+            <div className={`${styles.implementationText} ${styles.implementationContinuation}`}>
+              {c.implementation.continuationParagraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
             </div>
           </div>
         </div>
