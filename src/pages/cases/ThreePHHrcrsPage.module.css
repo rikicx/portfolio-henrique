@@ -262,6 +262,10 @@
   align-items: center;
 }
 
+.benchmarkMedia {
+  min-width: 0;
+}
+
 .benchmarkFigure {
   margin: 0;
 }
@@ -363,6 +367,15 @@
   border-radius: var(--radius-card);
 }
 
+.designSystemAiLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas: "copy evidence";
+  gap: 48px;
+  align-items: center;
+  margin-top: 48px;
+}
+
 /* ─── 8. CMS — O site precisava continuar vivo ───────────────────────────── */
 .cmsSection {
   padding: 48px 0;
@@ -445,6 +458,17 @@
 .implementationSection .sectionHeading {
   max-width: 943px;
   margin-bottom: 24px;
+}
+
+.implementationLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.implementationCopy {
+  min-width: 0;
 }
 
 .implementationBox {
@@ -2014,4 +2038,222 @@
 [data-theme="dark"] .metricIcon {
   filter: brightness(0) invert(1);
   opacity: 0.9;
+}
+
+/* ─── Evidências visuais pendentes ─────────────────────────────────────── */
+.evidenceFigure {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.evidencePlaceholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding: 32px;
+  background: var(--color-bg-surface);
+  border: 1px dashed var(--color-border-primary);
+  border-radius: var(--radius-card);
+}
+
+.evidencePlaceholderLabel {
+  max-width: 520px;
+  color: var(--color-text-secondary);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.benchmarkEvidence {
+  width: 76%;
+  margin: 24px 0 0 auto;
+}
+
+.benchmarkEvidence .evidencePlaceholder {
+  aspect-ratio: 2 / 1;
+}
+
+.designSystemAiText {
+  grid-area: copy;
+  margin: 0;
+}
+
+.designSystemEvidence {
+  grid-area: evidence;
+  width: 92%;
+  justify-self: end;
+}
+
+.designSystemEvidence .evidencePlaceholder {
+  aspect-ratio: 3 / 2;
+}
+
+.implementationEvidence {
+  width: 100%;
+}
+
+.implementationEvidence .evidencePlaceholder {
+  aspect-ratio: 1 / 1;
+}
+
+.implementationContinuation {
+  margin: 32px 0 0;
+}
+
+.metricIconPlaceholder {
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  background: var(--color-border-subtle);
+  border-radius: var(--radius-card);
+  color: var(--color-text-secondary);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 768px) {
+  .evidenceFigure {
+    margin-top: 0;
+  }
+
+  .evidencePlaceholder {
+    padding: 20px;
+    border-radius: var(--radius-8);
+  }
+
+  .evidencePlaceholderLabel {
+    font-size: 14px;
+  }
+
+  .benchmarkMedia {
+    display: contents;
+  }
+
+  .benchmarkEvidence {
+    order: 4;
+    width: 82%;
+    margin: 16px 0 0 auto;
+  }
+
+  .benchmarkText .bodyTextBlock {
+    order: 5;
+  }
+
+  .designSystemBaseText {
+    order: 3;
+    margin-bottom: 16px;
+  }
+
+  .designSystemFigure {
+    order: 2;
+  }
+
+  .designSystemAiLayout {
+    order: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 8px;
+  }
+
+  .designSystemAiText {
+    order: 2;
+    margin: 16px 0 0;
+  }
+
+  .designSystemEvidence {
+    order: 1;
+    width: 100%;
+  }
+
+  .implementationLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .implementationEvidence {
+    order: 1;
+    width: 88%;
+    margin: 0 auto;
+  }
+
+  .implementationCopy {
+    order: 2;
+  }
+
+  .implementationContinuation {
+    margin-top: 24px;
+  }
+
+  .metricIconPlaceholder {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-8);
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .benchmarkMedia {
+    display: contents;
+  }
+
+  .benchmarkEvidence {
+    order: 4;
+    width: 64%;
+    margin: 0 0 32px auto;
+  }
+
+  .benchmarkText .bodyTextBlock {
+    order: 5;
+  }
+
+  .designSystemSection .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .designSystemHeading {
+    order: 1;
+  }
+
+  .designSystemFigure {
+    order: 2;
+  }
+
+  .designSystemBaseText {
+    order: 3;
+    margin: 32px 0 0;
+  }
+
+  .designSystemAiLayout {
+    order: 4;
+    margin-top: 32px;
+  }
+
+  .designSystemAiText {
+    margin: 0;
+  }
+
+  .implementationLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .implementationEvidence {
+    width: 68%;
+    margin: 0 auto;
+  }
+
+  .implementationContinuation {
+    margin-top: 32px;
+  }
 }

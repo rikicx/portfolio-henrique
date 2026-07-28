@@ -2,7 +2,7 @@ export default {
   seo: {
     title: '3PH & HRCRS — Case de Product Design | Henrique Silva',
     description:
-      'Case de estratégia, design e implementação de um ecossistema digital para empresas de pesquisa clínica e saúde cardiovascular.',
+      'Case de liderança hands-on, estratégia de conteúdo, Design System, IA aplicada ao processo de Design e implementação de um ecossistema digital para pesquisa clínica e saúde cardiovascular.',
     path: '/trabalhos/3ph-hrcrs-digital-ecosystem',
     lang: 'pt',
     robots: 'index, follow',
@@ -10,7 +10,7 @@ export default {
   hero: {
     titleLines: ['3PH Alliance &', 'HRCRS', 'Digital Ecosystem'],
     description:
-      'Dois sites conectados por uma mesma base visual e editorial, preparados para evoluir sem depender de desenvolvimento a cada atualização.',
+      'Dois sites conectados por uma base visual e editorial, preparados para evoluir — com IA supervisionada do benchmark ao protótipo executável.',
   },
   metadata: {
     ariaLabel: 'Informações do projeto',
@@ -19,22 +19,22 @@ export default {
     fields: [
       { label: 'Empresa', value: '3PH Alliance + HRCRS' },
       { label: 'Ano', value: '2025–2026' },
-      { label: 'Papel', value: 'Head of Design' },
+      { label: 'Papel', value: 'Head of Design — atuação hands-on' },
     ],
     strategic: {
       label: 'Atuação Estratégica',
       value:
-        'Estratégia de conteúdo · Liderança de Design · Arquitetura da Informação · Governança · Lançamento',
+        'Liderança de Design · Estratégia de conteúdo · Arquitetura da Informação · Fluxos assistidos por IA · Governança · Lançamento',
     },
   },
   problem: {
     label: 'O problema',
     title: 'O site já nascia desatualizado',
     paragraphs: [
-      'Os sites da 3PH Alliance e da HRCRS não atendiam nossas expectativas.',
-      'Tinham sido feitos em HTML puro e qualquer mudança de conteúdo dependia de desenvolvimento. Isso já seria um problema em qualquer empresa. Para nós era ainda pior, porque nosso modelo de negócio mudava praticamente todo mês.',
-      'Toda semana surgia um serviço novo, uma prioridade diferente ou outra forma de explicar o que a empresa fazia. Quando o conteúdo finalmente era publicado, muitas vezes já precisava ser alterado de novo.',
-      'A relação entre as duas empresas também não ajudava. A HRCRS faz parte da 3PH Alliance, mas muita gente entendia o contrário. Outras pessoas nem percebiam que existia uma relação entre elas.',
+      'Os sites da 3PH Alliance e da HRCRS tinham sido construídos em HTML puro. Qualquer mudança de conteúdo dependia de desenvolvimento. Isso já seria um problema em qualquer empresa. Para nós era ainda pior, porque o modelo de negócio mudava praticamente todo mês.',
+      'Toda semana surgia um serviço novo, uma prioridade diferente ou outra forma de explicar o que a empresa fazia. Quando o conteúdo finalmente era publicado, muitas vezes já precisava ser alterado novamente.',
+      'A relação entre as duas empresas também não estava clara. A HRCRS faz parte da 3PH Alliance, mas muitas pessoas entendiam o contrário. Outras nem percebiam que existia uma relação entre elas.',
+      'O trabalho também começou com o cronograma pressionado. Além de redesenhar a experiência, precisaríamos organizar um discurso ainda em transformação e criar uma forma sustentável de publicar suas próximas versões.',
     ],
   },
   centralQuestion: {
@@ -45,43 +45,64 @@ export default {
   benchmark: {
     imgAlt:
       'Benchmark de sites de empresas do setor para identificar padrões de conteúdo, estrutura e diferenciais',
-    caption: 'Benchmark estrutural para identificar padrões recorrentes nas páginas do setor.',
+    caption:
+      'Benchmark estrutural com critérios definidos para identificar padrões recorrentes nas páginas do setor.',
     kicker: 'Primeiro, precisávamos organizar o discurso',
-    title: 'Mapear padrões e expectativas do setor',
+    title: 'Comparar o setor com critérios verificáveis',
     paragraphs: [
-      'Antes de desenhar, analisamos como outras empresas do setor organizavam seus serviços, diferenciais e provas de resultado.',
-      'O benchmark ajudou a identificar padrões úteis, mas também mostrou como muitos sites acabavam dizendo praticamente a mesma coisa.',
+      'Já conhecíamos os principais concorrentes. O desafio não era descobrir quem observar, mas comparar os sites de forma consistente. Antes de iniciar a coleta, definimos os parâmetros da análise: estrutura de navegação, organização dos menus, tempo de leitura, padrões recorrentes e formas de apresentar serviços e diferenciais.',
+      'Esses critérios foram transformados em um prompt usado com Claude. O modelo navegou por informações públicas dos concorrentes e organizou uma primeira análise em Markdown, registrando a estrutura dos sites e as fontes de cada achado. Capturas das páginas complementavam o material de referência.',
+      'O documento não era tratado como uma conclusão pronta. Voltávamos aos sites para verificar os pontos levantados, completar extrações incompletas e corrigir interpretações que iam além do que a fonte permitia afirmar. Quando uma leitura parecia plausível, mas não podia ser comprovada, ela permanecia explicitamente marcada como “aparente”. Quando não havia sustentação suficiente, era removida.',
+      'Com isso, o trabalho manual deixou de se concentrar na coleta integral de todos os concorrentes e passou a se concentrar na verificação, na correção e no preenchimento de lacunas. O benchmark nos deu uma base comum para discutir conteúdo e navegação sem transformar inferências da IA em fatos.',
     ],
+    evidence: {
+      label: 'Imagem pendente: benchmark com fontes e revisão',
+      caption:
+        'Trecho da análise em Markdown com fontes registradas e distinção entre observações, interpretações aparentes e conclusões removidas.',
+    },
   },
   contentStructure: {
-    title: 'Definir o papel de cada seção',
+    title: 'Traduzir uma apresentação comercial para uma experiência que funcionasse sozinha',
     paragraphs: [
-      'Depois, organizamos o conteúdo de cada página antes de pensar no layout. Para cada bloco, definíamos sua função na narrativa, a mensagem principal e o que o leitor precisava entender antes de seguir.',
-      'Estrutura de conteúdo definindo propósito narrativo, mensagem central e percepção desejada para cada seção.',
+      'O site já havia chegado ao projeto com o prazo pressionado. A produção de conteúdo não fazia parte do escopo inicial de Design, mas precisou ser absorvida pela área para que a entrega avançasse.',
+      'Usamos como fontes os decks apresentados em reuniões comerciais, o manual de marca e exemplos da linguagem da empresa. Esses materiais eram institucionais e comerciais; nenhum dado de pacientes ou outra informação sensível entrou nesse fluxo. Antes de pedir propostas de texto, solicitávamos que a IA explicasse o modelo de negócio com suas próprias palavras. O time confrontava essa interpretação com os materiais e com seu conhecimento do negócio, corrigindo inconsistências antes de avançar.',
+      'Para cada página, explorávamos duas ou três alternativas de conteúdo. Cada bloco precisava responder de forma coerente a três critérios: propósito narrativo, emoção desejada e mensagem central. Quando uma proposta não sustentava o storytelling pretendido, ajustávamos o contexto e as orientações e iniciávamos uma nova rodada de criação ou adaptação.',
+      'A IA produzia primeiras alternativas; Design refinava e selecionava uma direção. Depois dessa escolha, o conteúdo era revisado e validado pelas lideranças de Marketing e Vendas.',
+      'Essa distinção era importante: um slide deck conta com alguém para apresentá-lo. O site precisava comunicar a mesma proposta de valor para uma audiência mais ampla, sem depender do contexto de uma reunião.',
     ],
     lightboxOpenAriaLabel: 'Ampliar arquitetura de conteúdo',
     imgAlt:
-      'Documento de arquitetura de conteúdo com propósito narrativo, mensagem central e percepção desejada definidos para cada seção dos sites',
+      'Documento de arquitetura de conteúdo com propósito narrativo, emoção desejada e mensagem central definidos para cada seção dos sites',
     tapHint: 'Toque para ampliar',
     caption:
-      'Estrutura de conteúdo definindo propósito narrativo, mensagem central e percepção desejada para cada seção.',
+      'Estrutura de conteúdo definindo propósito narrativo, emoção desejada e mensagem central para cada seção.',
   },
   designSystem: {
     title: 'Uma base visual para os dois sites',
-    paragraphs: [
-      'Os sites precisavam parecer parte da mesma empresa, sem parecer cópias um do outro. Meu time criou um Design System do zero, compartilhando cores, tipografia, espaçamentos, componentes e padrões de interação.',
-      'A base visual era a mesma. O que mudava era o discurso, o tom e a forma como cada empresa apresentava seus serviços. Meu papel era orientar essas decisões e garantir que as duas experiências continuassem coerentes ao longo do projeto.',
+    baseParagraphs: [
+      'Os sites precisavam parecer parte da mesma organização sem parecer cópias um do outro. Meu time criou um Design System do zero, compartilhando cores, tipografia, espaçamentos, componentes e padrões de interação.',
+      'A base visual era a mesma. O que mudava era o discurso, o tom e a forma como cada empresa apresentava seus serviços. Meu papel era orientar essas decisões e garantir que as duas experiências continuassem coerentes.',
+    ],
+    aiParagraphs: [
+      'Depois que essa base e seus componentes já estavam disponíveis no Figma, centralizei a operação do Claude Code conectado ao arquivo por Figma MCP. A partir do conteúdo e da direção já definidos, o modelo sugeria possíveis composições para as páginas. A IA não criou o Design System nem determinou a solução final: suas propostas eram tratadas como hipóteses de layout.',
+      'Os designers conduziam a exploração, o refinamento e a entrega dos layouts, além do QA, com alinhamentos frequentes ao longo do processo. Eu revisava o material antes das discussões de maior risco.',
+      'As propostas refinadas eram discutidas com C-levels, stakeholders e Marketing. O critério não era preferência visual. Avaliávamos se cada direção preservava a narrativa usada nas apresentações comerciais e, ao mesmo tempo, conseguia ser autoexplicativa para quem chegava ao site sem contexto prévio.',
     ],
     imgAlt:
       'Design System compartilhado entre os sites da 3PH Alliance e HRCRS, com cores, tipografia, componentes e padrões de interação',
     caption:
       'Design System compartilhado entre os dois sites, reunindo fundamentos visuais, componentes e padrões de interação.',
+    evidence: {
+      label: 'Imagem pendente: sugestão, refinamento e layout aprovado',
+      caption:
+        'Da composição sugerida pelo modelo ao layout refinado e selecionado pelo time de Design.',
+    },
   },
   cms: {
     title: 'O site precisava continuar vivo',
     paragraphs: [
       'Não adiantava lançar dois sites novos e continuar dependendo de desenvolvimento para cada mudança. A solução passou a ter um CMS independente para cada site. O time de Scientific Affairs, por exemplo, passou a publicar abstracts, artigos e vídeos educacionais com autonomia, sem acionar desenvolvimento em toda atualização.',
-      'Meu time ainda acompanhava páginas mais sensíveis para evitar que a consistência visual se perdesse. Com isso, o tempo de publicação caiu de até um dia para aproximadamente uma hora.',
+      'Meu time ainda acompanhava páginas mais sensíveis para evitar que a consistência visual se perdesse. Antes, uma atualização tinha um SLA de dois a três dias. Depois que meu time assumiu a operação dos sites, as mudanças passaram a ser publicadas em minutos.',
     ],
     imgAlt:
       'Composição mostrando o site da 3PH Alliance e o painel do CMS utilizado para gerenciar e publicar conteúdos',
@@ -95,17 +116,29 @@ export default {
       'Cerimônias semanais conectando stakeholders, Tecnologia, Design e Scientific Affairs em torno de decisões e próximos passos.',
     title: 'Fazer o projeto andar também fazia parte do trabalho',
     paragraphs: [
-      'As demandas chegavam com urgência, mas as decisões envolviam diferentes áreas e stakeholders.',
+      'As demandas chegavam com urgência, mas as decisões envolviam diferentes áreas e níveis de liderança.',
+      'Como Head hands-on, eu delegava aos designers a exploração, a entrega dos layouts e boa parte do QA, mantendo alinhamentos frequentes. Assumia pessoalmente os pontos de maior risco: revisão das análises, arquitetura de conteúdo, operação do fluxo entre Claude Code e Figma, revisão do que seria apresentado e condução das conversas com C-levels e stakeholders.',
       'Para evitar que o projeto ficasse parado, organizei status semanais com o contexto resumido, as opções disponíveis e uma recomendação clara.',
       'Em vez de levar problemas abertos para as reuniões, eu levava decisões preparadas.',
+      'Depois das definições, eu também funcionava como interface entre Design e o contractor, acompanhando o que seria entregue e garantindo que a solução funcionasse no ambiente real.',
     ],
   },
   implementation: {
-    title: 'A entrega incluía implementação e governança',
-    paragraphs: [
-      'O desenvolvimento ficava com um fornecedor externo, mas meu time continuava próximo durante toda a implementação. Acompanhávamos responsividade, busca, formulários, CMS e ajustes visuais para garantir que o que havia sido desenhado continuasse funcionando no ambiente real.',
-      'Eu coordenava a comunicação entre fornecedor, Tecnologia, Design e stakeholders, além das rodadas de QA e validação antes de cada publicação.',
+    title: 'Do Figma a um protótipo executável',
+    introParagraphs: [
+      'O Figma continuava sendo a referência visual do projeto, mas o handoff não se limitava às telas estáticas. Com Claude Code conectado ao Figma por MCP, transformamos os layouts aprovados em um protótipo executável que complementava o arquivo de Design.',
+      'Esse protótipo não tinha integração entre front-end, back-end e CMS e não era tratado como código de produção. Antes da entrega, o time comparava visualmente o resultado com o Figma e realizava testes em diferentes resoluções e dispositivos. As inconsistências eram corrigidas antes de o material chegar ao contractor.',
     ],
+    continuationParagraphs: [
+      'O contractor recebia o Figma e o protótipo como referências complementares. Ele conseguia reaproveitar partes da estrutura em vez de partir apenas de telas estáticas, enquanto assumia as rotas, as funcionalidades de back-end e a integração com o CMS. Isso tornou a passagem para a implementação mais direta.',
+      'Meu time continuava próximo durante a implementação, acompanhando responsividade, busca, formulários, CMS e ajustes visuais. Eu coordenava a comunicação entre contractor, Tecnologia, Design e stakeholders, além das rodadas de QA e validação antes de cada publicação.',
+      'Em todas as etapas, a regra era a mesma: um output da IA só avançava depois do checkpoint adequado — verificação das fontes no benchmark, revisão editorial e validação de negócio no conteúdo, refinamento de Design nos layouts ou testes visuais no protótipo. A IA acelerava a exploração e a tradução entre artefatos; a responsabilidade pelas decisões permanecia com as pessoas.',
+    ],
+    evidence: {
+      label: 'Imagem pendente: protótipo executável em diferentes resoluções',
+      caption:
+        'Comparação entre o Figma e o protótipo executável validado em diferentes resoluções antes do handoff.',
+    },
   },
   postLaunch: {
     title: 'Depois do lançamento, começou a operação editorial.',
@@ -127,13 +160,18 @@ export default {
     metrics: [
       {
         key: 'time',
-        main: '1 dia → aproximadamente 1 hora',
-        sub: 'Tempo para publicação de conteúdo',
+        main: '2–3 dias → minutos',
+        sub: 'SLA para atualização depois que Design assumiu a operação',
       },
       {
         key: 'rating',
         main: '4,67 de 5',
-        sub: 'Avaliação média da aparência visual',
+        sub: 'Avaliação visual em pesquisa interna e anônima',
+      },
+      {
+        key: 'cms',
+        main: '2 CMS independentes',
+        sub: 'Autonomia editorial para 3PH Alliance e HRCRS',
       },
       {
         key: 'pages',
@@ -147,6 +185,6 @@ export default {
     closeAriaLabel: 'Fechar imagem ampliada',
     closeLabel: 'Fechar imagem',
     imgAlt:
-      'Documento de arquitetura de conteúdo com propósito narrativo, mensagem central e percepção desejada',
+      'Documento de arquitetura de conteúdo com propósito narrativo, emoção desejada e mensagem central',
   },
 }
