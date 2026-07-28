@@ -48,9 +48,7 @@ function EvidencePlaceholder({ evidence, className = '', imageSrc }) {
           <span className={styles.evidencePlaceholderLabel}>{evidence.label}</span>
         </div>
       )}
-      <figcaption className={styles.caption}>
-        {imageSrc ? evidence.exampleCaption : evidence.caption}
-      </figcaption>
+      <figcaption className={styles.caption}>{evidence.caption}</figcaption>
     </figure>
   )
 }

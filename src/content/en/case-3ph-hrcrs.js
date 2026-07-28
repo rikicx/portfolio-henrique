@@ -75,8 +75,6 @@ export default {
         'Excerpt from the Markdown analysis with registered sources and the distinction between observations, apparent interpretations and removed conclusions.',
       exampleAlt:
         'Synthetic reference showing benchmark criteria, registered sources and human-review states.',
-      exampleCaption:
-        'AI-generated visual reference — replace it with a real excerpt from the analysis, including registered sources and review decisions.',
     },
   },
   contentStructure: {
@@ -154,8 +152,6 @@ export default {
         'From a model-suggested composition to the layout refined and selected by the Design team.',
       exampleAlt:
         'Synthetic reference comparing an initial suggestion, Design refinement and the approved layout.',
-      exampleCaption:
-        'AI-generated visual reference — replace it with the real comparison between suggestion, refinement and approved layout.',
     },
   },
   cms: {
@@ -241,8 +237,6 @@ export default {
         'Comparison between Figma and the executable prototype validated at different resolutions before handoff.',
       exampleAlt:
         'Synthetic reference showing an executable prototype validated on desktop, tablet and mobile.',
-      exampleCaption:
-        'AI-generated visual reference — replace it with real captures of the prototype and QA across different resolutions.',
     },
   },
   postLaunch: {
