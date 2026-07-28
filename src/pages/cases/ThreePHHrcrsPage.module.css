@@ -2073,12 +2073,23 @@
   text-align: center;
 }
 
+.evidenceExampleImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-card);
+}
+
 .benchmarkEvidence {
   width: 100%;
   margin: 0;
 }
 
-.benchmarkEvidence .evidencePlaceholder {
+.benchmarkEvidence .evidencePlaceholder,
+.benchmarkEvidence .evidenceExampleImage {
   aspect-ratio: 2 / 1;
 }
 
@@ -2093,7 +2104,8 @@
   justify-self: stretch;
 }
 
-.designSystemEvidence .evidencePlaceholder {
+.designSystemEvidence .evidencePlaceholder,
+.designSystemEvidence .evidenceExampleImage {
   aspect-ratio: 2 / 1;
 }
 
@@ -2103,7 +2115,8 @@
   width: 100%;
 }
 
-.implementationEvidence .evidencePlaceholder {
+.implementationEvidence .evidencePlaceholder,
+.implementationEvidence .evidenceExampleImage {
   aspect-ratio: 16 / 9;
 }
 
@@ -2111,6 +2124,18 @@
   grid-column: 1;
   grid-row: 2;
   margin: 0;
+}
+
+@media (min-width: 1025px) {
+  .benchmarkReviewLayout,
+  .designSystemAiLayout {
+    align-items: center;
+  }
+
+  .implementationEvidence,
+  .implementationContinuation {
+    align-self: center;
+  }
 }
 
 .metricIconPlaceholder {

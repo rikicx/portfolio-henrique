@@ -73,6 +73,10 @@ export default {
       label: 'Imagem pendente: benchmark com fontes e revisão',
       caption:
         'Trecho da análise em Markdown com fontes registradas e distinção entre observações, interpretações aparentes e conclusões removidas.',
+      exampleAlt:
+        'Referência sintética de um benchmark com critérios, fontes registradas e estados de revisão humana.',
+      exampleCaption:
+        'Referência visual gerada por IA — substitua por um recorte real da análise, com fontes registradas e decisões de revisão.',
     },
   },
   contentStructure: {
@@ -148,6 +152,10 @@ export default {
       label: 'Imagem pendente: sugestão, refinamento e layout aprovado',
       caption:
         'Da composição sugerida pelo modelo ao layout refinado e selecionado pelo time de Design.',
+      exampleAlt:
+        'Referência sintética comparando uma sugestão inicial, o refinamento de Design e o layout aprovado.',
+      exampleCaption:
+        'Referência visual gerada por IA — substitua pelo comparativo real entre sugestão, refinamento e layout aprovado.',
     },
   },
   cms: {
@@ -231,6 +239,10 @@ export default {
       label: 'Imagem pendente: protótipo executável em diferentes resoluções',
       caption:
         'Comparação entre o Figma e o protótipo executável validado em diferentes resoluções antes do handoff.',
+      exampleAlt:
+        'Referência sintética de um protótipo executável validado em desktop, tablet e celular.',
+      exampleCaption:
+        'Referência visual gerada por IA — substitua por capturas reais do protótipo e do QA em diferentes resoluções.',
     },
   },
   postLaunch: {

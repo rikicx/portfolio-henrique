@@ -10,7 +10,7 @@ export default {
   hero: {
     titleLines: ['3PH Alliance &', 'HRCRS', 'Digital Ecosystem'],
     description:
-      'Two websites built on one visual and editorial foundation, designed to evolve — with supervised AI from benchmark to executable prototype.',
+      'Two websites connected by a shared visual and editorial foundation, built to evolve — with supervised AI from competitive benchmarking to an executable prototype.',
   },
   metadata: {
     ariaLabel: 'Project information',
@@ -29,7 +29,7 @@ export default {
   },
   problem: {
     label: 'The problem',
-    title: 'The website was born outdated',
+    title: 'The websites were already outdated before launch',
     paragraphs: [
       'The 3PH Alliance and HRCRS websites did not meet our expectations.',
       'They had been built in plain HTML, and any content change depended on development. That would already be a problem in any company. For us it was even worse, because our business model changed practically every month.',
@@ -51,7 +51,7 @@ export default {
     title: 'Comparing the sector with verifiable criteria',
     introParagraphs: [
       'We already knew the main competitors. The challenge was not deciding who to observe, but comparing the websites consistently. Before collecting anything, we defined the analysis criteria: navigation structure, menu organization, reading time, recurring patterns and the way services and differentiators were presented.',
-      'We turned those criteria into a prompt used with Claude. The model navigated public competitor information and organized a first analysis in Markdown, recording website structure and the source of each finding. Page captures complemented the reference material.',
+      'We turned those criteria into a prompt used with Claude. The model reviewed publicly available information on competitor websites and organized an initial analysis in Markdown, documenting each website’s structure and the source behind every finding. Page captures completed the reference material.',
     ],
     reviewBlocks: [
       {
@@ -73,6 +73,10 @@ export default {
       label: 'Image pending: benchmark with sources and review',
       caption:
         'Excerpt from the Markdown analysis with registered sources and the distinction between observations, apparent interpretations and removed conclusions.',
+      exampleAlt:
+        'Synthetic reference showing benchmark criteria, registered sources and human-review states.',
+      exampleCaption:
+        'AI-generated visual reference — replace it with a real excerpt from the analysis, including registered sources and review decisions.',
     },
   },
   contentStructure: {
@@ -81,7 +85,7 @@ export default {
       {
         heading: 'The website had already reached the project under schedule pressure',
         paragraphs: [
-          'Content production was not part of Design’s original scope, but the area needed to absorb it for the delivery to move forward.',
+          'Content production was not originally part of Design’s scope, but Design took it on so the delivery could move forward.',
         ],
       },
       {
@@ -95,7 +99,7 @@ export default {
         heading: 'Narrative purpose, target emotion and core message',
         paragraphs: [
           'For each page, we explored two or three content alternatives. Every block had to respond coherently to those three criteria. When a proposal did not sustain the intended storytelling, we adjusted the context and instructions and started another creation or adaptation round.',
-          'AI produced first alternatives; Design refined them and selected a direction. Once that path had been chosen, Marketing and Sales leadership reviewed and validated the content.',
+          'AI generated the first alternatives; Design refined them and selected a direction. Marketing and Sales leadership then reviewed and validated the chosen content.',
         ],
       },
       {
@@ -122,7 +126,7 @@ export default {
       {
         heading: 'Layout hypotheses',
         paragraphs: [
-          'Once that foundation and its components were available in Figma, I centralized the operation of Claude Code connected to the file through Figma MCP. Using the content and direction we had already defined, the model suggested possible page compositions.',
+          'Once that foundation and its components were available in Figma, I centralized the Claude Code workflow connected to the file through Figma MCP. Based on the content and direction we had already defined, the model suggested possible page compositions.',
           'AI did not create the Design System or determine the final solution: we treated its proposals as layout hypotheses.',
         ],
       },
@@ -148,13 +152,17 @@ export default {
       label: 'Image pending: suggestion, refinement and approved layout',
       caption:
         'From a model-suggested composition to the layout refined and selected by the Design team.',
+      exampleAlt:
+        'Synthetic reference comparing an initial suggestion, Design refinement and the approved layout.',
+      exampleCaption:
+        'AI-generated visual reference — replace it with the real comparison between suggestion, refinement and approved layout.',
     },
   },
   cms: {
     title: 'The website needed to stay alive',
     paragraphs: [
       'There was no point in launching two new websites and still depending on development for every change. The solution included an independent CMS for each website. The Scientific Affairs team, for example, started publishing abstracts, articles and educational videos autonomously, without calling on development for every update.',
-      'My team still followed the more sensitive pages to preserve visual consistency. Previously, an update had a two-to-three-day SLA. After my team took over website operations, changes could be published within minutes.',
+      'My team continued to oversee the more sensitive pages to preserve visual consistency. Previously, an update had a two-to-three-day SLA. After my team took over website operations, changes could be published within minutes.',
     ],
     imgAlt:
       'Composition showing the 3PH Alliance website and the CMS panel used to manage and publish content',
@@ -176,7 +184,7 @@ export default {
       {
         heading: 'Higher-risk points',
         paragraphs: [
-          'As a hands-on Head, I delegated exploration, layout delivery and much of the QA to the designers, with frequent alignment. I personally took on the higher-risk points: reviewing the analysis, leading the content architecture, operating the Claude Code–Figma workflow, reviewing what would be presented and leading conversations with C-level leaders and stakeholders.',
+          'As a hands-on Head of Design, I delegated exploration, layout delivery and much of the QA to the designers, maintaining frequent alignment. I personally took ownership of the higher-risk work: reviewing analyses, shaping the content architecture, operating the Claude Code–Figma MCP workflow, reviewing what would be presented and leading conversations with C-level leaders and stakeholders.',
         ],
       },
       {
@@ -205,7 +213,7 @@ export default {
       {
         heading: 'It was not production code',
         paragraphs: [
-          'The prototype had no front-end, back-end or CMS integration and was not treated as production code.',
+          'There was no technical integration between the prototype’s front end, a back end and the CMS. We did not treat it as production code.',
           'Before handoff, the team visually compared the result with Figma and tested it at different resolutions and on different devices. We corrected inconsistencies before the material reached the contractor.',
         ],
       },
@@ -214,7 +222,7 @@ export default {
       {
         heading: 'Complementary references',
         paragraphs: [
-          'The contractor received Figma and the prototype as complementary references. They could reuse parts of its structure instead of starting from static screens alone, while taking responsibility for routes, back-end functionality and CMS integration. This made the transition to implementation more direct.',
+          'The contractor received the Figma file and the executable prototype as complementary references. They could reuse parts of the prototype’s structure instead of working from static screens alone, while taking ownership of routes, back-end functionality and CMS integration. This made the transition into implementation more direct.',
           'My team stayed close throughout implementation, following responsiveness, search, forms, CMS and visual adjustments. I coordinated communication between the contractor, Technology, Design and stakeholders, as well as QA and validation rounds before each release.',
         ],
       },
@@ -231,10 +239,14 @@ export default {
       label: 'Image pending: executable prototype at different resolutions',
       caption:
         'Comparison between Figma and the executable prototype validated at different resolutions before handoff.',
+      exampleAlt:
+        'Synthetic reference showing an executable prototype validated on desktop, tablet and mobile.',
+      exampleCaption:
+        'AI-generated visual reference — replace it with real captures of the prototype and QA across different resolutions.',
     },
   },
   postLaunch: {
-    title: 'After the launch, the editorial operation began.',
+    title: 'After launch, ongoing editorial work began.',
     paragraphs: [
       'The first versions of the two websites went live in July 2025.',
       'After that came rounds of content updates, visual adjustments and new business needs. The websites kept evolving until they reached their current versions. The launch did not end the project. It created a foundation that could be corrected, expanded and updated without starting over every time.',
@@ -247,7 +259,7 @@ export default {
   impact: {
     title: 'Impact beyond the websites',
     paragraphs: [
-      'The delivery did not end with two redesigned websites. The areas with editorial autonomy started publishing content with little or no dependence on development, while the forms began receiving business inquiries practically every day.',
+      'The delivery did not end with two redesigned websites. Teams with editorial autonomy began publishing content with little or no dependence on development, while the forms started receiving business inquiries nearly every day.',
       'The impact also showed up outside the websites. Presentations and other company materials started following the same language, reinforcing a shared visual standard for 3PH Alliance and HRCRS.',
     ],
     metrics: [
@@ -263,7 +275,7 @@ export default {
       },
       {
         key: 'cms',
-        main: '2 independent CMSs',
+        main: '2 independent CMS platforms',
         sub: 'Editorial autonomy for 3PH Alliance and HRCRS',
       },
       {

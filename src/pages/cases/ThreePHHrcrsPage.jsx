@@ -20,6 +20,9 @@ import metricTimeImg from '../../media/cases/3ph-hrcrs/3ph-hrcrs-metric-publicat
 import metricRatingImg from '../../media/cases/3ph-hrcrs/3ph-hrcrs-metric-visual-rating.png'
 import metricPagesImg from '../../media/cases/3ph-hrcrs/3ph-hrcrs-metric-pages.png'
 import implementationIconImg from '../../media/cases/3ph-hrcrs/box-governanca-design.png'
+import benchmarkReviewExampleImg from '../../media/cases/3ph-hrcrs/example-benchmark-review.png'
+import layoutEvolutionExampleImg from '../../media/cases/3ph-hrcrs/example-layout-evolution.png'
+import prototypeResponsiveExampleImg from '../../media/cases/3ph-hrcrs/example-prototype-responsive.png'
 import quoteOpenImg from '../../media/shared/quotes/quote-open.png'
 import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
 
@@ -29,13 +32,25 @@ const METRIC_ICONS = {
   pages: metricPagesImg,
 }
 
-function EvidencePlaceholder({ evidence, className = '' }) {
+function EvidencePlaceholder({ evidence, className = '', imageSrc }) {
   return (
     <figure className={`${styles.evidenceFigure} ${className}`.trim()}>
-      <div className={styles.evidencePlaceholder}>
-        <span className={styles.evidencePlaceholderLabel}>{evidence.label}</span>
-      </div>
-      <figcaption className={styles.caption}>{evidence.caption}</figcaption>
+      {imageSrc ? (
+        <img
+          src={imageSrc}
+          alt={evidence.exampleAlt}
+          className={styles.evidenceExampleImage}
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <div className={styles.evidencePlaceholder}>
+          <span className={styles.evidencePlaceholderLabel}>{evidence.label}</span>
+        </div>
+      )}
+      <figcaption className={styles.caption}>
+        {imageSrc ? evidence.exampleCaption : evidence.caption}
+      </figcaption>
     </figure>
   )
 }
@@ -200,6 +215,7 @@ export default function ThreePHHrcrsPage() {
             <EvidencePlaceholder
               evidence={c.benchmark.evidence}
               className={styles.benchmarkEvidence}
+              imageSrc={benchmarkReviewExampleImg}
             />
           </div>
         </div>
@@ -262,6 +278,7 @@ export default function ThreePHHrcrsPage() {
             <EvidencePlaceholder
               evidence={c.designSystem.evidence}
               className={styles.designSystemEvidence}
+              imageSrc={layoutEvolutionExampleImg}
             />
             <EditorialBlocks
               blocks={c.designSystem.aiBlocks}
@@ -333,6 +350,7 @@ export default function ThreePHHrcrsPage() {
             <EvidencePlaceholder
               evidence={c.implementation.evidence}
               className={styles.implementationEvidence}
+              imageSrc={prototypeResponsiveExampleImg}
             />
             <div className={styles.implementationBox}>
               <div className={styles.webflowLogoWrap} aria-hidden="true">
