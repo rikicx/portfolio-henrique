@@ -288,7 +288,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 24px;
-  align-items: center;
+  align-items: start;
   margin-top: 48px;
 }
 
@@ -378,9 +378,9 @@
 .designSystemAiLayout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  grid-template-areas: "copy evidence";
+  grid-template-areas: "evidence copy";
   gap: 48px;
-  align-items: center;
+  align-items: start;
   margin-top: 48px;
 }
 
@@ -472,7 +472,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 40px 48px;
-  align-items: center;
+  align-items: start;
 }
 
 .implementationBox {
@@ -1429,7 +1429,7 @@
     gap: 6px;
   }
 
-  /* Atuação Estratégica ocupa toda a largura. */
+  /* Minha atuação ocupa toda a largura. */
   .metaItem:nth-child(4) {
     grid-column: 1 / -1;
   }
@@ -2074,8 +2074,8 @@
 }
 
 .benchmarkEvidence {
-  width: 76%;
-  margin: 0 0 0 auto;
+  width: 100%;
+  margin: 0;
 }
 
 .benchmarkEvidence .evidencePlaceholder {
@@ -2089,8 +2089,8 @@
 
 .designSystemEvidence {
   grid-area: evidence;
-  width: 92%;
-  justify-self: end;
+  width: 100%;
+  justify-self: stretch;
 }
 
 .designSystemEvidence .evidencePlaceholder {
@@ -2143,8 +2143,8 @@
 
   .benchmarkEvidence {
     order: 1;
-    width: 82%;
-    margin: 0 0 0 auto;
+    width: 100%;
+    margin: 0;
   }
 
   .benchmarkText .bodyTextBlock {
@@ -2198,8 +2198,8 @@
 
   .implementationEvidence {
     order: 1;
-    width: 88%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
   }
 
   .implementationBox {
@@ -2222,8 +2222,8 @@
 @media (min-width: 769px) and (max-width: 1024px) {
   .benchmarkEvidence {
     order: 1;
-    width: 64%;
-    margin: 0 0 0 auto;
+    width: 100%;
+    margin: 0;
   }
 
   .benchmarkText .bodyTextBlock {
@@ -2262,10 +2262,14 @@
 
   .designSystemAiLayout {
     order: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     margin-top: 32px;
   }
 
   .designSystemAiText {
+    order: 2;
     margin: 0;
   }
 
@@ -2277,8 +2281,8 @@
 
   .implementationEvidence {
     order: 1;
-    width: 68%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
   }
 
   .implementationBox {
@@ -2288,5 +2292,192 @@
   .implementationContinuation {
     order: 3;
     margin-top: 0;
+  }
+}
+
+/* ─── Ritmo editorial ───────────────────────────────────────────────────── */
+.editorialSectionLead,
+.editorialLead {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.24px;
+}
+
+.editorialBlocks {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  min-width: 0;
+}
+
+.editorialBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.editorialParagraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.editorialParagraphs p {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.editorialBlockEmphasis {
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.problemaText .editorialBlocks {
+  max-width: 900px;
+}
+
+.implementationBox .editorialBlocks {
+  max-width: 943px;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .editorialSectionLead,
+  .editorialLead {
+    font-size: 18px;
+    line-height: 1.35;
+    letter-spacing: 0;
+  }
+
+  .editorialBlocks {
+    gap: 28px;
+  }
+
+  .editorialBlock {
+    gap: 10px;
+  }
+
+  .editorialParagraphs {
+    gap: 14px;
+  }
+
+  .editorialParagraphs p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .editorialBlockEmphasis {
+    padding-top: 20px;
+  }
+
+  .problemaText .editorialBlocks,
+  .implementationBox .editorialBlocks {
+    max-width: none;
+  }
+
+  .implementationBox .editorialBlocks {
+    gap: 24px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .editorialSectionLead,
+  .editorialLead {
+    font-size: 22px;
+    line-height: 1.3;
+    letter-spacing: -0.22px;
+  }
+
+  .editorialBlocks {
+    gap: 32px;
+  }
+
+  .editorialParagraphs p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .problemaText .editorialBlocks,
+  .implementationBox .editorialBlocks {
+    max-width: none;
+  }
+}
+
+/* O problema — distribui o conteúdo sem alongar a barra editorial em telas largas. */
+@media (min-width: 1025px) and (max-width: 1279px) {
+  .problemaSection .problemaText {
+    padding: 40px 48px;
+  }
+
+  .problemaSection .problemaText > .editorialBlocks {
+    max-width: 820px;
+    gap: 28px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .problemaSection .problemaText {
+    justify-content: flex-start;
+    gap: 24px;
+    padding: 40px 48px;
+  }
+
+  .problemaSection .problemaText > .editorialBlocks {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: 24px 48px;
+    width: 100%;
+    max-width: none;
+    align-items: start;
+  }
+
+  .problemaSection .editorialBlock:first-child {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .problemaSection .editorialBlock:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .problemaSection .editorialBlock:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .problemaSection .editorialParagraphs p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .contentStructureText > .editorialBlocks {
+    order: 3;
+    width: 100%;
+    max-width: none;
+    margin: 16px 0 0;
+  }
+
+  .governanceText > .editorialBlocks {
+    order: 3;
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .governanceText > .editorialBlocks {
+    order: 3;
+    width: 100%;
+    max-width: 820px;
   }
 }

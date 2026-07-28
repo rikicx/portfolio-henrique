@@ -40,6 +40,28 @@ function EvidencePlaceholder({ evidence, className = '' }) {
   )
 }
 
+function EditorialBlocks({ blocks, className = '' }) {
+  return (
+    <div className={`${styles.editorialBlocks} ${className}`.trim()}>
+      {blocks.map((block, index) => (
+        <div
+          key={block.heading || index}
+          className={`${styles.editorialBlock} ${block.emphasis ? styles.editorialBlockEmphasis : ''}`.trim()}
+        >
+          {block.heading && (
+            <h3 className={styles.editorialLead}>{block.heading}</h3>
+          )}
+          <div className={styles.editorialParagraphs}>
+            {block.paragraphs.map((paragraph, paragraphIndex) => (
+              <p key={paragraphIndex}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export default function ThreePHHrcrsPage() {
   const { lang } = useLanguage()
   const c = lang === 'en' ? enContent : ptContent
@@ -121,10 +143,8 @@ export default function ThreePHHrcrsPage() {
               {c.problem.label}
             </h2>
             <div className={styles.problemaText}>
-              <p>{c.problem.title}</p>
-              {c.problem.paragraphs.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
+              <h3 className={styles.editorialSectionLead}>{c.problem.title}</h3>
+              <EditorialBlocks blocks={c.problem.blocks} />
             </div>
           </div>
         </div>
@@ -164,18 +184,17 @@ export default function ThreePHHrcrsPage() {
                 {c.benchmark.title}
               </h2>
               <div className={styles.bodyTextBlock}>
-                {c.benchmark.paragraphs.slice(0, 2).map((paragraph, index) => (
+                {c.benchmark.introParagraphs.map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
                 ))}
               </div>
             </div>
           </div>
           <div className={styles.benchmarkReviewLayout}>
-            <div className={`${styles.bodyTextBlock} ${styles.benchmarkReviewText}`}>
-              {c.benchmark.paragraphs.slice(2).map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </div>
+            <EditorialBlocks
+              blocks={c.benchmark.reviewBlocks}
+              className={styles.benchmarkReviewText}
+            />
             <EvidencePlaceholder
               evidence={c.benchmark.evidence}
               className={styles.benchmarkEvidence}
@@ -192,11 +211,7 @@ export default function ThreePHHrcrsPage() {
               <h2 id="content-structure-title" className={styles.sectionHeading}>
                 {c.contentStructure.title}
               </h2>
-              <div className={styles.bodyTextBlock}>
-                {c.contentStructure.paragraphs.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
-              </div>
+              <EditorialBlocks blocks={c.contentStructure.blocks} />
             </div>
             <figure className={styles.contentStructureFigure}>
               <button
@@ -246,11 +261,10 @@ export default function ThreePHHrcrsPage() {
               evidence={c.designSystem.evidence}
               className={styles.designSystemEvidence}
             />
-            <div className={`${styles.bodyTextBlockWide} ${styles.designSystemAiText}`}>
-              {c.designSystem.aiParagraphs.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </div>
+            <EditorialBlocks
+              blocks={c.designSystem.aiBlocks}
+              className={styles.designSystemAiText}
+            />
           </div>
         </div>
       </RevealSection>
@@ -301,11 +315,7 @@ export default function ThreePHHrcrsPage() {
               <h2 id="governance-title" className={styles.sectionHeading}>
                 {c.governance.title}
               </h2>
-              <div className={styles.bodyTextBlock}>
-                {c.governance.paragraphs.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
-              </div>
+              <EditorialBlocks blocks={c.governance.blocks} />
             </div>
           </div>
         </div>
@@ -330,17 +340,15 @@ export default function ThreePHHrcrsPage() {
                   className={styles.webflowLogo}
                 />
               </div>
-              <div className={styles.implementationText}>
-                {c.implementation.introParagraphs.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
-              </div>
+              <EditorialBlocks
+                blocks={c.implementation.introBlocks}
+                className={styles.implementationText}
+              />
             </div>
-            <div className={`${styles.implementationText} ${styles.implementationContinuation}`}>
-              {c.implementation.continuationParagraphs.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </div>
+            <EditorialBlocks
+              blocks={c.implementation.continuationBlocks}
+              className={`${styles.implementationText} ${styles.implementationContinuation}`}
+            />
           </div>
         </div>
       </RevealSection>
