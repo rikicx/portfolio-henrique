@@ -32,8 +32,20 @@ export default {
     title: 'O site já nascia desatualizado',
     paragraphs: [
       'Os sites da 3PH Alliance e da HRCRS não atendiam nossas expectativas.',
-      'Tinham sido feitos em HTML puro e qualquer mudança de conteúdo dependia de desenvolvimento. Isso já seria um problema em qualquer empresa. Para nós era ainda pior, porque nosso modelo de negócio mudava praticamente todo mês.',
-      'Toda semana surgia um serviço novo, uma prioridade diferente ou outra forma de explicar o que a empresa fazia. Quando o conteúdo finalmente era publicado, muitas vezes já precisava ser alterado de novo.',
+      {
+        parts: [
+          { text: 'Tinham sido feitos em HTML puro e ' },
+          { text: 'qualquer mudança de conteúdo dependia de desenvolvimento', strong: true },
+          { text: '. Isso já seria um problema em qualquer empresa. Para nós era ainda pior, porque nosso modelo de negócio mudava praticamente todo mês.' },
+        ],
+      },
+      {
+        parts: [
+          { text: 'Toda semana surgia um serviço novo, uma prioridade diferente ou outra forma de explicar o que a empresa fazia. Quando o conteúdo finalmente era publicado, muitas vezes ' },
+          { text: 'já precisava ser alterado de novo', strong: true },
+          { text: '.' },
+        ],
+      },
       'A relação entre as duas empresas também não ajudava. A HRCRS faz parte da 3PH Alliance, mas muita gente entendia o contrário. Outras pessoas nem percebiam que existia uma relação entre elas.',
     ],
   },
@@ -50,15 +62,35 @@ export default {
     kicker: 'Primeiro, precisávamos organizar o discurso',
     title: 'Comparar o setor com critérios verificáveis',
     introParagraphs: [
-      'Já conhecíamos os principais concorrentes. O desafio não era descobrir quem observar, mas comparar os sites de forma consistente. Antes de iniciar a coleta, definimos os parâmetros da análise: estrutura de navegação, organização dos menus, tempo de leitura, padrões recorrentes e formas de apresentar serviços e diferenciais.',
-      'Esses critérios foram transformados em um prompt usado com Claude. O modelo navegou por informações públicas dos concorrentes e organizou uma primeira análise em Markdown, registrando a estrutura dos sites e as fontes de cada achado. Capturas das páginas complementavam o material de referência.',
+      {
+        parts: [
+          { text: 'Já conhecíamos os principais concorrentes. O desafio não era descobrir quem observar, mas comparar os sites de forma consistente. Antes de iniciar a coleta, ' },
+          { text: 'definimos os parâmetros da análise', strong: true },
+          { text: ': estrutura de navegação, organização dos menus, tempo de leitura, padrões recorrentes e formas de apresentar serviços e diferenciais.' },
+        ],
+      },
+      {
+        parts: [
+          { text: 'Esses critérios foram transformados em um prompt usado com Claude. O modelo navegou por informações públicas dos concorrentes e organizou uma primeira análise em Markdown, registrando a estrutura dos sites e ' },
+          { text: 'as fontes de cada achado', strong: true },
+          { text: '. Capturas das páginas complementavam o material de referência.' },
+        ],
+      },
     ],
     reviewBlocks: [
       {
         heading: 'O documento não era tratado como uma conclusão pronta',
         paragraphs: [
           'Voltávamos aos sites para verificar os pontos levantados, completar extrações incompletas e corrigir interpretações que iam além do que a fonte permitia afirmar.',
-          'Quando uma leitura parecia plausível, mas não podia ser comprovada, ela permanecia explicitamente marcada como “aparente”. Quando não havia sustentação suficiente, era removida.',
+          {
+            parts: [
+              { text: 'Quando uma leitura parecia plausível, mas não podia ser comprovada, ela permanecia ' },
+              { text: 'explicitamente marcada como “aparente”', strong: true },
+              { text: '. Quando não havia sustentação suficiente, ' },
+              { text: 'era removida', strong: true },
+              { text: '.' },
+            ],
+          },
         ],
       },
       {
@@ -83,14 +115,26 @@ export default {
       {
         heading: 'O site já havia chegado ao projeto com o prazo pressionado',
         paragraphs: [
-          'A produção de conteúdo não fazia parte do escopo inicial de Design, mas precisou ser absorvida pela área para que a entrega avançasse.',
+          {
+            parts: [
+              { text: 'A produção de conteúdo ' },
+              { text: 'não fazia parte do escopo inicial de Design', strong: true },
+              { text: ', mas precisou ser absorvida pela área para que a entrega avançasse.' },
+            ],
+          },
         ],
       },
       {
         heading: 'Decks, manual de marca e exemplos da linguagem da empresa',
         paragraphs: [
           'Esses materiais eram institucionais e comerciais; nenhum dado de pacientes ou outra informação sensível entrou nesse fluxo.',
-          'Antes de pedir propostas de texto, solicitávamos que a IA explicasse o modelo de negócio com suas próprias palavras. O time confrontava essa interpretação com os materiais e com seu conhecimento do negócio, corrigindo inconsistências antes de avançar.',
+          {
+            parts: [
+              { text: 'Antes de pedir propostas de texto, solicitávamos que ' },
+              { text: 'a IA explicasse o modelo de negócio com suas próprias palavras', strong: true },
+              { text: '. O time confrontava essa interpretação com os materiais e com seu conhecimento do negócio, corrigindo inconsistências antes de avançar.' },
+            ],
+          },
         ],
       },
       {
@@ -124,8 +168,19 @@ export default {
       {
         heading: 'Hipóteses de layout',
         paragraphs: [
-          'Depois que essa base e seus componentes já estavam disponíveis no Figma, centralizei a operação do Claude Code conectado ao arquivo por Figma MCP. A partir do conteúdo e da direção já definidos, o modelo sugeria possíveis composições para as páginas.',
-          'A IA não criou o Design System nem determinou a solução final: suas propostas eram tratadas como hipóteses de layout.',
+          {
+            parts: [
+              { text: 'Depois que essa base e seus componentes já estavam disponíveis no Figma, ' },
+              { text: 'centralizei a operação do Claude Code conectado ao arquivo por Figma MCP', strong: true },
+              { text: '. A partir do conteúdo e da direção já definidos, o modelo sugeria possíveis composições para as páginas.' },
+            ],
+          },
+          {
+            parts: [
+              { text: 'A IA não criou o Design System nem determinou a solução final', strong: true },
+              { text: ': suas propostas eram tratadas como hipóteses de layout.' },
+            ],
+          },
         ],
       },
       {
@@ -180,7 +235,13 @@ export default {
       {
         heading: 'Pontos de maior risco',
         paragraphs: [
-          'Como Head hands-on, eu delegava aos designers a exploração, a entrega dos layouts e boa parte do QA, mantendo alinhamentos frequentes. Assumia pessoalmente os pontos de maior risco: revisão das análises, arquitetura de conteúdo, operação do fluxo entre Claude Code e Figma, revisão do que seria apresentado e condução das conversas com C-levels e stakeholders.',
+          {
+            parts: [
+              { text: 'Como Head hands-on, eu delegava aos designers a exploração, a entrega dos layouts e boa parte do QA, mantendo alinhamentos frequentes. ' },
+              { text: 'Assumia pessoalmente os pontos de maior risco', strong: true },
+              { text: ': revisão das análises, arquitetura de conteúdo, operação do fluxo entre Claude Code e Figma, revisão do que seria apresentado e condução das conversas com C-levels e stakeholders.' },
+            ],
+          },
         ],
       },
       {
@@ -209,7 +270,13 @@ export default {
       {
         heading: 'Não era código de produção',
         paragraphs: [
-          'Esse protótipo não tinha integração entre front-end, back-end e CMS e não era tratado como código de produção.',
+          {
+            parts: [
+              { text: 'Esse protótipo não tinha integração entre front-end, back-end e CMS e ' },
+              { text: 'não era tratado como código de produção', strong: true },
+              { text: '.' },
+            ],
+          },
           'Antes da entrega, o time comparava visualmente o resultado com o Figma e realizava testes em diferentes resoluções e dispositivos. As inconsistências eram corrigidas antes de o material chegar ao contractor.',
         ],
       },
@@ -218,7 +285,13 @@ export default {
       {
         heading: 'Referências complementares',
         paragraphs: [
-          'O contractor recebia o Figma e o protótipo como referências complementares. Ele conseguia reaproveitar partes da estrutura em vez de partir apenas de telas estáticas, enquanto assumia as rotas, as funcionalidades de back-end e a integração com o CMS. Isso tornou a passagem para a implementação mais direta.',
+          {
+            parts: [
+              { text: 'O contractor recebia o Figma e o protótipo como referências complementares. Ele conseguia ' },
+              { text: 'reaproveitar partes da estrutura em vez de partir apenas de telas estáticas', strong: true },
+              { text: ', enquanto assumia as rotas, as funcionalidades de back-end e a integração com o CMS. Isso tornou a passagem para a implementação mais direta.' },
+            ],
+          },
           'Meu time continuava próximo durante a implementação, acompanhando responsividade, busca, formulários, CMS e ajustes visuais. Eu coordenava a comunicação entre contractor, Tecnologia, Design e stakeholders, além das rodadas de QA e validação antes de cada publicação.',
         ],
       },
@@ -226,8 +299,20 @@ export default {
         heading: 'A regra era a mesma em todas as etapas',
         emphasis: true,
         paragraphs: [
-          'Um output da IA só avançava depois do checkpoint adequado — verificação das fontes no benchmark, revisão editorial e validação de negócio no conteúdo, refinamento de Design nos layouts ou testes visuais no protótipo.',
-          'A IA acelerava a exploração e a tradução entre artefatos; a responsabilidade pelas decisões permanecia com as pessoas.',
+          {
+            parts: [
+              { text: 'Um output da IA ' },
+              { text: 'só avançava depois do checkpoint adequado', strong: true },
+              { text: ' — verificação das fontes no benchmark, revisão editorial e validação de negócio no conteúdo, refinamento de Design nos layouts ou testes visuais no protótipo.' },
+            ],
+          },
+          {
+            parts: [
+              { text: 'A IA acelerava a exploração e a tradução entre artefatos; ' },
+              { text: 'a responsabilidade pelas decisões permanecia com as pessoas', strong: true },
+              { text: '.' },
+            ],
+          },
         ],
       },
     ],
@@ -253,7 +338,15 @@ export default {
   impact: {
     title: 'Impacto além dos sites',
     paragraphs: [
-      'A entrega não terminou em dois sites redesenhados. As áreas com autonomia editorial passaram a publicar conteúdo com pouca ou nenhuma dependência de desenvolvimento, enquanto os formulários começaram a receber contatos comerciais praticamente todos os dias.',
+      {
+        parts: [
+          { text: 'A entrega não terminou em dois sites redesenhados. As áreas com autonomia editorial passaram a publicar conteúdo com ' },
+          { text: 'pouca ou nenhuma dependência de desenvolvimento', strong: true },
+          { text: ', enquanto os formulários começaram a receber ' },
+          { text: 'contatos comerciais praticamente todos os dias', strong: true },
+          { text: '.' },
+        ],
+      },
       'O impacto também apareceu fora dos sites. Apresentações e outros materiais da empresa começaram a seguir a mesma linguagem, reforçando uma régua visual comum para a 3PH Alliance e a HRCRS.',
     ],
     metrics: [

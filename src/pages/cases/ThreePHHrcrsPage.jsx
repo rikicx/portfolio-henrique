@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { Fragment, useState, useEffect, useRef } from 'react'
 import Layout from '../../components/Layout'
 import Seo from '../../components/Seo'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
@@ -53,6 +53,18 @@ function EvidencePlaceholder({ evidence, className = '', imageSrc }) {
   )
 }
 
+function RichText({ value }) {
+  if (typeof value === 'string') return value
+
+  return value.parts.map((part, index) => (
+    part.strong ? (
+      <strong key={index} className={styles.inlineStrong}>{part.text}</strong>
+    ) : (
+      <Fragment key={index}>{part.text}</Fragment>
+    )
+  ))
+}
+
 function EditorialBlocks({ blocks, className = '' }) {
   return (
     <div className={`${styles.editorialBlocks} ${className}`.trim()}>
@@ -66,7 +78,7 @@ function EditorialBlocks({ blocks, className = '' }) {
           )}
           <div className={styles.editorialParagraphs}>
             {block.paragraphs.map((paragraph, paragraphIndex) => (
-              <p key={paragraphIndex}>{paragraph}</p>
+              <p key={paragraphIndex}><RichText value={paragraph} /></p>
             ))}
           </div>
         </div>
@@ -158,7 +170,7 @@ export default function ThreePHHrcrsPage() {
             <div className={styles.problemaText}>
               <p>{c.problem.title}</p>
               {c.problem.paragraphs.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
+                <p key={index}><RichText value={paragraph} /></p>
               ))}
             </div>
           </div>
@@ -200,7 +212,7 @@ export default function ThreePHHrcrsPage() {
               </h2>
               <div className={styles.bodyTextBlock}>
                 {c.benchmark.introParagraphs.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
+                  <p key={index}><RichText value={paragraph} /></p>
                 ))}
               </div>
             </div>
@@ -259,7 +271,7 @@ export default function ThreePHHrcrsPage() {
           </h2>
           <div className={`${styles.bodyTextBlockWide} ${styles.designSystemBaseText}`}>
             {c.designSystem.baseParagraphs.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
+              <p key={index}><RichText value={paragraph} /></p>
             ))}
           </div>
           <figure className={styles.designSystemFigure}>
@@ -296,7 +308,7 @@ export default function ThreePHHrcrsPage() {
               </h2>
               <div className={styles.bodyTextBlock}>
                 {c.cms.paragraphs.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
+                  <p key={index}><RichText value={paragraph} /></p>
                 ))}
               </div>
             </div>
@@ -381,7 +393,7 @@ export default function ThreePHHrcrsPage() {
               </h2>
               <div className={styles.bodyTextBlock}>
                 {c.postLaunch.paragraphs.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
+                  <p key={index}><RichText value={paragraph} /></p>
                 ))}
               </div>
             </div>
@@ -409,7 +421,7 @@ export default function ThreePHHrcrsPage() {
               </h2>
               <div className={styles.bodyTextBlock}>
                 {c.impact.paragraphs.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
+                  <p key={index}><RichText value={paragraph} /></p>
                 ))}
               </div>
             </div>

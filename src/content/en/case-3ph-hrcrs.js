@@ -32,8 +32,20 @@ export default {
     title: 'The websites were already outdated before launch',
     paragraphs: [
       'The 3PH Alliance and HRCRS websites did not meet our expectations.',
-      'They had been built in plain HTML, and any content change depended on development. That would already be a problem in any company. For us it was even worse, because our business model changed practically every month.',
-      'Every week there was a new service, a different priority or another way of explaining what the company did. By the time the content was published, it often needed to be changed again.',
+      {
+        parts: [
+          { text: 'They had been built in plain HTML, and ' },
+          { text: 'any content change depended on development', strong: true },
+          { text: '. That would already be a problem in any company. For us it was even worse, because our business model changed practically every month.' },
+        ],
+      },
+      {
+        parts: [
+          { text: 'Every week there was a new service, a different priority or another way of explaining what the company did. By the time the content was published, ' },
+          { text: 'it often needed to be changed again', strong: true },
+          { text: '.' },
+        ],
+      },
       'The relationship between the two companies did not help either. HRCRS is part of the 3PH Alliance, but many people understood it the other way around. Others did not even realize there was a relationship between them.',
     ],
   },
@@ -50,15 +62,35 @@ export default {
     kicker: 'First, we needed to organize the discourse',
     title: 'Comparing the sector with verifiable criteria',
     introParagraphs: [
-      'We already knew the main competitors. The challenge was not deciding who to observe, but comparing the websites consistently. Before collecting anything, we defined the analysis criteria: navigation structure, menu organization, reading time, recurring patterns and the way services and differentiators were presented.',
-      'We turned those criteria into a prompt used with Claude. The model reviewed publicly available information on competitor websites and organized an initial analysis in Markdown, documenting each website’s structure and the source behind every finding. Page captures completed the reference material.',
+      {
+        parts: [
+          { text: 'We already knew the main competitors. The challenge was not deciding who to observe, but comparing the websites consistently. Before collecting anything, ' },
+          { text: 'we defined the analysis criteria', strong: true },
+          { text: ': navigation structure, menu organization, reading time, recurring patterns and the way services and differentiators were presented.' },
+        ],
+      },
+      {
+        parts: [
+          { text: 'We turned those criteria into a prompt used with Claude. The model reviewed publicly available information on competitor websites and organized an initial analysis in Markdown, documenting each website’s structure and ' },
+          { text: 'the source behind every finding', strong: true },
+          { text: '. Page captures completed the reference material.' },
+        ],
+      },
     ],
     reviewBlocks: [
       {
         heading: 'We did not treat the document as a finished conclusion',
         paragraphs: [
           'We returned to the websites to verify findings, complete partial extractions and correct interpretations that went beyond what the source supported.',
-          'When an interpretation was plausible but could not be proved, it stayed explicitly marked as “apparent.” When there was not enough support, we removed it.',
+          {
+            parts: [
+              { text: 'When an interpretation was plausible but could not be proved, it stayed ' },
+              { text: 'explicitly marked as “apparent”', strong: true },
+              { text: '. When there was not enough support, ' },
+              { text: 'we removed it', strong: true },
+              { text: '.' },
+            ],
+          },
         ],
       },
       {
@@ -83,14 +115,26 @@ export default {
       {
         heading: 'The website had already reached the project under schedule pressure',
         paragraphs: [
-          'Content production was not originally part of Design’s scope, but Design took it on so the delivery could move forward.',
+          {
+            parts: [
+              { text: 'Content production ' },
+              { text: 'was not originally part of Design’s scope', strong: true },
+              { text: ', but Design took it on so the delivery could move forward.' },
+            ],
+          },
         ],
       },
       {
         heading: 'Sales decks, brand guidelines and examples of the company’s language',
         paragraphs: [
           'These were institutional and commercial materials; no patient data or other sensitive information entered this workflow.',
-          'Before requesting copy proposals, we asked the AI to explain the business model in its own words. The team compared that interpretation with the materials and its business knowledge, correcting inconsistencies before moving on.',
+          {
+            parts: [
+              { text: 'Before requesting copy proposals, we asked ' },
+              { text: 'the AI to explain the business model in its own words', strong: true },
+              { text: '. The team compared that interpretation with the materials and its business knowledge, correcting inconsistencies before moving on.' },
+            ],
+          },
         ],
       },
       {
@@ -124,8 +168,19 @@ export default {
       {
         heading: 'Layout hypotheses',
         paragraphs: [
-          'Once that foundation and its components were available in Figma, I centralized the Claude Code workflow connected to the file through Figma MCP. Based on the content and direction we had already defined, the model suggested possible page compositions.',
-          'AI did not create the Design System or determine the final solution: we treated its proposals as layout hypotheses.',
+          {
+            parts: [
+              { text: 'Once that foundation and its components were available in Figma, ' },
+              { text: 'I centralized the Claude Code workflow connected to the file through Figma MCP', strong: true },
+              { text: '. Based on the content and direction we had already defined, the model suggested possible page compositions.' },
+            ],
+          },
+          {
+            parts: [
+              { text: 'AI did not create the Design System or determine the final solution', strong: true },
+              { text: ': we treated its proposals as layout hypotheses.' },
+            ],
+          },
         ],
       },
       {
@@ -180,7 +235,13 @@ export default {
       {
         heading: 'Higher-risk points',
         paragraphs: [
-          'As a hands-on Head of Design, I delegated exploration, layout delivery and much of the QA to the designers, maintaining frequent alignment. I personally took ownership of the higher-risk work: reviewing analyses, shaping the content architecture, operating the Claude Code–Figma MCP workflow, reviewing what would be presented and leading conversations with C-level leaders and stakeholders.',
+          {
+            parts: [
+              { text: 'As a hands-on Head of Design, I delegated exploration, layout delivery and much of the QA to the designers, maintaining frequent alignment. ' },
+              { text: 'I personally took ownership of the higher-risk work', strong: true },
+              { text: ': reviewing analyses, shaping the content architecture, operating the Claude Code–Figma MCP workflow, reviewing what would be presented and leading conversations with C-level leaders and stakeholders.' },
+            ],
+          },
         ],
       },
       {
@@ -209,7 +270,13 @@ export default {
       {
         heading: 'It was not production code',
         paragraphs: [
-          'There was no technical integration between the prototype’s front end, a back end and the CMS. We did not treat it as production code.',
+          {
+            parts: [
+              { text: 'There was no technical integration between the prototype’s front end, a back end and the CMS. ' },
+              { text: 'We did not treat it as production code', strong: true },
+              { text: '.' },
+            ],
+          },
           'Before handoff, the team visually compared the result with Figma and tested it at different resolutions and on different devices. We corrected inconsistencies before the material reached the contractor.',
         ],
       },
@@ -218,7 +285,13 @@ export default {
       {
         heading: 'Complementary references',
         paragraphs: [
-          'The contractor received the Figma file and the executable prototype as complementary references. They could reuse parts of the prototype’s structure instead of working from static screens alone, while taking ownership of routes, back-end functionality and CMS integration. This made the transition into implementation more direct.',
+          {
+            parts: [
+              { text: 'The contractor received the Figma file and the executable prototype as complementary references. They could ' },
+              { text: 'reuse parts of the prototype’s structure instead of working from static screens alone', strong: true },
+              { text: ', while taking ownership of routes, back-end functionality and CMS integration. This made the transition into implementation more direct.' },
+            ],
+          },
           'My team stayed close throughout implementation, following responsiveness, search, forms, CMS and visual adjustments. I coordinated communication between the contractor, Technology, Design and stakeholders, as well as QA and validation rounds before each release.',
         ],
       },
@@ -226,8 +299,20 @@ export default {
         heading: 'The same rule applied at every stage',
         emphasis: true,
         paragraphs: [
-          'An AI output advanced only after the appropriate checkpoint — source verification in the benchmark, editorial review and business validation for content, Design refinement for layouts or visual testing for the prototype.',
-          'AI accelerated exploration and translation between artifacts; responsibility for decisions remained with people.',
+          {
+            parts: [
+              { text: 'An AI output ' },
+              { text: 'advanced only after the appropriate checkpoint', strong: true },
+              { text: ' — source verification in the benchmark, editorial review and business validation for content, Design refinement for layouts or visual testing for the prototype.' },
+            ],
+          },
+          {
+            parts: [
+              { text: 'AI accelerated exploration and translation between artifacts; ' },
+              { text: 'responsibility for decisions remained with people', strong: true },
+              { text: '.' },
+            ],
+          },
         ],
       },
     ],
@@ -253,7 +338,15 @@ export default {
   impact: {
     title: 'Impact beyond the websites',
     paragraphs: [
-      'The delivery did not end with two redesigned websites. Teams with editorial autonomy began publishing content with little or no dependence on development, while the forms started receiving business inquiries nearly every day.',
+      {
+        parts: [
+          { text: 'The delivery did not end with two redesigned websites. Teams with editorial autonomy began publishing content with ' },
+          { text: 'little or no dependence on development', strong: true },
+          { text: ', while the forms started receiving ' },
+          { text: 'business inquiries nearly every day', strong: true },
+          { text: '.' },
+        ],
+      },
       'The impact also showed up outside the websites. Presentations and other company materials started following the same language, reinforcing a shared visual standard for 3PH Alliance and HRCRS.',
     ],
     metrics: [

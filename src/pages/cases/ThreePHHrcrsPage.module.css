@@ -59,6 +59,11 @@
   margin: 0;
 }
 
+.inlineStrong {
+  color: inherit;
+  font-weight: 600;
+}
+
 /* ─── 1. Hero ────────────────────────────────────────────────────────────── */
 .hero {
   position: relative;
