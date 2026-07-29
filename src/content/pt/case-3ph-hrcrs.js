@@ -46,7 +46,13 @@ export default {
           { text: '.' },
         ],
       },
-      'A relação entre as duas empresas também não ajudava. A HRCRS faz parte da 3PH Alliance, mas muita gente entendia o contrário. Outras pessoas nem percebiam que existia uma relação entre elas.',
+      {
+        parts: [
+          { text: 'A relação entre as duas empresas também não ajudava. A HRCRS faz parte da 3PH Alliance, mas ' },
+          { text: 'muita gente entendia o contrário', strong: true },
+          { text: '. Outras pessoas nem percebiam que existia uma relação entre elas.' },
+        ],
+      },
     ],
   },
   centralQuestion: {
@@ -96,8 +102,20 @@ export default {
       {
         heading: 'Sem transformar inferências da IA em fatos',
         paragraphs: [
-          'Com isso, o trabalho manual deixou de se concentrar na coleta integral de todos os concorrentes e passou a se concentrar na verificação, na correção e no preenchimento de lacunas.',
-          'O benchmark nos deu uma base comum para discutir conteúdo e navegação.',
+          {
+            parts: [
+              { text: 'Com isso, o trabalho manual deixou de se concentrar na coleta integral de todos os concorrentes e passou a se concentrar na ' },
+              { text: 'verificação, na correção e no preenchimento de lacunas', strong: true },
+              { text: '.' },
+            ],
+          },
+          {
+            parts: [
+              { text: 'O benchmark nos deu uma ' },
+              { text: 'base comum para discutir conteúdo e navegação', strong: true },
+              { text: '.' },
+            ],
+          },
         ],
       },
     ],
@@ -127,7 +145,13 @@ export default {
       {
         heading: 'Decks, manual de marca e exemplos da linguagem da empresa',
         paragraphs: [
-          'Esses materiais eram institucionais e comerciais; nenhum dado de pacientes ou outra informação sensível entrou nesse fluxo.',
+          {
+            parts: [
+              { text: 'Esses materiais eram institucionais e comerciais; ' },
+              { text: 'nenhum dado de pacientes ou outra informação sensível entrou nesse fluxo', strong: true },
+              { text: '.' },
+            ],
+          },
           {
             parts: [
               { text: 'Antes de pedir propostas de texto, solicitávamos que ' },
@@ -141,7 +165,15 @@ export default {
         heading: 'Propósito narrativo, emoção desejada e mensagem central',
         paragraphs: [
           'Para cada página, explorávamos duas ou três alternativas de conteúdo. Cada bloco precisava responder de forma coerente a esses três critérios. Quando uma proposta não sustentava o storytelling pretendido, ajustávamos o contexto e as orientações e iniciávamos uma nova rodada de criação ou adaptação.',
-          'A IA produzia primeiras alternativas; Design refinava e selecionava uma direção. Depois dessa escolha, o conteúdo era revisado e validado pelas lideranças de Marketing e Vendas.',
+          {
+            parts: [
+              { text: 'A IA produzia primeiras alternativas; ' },
+              { text: 'Design refinava e selecionava uma direção', strong: true },
+              { text: '. Depois dessa escolha, o conteúdo era ' },
+              { text: 'revisado e validado pelas lideranças de Marketing e Vendas', strong: true },
+              { text: '.' },
+            ],
+          },
         ],
       },
       {
@@ -161,8 +193,20 @@ export default {
   designSystem: {
     title: 'Uma base visual para os dois sites',
     baseParagraphs: [
-      'Os sites precisavam parecer parte da mesma organização sem parecer cópias um do outro. Meu time criou um Design System do zero, compartilhando cores, tipografia, espaçamentos, componentes e padrões de interação.',
-      'A base visual era a mesma. O que mudava era o discurso, o tom e a forma como cada empresa apresentava seus serviços. Meu papel era orientar essas decisões e garantir que as duas experiências continuassem coerentes.',
+      {
+        parts: [
+          { text: 'Os sites precisavam parecer parte da mesma organização sem parecer cópias um do outro. ' },
+          { text: 'Meu time criou um Design System do zero', strong: true },
+          { text: ', compartilhando cores, tipografia, espaçamentos, componentes e padrões de interação.' },
+        ],
+      },
+      {
+        parts: [
+          { text: 'A base visual era a mesma. O que mudava era o discurso, o tom e a forma como cada empresa apresentava seus serviços. Meu papel era orientar essas decisões e ' },
+          { text: 'garantir que as duas experiências continuassem coerentes', strong: true },
+          { text: '.' },
+        ],
+      },
     ],
     aiBlocks: [
       {
@@ -186,7 +230,13 @@ export default {
       {
         heading: 'Exploração, refinamento e QA',
         paragraphs: [
-          'Os designers conduziam a exploração, o refinamento e a entrega dos layouts, além do QA, com alinhamentos frequentes ao longo do processo. Eu revisava o material antes das discussões de maior risco.',
+          {
+            parts: [
+              { text: 'Os designers conduziam a exploração, o refinamento e a entrega dos layouts, além do QA, com alinhamentos frequentes ao longo do processo. ' },
+              { text: 'Eu revisava o material antes das discussões de maior risco', strong: true },
+              { text: '.' },
+            ],
+          },
         ],
       },
       {
@@ -213,7 +263,15 @@ export default {
     title: 'O site precisava continuar vivo',
     paragraphs: [
       'Não adiantava lançar dois sites novos e continuar dependendo de desenvolvimento para cada mudança. A solução passou a ter um CMS independente para cada site. O time de Scientific Affairs, por exemplo, passou a publicar abstracts, artigos e vídeos educacionais com autonomia, sem acionar desenvolvimento em toda atualização.',
-      'Meu time ainda acompanhava páginas mais sensíveis para evitar que a consistência visual se perdesse. Antes, uma atualização tinha um SLA de dois a três dias. Depois que meu time assumiu a operação dos sites, as mudanças passaram a ser publicadas em minutos.',
+      {
+        parts: [
+          { text: 'Meu time ainda acompanhava páginas mais sensíveis para evitar que a consistência visual se perdesse. Antes, uma atualização tinha um ' },
+          { text: 'SLA de dois a três dias', strong: true },
+          { text: '. Depois que meu time assumiu a operação dos sites, as mudanças passaram a ser ' },
+          { text: 'publicadas em minutos', strong: true },
+          { text: '.' },
+        ],
+      },
     ],
     imgAlt:
       'Composição mostrando o site da 3PH Alliance e o painel do CMS utilizado para gerenciar e publicar conteúdos',
@@ -248,13 +306,25 @@ export default {
         heading: 'Decisões preparadas',
         paragraphs: [
           'Para evitar que o projeto ficasse parado, organizei status semanais com o contexto resumido, as opções disponíveis e uma recomendação clara.',
-          'Em vez de levar problemas abertos para as reuniões, eu levava decisões preparadas.',
+          {
+            parts: [
+              { text: 'Em vez de levar problemas abertos para as reuniões, ' },
+              { text: 'eu levava decisões preparadas', strong: true },
+              { text: '.' },
+            ],
+          },
         ],
       },
       {
         heading: 'Interface entre Design e o contractor',
         paragraphs: [
-          'Depois das definições, eu também funcionava como interface entre Design e o contractor, acompanhando o que seria entregue e garantindo que a solução funcionasse no ambiente real.',
+          {
+            parts: [
+              { text: 'Depois das definições, eu também funcionava como interface entre Design e o contractor, acompanhando o que seria entregue e ' },
+              { text: 'garantindo que a solução funcionasse no ambiente real', strong: true },
+              { text: '.' },
+            ],
+          },
         ],
       },
     ],
@@ -292,7 +362,15 @@ export default {
               { text: ', enquanto assumia as rotas, as funcionalidades de back-end e a integração com o CMS. Isso tornou a passagem para a implementação mais direta.' },
             ],
           },
-          'Meu time continuava próximo durante a implementação, acompanhando responsividade, busca, formulários, CMS e ajustes visuais. Eu coordenava a comunicação entre contractor, Tecnologia, Design e stakeholders, além das rodadas de QA e validação antes de cada publicação.',
+          {
+            parts: [
+              { text: 'Meu time continuava próximo durante a implementação, acompanhando responsividade, busca, formulários, CMS e ajustes visuais. ' },
+              { text: 'Eu coordenava a comunicação entre contractor, Tecnologia, Design e stakeholders', strong: true },
+              { text: ', além das ' },
+              { text: 'rodadas de QA e validação antes de cada publicação', strong: true },
+              { text: '.' },
+            ],
+          },
         ],
       },
       {
@@ -328,7 +406,13 @@ export default {
     title: 'Depois do lançamento, começou a operação editorial.',
     paragraphs: [
       'As primeiras versões dos dois sites entraram no ar em julho de 2025.',
-      'Depois disso, vieram rodadas de atualização de conteúdo, ajustes visuais e novas necessidades do negócio. Os sites continuaram evoluindo até chegar às versões atuais. O lançamento não encerrou o projeto. Ele criou uma base que podia ser corrigida, ampliada e atualizada sem precisar recomeçar toda vez.',
+      {
+        parts: [
+          { text: 'Depois disso, vieram rodadas de atualização de conteúdo, ajustes visuais e novas necessidades do negócio. Os sites continuaram evoluindo até chegar às versões atuais. ' },
+          { text: 'O lançamento não encerrou o projeto', strong: true },
+          { text: '. Ele criou uma base que podia ser corrigida, ampliada e atualizada sem precisar recomeçar toda vez.' },
+        ],
+      },
     ],
     imgAlt:
       'Composição das versões atuais dos sites da 3PH Alliance e HRCRS após as rodadas de evolução editorial',
@@ -347,7 +431,13 @@ export default {
           { text: '.' },
         ],
       },
-      'O impacto também apareceu fora dos sites. Apresentações e outros materiais da empresa começaram a seguir a mesma linguagem, reforçando uma régua visual comum para a 3PH Alliance e a HRCRS.',
+      {
+        parts: [
+          { text: 'O impacto também apareceu fora dos sites. Apresentações e outros materiais da empresa começaram a seguir a mesma linguagem, ' },
+          { text: 'reforçando uma régua visual comum para a 3PH Alliance e a HRCRS', strong: true },
+          { text: '.' },
+        ],
+      },
     ],
     metrics: [
       {

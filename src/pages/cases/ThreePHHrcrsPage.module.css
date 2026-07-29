@@ -53,7 +53,7 @@
 
 .bodyTextBlock p {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.45;
   color: var(--color-text-primary);
   margin: 0;
@@ -211,10 +211,14 @@
 
 .problemaText p {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.45;
   color: var(--color-text-primary);
   margin: 0;
+}
+
+.problemaText > p:first-child {
+  font-weight: 500;
 }
 
 /* ─── 4. Pergunta central ────────────────────────────────────────────────── */
@@ -357,7 +361,7 @@
 
 .bodyTextBlockWide p {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.45;
   color: var(--color-text-primary);
   margin: 0;
@@ -2359,7 +2363,7 @@
   margin: 0;
   color: var(--color-text-primary);
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.45;
 }
 

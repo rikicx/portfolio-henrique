@@ -46,7 +46,13 @@ export default {
           { text: '.' },
         ],
       },
-      'The relationship between the two companies did not help either. HRCRS is part of the 3PH Alliance, but many people understood it the other way around. Others did not even realize there was a relationship between them.',
+      {
+        parts: [
+          { text: 'The relationship between the two companies did not help either. HRCRS is part of the 3PH Alliance, but ' },
+          { text: 'many people understood it the other way around', strong: true },
+          { text: '. Others did not even realize there was a relationship between them.' },
+        ],
+      },
     ],
   },
   centralQuestion: {
@@ -96,8 +102,20 @@ export default {
       {
         heading: 'Without turning AI inferences into facts',
         paragraphs: [
-          'This shifted the manual work away from collecting every competitor in full and toward verification, correction and gap filling.',
-          'The benchmark gave us a common basis for discussing content and navigation.',
+          {
+            parts: [
+              { text: 'This shifted the manual work away from collecting every competitor in full and toward ' },
+              { text: 'verification, correction and gap filling', strong: true },
+              { text: '.' },
+            ],
+          },
+          {
+            parts: [
+              { text: 'The benchmark gave us a ' },
+              { text: 'common basis for discussing content and navigation', strong: true },
+              { text: '.' },
+            ],
+          },
         ],
       },
     ],
@@ -127,7 +145,13 @@ export default {
       {
         heading: 'Sales decks, brand guidelines and examples of the company’s language',
         paragraphs: [
-          'These were institutional and commercial materials; no patient data or other sensitive information entered this workflow.',
+          {
+            parts: [
+              { text: 'These were institutional and commercial materials; ' },
+              { text: 'no patient data or other sensitive information entered this workflow', strong: true },
+              { text: '.' },
+            ],
+          },
           {
             parts: [
               { text: 'Before requesting copy proposals, we asked ' },
@@ -141,7 +165,15 @@ export default {
         heading: 'Narrative purpose, target emotion and core message',
         paragraphs: [
           'For each page, we explored two or three content alternatives. Every block had to respond coherently to those three criteria. When a proposal did not sustain the intended storytelling, we adjusted the context and instructions and started another creation or adaptation round.',
-          'AI generated the first alternatives; Design refined them and selected a direction. Marketing and Sales leadership then reviewed and validated the chosen content.',
+          {
+            parts: [
+              { text: 'AI generated the first alternatives; ' },
+              { text: 'Design refined them and selected a direction', strong: true },
+              { text: '. ' },
+              { text: 'Marketing and Sales leadership then reviewed and validated the chosen content', strong: true },
+              { text: '.' },
+            ],
+          },
         ],
       },
       {
@@ -161,8 +193,20 @@ export default {
   designSystem: {
     title: 'One visual foundation for both websites',
     baseParagraphs: [
-      'The websites needed to feel like part of the same organization without looking like copies of each other. My team created a Design System from scratch, sharing colors, typography, spacing, components and interaction patterns.',
-      'The visual foundation was the same. What changed was the discourse, the tone and the way each company presented its services. My role was to guide those decisions and keep the two experiences coherent.',
+      {
+        parts: [
+          { text: 'The websites needed to feel like part of the same organization without looking like copies of each other. ' },
+          { text: 'My team created a Design System from scratch', strong: true },
+          { text: ', sharing colors, typography, spacing, components and interaction patterns.' },
+        ],
+      },
+      {
+        parts: [
+          { text: 'The visual foundation was the same. What changed was the discourse, the tone and the way each company presented its services. My role was to guide those decisions and ' },
+          { text: 'keep the two experiences coherent', strong: true },
+          { text: '.' },
+        ],
+      },
     ],
     aiBlocks: [
       {
@@ -186,7 +230,13 @@ export default {
       {
         heading: 'Exploration, refinement and QA',
         paragraphs: [
-          'The designers led the exploration, refinement and delivery of the layouts, as well as QA, with frequent alignment throughout the process. I reviewed the material before higher-risk discussions.',
+          {
+            parts: [
+              { text: 'The designers led the exploration, refinement and delivery of the layouts, as well as QA, with frequent alignment throughout the process. ' },
+              { text: 'I reviewed the material before higher-risk discussions', strong: true },
+              { text: '.' },
+            ],
+          },
         ],
       },
       {
@@ -213,7 +263,15 @@ export default {
     title: 'The website needed to stay alive',
     paragraphs: [
       'There was no point in launching two new websites and still depending on development for every change. The solution included an independent CMS for each website. The Scientific Affairs team, for example, started publishing abstracts, articles and educational videos autonomously, without calling on development for every update.',
-      'My team continued to oversee the more sensitive pages to preserve visual consistency. Previously, an update had a two-to-three-day SLA. After my team took over website operations, changes could be published within minutes.',
+      {
+        parts: [
+          { text: 'My team continued to oversee the more sensitive pages to preserve visual consistency. Previously, an update had a ' },
+          { text: 'two-to-three-day SLA', strong: true },
+          { text: '. After my team took over website operations, changes could be ' },
+          { text: 'published within minutes', strong: true },
+          { text: '.' },
+        ],
+      },
     ],
     imgAlt:
       'Composition showing the 3PH Alliance website and the CMS panel used to manage and publish content',
@@ -248,13 +306,25 @@ export default {
         heading: 'Prepared decisions',
         paragraphs: [
           'To keep the project from stalling, I organized weekly status meetings with the context summarized, the available options and a clear recommendation.',
-          'Instead of bringing open problems to the meetings, I brought prepared decisions.',
+          {
+            parts: [
+              { text: 'Instead of bringing open problems to the meetings, ' },
+              { text: 'I brought prepared decisions', strong: true },
+              { text: '.' },
+            ],
+          },
         ],
       },
       {
         heading: 'Interface between Design and the contractor',
         paragraphs: [
-          'After decisions were made, I also acted as the interface between Design and the contractor, following what would be delivered and making sure the solution worked in the real environment.',
+          {
+            parts: [
+              { text: 'After decisions were made, I also acted as the interface between Design and the contractor, following what would be delivered and ' },
+              { text: 'making sure the solution worked in the real environment', strong: true },
+              { text: '.' },
+            ],
+          },
         ],
       },
     ],
@@ -292,7 +362,15 @@ export default {
               { text: ', while taking ownership of routes, back-end functionality and CMS integration. This made the transition into implementation more direct.' },
             ],
           },
-          'My team stayed close throughout implementation, following responsiveness, search, forms, CMS and visual adjustments. I coordinated communication between the contractor, Technology, Design and stakeholders, as well as QA and validation rounds before each release.',
+          {
+            parts: [
+              { text: 'My team stayed close throughout implementation, following responsiveness, search, forms, CMS and visual adjustments. ' },
+              { text: 'I coordinated communication between the contractor, Technology, Design and stakeholders', strong: true },
+              { text: ', as well as ' },
+              { text: 'QA and validation rounds before each release', strong: true },
+              { text: '.' },
+            ],
+          },
         ],
       },
       {
@@ -328,7 +406,13 @@ export default {
     title: 'After launch, ongoing editorial work began.',
     paragraphs: [
       'The first versions of the two websites went live in July 2025.',
-      'After that came rounds of content updates, visual adjustments and new business needs. The websites kept evolving until they reached their current versions. The launch did not end the project. It created a foundation that could be corrected, expanded and updated without starting over every time.',
+      {
+        parts: [
+          { text: 'After that came rounds of content updates, visual adjustments and new business needs. The websites kept evolving until they reached their current versions. ' },
+          { text: 'The launch did not end the project', strong: true },
+          { text: '. It created a foundation that could be corrected, expanded and updated without starting over every time.' },
+        ],
+      },
     ],
     imgAlt:
       'Composition of the current versions of the 3PH Alliance and HRCRS websites after the rounds of editorial evolution',
@@ -347,7 +431,13 @@ export default {
           { text: '.' },
         ],
       },
-      'The impact also showed up outside the websites. Presentations and other company materials started following the same language, reinforcing a shared visual standard for 3PH Alliance and HRCRS.',
+      {
+        parts: [
+          { text: 'The impact also showed up outside the websites. Presentations and other company materials started following the same language, ' },
+          { text: 'reinforcing a shared visual standard for 3PH Alliance and HRCRS', strong: true },
+          { text: '.' },
+        ],
+      },
     ],
     metrics: [
       {
