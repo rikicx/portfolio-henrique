@@ -6,8 +6,18 @@ const WHATSAPP_URL = 'https://wa.me/5511964101827'
 
 export default function FloatingActions() {
   const { lang } = useLanguage()
-  const whatsappLabel =
-    lang === 'en' ? 'Chat on WhatsApp' : 'Conversar pelo WhatsApp'
+  const labels =
+    lang === 'en'
+      ? {
+          whatsapp: 'Chat on WhatsApp',
+          whatsappAria: 'Chat on WhatsApp (opens in a new tab)',
+          backToTop: 'Back to top',
+        }
+      : {
+          whatsapp: 'Conversar pelo WhatsApp',
+          whatsappAria: 'Conversar pelo WhatsApp (abre em uma nova aba)',
+          backToTop: 'Voltar ao topo',
+        }
 
   return (
     <div className={styles.actions}>
@@ -16,8 +26,8 @@ export default function FloatingActions() {
         className={styles.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={whatsappLabel}
-        title={whatsappLabel}
+        aria-label={labels.whatsappAria}
+        title={labels.whatsapp}
       >
         <svg
           className={styles.whatsappIcon}
@@ -28,7 +38,7 @@ export default function FloatingActions() {
         </svg>
       </a>
 
-      <BackToTopButton />
+      <BackToTopButton label={labels.backToTop} />
     </div>
   )
 }

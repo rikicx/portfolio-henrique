@@ -3,7 +3,7 @@ import styles from './BackToTopButton.module.css'
 
 const SHOW_AFTER_PX = 600
 
-export default function BackToTopButton() {
+export default function BackToTopButton({ label = 'Voltar ao topo' }) {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -42,8 +42,8 @@ export default function BackToTopButton() {
       type="button"
       className={styles.button}
       onClick={scrollToTop}
-      aria-label="Voltar ao topo da página"
-      title="Voltar ao topo"
+      aria-label={label}
+      title={label}
     >
       <svg
         className={styles.icon}
