@@ -2,7 +2,12 @@ import BackToTopButton from './BackToTopButton'
 import { useLanguage } from '../context/LanguageContext'
 import styles from './FloatingActions.module.css'
 
-const WHATSAPP_URL = 'https://wa.me/5511964101827'
+const WHATSAPP_NUMBER = '5511964101827'
+
+const WHATSAPP_MESSAGES = {
+  pt: 'Olá, Henrique! Tudo bem? Gostaria de conversar com você sobre uma oportunidade de trabalho.',
+  en: "Hi, Henrique! How are you? I'd like to talk with you about a work opportunity.",
+}
 
 export default function FloatingActions() {
   const { lang } = useLanguage()
@@ -18,11 +23,12 @@ export default function FloatingActions() {
           whatsappAria: 'Conversar pelo WhatsApp (abre em uma nova aba)',
           backToTop: 'Voltar ao topo',
         }
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGES[lang])}`
 
   return (
     <div className={styles.actions}>
       <a
-        href={WHATSAPP_URL}
+        href={whatsappUrl}
         className={styles.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
