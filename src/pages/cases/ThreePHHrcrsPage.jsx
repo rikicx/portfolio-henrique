@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { Fragment, useState, useEffect, useRef } from 'react'
 import Layout from '../../components/Layout'
 import Seo from '../../components/Seo'
 import OtherProjectsSection from '../../components/OtherProjectsSection'
@@ -19,7 +19,10 @@ import postLaunchImg from '../../media/cases/3ph-hrcrs/3ph-hrcrs-post-launch-03.
 import metricTimeImg from '../../media/cases/3ph-hrcrs/3ph-hrcrs-metric-publication-time.png'
 import metricRatingImg from '../../media/cases/3ph-hrcrs/3ph-hrcrs-metric-visual-rating.png'
 import metricPagesImg from '../../media/cases/3ph-hrcrs/3ph-hrcrs-metric-pages.png'
-import webflowLogoImg from '../../media/cases/3ph-hrcrs/box-governanca-design.png'
+import implementationIconImg from '../../media/cases/3ph-hrcrs/box-governanca-design.png'
+import benchmarkReviewExampleImg from '../../media/cases/3ph-hrcrs/example-benchmark-review.png'
+import layoutEvolutionExampleImg from '../../media/cases/3ph-hrcrs/example-layout-evolution.png'
+import prototypeResponsiveExampleImg from '../../media/cases/3ph-hrcrs/example-prototype-responsive.png'
 import quoteOpenImg from '../../media/shared/quotes/quote-open.png'
 import quoteCloseImg from '../../media/shared/quotes/quote-close.png'
 
@@ -27,6 +30,61 @@ const METRIC_ICONS = {
   time: metricTimeImg,
   rating: metricRatingImg,
   pages: metricPagesImg,
+}
+
+function EvidencePlaceholder({ evidence, className = '', imageSrc }) {
+  return (
+    <figure className={`${styles.evidenceFigure} ${className}`.trim()}>
+      {imageSrc ? (
+        <img
+          src={imageSrc}
+          alt={evidence.exampleAlt}
+          className={styles.evidenceExampleImage}
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <div className={styles.evidencePlaceholder}>
+          <span className={styles.evidencePlaceholderLabel}>{evidence.label}</span>
+        </div>
+      )}
+      <figcaption className={styles.caption}>{evidence.caption}</figcaption>
+    </figure>
+  )
+}
+
+function RichText({ value }) {
+  if (typeof value === 'string') return value
+
+  return value.parts.map((part, index) => (
+    part.strong ? (
+      <strong key={index} className={styles.inlineStrong}>{part.text}</strong>
+    ) : (
+      <Fragment key={index}>{part.text}</Fragment>
+    )
+  ))
+}
+
+function EditorialBlocks({ blocks, className = '' }) {
+  return (
+    <div className={`${styles.editorialBlocks} ${className}`.trim()}>
+      {blocks.map((block, index) => (
+        <div
+          key={block.heading || index}
+          className={`${styles.editorialBlock} ${block.emphasis ? styles.editorialBlockEmphasis : ''}`.trim()}
+        >
+          {block.heading && (
+            <h3 className={styles.editorialLead}>{block.heading}</h3>
+          )}
+          <div className={styles.editorialParagraphs}>
+            {block.paragraphs.map((paragraph, paragraphIndex) => (
+              <p key={paragraphIndex}><RichText value={paragraph} /></p>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
 }
 
 export default function ThreePHHrcrsPage() {
@@ -112,7 +170,7 @@ export default function ThreePHHrcrsPage() {
             <div className={styles.problemaText}>
               <p>{c.problem.title}</p>
               {c.problem.paragraphs.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
+                <p key={index}><RichText value={paragraph} /></p>
               ))}
             </div>
           </div>
@@ -153,11 +211,22 @@ export default function ThreePHHrcrsPage() {
                 {c.benchmark.title}
               </h2>
               <div className={styles.bodyTextBlock}>
-                {c.benchmark.paragraphs.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
+                {c.benchmark.introParagraphs.map((paragraph, index) => (
+                  <p key={index}><RichText value={paragraph} /></p>
                 ))}
               </div>
             </div>
+          </div>
+          <div className={styles.benchmarkReviewLayout}>
+            <EditorialBlocks
+              blocks={c.benchmark.reviewBlocks}
+              className={styles.benchmarkReviewText}
+            />
+            <EvidencePlaceholder
+              evidence={c.benchmark.evidence}
+              className={styles.benchmarkEvidence}
+              imageSrc={benchmarkReviewExampleImg}
+            />
           </div>
         </div>
       </RevealSection>
@@ -170,11 +239,7 @@ export default function ThreePHHrcrsPage() {
               <h2 id="content-structure-title" className={styles.sectionHeading}>
                 {c.contentStructure.title}
               </h2>
-              <div className={styles.bodyTextBlock}>
-                {c.contentStructure.paragraphs.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
-              </div>
+              <EditorialBlocks blocks={c.contentStructure.blocks} />
             </div>
             <figure className={styles.contentStructureFigure}>
               <button
@@ -204,9 +269,9 @@ export default function ThreePHHrcrsPage() {
           <h2 id="design-system-title" className={styles.designSystemHeading}>
             {c.designSystem.title}
           </h2>
-          <div className={styles.bodyTextBlockWide}>
-            {c.designSystem.paragraphs.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
+          <div className={`${styles.bodyTextBlockWide} ${styles.designSystemBaseText}`}>
+            {c.designSystem.baseParagraphs.map((paragraph, index) => (
+              <p key={index}><RichText value={paragraph} /></p>
             ))}
           </div>
           <figure className={styles.designSystemFigure}>
@@ -219,6 +284,17 @@ export default function ThreePHHrcrsPage() {
               {c.designSystem.caption}
             </figcaption>
           </figure>
+          <div className={styles.designSystemAiLayout}>
+            <EvidencePlaceholder
+              evidence={c.designSystem.evidence}
+              className={styles.designSystemEvidence}
+              imageSrc={layoutEvolutionExampleImg}
+            />
+            <EditorialBlocks
+              blocks={c.designSystem.aiBlocks}
+              className={styles.designSystemAiText}
+            />
+          </div>
         </div>
       </RevealSection>
 
@@ -232,7 +308,7 @@ export default function ThreePHHrcrsPage() {
               </h2>
               <div className={styles.bodyTextBlock}>
                 {c.cms.paragraphs.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
+                  <p key={index}><RichText value={paragraph} /></p>
                 ))}
               </div>
             </div>
@@ -268,11 +344,7 @@ export default function ThreePHHrcrsPage() {
               <h2 id="governance-title" className={styles.sectionHeading}>
                 {c.governance.title}
               </h2>
-              <div className={styles.bodyTextBlock}>
-                {c.governance.paragraphs.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
-              </div>
+              <EditorialBlocks blocks={c.governance.blocks} />
             </div>
           </div>
         </div>
@@ -284,19 +356,29 @@ export default function ThreePHHrcrsPage() {
           <h2 id="implementation-title" className={styles.sectionHeading}>
             {c.implementation.title}
           </h2>
-          <div className={styles.implementationBox}>
-            <div className={styles.webflowLogoWrap} aria-hidden="true">
-              <img
-                src={webflowLogoImg}
-                alt=""
-                className={styles.webflowLogo}
+          <div className={styles.implementationContent}>
+            <EvidencePlaceholder
+              evidence={c.implementation.evidence}
+              className={styles.implementationEvidence}
+              imageSrc={prototypeResponsiveExampleImg}
+            />
+            <div className={styles.implementationBox}>
+              <div className={styles.webflowLogoWrap} aria-hidden="true">
+                <img
+                  src={implementationIconImg}
+                  alt=""
+                  className={styles.webflowLogo}
+                />
+              </div>
+              <EditorialBlocks
+                blocks={c.implementation.introBlocks}
+                className={styles.implementationText}
               />
             </div>
-            <div className={styles.implementationText}>
-              {c.implementation.paragraphs.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </div>
+            <EditorialBlocks
+              blocks={c.implementation.continuationBlocks}
+              className={`${styles.implementationText} ${styles.implementationContinuation}`}
+            />
           </div>
         </div>
       </RevealSection>
@@ -311,7 +393,7 @@ export default function ThreePHHrcrsPage() {
               </h2>
               <div className={styles.bodyTextBlock}>
                 {c.postLaunch.paragraphs.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
+                  <p key={index}><RichText value={paragraph} /></p>
                 ))}
               </div>
             </div>
@@ -339,14 +421,18 @@ export default function ThreePHHrcrsPage() {
               </h2>
               <div className={styles.bodyTextBlock}>
                 {c.impact.paragraphs.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
+                  <p key={index}><RichText value={paragraph} /></p>
                 ))}
               </div>
             </div>
             <div className={styles.metricBoxes}>
               {c.impact.metrics.map((metric) => (
                 <div key={metric.key} className={styles.metricBox}>
-                  <img src={METRIC_ICONS[metric.key]} alt="" aria-hidden="true" className={styles.metricIcon} />
+                  {METRIC_ICONS[metric.key] ? (
+                    <img src={METRIC_ICONS[metric.key]} alt="" aria-hidden="true" className={styles.metricIcon} />
+                  ) : (
+                    <div className={styles.metricIconPlaceholder} aria-hidden="true">CMS</div>
+                  )}
                   <div className={styles.metricContent}>
                     <p className={styles.metricMain}>{metric.main}</p>
                     <p className={styles.metricSub}>{metric.sub}</p>

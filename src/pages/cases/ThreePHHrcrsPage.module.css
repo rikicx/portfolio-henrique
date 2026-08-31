@@ -53,10 +53,15 @@
 
 .bodyTextBlock p {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.45;
   color: var(--color-text-primary);
   margin: 0;
+}
+
+.inlineStrong {
+  color: inherit;
+  font-weight: 600;
 }
 
 /* ─── 1. Hero ────────────────────────────────────────────────────────────── */
@@ -206,10 +211,14 @@
 
 .problemaText p {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.45;
   color: var(--color-text-primary);
   margin: 0;
+}
+
+.problemaText > p:first-child {
+  font-weight: 500;
 }
 
 /* ─── 4. Pergunta central ────────────────────────────────────────────────── */
@@ -284,6 +293,18 @@
   margin-bottom: 24px;
 }
 
+.benchmarkReviewLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  margin-top: 48px;
+}
+
+.benchmarkReviewText {
+  min-width: 0;
+}
+
 /* ─── 6. Arquitetura de conteúdo ─────────────────────────────────────────── */
 .contentStructureSection {
   padding: 48px 0;
@@ -340,7 +361,7 @@
 
 .bodyTextBlockWide p {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.45;
   color: var(--color-text-primary);
   margin: 0;
@@ -361,6 +382,15 @@
   height: auto;
   display: block;
   border-radius: var(--radius-card);
+}
+
+.designSystemAiLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas: "evidence copy";
+  gap: 48px;
+  align-items: start;
+  margin-top: 48px;
 }
 
 /* ─── 8. CMS — O site precisava continuar vivo ───────────────────────────── */
@@ -447,7 +477,16 @@
   margin-bottom: 24px;
 }
 
+.implementationContent {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px 48px;
+  align-items: start;
+}
+
 .implementationBox {
+  grid-column: 1 / -1;
+  grid-row: 1;
   display: flex;
   align-items: center;
   gap: 64px;
@@ -1399,7 +1438,7 @@
     gap: 6px;
   }
 
-  /* Atuação Estratégica ocupa toda a largura. */
+  /* Minha atuação ocupa toda a largura. */
   .metaItem:nth-child(4) {
     grid-column: 1 / -1;
   }
@@ -2014,4 +2053,407 @@
 [data-theme="dark"] .metricIcon {
   filter: brightness(0) invert(1);
   opacity: 0.9;
+}
+
+/* ─── Evidências visuais pendentes ─────────────────────────────────────── */
+.evidenceFigure {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.evidencePlaceholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding: 32px;
+  background: var(--color-bg-surface);
+  border: 1px dashed var(--color-border-primary);
+  border-radius: var(--radius-card);
+}
+
+.evidencePlaceholderLabel {
+  max-width: 520px;
+  color: var(--color-text-secondary);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.evidenceExampleImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-card);
+}
+
+.benchmarkEvidence {
+  width: 100%;
+  margin: 0;
+}
+
+.benchmarkEvidence .evidencePlaceholder,
+.benchmarkEvidence .evidenceExampleImage {
+  aspect-ratio: 2 / 1;
+}
+
+.designSystemAiText {
+  grid-area: copy;
+  margin: 0;
+}
+
+.designSystemEvidence {
+  grid-area: evidence;
+  width: 100%;
+  justify-self: stretch;
+}
+
+.designSystemEvidence .evidencePlaceholder,
+.designSystemEvidence .evidenceExampleImage {
+  aspect-ratio: 2 / 1;
+}
+
+.implementationEvidence {
+  grid-column: 2;
+  grid-row: 2;
+  width: 100%;
+}
+
+.implementationEvidence .evidencePlaceholder,
+.implementationEvidence .evidenceExampleImage {
+  aspect-ratio: 16 / 9;
+}
+
+.implementationContinuation {
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
+}
+
+@media (min-width: 1025px) {
+  .benchmarkReviewLayout,
+  .designSystemAiLayout {
+    align-items: center;
+  }
+
+  .implementationEvidence,
+  .implementationContinuation {
+    align-self: center;
+  }
+}
+
+.metricIconPlaceholder {
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  background: var(--color-border-subtle);
+  border-radius: var(--radius-card);
+  color: var(--color-text-secondary);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 768px) {
+  .evidenceFigure {
+    margin-top: 0;
+  }
+
+  .evidencePlaceholder {
+    padding: 20px;
+    border-radius: var(--radius-8);
+  }
+
+  .evidencePlaceholderLabel {
+    font-size: 14px;
+  }
+
+  .benchmarkEvidence {
+    order: 1;
+    width: 100%;
+    margin: 0;
+  }
+
+  .benchmarkText .bodyTextBlock {
+    order: 4;
+  }
+
+  .benchmarkReviewLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 24px;
+  }
+
+  .benchmarkReviewText {
+    order: 2;
+    margin-top: 16px;
+  }
+
+  .designSystemBaseText {
+    order: 3;
+    margin-bottom: 16px;
+  }
+
+  .designSystemFigure {
+    order: 2;
+  }
+
+  .designSystemAiLayout {
+    order: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 8px;
+  }
+
+  .designSystemAiText {
+    order: 2;
+    margin: 16px 0 0;
+  }
+
+  .designSystemEvidence {
+    order: 1;
+    width: 100%;
+  }
+
+  .implementationContent {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .implementationEvidence {
+    order: 1;
+    width: 100%;
+    margin: 0;
+  }
+
+  .implementationBox {
+    order: 2;
+  }
+
+  .implementationContinuation {
+    order: 3;
+    margin-top: 0;
+  }
+
+  .metricIconPlaceholder {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-8);
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .benchmarkEvidence {
+    order: 1;
+    width: 100%;
+    margin: 0;
+  }
+
+  .benchmarkText .bodyTextBlock {
+    order: 4;
+  }
+
+  .benchmarkReviewLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 32px;
+  }
+
+  .benchmarkReviewText {
+    order: 2;
+    margin-top: 24px;
+  }
+
+  .designSystemSection .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .designSystemHeading {
+    order: 1;
+  }
+
+  .designSystemFigure {
+    order: 2;
+  }
+
+  .designSystemBaseText {
+    order: 3;
+    margin: 32px 0 0;
+  }
+
+  .designSystemAiLayout {
+    order: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .designSystemAiText {
+    order: 2;
+    margin: 0;
+  }
+
+  .implementationContent {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .implementationEvidence {
+    order: 1;
+    width: 100%;
+    margin: 0;
+  }
+
+  .implementationBox {
+    order: 2;
+  }
+
+  .implementationContinuation {
+    order: 3;
+    margin-top: 0;
+  }
+}
+
+/* ─── Ritmo editorial ───────────────────────────────────────────────────── */
+.editorialLead {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.24px;
+}
+
+.editorialBlocks {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  min-width: 0;
+}
+
+.editorialBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.editorialParagraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.editorialParagraphs p {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.editorialBlockEmphasis {
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.implementationBox .editorialBlocks {
+  max-width: 943px;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .editorialLead {
+    font-size: 18px;
+    line-height: 1.35;
+    letter-spacing: 0;
+  }
+
+  .editorialBlocks {
+    gap: 28px;
+  }
+
+  .editorialBlock {
+    gap: 10px;
+  }
+
+  .editorialParagraphs {
+    gap: 14px;
+  }
+
+  .editorialParagraphs p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .editorialBlockEmphasis {
+    padding-top: 20px;
+  }
+
+  .implementationBox .editorialBlocks {
+    max-width: none;
+  }
+
+  .implementationBox .editorialBlocks {
+    gap: 24px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .editorialLead {
+    font-size: 22px;
+    line-height: 1.3;
+    letter-spacing: -0.22px;
+  }
+
+  .editorialBlocks {
+    gap: 32px;
+  }
+
+  .editorialParagraphs p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .implementationBox .editorialBlocks {
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .contentStructureText > .editorialBlocks {
+    order: 3;
+    width: 100%;
+    max-width: none;
+    margin: 16px 0 0;
+  }
+
+  .governanceText > .editorialBlocks {
+    order: 3;
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .governanceText > .editorialBlocks {
+    order: 3;
+    width: 100%;
+    max-width: 820px;
+  }
 }
