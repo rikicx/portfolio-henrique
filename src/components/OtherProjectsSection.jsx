@@ -4,9 +4,9 @@ import { useLanguage } from '../context/LanguageContext'
 import pt from '../content/pt/other-projects'
 import en from '../content/en/other-projects'
 
-import qiImg from '../media/shared/projects/card-qi-platform.webp'
+import qiImg from '../media/cases/qi-platform/figma-home-overview.png'
 import itauImg from '../media/shared/projects/itau-cover.jpg'
-import emrImg from '../media/shared/projects/emr-integration-cover.png'
+import emrImg from '../media/cases/emr-integration/02-field-evidence.png'
 import storeroomImg from '../media/shared/projects/card-gerdau-storeroom.png'
 import smartlogImg from '../media/shared/projects/gerdau-smartlog-cover.webp'
 import threePhImg from '../media/shared/projects/3ph-hrcrs-cover.jpg'
@@ -37,6 +37,10 @@ function ProjectCard({ project, viewProjectLabel }) {
           aria-hidden="true"
           className={`${styles.cardImg}${
             index > 0 ? ` ${styles.cardImgOverlay}` : ''
+          }${
+            project.slug === 'qi-platform' || project.slug === 'emr-integration'
+              ? ` ${styles.prototypeCardImg}`
+              : ''
           }`}
         />
       ))}

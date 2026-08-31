@@ -78,6 +78,10 @@
   pointer-events: none;
 }
 
+.prototypeCardImg {
+  object-position: top left;
+}
+
 .cardImgOverlay {
   object-fit: contain;
 }

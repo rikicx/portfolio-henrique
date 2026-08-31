@@ -7,9 +7,9 @@ import ptContent from '../content/pt/works'
 import enContent from '../content/en/works'
 import styles from './WorksPage.module.css'
 
-import qiImg from '../media/shared/projects/card-qi-platform.webp'
+import qiImg from '../media/cases/qi-platform/figma-home-overview.png'
 import itauImg from '../media/shared/projects/itau-cover.jpg'
-import emrImg from '../media/shared/projects/emr-integration-cover.png'
+import emrImg from '../media/cases/emr-integration/02-field-evidence.png'
 import storeroomImg from '../media/shared/projects/card-gerdau-storeroom.png'
 import threePhImg from '../media/shared/projects/3ph-hrcrs-cover.jpg'
 import smartlogImg from '../media/shared/projects/gerdau-smartlog-cover.webp'
@@ -70,7 +70,11 @@ function ProjectCard({ project, viewProjectLabel }) {
       <img
         src={IMAGES_BY_SLUG[project.slug]}
         alt={project.alt}
-        className={styles.cardImg}
+        className={`${styles.cardImg}${
+          project.slug === 'qi-platform' || project.slug === 'emr-integration'
+            ? ` ${styles.prototypeCardImg}`
+            : ''
+        }`}
       />
 
       <span className={styles.cardOverlay} aria-hidden="true" />

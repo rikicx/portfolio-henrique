@@ -72,6 +72,10 @@
   pointer-events: none;
 }
 
+.prototypeCardImg {
+  object-position: top left;
+}
+
 /* Gradient: transparent at 3% top → rgba(0,0,0,0.75) at bottom (Figma overlay). */
 .overlay {
   position: absolute;

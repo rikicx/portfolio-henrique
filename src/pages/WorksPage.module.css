@@ -183,6 +183,10 @@
   pointer-events: none;
 }
 
+.prototypeCardImg {
+  object-position: top left;
+}
+
 .cardOverlay {
   position: absolute;
   inset: 0;

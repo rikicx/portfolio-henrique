@@ -21,7 +21,7 @@ export default {
       to: '/en/work/emr-integration',
       title: 'EMR Integration',
       category: 'Healthcare · Head of Design',
-      imageAlts: ['EMR Integration — medical records integration', ''],
+      imageAlts: ['EMR Integration — medical records integration'],
     },
   ],
 }

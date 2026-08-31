@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useInView } from '../hooks/useInView'
 import styles from './Projects.module.css'
-import qiImg from '../media/shared/projects/card-qi-platform.webp'
+import qiImg from '../media/cases/qi-platform/figma-home-overview.png'
 import gerdauImg from '../media/shared/projects/card-gerdau-storeroom.png'
-import emrBgImg from '../media/shared/projects/card-emr-bg.png'
-import emrOverlayImg from '../media/shared/projects/card-emr-overlay.jpg'
+import emrImg from '../media/cases/emr-integration/02-field-evidence.png'
 import { useLanguage } from '../context/LanguageContext'
 import pt from '../content/pt/projects'
 import en from '../content/en/projects'
@@ -14,7 +13,7 @@ import en from '../content/en/projects'
 const IMAGES_BY_SLUG = {
   'qi-platform': [{ src: qiImg }],
   'gerdau-storeroom': [{ src: gerdauImg }],
-  'emr-integration': [{ src: emrBgImg }, { src: emrOverlayImg }],
+  'emr-integration': [{ src: emrImg }],
 }
 
 // Card is the link — no nested anchors.
@@ -34,7 +33,11 @@ function ProjectCard({ project, viewProjectLabel }) {
           key={i}
           src={img.src}
           alt={project.imageAlts[i]}
-          className={styles.cardImg}
+          className={`${styles.cardImg}${
+            project.slug === 'qi-platform' || project.slug === 'emr-integration'
+              ? ` ${styles.prototypeCardImg}`
+              : ''
+          }`}
           aria-hidden={i > 0 ? 'true' : undefined}
         />
       ))}

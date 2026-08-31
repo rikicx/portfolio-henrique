@@ -161,6 +161,30 @@
   .qi-reduce *, .qi-reduce *::before, .qi-reduce *::after {
     transition-duration:0s !important; animation-duration:0s !important; animation-delay:0s !important; transition-delay:0s !important;
   }
+  /* Keep chart geometry readable when the prototype is opened on ultrawide displays. */
+  @media (min-width: 1920px) {
+    .qi-chart-row--trend {
+      width:100%;
+      max-width:1420px;
+      margin-inline:auto;
+    }
+    .qi-chart-row--segment {
+      width:100%;
+      max-width:1320px;
+      margin-inline:auto;
+    }
+    .qi-chart-single {
+      width:100%;
+      max-width:1120px;
+      margin-inline:auto;
+    }
+    .qi-chart-svg--trend,
+    .qi-chart-svg--compact {
+      height:auto !important;
+    }
+    .qi-chart-svg--trend { max-height:360px; }
+    .qi-chart-svg--compact { max-height:300px; }
+  }
 </style>
 </helmet>
 
@@ -446,9 +470,9 @@
                 </div>
               </div>
 
-              <div style="display:flex;gap:20px;align-items:stretch">
+              <div class="qi-chart-row--trend" style="display:flex;gap:20px;align-items:stretch">
                 <div style="flex:1;min-width:0;position:relative">
-                  <svg viewBox="0 0 900 300" style="width:100%;height:300px;display:block;overflow:visible">
+                  <svg class="qi-chart-svg--trend" viewBox="0 0 900 300" style="width:100%;height:300px;display:block;overflow:visible">
                     <defs>
                       <linearGradient id="trFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#005BFF" stop-opacity=".26"></stop><stop offset="1" stop-color="#005BFF" stop-opacity="0"></stop></linearGradient>
                     </defs>
@@ -857,7 +881,7 @@
               </div>
             </div>
 
-            <div style="display:flex;gap:20px;align-items:stretch">
+            <div class="qi-chart-row--segment" style="display:flex;gap:20px;align-items:stretch">
               <div style="flex:1;background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:12px">
                 <div style="display:flex;align-items:baseline;gap:12px">
                   <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">Segment in focus</div>
@@ -866,7 +890,7 @@
                 </div>
                 <div style="font-size:11.5px;color:#404040">Over time, inside this segment</div>
                 <div style="position:relative">
-                  <svg viewBox="0 0 640 170" style="width:100%;height:170px;display:block">
+                  <svg class="qi-chart-svg--compact" viewBox="0 0 640 170" style="width:100%;height:170px;display:block">
                     <line x1="0" x2="640" y1="40" y2="40" stroke="#EDEEF2"></line>
                     <line x1="0" x2="640" y1="100" y2="100" stroke="#EDEEF2"></line>
                     <line x1="0" x2="640" y1="150" y2="150" stroke="#EDEEF2"></line>
@@ -959,8 +983,8 @@
                 <div style="font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#005BFF">Question 7 — is the network itself moving?</div>
                 <div style="font-size:25px;font-weight:400;letter-spacing:-.018em;margin-top:4px">Your centre against the <span style="font-weight:600;color:#020D5A">network median</span>, by quarter</div>
               </div>
-              <div style="position:relative">
-                <svg viewBox="0 0 640 172" style="width:100%;height:172px;display:block">
+              <div class="qi-chart-single" style="position:relative">
+                <svg class="qi-chart-svg--compact" viewBox="0 0 640 172" style="width:100%;height:172px;display:block">
                   <line x1="0" x2="640" y1="22" y2="22" stroke="#EDEEF2"></line>
                   <line x1="0" x2="640" y1="60" y2="60" stroke="#EDEEF2"></line>
                   <line x1="0" x2="640" y1="98" y2="98" stroke="#EDEEF2"></line>

@@ -21,7 +21,7 @@ export default {
       to: '/trabalhos/emr-integration',
       title: 'EMR Integration',
       category: 'Saúde · Head of Design',
-      imageAlts: ['EMR Integration — integração de prontuários', ''],
+      imageAlts: ['EMR Integration — integração de prontuários'],
     },
   ],
 }
