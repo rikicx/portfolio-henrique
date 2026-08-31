@@ -1,0 +1,158 @@
+.page {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 32px 48px 96px;
+  box-sizing: border-box;
+}
+
+.backLink {
+  display: inline-flex;
+  margin-bottom: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: opacity 180ms ease;
+}
+
+.backLink:hover {
+  opacity: 0.55;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+  gap: 64px;
+  align-items: end;
+  margin-bottom: 40px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--color-text-secondary);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.intro h1 {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(48px, 5.6vw, 80px);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.description {
+  max-width: 500px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.window {
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 18px;
+  background: var(--color-bg-elevated);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.12);
+}
+
+.windowBar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  align-items: center;
+  min-height: 52px;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-elevated);
+}
+
+.windowDots {
+  display: flex;
+  gap: 7px;
+}
+
+.windowDots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-text-soft);
+}
+
+.windowBar p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.windowBar a {
+  justify-self: end;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.frameScroll {
+  width: 100%;
+  overflow-x: auto;
+  background: #f6f7fa;
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  min-width: 1180px;
+  height: clamp(680px, calc(100vh - 220px), 920px);
+  border: 0;
+  background: #f6f7fa;
+}
+
+@media (max-width: 1024px) {
+  .page {
+    padding: 32px 32px 72px;
+  }
+
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 24px 20px 56px;
+  }
+
+  .backLink {
+    margin-bottom: 28px;
+  }
+
+  .intro {
+    margin-bottom: 28px;
+  }
+
+  .intro h1 {
+    font-size: 42px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .windowBar {
+    grid-template-columns: 1fr auto;
+  }
+
+  .windowBar p {
+    display: none;
+  }
+}

@@ -1,0 +1,2316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="QI Platform functional prototype with demonstration data.">
+<title>QI Platform — Functional Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  .portfolio-demo-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    width: 100%;
+    border-bottom: 1px solid #ededed;
+    background: rgba(255,255,255,.96);
+    color: #000;
+    font-family: 'Inter Tight', sans-serif;
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+  }
+  .portfolio-demo-header__inner {
+    display: flex;
+    align-items: center;
+    max-width: 1440px;
+    height: 82px;
+    margin: 0 auto;
+    padding: 14px 48px;
+    box-sizing: border-box;
+  }
+  .portfolio-demo-header__left,
+  .portfolio-demo-header__right {
+    display: flex;
+    flex: 1;
+    align-items: center;
+  }
+  .portfolio-demo-header__right {
+    justify-content: flex-end;
+    gap: 14px;
+  }
+  .portfolio-demo-header__brand {
+    display: inline-flex;
+    align-items: center;
+  }
+  .portfolio-demo-header__brand img {
+    display: block;
+    width: auto;
+    height: 54px;
+  }
+  .portfolio-demo-header__nav {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+  }
+  .portfolio-demo-header a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .portfolio-demo-header__link {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.25;
+    white-space: nowrap;
+    transition: opacity .2s ease;
+  }
+  .portfolio-demo-header__link:hover,
+  .portfolio-demo-header__brand:hover {
+    opacity: .58;
+  }
+  .portfolio-demo-header__link--active {
+    text-decoration: underline !important;
+    text-decoration-thickness: 1px !important;
+    text-underline-offset: 4px !important;
+  }
+  .portfolio-demo-header__chevron {
+    width: 12px;
+    height: 12px;
+    margin-left: 4px;
+  }
+  .portfolio-demo-header__round {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #e3e3e3;
+    border-radius: 999px;
+    background: #fff;
+    color: #000;
+    font: 500 12px/1 'Inter Tight', sans-serif;
+    box-sizing: border-box;
+  }
+  .portfolio-demo-header__theme {
+    font-size: 16px;
+    transform: rotate(-18deg);
+  }
+  .portfolio-demo-header__cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 24px;
+    border-radius: 999px;
+    background: #000;
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+    white-space: nowrap;
+    transition: opacity .2s ease, transform .1s ease-out;
+  }
+  .portfolio-demo-header__cta:hover { opacity: .75; }
+  .portfolio-demo-header__cta:active { transform: scale(.98); }
+  .portfolio-demo-context {
+    padding: 8px 48px;
+    border-bottom: 1px solid #e7e7e7;
+    background: #f7f7f7;
+    color: #5f5f5f;
+    font: 500 12px/1.35 'Inter Tight', sans-serif;
+    text-align: center;
+  }
+  .portfolio-demo-header + .portfolio-demo-context + x-dc [style*="position:sticky"][style*="top:0"] {
+    top: 111px !important;
+  }
+  .portfolio-demo-header + .portfolio-demo-context + x-dc [style*="position:sticky"][style*="top:58px"] {
+    top: 169px !important;
+  }
+  .portfolio-demo-header + .portfolio-demo-context + x-dc [style*="height:100vh"][style*="position:sticky"] {
+    height: calc(100vh - 111px) !important;
+  }
+  @media (max-width: 1100px) {
+    .portfolio-demo-header__inner { padding-right: 32px; padding-left: 32px; }
+    .portfolio-demo-header__nav { gap: 20px; }
+    .portfolio-demo-header__link { font-size: 16px; }
+    .portfolio-demo-header__cta { padding: 12px 18px; font-size: 15px; }
+  }
+</style>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  :root { --qi-ease: cubic-bezier(.2,.9,.2,1); }
+  body { margin:0; background:#F6F7FA; font-family:'Open Sans',sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:#005BFF; text-decoration:none; }
+  a:hover { color:#003699; }
+  @keyframes qiShimmer { 0% { background-position:-420px 0; } 100% { background-position:420px 0; } }
+  @keyframes qiPulse { 0% { box-shadow:0 0 0 0 rgba(255,1,68,.42); } 100% { box-shadow:0 0 0 12px rgba(255,1,68,0); } }
+  @keyframes qiRise { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }
+  @keyframes qiToast { from { opacity:0; transform:translate(-50%,14px); } to { opacity:1; transform:translate(-50%,0); } }
+  /* reduceMotion: hard-cut every transition + animation to the final frame */
+  .qi-reduce *, .qi-reduce *::before, .qi-reduce *::after {
+    transition-duration:0s !important; animation-duration:0s !important; animation-delay:0s !important; transition-delay:0s !important;
+  }
+</style>
+</helmet>
+
+<div class="{{ rootClass }}" style="background:#F6F7FA;color:#010737;font-family:'Open Sans',sans-serif;font-variant-numeric:tabular-nums;display:flex;flex-direction:column;align-items:stretch;width:100%">
+
+  <div style="width:100%;background:#F6F7FA;display:flex;min-height:100vh;position:relative;align-items:flex-start">
+
+    <div style="width:74px;background:#FFFFFF;border-right:1px solid #E1E3EA;display:flex;flex-direction:column;align-items:center;padding:18px 0;gap:4px;flex-shrink:0;position:sticky;top:0;align-self:flex-start;height:100vh;z-index:20">
+      <div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;margin-bottom:14px">
+        <svg width="40" height="35" viewBox="0 0 119.35 103.23" style="display:block" role="img" aria-label="3PH Cloud">
+          <defs><linearGradient id="pMark" x1="11.87" y1="49.13" x2="108.94" y2="49.13" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#005BFF"></stop><stop offset="1" stop-color="#3F9BFF"></stop></linearGradient></defs>
+          <path fill="url(#pMark)" d="M30.69,38.89c1.23-11.49,10.96-20.44,22.78-20.44,8.66,0,16.2,4.81,20.1,11.9,1.76-.69,3.67-1.08,5.67-1.08,8.4,0,15.24,6.72,15.43,15.07,7.96,1.55,13.97,8.57,13.97,16.99v1.18c0,8.96-6.81,16.33-15.54,17.22l-4.97.09h-.39c-1.07-.02-1.94-.9-1.94-1.98,0-1.09.89-1.98,1.98-1.98.1,0,4.78-.03,4.92-.05,3.27-.33,6.3-1.86,8.53-4.31,2.24-2.46,3.47-5.66,3.47-8.99v-1.18c0-6.38-4.54-11.91-10.79-13.13-1.81-.35-3.14-1.92-3.18-3.77-.07-3.02-1.3-5.84-3.46-7.95-2.16-2.12-5.02-3.28-8.04-3.28-1.45,0-2.87.27-4.22.8-.47.19-.96.28-1.44.28-1.4,0-2.74-.75-3.45-2.04-3.34-6.08-9.72-9.86-16.65-9.86-4.71,0-9.23,1.74-12.72,4.89-3.47,3.13-5.65,7.41-6.15,12.03-.19,1.8-1.6,3.24-3.4,3.48-3.96.52-7.6,2.47-10.26,5.48-2.68,3.04-4.16,6.94-4.16,11,0,4.43,1.72,8.59,4.84,11.73,2.46,2.47,5.56,4.09,8.93,4.67h0c1.07.02,1.94.92,1.94,1.99s-.89,1.98-1.98,1.98c-.24,0,0,0-.68-.12-9.65-1.69-16.98-10.11-16.98-20.24h0c0-10.43,7.77-19.05,17.84-20.38Z"></path>
+          <path fill="#005BFF" d="M61.82,70.61c-1.12-.92-2.75-1.39-4.9-1.39h-5.66v15.82c0,1.04.84,1.88,1.88,1.88.97,0,1.77-.73,1.87-1.67,0-.07.01-.14.01-.21s0-.14-.01-.21v-4.2h1.61c2.2,0,3.89-.5,5.08-1.51,1.19-1.01,1.79-2.47,1.79-4.37s-.56-3.21-1.68-4.14ZM58.85,76.87c-.57.46-1.44.68-2.59.68h-1.24v-5.26h1.71c1.03,0,1.78.21,2.26.63.48.42.72,1.07.72,1.95s-.29,1.54-.86,1.99Z"></path>
+          <path fill="#005BFF" d="M76.18,69.26v6.89h-6.76v-4.9s0-.09,0-.13,0-.09,0-.13c-.07-.98-.88-1.75-1.87-1.75s-1.88.84-1.88,1.88v15.79h3.75v-7.64h6.76v5.65s0,.09,0,.13,0,.09,0,.13c.07.98.88,1.75,1.87,1.75s1.88-.84,1.88-1.88v-15.79h-3.75Z"></path>
+          <path fill="#005BFF" d="M48.11,78.95c-.72-.67-1.77-1.09-3.16-1.27v-.07c1.18-.28,2.1-.8,2.75-1.56.65-.75.98-1.67.98-2.75,0-1.29-.52-2.3-1.55-3.02-1.03-.72-2.44-1.09-4.23-1.09-1.46,0-2.78.25-3.96.76-.07.03-.14.06-.21.09-.48.26-.81.76-.81,1.34,0,.84.68,1.52,1.52,1.52.18,0,.35-.03.51-.09.1-.04.19-.08.28-.14.23-.11.45-.19.67-.26.59-.19,1.16-.28,1.73-.28,1.64,0,2.45.65,2.45,1.96,0,.85-.31,1.45-.93,1.8-.58.33-1.47.5-2.68.52-.03,0-.06,0-.09,0v2.8c.05,0,.1,0,.15,0,1.27.02,2.21.19,2.82.5.66.34.99.91.99,1.72,0,.9-.29,1.56-.86,1.97-.57.41-1.46.61-2.67.61-.79,0-1.58-.11-2.38-.32-.05-.01-.1-.03-.15-.04-.13-.06-.26-.1-.4-.12-.07,0-.14-.01-.21-.01-.73,0-1.34.54-1.44,1.24-.01.07-.02.14-.02.22s0,.15.02.22c.07.46.35.85.74,1.06.17.09.35.15.55.17,1.12.32,2.35.48,3.69.48,2.23,0,3.95-.46,5.15-1.39,1.2-.92,1.8-2.22,1.8-3.87,0-1.14-.36-2.05-1.07-2.72Z"></path>
+        </svg>
+      </div>
+      <div style="position:absolute;left:13px;width:48px;height:44px;border-radius:10px;background:#EFF5FF;transition:transform .42s cubic-bezier(.2,.9,.2,1);transform:{{ railTransform }}"></div>
+      <sc-for list="{{ rail }}" as="item" hint-placeholder-count="5">
+        <div style="width:48px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;z-index:1;border-radius:10px;transition:background .18s" onClick="{{ item.go }}" title="{{ item.name }}" style-hover="{{ item.hoverStyle }}">
+          <svg style="transition:stroke .28s" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke="{{ item.stroke }}"><path d="{{ item.path }}"></path></svg>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+
+      <div style="background:#FFFFFF;border-bottom:1px solid #E1E3EA;padding:0 26px;display:flex;align-items:center;gap:30px;height:58px;flex-shrink:0;position:sticky;top:0;z-index:30">
+        <div style="font-size:15px;font-weight:700;letter-spacing:-.01em">Quality Improvement</div>
+        <div style="display:flex;gap:26px;align-items:stretch;height:100%">
+          <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+            <div style="display:flex;align-items:center;position:relative;cursor:pointer;font-size:12.5px;font-weight:500;transition:color .2s;color:{{ t.color }}" onClick="{{ t.go }}" style-hover="{{ t.hoverStyle }}">
+              <span>{{ t.name }}</span>
+              <div style="position:absolute;left:0;right:0;bottom:0;height:2px;background:#005BFF;transform-origin:left;transition:transform .34s cubic-bezier(.2,.9,.2,1);transform:{{ t.underline }}"></div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:12px">
+          <sc-if value="{{ isProtected }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:center;gap:7px;background:#FFEBF0;color:#A8002D;font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px">
+              <div style="width:7px;height:7px;border-radius:50%;background:#FF0144"></div>Comparison limited
+            </div>
+          </sc-if>
+          <div style="width:28px;height:28px;border-radius:50%;background:#3F4987;color:#fff;font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center">GS</div>
+          <div style="font-size:12.5px;font-weight:500">Dr. G. Schrappe</div>
+        </div>
+      </div>
+
+      <div style="background:#FFFFFF;border-bottom:1px solid #E1E3EA;padding:{{ scopePad }};display:flex;flex-direction:column;gap:{{ scopeGap }};flex-shrink:0;position:sticky;top:58px;z-index:25;transition:padding .18s ease,gap .18s ease">
+        <sc-if value="{{ scopeFull }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8C8C8C">Analysis scope — applies to every panel below</div>
+          <div style="margin-left:auto;display:flex;align-items:center;gap:8px;font-size:11.5px">
+            <div style="background:#F2F3F7;padding:5px 9px;border-radius:6px;font-weight:500">Registry · Real AF</div>
+            <span style="color:#C9CCDD">/</span>
+            <div style="background:#005BFF;color:#fff;padding:5px 9px;border-radius:6px;font-weight:500">Your centre · Site 14</div>
+            <div style="color:#8C8C8C">Data updated 12 Aug 2026</div>
+          </div>
+        </div>
+        </sc-if>
+
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;position:relative">
+          <sc-for list="{{ chips }}" as="c" hint-placeholder-count="4">
+            <div style="display:flex;align-items:center;gap:8px;border-radius:8px;padding:8px 10px;font-size:12px;font-weight:500;transition:all .26s cubic-bezier(.2,.9,.2,1);animation:qiRise .32s both;background:{{ c.bg }};color:{{ c.fg }};border:{{ c.border }}">
+              <span style="opacity:.62">{{ c.label }}</span>
+              <span style="font-weight:600">{{ c.value }}</span>
+              <sc-if value="{{ c.flagged }}" hint-placeholder-val="{{ false }}"><span style="color:#A86200;font-size:10px">▲</span></sc-if>
+              <sc-if value="{{ c.removable }}" hint-placeholder-val="{{ true }}">
+                <span style="cursor:pointer;opacity:.45;font-size:12px;line-height:1;transition:opacity .18s,transform .18s" onClick="{{ c.remove }}" style-hover="{{ c.xHover }}">✕</span>
+              </sc-if>
+            </div>
+          </sc-for>
+          <div style="border:1px dashed #C9CCDD;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:500;color:#404040;cursor:pointer;transition:all .2s" onClick="{{ toggleAdd }}" style-hover="{{ addHover }}">{{ addLabel }}</div>
+
+          <sc-if value="{{ addOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:44px;right:0;z-index:30;background:#fff;border:1px solid #E1E3EA;border-radius:11px;box-shadow:0 18px 44px rgba(1,7,55,.16);padding:10px;width:330px;display:flex;flex-direction:column;gap:4px;animation:qiRise .22s both">
+              <div style="font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C;padding:4px 8px 6px">Add a filter — watch the reference group</div>
+              <sc-for list="{{ addables }}" as="a" hint-placeholder-count="3">
+                <div style="display:flex;align-items:center;gap:10px;padding:9px 8px;border-radius:8px;cursor:pointer;transition:background .16s" onClick="{{ a.add }}" style-hover="{{ a.hoverStyle }}">
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:12.5px;font-weight:600">{{ a.label }} · {{ a.value }}</div>
+                    <div style="font-size:11px;color:#8C8C8C">{{ a.effect }}</div>
+                  </div>
+                  <div style="font-size:11px;font-weight:600;padding:3px 7px;border-radius:5px;background:{{ a.tagBg }};color:{{ a.tagFg }}">{{ a.tag }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ scopeCompact }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:center;gap:10px;margin-left:auto;font-size:12px;color:#8C8C8C;white-space:nowrap">
+              <span><b style="color:#005BFF;font-weight:600">{{ procDisplay }}</b> procedures</span>
+              <span style="color:#C9CCDD">·</span>
+              <span><b style="font-weight:600;color:{{ refColor }}">{{ refDisplay }}</b> centres</span>
+              <div style="width:16px;height:16px;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:{{ guardIconBg }};animation:{{ guardPulse }}">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="{{ guardIconPath }}"></path></svg>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+
+        <sc-if value="{{ scopeFull }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;gap:1px;background:#E1E3EA;border:1px solid #E1E3EA;border-radius:9px;overflow:hidden;width:fit-content">
+          <div style="background:#fff;padding:11px 16px;display:flex;flex-direction:column;gap:3px;min-width:150px">
+            <div style="font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">Your procedures</div>
+            <div style="font-size:20px;font-weight:600;color:#005BFF">{{ procDisplay }}</div>
+          </div>
+          <div style="background:#fff;padding:11px 16px;display:flex;flex-direction:column;gap:3px;min-width:200px">
+            <div style="font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">Reference group</div>
+            <div style="display:flex;align-items:baseline;gap:7px">
+              <div style="font-size:20px;font-weight:600;transition:color .3s;color:{{ refColor }}">{{ refDisplay }} centres</div>
+              <div style="font-size:11px;color:#8C8C8C">· anonymous</div>
+            </div>
+          </div>
+          <div style="padding:11px 16px;display:flex;align-items:center;gap:9px;min-width:250px;transition:background .32s;background:{{ guardBg }}">
+            <div style="width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:{{ guardIconBg }};animation:{{ guardPulse }}">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ guardIconPath }}"></path></svg>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:600;transition:color .3s;color:{{ guardFg }}">{{ guardTitle }}</div>
+              <div style="font-size:11px;color:#404040">{{ guardSub }}</div>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+      </div>
+
+      <div style="padding:22px 26px 30px;display:flex;flex-direction:column;gap:20px;background:#F6F7FA;min-height:760px;position:relative">
+
+        <sc-if value="{{ isOverview }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Overview / Home" style="display:flex;flex-direction:column;gap:20px;animation:qiRise .34s both">
+
+            <div style="display:flex;align-items:center;gap:16px">
+              <div style="flex:1;min-width:0">
+                <div style="font-size:21px;font-weight:600;letter-spacing:-.015em;color:#020D5A">Analysis · {{ analysisName }}</div>
+                <div style="font-size:12px;color:#8C8C8C;margin-top:2px">{{ questionCount }} questions · scope applies to every panel · dataset 12 Aug 2026</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:9px;flex-shrink:0">
+                <div style="border:1px solid #E1E3EA;background:#fff;color:#404040;font-size:12.5px;font-weight:600;padding:11px 15px;border-radius:9px;cursor:pointer;transition:all .18s" onClick="{{ saveView }}" style-hover="{{ ghostHover }}">Save analysis</div>
+                <div style="background:#005BFF;color:#fff;font-size:13px;font-weight:600;padding:11px 17px;border-radius:9px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:transform .16s,box-shadow .2s" onClick="{{ openModal }}" style-hover="{{ primaryHover }}"><span style="font-size:15px;line-height:1">+</span>Add question</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:20px;align-items:stretch">
+
+              <div style="flex:1;min-width:0;background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:22px 24px 18px;display:flex;flex-direction:column;gap:16px;box-shadow:0 2px 10px rgba(1,7,55,.05)">
+                <div style="display:flex;align-items:flex-start;gap:20px">
+                  <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px">
+                    <div style="font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#005BFF">Question 1 — how do I compare?</div>
+                    <div style="font-size:29px;font-weight:300;line-height:1.14;letter-spacing:-.02em;color:#020D5A;text-wrap:pretty">Your position inside the reference distribution</div>
+                  </div>
+                  <div style="display:flex;border:1px solid #E1E3EA;border-radius:8px;overflow:hidden;flex-shrink:0">
+                    <div style="padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;transition:all .22s;background:{{ modeAllBg }};color:{{ modeAllFg }}" onClick="{{ modeAll }}">All indicators</div>
+                    <div style="padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;transition:all .22s;background:{{ modeFlagBg }};color:{{ modeFlagFg }}" onClick="{{ modeFlagged }}">Flagged only</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;gap:20px;align-items:center;font-size:10.5px;font-weight:500;color:#404040;padding-bottom:12px;border-bottom:1px solid #E1E3EA">
+                  <div style="display:flex;align-items:center;gap:7px"><div style="width:3px;height:14px;background:#005BFF"></div>Your centre</div>
+                  <div style="display:flex;align-items:center;gap:7px"><div style="width:30px;height:11px;border:1.2px solid #3F4987;background:linear-gradient(90deg,#3F4987,#ACB1D8)"></div>Middle half of reference centres</div>
+                  <div style="display:flex;align-items:center;gap:7px"><div style="width:30px;height:4px;background:#C9CCDD;border-radius:2px"></div>Full reference spread</div>
+                  <div style="display:flex;align-items:center;gap:7px"><div style="width:2px;height:14px;background:#020D5A"></div>Reference median</div>
+                </div>
+
+                <div style="display:flex;flex-direction:column">
+                  <sc-for list="{{ rows }}" as="r" hint-placeholder-count="6">
+                    <div style="display:flex;align-items:center;gap:18px;padding:13px 10px;margin:0 -10px;border-radius:9px;cursor:pointer;transition:background .18s,transform .18s;border-bottom:1px solid #F2F3F7;position:relative" onClick="{{ r.open }}" onMouseEnter="{{ r.rowEnter }}" onMouseLeave="{{ r.rowLeave }}" style-hover="{{ r.hoverStyle }}">
+                      <sc-if value="{{ r.tipOn }}" hint-placeholder-val="{{ false }}">
+                        <div style="position:absolute;left:10px;top:-2px;transform:translateY(-100%);z-index:5;background:#020D5A;color:#fff;font-size:10.5px;font-weight:600;padding:6px 10px;border-radius:8px;white-space:nowrap;box-shadow:0 8px 20px rgba(1,7,55,.24);animation:qiRise .14s both">{{ r.tipText }}</div>
+                      </sc-if>
+                      <div style="width:200px;flex-shrink:0">
+                        <div style="font-size:13.5px;font-weight:600;line-height:1.25">{{ r.name }}</div>
+                        <div style="font-size:11px;color:#8C8C8C;margin-top:2px">{{ r.dir }}</div>
+                      </div>
+                      <div style="flex:1;min-width:0;height:34px;position:relative">
+                        <div style="position:absolute;left:0;right:0;top:15px;height:4px;background:#EDEEF2;border-radius:2px"></div>
+                        <sc-if value="{{ r.showRef }}" hint-placeholder-val="{{ true }}">
+                          <div style="position:absolute;top:15px;height:4px;background:#C9CCDD;border-radius:2px;transition:width .52s cubic-bezier(.2,.9,.2,1),left .52s;left:{{ r.aLeft }};width:{{ r.aW }}"></div>
+                          <div style="position:absolute;top:8px;height:18px;border:1.2px solid #3F4987;background:linear-gradient(90deg,rgba(63,73,135,.55),rgba(172,177,216,.5));transition:width .52s cubic-bezier(.2,.9,.2,1),left .52s;left:{{ r.bLeft }};width:{{ r.bW }}"></div>
+                          <div style="position:absolute;top:6px;width:2px;height:22px;background:#020D5A;transition:left .52s,opacity .5s;left:{{ r.mLeft }};opacity:{{ r.anim }}"></div>
+                        </sc-if>
+                        <sc-if value="{{ r.blocked }}" hint-placeholder-val="{{ false }}">
+                          <div style="position:absolute;left:8%;right:8%;top:7px;height:20px;border:1.2px dashed #8C8C8C;border-radius:3px;background:repeating-linear-gradient(45deg,#F2F3F7,#F2F3F7 4px,#E1E3EA 4px,#E1E3EA 8px);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;letter-spacing:.1em;color:#8C8C8C">NOT SHOWN</div>
+                        </sc-if>
+                        <div style="position:absolute;top:3px;width:4px;height:28px;background:#005BFF;border-radius:1px;transition:left .52s cubic-bezier(.2,.9,.2,1),opacity .4s;left:{{ r.oLeft }};opacity:{{ r.anim }}"></div>
+                        <div style="position:absolute;top:11px;width:12px;height:12px;border-radius:50%;background:#005BFF;border:2px solid #fff;transition:left .52s cubic-bezier(.2,.9,.2,1),opacity .4s,transform .2s;left:{{ r.dotLeft }};opacity:{{ r.anim }}"></div>
+                        <div style="position:absolute;top:-6px;font-size:11px;font-weight:600;color:#005BFF;transform:translateX(-50%);transition:left .52s,opacity .4s;left:{{ r.labelLeft }};opacity:{{ r.anim }}">{{ r.own }}</div>
+                      </div>
+                      <sc-if value="{{ r.flag }}" hint-placeholder-val="{{ false }}">
+                        <div style="border:1.4px solid #FF9300;background:#FFF7EB;color:#A86200;font-size:10.5px;font-weight:700;padding:5px 8px;border-radius:6px;flex-shrink:0">▲ LOOK</div>
+                      </sc-if>
+                      <sc-if value="{{ r.showRef }}" hint-placeholder-val="{{ true }}">
+                        <div style="width:78px;text-align:right;flex-shrink:0">
+                          <div style="font-size:16px;font-weight:600">{{ r.pct }}</div>
+                          <div style="font-size:9.5px;font-weight:600;letter-spacing:.1em;color:#8C8C8C">PERCENTILE</div>
+                        </div>
+                        <div style="font-size:14px;color:#C9CCDD;flex-shrink:0;transition:transform .22s,color .22s">→</div>
+                      </sc-if>
+                      <sc-if value="{{ r.blocked }}" hint-placeholder-val="{{ false }}">
+                        <div style="width:auto;text-align:right;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:2px">
+                          <div style="font-size:9.5px;font-weight:700;letter-spacing:.08em;color:#A8002D">RETAINED · PROTECTED</div>
+                          <div style="font-size:11px;font-weight:600;color:#005BFF;cursor:pointer" onClick="{{ r.widen }}">Widen the group →</div>
+                        </div>
+                      </sc-if>
+                    </div>
+                  </sc-for>
+                </div>
+
+                <div style="background:#F6F7FA;border:1px solid #E1E3EA;padding:12px 14px;border-radius:9px;font-size:12px;line-height:1.5;color:#8C8C8C;display:flex;gap:10px">
+                  <span style="color:#8C8C8C;flex-shrink:0">ⓘ</span>
+                  <span>Position shows where your result sits among reference centres for the current scope. It is a comparison, not an assessment of care quality.</span>
+                </div>
+              </div>
+
+              <div style="width:452px;flex-shrink:0;display:flex;flex-direction:column;gap:0;border-radius:12px;overflow:hidden;border:1px solid #E1E3EA;background:#fff;box-shadow:0 2px 10px rgba(1,7,55,.05)">
+                <div style="background:linear-gradient(160deg,#020D5A,#04187F);color:#fff;padding:20px 22px 18px;display:flex;flex-direction:column;gap:8px">
+                  <div style="font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7FE9FF">Question 2 — what changed?</div>
+                  <div style="font-size:21px;font-weight:600;letter-spacing:-.015em">Largest movement in this period</div>
+                  <div style="font-size:12px;color:#ACB1D8">Fluoroscopy Time · quarterly mean · {{ heroBefore }} → {{ heroAfter }} min</div>
+                  <div style="display:flex;align-items:flex-end;gap:12px">
+                    <div style="font-size:58px;font-weight:300;line-height:1;letter-spacing:-.03em">{{ heroDisplay }}</div>
+                    <div style="padding-bottom:9px">
+                      <div style="font-size:12.5px;color:#ACB1D8">minutes</div>
+                      <div style="font-size:12.5px;font-weight:600;color:{{ heroDirColor }}">{{ heroDirLabel }}</div>
+                    </div>
+                  </div>
+                  <div style="position:relative">
+                    <svg viewBox="0 0 386 66" style="width:100%;height:66px;display:block;margin-top:2px">
+                      <defs><linearGradient id="miniFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00FFB9" stop-opacity=".5"></stop><stop offset="1" stop-color="#005BFF" stop-opacity="0"></stop></linearGradient></defs>
+                      <path style="transition:opacity .7s;opacity:{{ anim }}" fill="url(#miniFill)" d="{{ miniArea }}"></path>
+                      <path style="transition:stroke-dashoffset .6s ease-out;stroke-dasharray:{{ miniLen }};stroke-dashoffset:{{ miniOffset }}" fill="none" stroke="#00DAFF" stroke-width="2.2" stroke-linecap="round" d="{{ miniPath }}"></path>
+                      <line style="transition:opacity .6s .3s;opacity:{{ anim }}" stroke="#fff" stroke-width="1.4" stroke-dasharray="3 3" y1="4" y2="62" x1="{{ miniEventX }}" x2="{{ miniEventX }}"></line>
+                      <sc-for list="{{ miniPts }}" as="p" hint-placeholder-count="12">
+                        <g onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" style="cursor:pointer">
+                          <rect fill="transparent" y="0" height="66" width="34" x="{{ p.hitX }}"></rect>
+                          <circle style="transition:opacity .3s" opacity="{{ p.op }}" r="{{ p.r }}" cx="{{ p.cx }}" cy="{{ p.cy }}" fill="#7FE9FF" stroke="#020D5A" stroke-width="1.4"></circle>
+                        </g>
+                      </sc-for>
+                    </svg>
+                    <sc-if value="{{ miniTipOn }}" hint-placeholder-val="{{ false }}">
+                      <div style="position:absolute;pointer-events:none;background:#fff;color:#020D5A;font-size:10.5px;font-weight:600;line-height:1.45;padding:6px 10px;border-radius:8px;box-shadow:0 8px 20px rgba(1,7,55,.3);transform:translate(-50%,-115%);white-space:nowrap;animation:qiRise .12s both;left:{{ miniTipLeft }};top:44%">{{ miniTipText }}</div>
+                    </sc-if>
+                  </div>
+                  <div style="font-size:11.5px;line-height:1.5;color:#C9CCDD;text-wrap:pretty">A difference was observed before and after the mapping-system change recorded in Mar 2020. This is an association, not a cause.</div>
+                </div>
+
+                <div style="padding:16px 20px;display:flex;flex-direction:column;gap:2px;flex:1">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+                    <div style="font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">Worth investigating</div>
+                    <div style="font-size:11px;color:#8C8C8C">{{ signalCount }} signals</div>
+                  </div>
+                  <sc-for list="{{ signals }}" as="s" hint-placeholder-count="3">
+                    <div style="display:flex;gap:12px;align-items:center;padding:11px 8px;margin:0 -8px;border-radius:9px;cursor:pointer;transition:background .18s" onClick="{{ s.go }}" style-hover="{{ s.hoverStyle }}">
+                      <div style="width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:{{ s.bg }};color:{{ s.tone }}">{{ s.mark }}</div>
+                      <div style="flex:1;min-width:0">
+                        <div style="font-size:12.5px;font-weight:600;line-height:1.3">{{ s.title }}</div>
+                        <div style="font-size:11px;color:#8C8C8C;margin-top:1px">{{ s.detail }}</div>
+                      </div>
+                      <div style="color:#005BFF;font-size:13px">→</div>
+                    </div>
+                  </sc-for>
+                  <div style="display:flex;gap:10px;margin-top:auto;padding-top:14px">
+                    <div style="flex:1;background:#005BFF;color:#fff;text-align:center;padding:13px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;transition:transform .16s,box-shadow .2s,background .2s" onClick="{{ goInvestigation }}" style-hover="{{ primaryHover }}" style-active="{{ primaryActive }}">Open investigation</div>
+                    <div style="border:1px solid #E1E3EA;padding:13px 16px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;transition:all .18s" onClick="{{ saveView }}" style-hover="{{ ghostHover }}">Save view</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:16px;box-shadow:0 2px 10px rgba(1,7,55,.05)">
+              <div style="display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap">
+                <div style="flex:1;min-width:280px;display:flex;flex-direction:column;gap:5px">
+                  <div style="font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#005BFF">Question 3 — how did it evolve, and around which event?</div>
+                  <div style="font-size:26px;font-weight:400;letter-spacing:-.018em"><span style="font-weight:600;color:#020D5A">Fluoroscopy Time</span><span style="color:#8C8C8C"> · your centre, by quarter</span></div>
+                </div>
+                <div style="display:flex;gap:26px">
+                  <div><div style="font-size:9.5px;font-weight:600;letter-spacing:.13em;color:#8C8C8C">BEFORE EVENT</div><div style="font-size:21px;font-weight:600">{{ heroBefore }}<span style="font-size:12px;font-weight:400;color:#8C8C8C"> min</span></div><div style="font-size:10.5px;color:#8C8C8C">Q1 19 – Q4 19 · n={{ heroBeforeN }}</div></div>
+                  <div><div style="font-size:9.5px;font-weight:600;letter-spacing:.13em;color:#8C8C8C">AFTER EVENT</div><div style="font-size:21px;font-weight:600;color:#005BFF">{{ heroAfter }}<span style="font-size:12px;font-weight:400;color:#8C8C8C"> min</span></div><div style="font-size:10.5px;color:#8C8C8C">Q1 20 – Q4 21 · n={{ heroAfterN }}</div></div>
+                </div>
+                <div style="display:flex;border:1px solid #E1E3EA;border-radius:8px;overflow:hidden">
+                  <sc-for list="{{ layerToggles }}" as="l" hint-placeholder-count="3">
+                    <div style="padding:9px 13px;font-size:11.5px;font-weight:600;cursor:pointer;border-right:1px solid #E1E3EA;transition:all .2s;background:{{ l.bg }};color:{{ l.fg }}" onClick="{{ l.toggle }}">{{ l.name }}</div>
+                  </sc-for>
+                </div>
+              </div>
+
+              <div style="display:flex;gap:20px;align-items:stretch">
+                <div style="flex:1;min-width:0;position:relative">
+                  <svg viewBox="0 0 900 300" style="width:100%;height:300px;display:block;overflow:visible">
+                    <defs>
+                      <linearGradient id="trFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#005BFF" stop-opacity=".26"></stop><stop offset="1" stop-color="#005BFF" stop-opacity="0"></stop></linearGradient>
+                    </defs>
+                    <sc-for list="{{ gridLines }}" as="g" hint-placeholder-count="6">
+                      <g><line stroke="#EDEEF2" stroke-width="1" x1="{{ g.x1 }}" x2="{{ g.x2 }}" y1="{{ g.y }}" y2="{{ g.y }}"></line>
+                      <text fill="#8C8C8C" font-size="11" text-anchor="end" x="{{ g.lx }}" y="{{ g.ly }}">{{ g.label }}</text></g>
+                    </sc-for>
+                    <rect style="transition:opacity .5s;opacity:{{ anim }}" fill="#F2F3F7" y="20" height="240" x="{{ tL }}" width="{{ beforeW }}"></rect>
+                    <g style="transition:opacity .4s;opacity:{{ bandOpacity }}">
+                      <rect fill="#EAF0FF" stroke="#B9CCFF" stroke-dasharray="4 3" x="{{ tL }}" width="{{ trackW }}" y="{{ refBandY }}" height="{{ refBandH }}"></rect>
+                      <text fill="#3F4987" font-size="10" font-weight="600" x="{{ tL2 }}" y="{{ refBandLabelY }}">REFERENCE BAND · middle half of {{ refCount }} centres</text>
+                    </g>
+                    <g style="transition:opacity .4s;opacity:{{ clOpacity }}">
+                      <line stroke="#FF7AA0" stroke-width="1.2" stroke-dasharray="5 4" x1="{{ tL }}" x2="{{ tRight }}" y1="{{ uclY }}" y2="{{ uclY }}"></line>
+                      <text fill="#A8002D" font-size="10" font-weight="600" x="{{ tRight2 }}" y="{{ uclY2 }}">UCL {{ uclLbl }}</text>
+                      <line stroke="#FF9300" stroke-width="1.4" x1="{{ tL }}" x2="{{ tRight }}" y1="{{ clY }}" y2="{{ clY }}"></line>
+                      <text fill="#A86200" font-size="10" font-weight="600" x="{{ tRight2 }}" y="{{ clY2 }}">CL {{ clLbl }}</text>
+                      <line stroke="#FF7AA0" stroke-width="1.2" stroke-dasharray="5 4" x1="{{ tL }}" x2="{{ tRight }}" y1="{{ lclY }}" y2="{{ lclY }}"></line>
+                      <text fill="#A8002D" font-size="10" font-weight="600" x="{{ tRight2 }}" y="{{ lclY2 }}">LCL {{ lclLbl }}</text>
+                    </g>
+                    <path style="transition:opacity .5s .2s;opacity:{{ anim }}" fill="url(#trFill)" d="{{ trendArea }}"></path>
+                    <path style="transition:stroke-dashoffset .7s ease-out;stroke-dasharray:{{ trendLen }};stroke-dashoffset:{{ trendOffset }}" fill="none" stroke="#020D5A" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" d="{{ trendPath }}"></path>
+                    <line style="transition:opacity .5s .4s;opacity:{{ anim }}" stroke="#00DAFF" stroke-width="2" y1="14" y2="262" x1="{{ eventX }}" x2="{{ eventX }}"></line>
+                    <text style="transition:opacity .5s .4s;opacity:{{ anim }}" fill="#00527A" font-size="10" font-weight="700" y="10" x="{{ afterLabelX }}">AFTER · EVENT Mar 2020</text>
+                    <sc-for list="{{ trendPts }}" as="p" hint-placeholder-count="12">
+                      <g onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" style="cursor:pointer">
+                        <rect fill="transparent" y="10" height="256" width="64" x="{{ p.hitX }}"></rect>
+                        <circle style="transition:opacity .4s,r .18s;opacity:{{ p.outOpacity }};r:{{ p.outR }}" fill="none" stroke="#FF9300" stroke-width="1.6" cx="{{ p.cx }}" cy="{{ p.cy }}"></circle>
+                        <circle style="transition:r .18s,opacity .5s;opacity:{{ anim }};r:{{ p.r }};stroke-dasharray:{{ p.dash }}" stroke-width="1.8" cx="{{ p.cx }}" cy="{{ p.cy }}" fill="{{ p.fill }}" stroke="{{ p.stroke }}"></circle>
+                        <text font-size="10.5" text-anchor="middle" y="284" x="{{ p.cx }}" fill="{{ p.labelColor }}" font-weight="{{ p.labelWeight }}">{{ p.label }}</text>
+                        <text font-size="9.5" fill="#8C8C8C" text-anchor="middle" y="297" x="{{ p.cx }}">{{ p.nLabel }}</text>
+                      </g>
+                    </sc-for>
+                  </svg>
+
+                  <sc-if value="{{ tipOn }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;pointer-events:none;background:#020D5A;color:#fff;border-radius:9px;padding:9px 12px;font-size:11.5px;line-height:1.45;box-shadow:0 10px 26px rgba(1,7,55,.28);transform:translate(-50%,-118%);transition:left .16s,top .16s;white-space:nowrap;animation:qiRise .16s both;left:{{ tipLeft }};top:{{ tipTop }}">
+                      <div style="font-weight:700;font-size:12.5px">{{ tipQuarter }}</div>
+                      <div style="color:#7FE9FF">{{ tipValue }} min · n={{ tipN }}</div>
+                      <div style="color:#ACB1D8">{{ tipNote }}</div>
+                    </div>
+                  </sc-if>
+                </div>
+
+                <div style="width:300px;flex-shrink:0;display:flex;flex-direction:column;gap:12px">
+                  <div style="border:1.4px solid #00DAFF;background:#F2FDFF;border-radius:11px;padding:14px 16px;display:flex;flex-direction:column;gap:6px">
+                    <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#00527A">Event on the timeline</div>
+                    <div style="font-size:15.5px;font-weight:600">Mapping system changed</div>
+                    <div style="font-size:11.5px;color:#404040;line-height:1.45">Recorded 14 Mar 2020 · splits the series into before / after</div>
+                    <div style="display:flex;gap:8px;margin-top:4px">
+                      <div style="background:#00DAFF;color:#010737;font-size:11.5px;font-weight:600;padding:8px 11px;border-radius:7px;cursor:pointer;transition:transform .16s,filter .18s" onClick="{{ comparePeriods }}" style-hover="{{ cyanHover }}">Compare periods</div>
+                      <div style="border:1px solid #B7E9F5;color:#00527A;font-size:11.5px;font-weight:600;padding:8px 11px;border-radius:7px;cursor:pointer;background:#fff;transition:all .18s" onClick="{{ editEvent }}" style-hover="{{ ghostHover }}">Edit event</div>
+                    </div>
+                  </div>
+                  <div style="border:1px solid #E1E3EA;border-radius:11px;padding:14px 16px;display:flex;flex-direction:column;gap:9px">
+                    <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">Data availability</div>
+                    <div style="display:flex;gap:9px;align-items:center;font-size:11.5px;color:#404040"><div style="width:9px;height:9px;border-radius:50%;background:#0DBA5E"></div>10 quarters with full data</div>
+                    <div style="display:flex;gap:9px;align-items:center;font-size:11.5px;color:#404040"><div style="width:9px;height:9px;border-radius:50%;border:1.4px dashed #8C8C8C"></div>2 quarters with few procedures — hollow</div>
+                    <div style="display:flex;gap:9px;align-items:center;font-size:11.5px;color:#404040"><div style="width:9px;height:9px;background:#EDEEF2"></div>No quarter without data in this scope</div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #E1E3EA;padding-top:14px;flex-wrap:wrap">
+                <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">Next step — keeps this scope</div>
+                <div style="margin-left:auto;display:flex;gap:10px">
+                  <sc-for list="{{ nextSteps }}" as="n" hint-placeholder-count="3">
+                    <div style="border:1px solid #E1E3EA;background:#fff;padding:11px 14px;border-radius:9px;font-size:12px;font-weight:600;cursor:pointer;display:flex;gap:9px;align-items:center;transition:all .2s" onClick="{{ n.go }}" style-hover="{{ n.hoverStyle }}">{{ n.name }}<span style="color:#005BFF">→</span></div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px">
+              <div style="background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:12px">
+                <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">Saved segments</div>
+                <sc-for list="{{ saved }}" as="s" hint-placeholder-count="3">
+                  <div style="display:flex;gap:12px;align-items:center;padding:10px 8px;margin:0 -8px;border-radius:8px;cursor:pointer;transition:background .18s" onClick="{{ s.open }}" style-hover="{{ s.hoverStyle }}">
+                    <div style="width:3px;height:32px;border-radius:2px;background:{{ s.tone }}"></div>
+                    <div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:600">{{ s.title }}</div><div style="font-size:11px;color:#8C8C8C">{{ s.meta }}</div></div>
+                    <div style="font-size:12px;font-weight:600;color:#005BFF">Open</div>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:12px">
+                <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">Recent analyses</div>
+                <sc-for list="{{ recent }}" as="r" hint-placeholder-count="3">
+                  <div style="display:flex;gap:12px;align-items:center;padding:10px 8px;margin:0 -8px;border-radius:8px;cursor:pointer;transition:background .18s" onClick="{{ r.open }}" style-hover="{{ r.hoverStyle }}">
+                    <div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:600">{{ r.title }}</div><div style="font-size:11px;color:#8C8C8C">{{ r.meta }}</div></div>
+                    <div style="font-size:9.5px;font-weight:700;letter-spacing:.08em;padding:4px 7px;border-radius:5px;background:{{ r.bg }};color:{{ r.tone }}">{{ r.tag }}</div>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="border:1.4px solid #B9CCFF;background:#F6F9FF;border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:11px">
+                <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#005BFF">Anonymity in this scope</div>
+                <div style="font-size:17px;font-weight:600;line-height:1.25;letter-spacing:-.012em;text-wrap:pretty">{{ anonTitle }}</div>
+                <sc-for list="{{ anonRules }}" as="a" hint-placeholder-count="3">
+                  <div style="display:flex;gap:10px;align-items:flex-start;font-size:11.5px;line-height:1.45;color:#404040">
+                    <div style="width:17px;height:17px;border-radius:5px;color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;background:{{ a.bg }}">{{ a.mark }}</div>
+                    <span>{{ a.text }}</span>
+                  </div>
+                </sc-for>
+                <div onClick="{{ howProtection }}" style="font-size:12px;font-weight:600;color:#005BFF;cursor:pointer;margin-top:2px">How protection works →</div>
+              </div>
+            </div>
+
+            <sc-for list="{{ addedPanels }}" as="q" hint-placeholder-count="0">
+              <div style="background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:14px;box-shadow:0 2px 10px rgba(1,7,55,.05);animation:qiRise .34s var(--qi-ease) both">
+                <div style="display:flex;align-items:flex-start;gap:16px">
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#005BFF">{{ q.kicker }}</div>
+                    <div style="font-size:22px;font-weight:400;letter-spacing:-.015em;margin-top:3px"><span style="font-weight:600;color:#020D5A">{{ q.metricLabel }}</span><span style="color:#8C8C8C"> · {{ q.splitNote }}</span></div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+                    <div style="font-size:9.5px;font-weight:700;letter-spacing:.08em;padding:5px 8px;border-radius:6px;background:{{ q.tagBg }};color:{{ q.tagFg }}">{{ q.tag }}</div>
+                    <div style="width:28px;height:28px;border-radius:8px;border:1px solid #E1E3EA;display:flex;align-items:center;justify-content:center;font-size:14px;color:#8C8C8C;cursor:pointer;transition:all .18s" onClick="{{ q.menu }}" style-hover="{{ ghostHover }}">···</div>
+                    <div style="width:28px;height:28px;border-radius:8px;border:1px solid #E1E3EA;display:flex;align-items:center;justify-content:center;font-size:13px;color:#8C8C8C;cursor:pointer;transition:all .18s" onClick="{{ q.remove }}" style-hover="{{ ghostHover }}" title="Remove question">✕</div>
+                  </div>
+                </div>
+                <div style="display:flex;gap:20px;align-items:center;font-size:10.5px;font-weight:500;color:#404040;padding-bottom:12px;border-bottom:1px solid #E1E3EA">
+                  <div style="display:flex;align-items:center;gap:7px"><div style="width:3px;height:14px;background:#005BFF"></div>Your centre</div>
+                  <div style="display:flex;align-items:center;gap:7px"><div style="width:30px;height:11px;border:1.2px solid #3F4987;background:linear-gradient(90deg,#3F4987,#ACB1D8)"></div>Middle half of centres</div>
+                  <div style="display:flex;align-items:center;gap:7px"><div style="width:30px;height:4px;background:#C9CCDD;border-radius:2px"></div>Full spread</div>
+                </div>
+                <sc-for list="{{ q.rows }}" as="r" hint-placeholder-count="3">
+                  <div style="display:flex;align-items:center;gap:16px;padding:8px 10px;margin:0 -10px;border-radius:8px;position:relative;transition:background .18s" onMouseEnter="{{ r.tipEnter }}" onMouseLeave="{{ r.tipLeave }}" style-hover="{{ r.hoverStyle }}">
+                    <sc-if value="{{ r.tipOn }}" hint-placeholder-val="{{ false }}">
+                      <div style="position:absolute;left:110px;top:-4px;transform:translateY(-100%);z-index:6;background:#020D5A;color:#fff;font-size:10.5px;font-weight:600;line-height:1.5;padding:7px 11px;border-radius:8px;max-width:320px;box-shadow:0 10px 24px rgba(1,7,55,.26);animation:qiRise .12s both">{{ r.tipText }}</div>
+                    </sc-if>
+                    <div style="width:96px;flex-shrink:0;font-size:12.5px;font-weight:600">{{ r.label }}</div>
+                    <div style="flex:1;min-width:0;height:28px;position:relative">
+                      <div style="position:absolute;left:0;right:0;top:13px;height:4px;background:#EDEEF2;border-radius:2px"></div>
+                      <div style="position:absolute;top:13px;height:4px;background:#C9CCDD;border-radius:2px;transition:width .52s,left .52s;left:{{ r.aLeft }};width:{{ r.aW }}"></div>
+                      <div style="position:absolute;top:6px;height:18px;border:1.2px solid #3F4987;background:linear-gradient(90deg,rgba(63,73,135,.5),rgba(172,177,216,.45));transition:width .52s,left .52s;left:{{ r.bLeft }};width:{{ r.bW }}"></div>
+                      <div style="position:absolute;top:3px;width:4px;height:24px;background:#005BFF;border-radius:1px;transition:left .52s;left:{{ r.oLeft }}"></div>
+                      <div style="position:absolute;top:12px;width:11px;height:11px;border-radius:50%;background:#005BFF;border:2px solid #fff;transition:left .52s;left:{{ r.dotLeft }}"></div>
+                    </div>
+                    <div style="width:70px;text-align:right;flex-shrink:0">
+                      <div style="font-size:14px;font-weight:600">{{ r.pct }}</div>
+                      <div style="font-size:9px;font-weight:600;letter-spacing:.1em;color:#8C8C8C">PERCENTILE</div>
+                    </div>
+                  </div>
+                </sc-for>
+                <div style="font-size:11px;line-height:1.5;color:#8C8C8C;background:#F6F7FA;border-radius:8px;padding:10px 12px;text-wrap:pretty">{{ q.foot }}</div>
+              </div>
+            </sc-for>
+
+            <div style="border:1.6px dashed #B9CCFF;border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:all .2s;background:#fff" onClick="{{ openModal }}" style-hover="{{ addHover }}">
+              <div style="width:38px;height:38px;border-radius:10px;background:#EFF5FF;color:#005BFF;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600;flex-shrink:0">+</div>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:14.5px;font-weight:600;color:#020D5A">Add question</div>
+                <div style="font-size:12px;color:#8C8C8C;margin-top:2px">Say what you want to know. I'll tell you if the data can answer it.</div>
+              </div>
+              <div style="font-size:13px;color:#005BFF;font-weight:600">Open →</div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isComparison }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Comparison / Detail" style="display:flex;flex-direction:column;gap:20px;animation:qiRise .34s both">
+
+            <sc-if value="{{ isProtected }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;gap:20px;align-items:stretch;animation:qiRise .32s var(--qi-ease) both">
+                <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:16px">
+                  <div style="background:linear-gradient(140deg,#020D5A 0%,#0A2FB0 62%,#005BFF 120%);color:#fff;border-radius:14px;padding:26px 28px;display:flex;flex-direction:column;gap:14px">
+                    <div style="width:44px;height:44px;border-radius:11px;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>
+                    </div>
+                    <div style="font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7FE9FF">Protected comparison</div>
+                    <div style="font-size:30px;font-weight:300;line-height:1.14;letter-spacing:-.022em;text-wrap:pretty">This comparison was limited to protect the anonymity of the participants</div>
+                    <div style="font-size:13px;line-height:1.6;color:#C9D3FF;text-wrap:pretty">{{ protHeroBody }}</div>
+                  </div>
+
+                  <div style="background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:12px">
+                    <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">Recover a valid comparison — choose one</div>
+                    <sc-for list="{{ recovery }}" as="v" hint-placeholder-count="3">
+                      <div style="display:flex;gap:14px;align-items:center;border-radius:10px;padding:13px 15px;transition:border-color .2s,background .2s;border:{{ v.rowBorder }};background:{{ v.rowBg }}" style-hover="{{ v.hoverStyle }}">
+                        <div style="width:22px;height:22px;border-radius:6px;background:#EFF5FF;color:#005BFF;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">{{ v.n }}</div>
+                        <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600">{{ v.title }}</div><div style="font-size:11.5px;color:#8C8C8C;line-height:1.4">{{ v.detail }}</div></div>
+                        <div style="background:#005BFF;color:#fff;font-size:12px;font-weight:600;padding:9px 13px;border-radius:8px;cursor:pointer;flex-shrink:0;transition:transform .16s,box-shadow .2s" onClick="{{ v.act }}" style-hover="{{ primaryHover }}">{{ v.action }}</div>
+                      </div>
+                    </sc-for>
+                    <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #E1E3EA;padding-top:14px;flex-wrap:wrap">
+                      <div style="font-size:11.5px;color:#404040;flex:1;min-width:200px">Your own results for this scope are still available — only the comparison is limited.</div>
+                      <div style="border:1px solid #E1E3EA;padding:9px 13px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:all .18s" onClick="{{ seeOwnAct }}" style-hover="{{ ghostHover }}">See my own results only</div>
+                      <div style="background:#005BFF;color:#fff;padding:9px 13px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:transform .16s,box-shadow .2s" onClick="{{ restoreValidAct }}" style-hover="{{ primaryHover }}">Restore last valid comparison</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width:400px;flex-shrink:0;display:flex;flex-direction:column;gap:16px">
+                  <div style="background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:14px">
+                    <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">What each filter did to the group</div>
+                    <sc-for list="{{ filterImpact }}" as="f" hint-placeholder-count="4">
+                      <div style="display:flex;flex-direction:column;gap:6px">
+                        <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:11.5px">
+                          <span style="font-weight:600;color:{{ f.fg }}">{{ f.mark }}{{ f.label }}</span>
+                          <span style="color:#8C8C8C">{{ f.note }}</span>
+                        </div>
+                        <div style="height:9px;background:#EDEEF2;border-radius:5px;overflow:hidden">
+                          <div style="height:9px;border-radius:5px;transition:width .55s cubic-bezier(.2,.9,.2,1);width:{{ f.w }};background:{{ f.bar }}"></div>
+                        </div>
+                      </div>
+                    </sc-for>
+                    <div style="font-size:11px;color:#8C8C8C;line-height:1.5;border-top:1px solid #E1E3EA;padding-top:12px">Bar length is relative to the widest group in this analysis. The exact threshold used to protect anonymity is defined by the platform.</div>
+                  </div>
+                  <div style="border:1px solid #E1E3EA;background:#F6F9FF;border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:9px">
+                    <div style="font-size:13px;font-weight:600">Why anonymity is protected</div>
+                    <div style="font-size:11.5px;line-height:1.55;color:#404040;text-wrap:pretty">Centres share results on the condition that no participant can be identified. The protection applies to everyone equally, including your own centre when other participants look at the network.</div>
+                    <div style="font-size:12px;font-weight:600;color:#005BFF;cursor:pointer" onClick="{{ readRules }}">Read the participation rules →</div>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ comparisonNormal }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;gap:14px;align-items:stretch">
+              <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+                <div style="flex:1;background:#fff;border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:5px;transition:all .24s;border:{{ g.border }};background:{{ g.bg }}">
+                  <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:{{ g.tone }}">{{ g.kicker }}</div>
+                  <div style="font-size:14.5px;font-weight:600">{{ g.title }}</div>
+                  <div style="font-size:11.5px;color:#8C8C8C">{{ g.meta }}</div>
+                  <sc-if value="{{ g.hasAction }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin-top:6px;border:1px dashed #C9CCDD;color:#404040;font-size:11.5px;font-weight:600;padding:8px;border-radius:7px;text-align:center;cursor:pointer;transition:all .2s" onClick="{{ g.act }}" style-hover="{{ addHover }}">Add a control group</div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:14px;box-shadow:0 2px 10px rgba(1,7,55,.05)">
+              <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+                <div>
+                  <div style="font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#005BFF">{{ ladderKicker }}</div>
+                  <div style="font-size:22px;font-weight:600;letter-spacing:-.015em;margin-top:3px">Difference from the reference median</div>
+                </div>
+                <div style="margin-left:auto;display:flex;align-items:center;gap:10px">
+                  <div style="display:flex;border:1px solid #E1E3EA;border-radius:8px;overflow:hidden">
+                    <div style="padding:8px 13px;font-size:11.5px;font-weight:600;cursor:pointer;transition:all .2s;background:{{ sortDiffBg }};color:{{ sortDiffFg }}" onClick="{{ sortByDiff }}">By difference</div>
+                    <div style="padding:8px 13px;font-size:11.5px;font-weight:600;cursor:pointer;border-left:1px solid #E1E3EA;transition:all .2s;background:{{ sortFamBg }};color:{{ sortFamFg }}" onClick="{{ sortByFam }}">By family</div>
+                  </div>
+                  <div style="border:1px solid #E1E3EA;padding:8px 12px;border-radius:8px;font-size:11.5px;font-weight:600;color:#404040;cursor:pointer;transition:all .18s" onClick="{{ downloadImage }}" style-hover="{{ ghostHover }}">Download image</div>
+                </div>
+              </div>
+              <div style="display:flex;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8C8C8C;padding-bottom:8px;border-bottom:1px solid #E1E3EA">
+                <div style="width:250px">Indicator</div><div style="width:62px;text-align:right">Yours</div><div style="width:80px;text-align:right">Reference</div>
+                <div style="flex:1;text-align:center">Below ← reference → above</div><div style="width:132px;text-align:right">Difference</div>
+              </div>
+              <sc-for list="{{ ladder }}" as="l" hint-placeholder-count="7">
+                <div style="display:flex;align-items:center;padding:11px 10px;margin:0 -10px;border-radius:9px;cursor:pointer;border-bottom:1px solid #F6F7FA;transition:background .18s;background:{{ l.selBg }};position:relative" onClick="{{ l.select }}" onMouseEnter="{{ l.tipEnter }}" onMouseLeave="{{ l.tipLeave }}" style-hover="{{ l.hoverStyle }}">
+                  <sc-if value="{{ l.tipOn }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;left:270px;top:-4px;transform:translateY(-100%);z-index:6;background:#020D5A;color:#fff;font-size:10.5px;font-weight:600;line-height:1.5;padding:7px 11px;border-radius:8px;max-width:340px;box-shadow:0 10px 24px rgba(1,7,55,.26);animation:qiRise .14s both">{{ l.tipText }}</div>
+                  </sc-if>
+                  <div style="width:250px;padding-right:12px">
+                    <div style="font-size:13px;font-weight:600;line-height:1.25">{{ l.name }}</div>
+                    <div style="font-size:10.5px;color:#8C8C8C;margin-top:2px">{{ l.meta }}</div>
+                  </div>
+                  <div style="width:62px;text-align:right;font-size:15px;font-weight:600;color:{{ l.ownColor }}">{{ l.own }}</div>
+                  <div style="width:80px;text-align:right;font-size:13px;color:#404040">{{ l.ref }}</div>
+                  <div style="flex:1;height:22px;position:relative;margin:0 14px">
+                    <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:#C9CCDD"></div>
+                    <sc-if value="{{ l.notBlocked }}" hint-placeholder-val="{{ true }}">
+                      <div style="position:absolute;top:5px;height:12px;border-radius:3px;transition:width .52s cubic-bezier(.2,.9,.2,1),left .52s;left:{{ l.barLeft }};width:{{ l.barW }};background:{{ l.barBg }}"></div>
+                    </sc-if>
+                    <sc-if value="{{ l.blocked }}" hint-placeholder-val="{{ false }}">
+                      <div style="position:absolute;left:26%;width:48%;top:3px;height:16px;border:1.2px dashed #8C8C8C;background:repeating-linear-gradient(45deg,#F2F3F7,#F2F3F7 4px,#E1E3EA 4px,#E1E3EA 8px);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;letter-spacing:.1em;color:#8C8C8C">NOT SHOWN</div>
+                    </sc-if>
+                  </div>
+                  <div style="width:132px;text-align:right">
+                    <div style="font-size:14px;font-weight:600;color:{{ l.diffColor }}">{{ l.diffLabel }}</div>
+                    <div style="font-size:10.5px;color:{{ l.dirColor }}">{{ l.dirLabel }}</div>
+                  </div>
+                </div>
+              </sc-for>
+              <div style="font-size:11.5px;line-height:1.55;color:#404040;background:#F6F7FA;border-radius:9px;padding:12px 14px;text-wrap:pretty">A difference between groups was observed for the indicators above. Above or below the reference is not in itself a better or worse result — open an indicator to see distribution, period and segments.</div>
+              <div style="display:flex;gap:12px;align-items:flex-start;border:1px solid #E1E3EA;border-radius:10px;padding:13px 15px">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8C8C8C" stroke-width="1.9" stroke-linecap="round" style="flex-shrink:0;margin-top:1px"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>
+                <div style="flex:1;min-width:0">
+                  <div style="font-size:12px;font-weight:600">One indicator is not shown</div>
+                  <div style="font-size:11.5px;color:#404040;line-height:1.5;margin-top:2px;text-wrap:pretty">“Repeat Procedure within 12 months” was limited to protect the anonymity of the participants in this scope. Widen the group to see it.</div>
+                </div>
+                <div style="font-size:12px;font-weight:600;color:#005BFF;cursor:pointer;white-space:nowrap" onClick="{{ reviewFilters }}" style-hover="{{ ghostHover }}">Review filters →</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:20px;align-items:stretch">
+              <div style="flex:1;background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:14px">
+                <div style="display:flex;align-items:baseline;gap:12px">
+                  <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">Selected indicator</div>
+                  <div style="font-size:19px;font-weight:600;letter-spacing:-.012em">{{ selName }}</div>
+                  <div style="font-size:11.5px;color:#8C8C8C;margin-left:auto">{{ selMeta }}</div>
+                </div>
+                <div style="display:flex;align-items:flex-end;gap:3px;height:120px;padding-top:22px;position:relative">
+                  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:#EDEEF2"></div>
+                  <sc-if value="{{ histoTipOn }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:-6px;z-index:6;background:#020D5A;color:#fff;font-size:10px;font-weight:600;line-height:1.45;padding:6px 10px;border-radius:8px;max-width:250px;box-shadow:0 10px 24px rgba(1,7,55,.26);animation:qiRise .1s both;left:{{ histoTipLeft }};transform:translateX(-50%)">{{ histoTipText }}</div>
+                  </sc-if>
+                  <sc-for list="{{ histogram }}" as="h" hint-placeholder-count="24">
+                    <div style="flex:1;border-radius:3px 3px 0 0;cursor:pointer;transition:height .52s cubic-bezier(.2,.9,.2,1),background .2s;height:{{ h.h }};background:{{ h.bg }};transition-delay:{{ h.delay }}" onMouseEnter="{{ h.tipEnter }}" onMouseLeave="{{ h.tipLeave }}"></div>
+                  </sc-for>
+                  <div style="position:absolute;bottom:0;top:14px;width:3px;background:#005BFF;transition:left .52s;left:{{ selfMarkLeft }}"></div>
+                  <div style="position:absolute;top:-2px;font-size:11px;font-weight:700;color:#005BFF;transform:translateX(-50%);transition:left .52s;left:{{ selfMarkLeft }}">YOU {{ selOwn }}</div>
+                  <div style="position:absolute;bottom:0;top:14px;width:2px;background:#020D5A;transition:left .52s;left:{{ refMarkLeft }}"></div>
+                  <div style="position:absolute;top:-2px;font-size:11px;font-weight:600;color:#020D5A;transform:translateX(-50%);transition:left .52s;left:{{ refMarkLeft }}">REF {{ selRef }}</div>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:10.5px;color:#8C8C8C;border-top:1px solid #EDEEF2;padding-top:8px">
+                  <span>{{ selMin }}</span><span>Distribution of the {{ refCount }} reference centres</span><span>{{ selMax }}</span>
+                </div>
+                <div style="display:flex;gap:22px;padding-top:6px">
+                  <div><div style="font-size:9.5px;font-weight:700;letter-spacing:.12em;color:#8C8C8C">YOUR VALUE</div><div style="font-size:19px;font-weight:600;color:#005BFF">{{ selOwn }}</div></div>
+                  <div><div style="font-size:9.5px;font-weight:700;letter-spacing:.12em;color:#8C8C8C">PERCENTILE</div><div style="font-size:19px;font-weight:600">{{ selPct }}</div></div>
+                  <div><div style="font-size:9.5px;font-weight:700;letter-spacing:.12em;color:#8C8C8C">REFERENCE MEDIAN</div><div style="font-size:19px;font-weight:600;color:#3F4987">{{ selRef }}</div></div>
+                </div>
+              </div>
+              <div style="width:340px;flex-shrink:0;background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:10px">
+                <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">Keep the comparison, go deeper</div>
+                <sc-for list="{{ deeper }}" as="d" hint-placeholder-count="4">
+                  <div style="display:flex;align-items:center;gap:10px;border:1px solid #E1E3EA;border-radius:9px;padding:12px 13px;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .2s" onClick="{{ d.go }}" style-hover="{{ d.hoverStyle }}">
+                    <span style="flex:1;min-width:0">{{ d.name }}</span><span style="color:#005BFF">→</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isInvestigation }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Investigation / Segments" style="display:flex;flex-direction:column;gap:20px;animation:qiRise .34s both">
+            <div style="background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:18px 22px;display:flex;flex-direction:column;gap:12px">
+              <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">Analysis path — click any step to return to it</div>
+              <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                <sc-for list="{{ crumbs }}" as="c" hint-placeholder-count="4">
+                  <div style="display:flex;align-items:center;gap:10px">
+                    <div style="font-size:12.5px;font-weight:600;padding:8px 12px;border-radius:8px;cursor:{{ c.cursor }};transition:all .2s;background:{{ c.bg }};color:{{ c.fg }}" onClick="{{ c.go }}" style-hover="{{ c.hoverStyle }}">{{ c.name }}</div>
+                    <sc-if value="{{ c.arrow }}" hint-placeholder-val="{{ true }}"><span style="color:#C9CCDD">→</span></sc-if>
+                  </div>
+                </sc-for>
+                <div style="margin-left:auto;display:flex;align-items:center;gap:10px">
+                  <div style="font-size:11.5px;color:#404040"><b>Comparison kept</b> · {{ fpviLine }}</div>
+                  <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;padding:5px 9px;border-radius:999px;background:{{ savedBadgeBg }};color:{{ savedBadgeFg }}"><div style="width:6px;height:6px;border-radius:50%;background:{{ savedBadgeFg }}"></div>{{ savedBadgeLabel }}</div>
+                  <div style="background:#005BFF;color:#fff;font-size:12px;font-weight:600;padding:9px 13px;border-radius:8px;cursor:pointer;transition:transform .16s,box-shadow .2s;opacity:{{ saveBtnOpacity }}" onClick="{{ saveAnalysis }}" style-hover="{{ primaryHover }}">{{ saveBtnLabel }}</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:16px;box-shadow:0 2px 10px rgba(1,7,55,.05)">
+              <div style="display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap">
+                <div style="flex:1;min-width:280px">
+                  <div style="font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#005BFF">Question 5 — which segment explains the difference?</div>
+                  <div style="font-size:25px;font-weight:400;letter-spacing:-.018em;margin-top:4px">First Pass PV Isolation, split by <span style="font-weight:600;color:#020D5A">{{ tabName }}</span></div>
+                </div>
+                <div style="display:flex;border:1px solid #E1E3EA;border-radius:8px;overflow:hidden">
+                  <sc-for list="{{ segTabs }}" as="t" hint-placeholder-count="4">
+                    <div style="padding:9px 14px;font-size:11.5px;font-weight:600;cursor:pointer;border-right:1px solid #E1E3EA;transition:all .2s;background:{{ t.bg }};color:{{ t.fg }}" onClick="{{ t.go }}">{{ t.name }}</div>
+                  </sc-for>
+                </div>
+              </div>
+
+              <sc-if value="{{ protGuards }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;gap:12px;align-items:flex-start;border:1.4px solid #FFC2D2;background:#FFEBF0;border-radius:10px;padding:13px 16px">
+                  <div style="color:#A8002D;font-weight:700;font-size:13px">!</div>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:12px;font-weight:600;color:#A8002D">Segment comparisons are withheld in this scope</div>
+                    <div style="font-size:11.5px;color:#404040;line-height:1.5;margin-top:2px;text-wrap:pretty">Splitting the reference group by segment would leave too few centres to keep participants anonymous. Your own segment values are still shown.</div>
+                  </div>
+                  <div style="font-size:12px;font-weight:600;color:#005BFF;cursor:pointer;white-space:nowrap" onClick="{{ segRecover }}">Widen the group →</div>
+                </div>
+              </sc-if>
+
+              <div style="display:flex;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8C8C8C;padding-bottom:8px;border-bottom:1px solid #E1E3EA">
+                <div style="width:280px">Segment</div><div style="width:62px;text-align:right">Yours</div><div style="width:82px;text-align:right">Reference</div>
+                <div style="flex:1;text-align:center">% of patients · 50 → 92</div><div style="width:150px;text-align:right">Difference</div>
+              </div>
+              <sc-for list="{{ segments }}" as="s" hint-placeholder-count="4">
+                <div style="display:flex;align-items:center;padding:13px 10px;margin:0 -10px;border-radius:9px;cursor:pointer;border-bottom:1px solid #F6F7FA;transition:background .2s;background:{{ s.selBg }};position:relative" onClick="{{ s.focus }}" onMouseEnter="{{ s.tipEnter }}" onMouseLeave="{{ s.tipLeave }}" style-hover="{{ s.hoverStyle }}">
+                  <sc-if value="{{ s.tipOn }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;left:300px;top:-4px;transform:translateY(-100%);z-index:6;background:#020D5A;color:#fff;font-size:10.5px;font-weight:600;line-height:1.5;padding:7px 11px;border-radius:8px;max-width:360px;box-shadow:0 10px 24px rgba(1,7,55,.26);animation:qiRise .14s both">{{ s.tipText }}</div>
+                  </sc-if>
+                  <div style="width:280px;padding-right:12px">
+                    <div style="font-size:13px;font-weight:600">{{ s.name }}</div>
+                    <div style="font-size:10.5px;color:#8C8C8C;margin-top:2px">{{ s.meta }}</div>
+                  </div>
+                  <div style="width:62px;text-align:right;font-size:15px;font-weight:600;color:{{ s.ownColor }}">{{ s.own }}</div>
+                  <div style="width:82px;text-align:right;font-size:13px;color:#404040">{{ s.ref }}</div>
+                  <div style="flex:1;height:26px;position:relative;margin:0 14px">
+                    <div style="position:absolute;left:0;right:0;top:11px;height:4px;background:#EDEEF2;border-radius:2px"></div>
+                    <sc-if value="{{ s.notBlocked }}" hint-placeholder-val="{{ true }}">
+                      <div style="position:absolute;top:5px;width:16px;height:16px;border:1.3px solid #3F4987;background:linear-gradient(90deg,rgba(63,73,135,.5),rgba(172,177,216,.45));transition:left .52s cubic-bezier(.2,.9,.2,1);left:{{ s.refLeft }}"></div>
+                      <div style="position:absolute;top:1px;width:4px;height:24px;background:#005BFF;transition:left .52s cubic-bezier(.2,.9,.2,1);left:{{ s.ownLeft }}"></div>
+                      <div style="position:absolute;top:7px;width:12px;height:12px;border-radius:50%;background:#005BFF;border:2px solid #fff;transition:left .52s cubic-bezier(.2,.9,.2,1);left:{{ s.dotLeft }}"></div>
+                    </sc-if>
+                    <sc-if value="{{ s.blocked }}" hint-placeholder-val="{{ false }}">
+                      <div style="position:absolute;left:18%;width:64%;top:4px;height:18px;border:1.2px dashed #8C8C8C;background:repeating-linear-gradient(45deg,#F2F3F7,#F2F3F7 4px,#E1E3EA 4px,#E1E3EA 8px);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;letter-spacing:.09em;color:#8C8C8C">NOT SHOWN · TOO FEW PROCEDURES</div>
+                    </sc-if>
+                  </div>
+                  <div style="width:150px;text-align:right">
+                    <div style="font-size:14.5px;font-weight:600;color:{{ s.diffColor }}">{{ s.diff }}</div>
+                    <div style="font-size:10.5px;color:{{ s.dirColor }}">{{ s.dir }}</div>
+                  </div>
+                </div>
+              </sc-for>
+
+              <div style="display:flex;gap:12px;background:#FFF7EB;border:1px solid #FFE0B2;border-radius:10px;padding:14px 16px">
+                <div style="color:#A86200;font-size:13px">▲</div>
+                <div style="font-size:12px;line-height:1.55;color:#404040;text-wrap:pretty">{{ segReading }}</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:20px;align-items:stretch">
+              <div style="flex:1;background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:12px">
+                <div style="display:flex;align-items:baseline;gap:12px">
+                  <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">Segment in focus</div>
+                  <div style="font-size:18px;font-weight:600">{{ focusName }}</div>
+                  <div style="font-size:11.5px;color:#8C8C8C;margin-left:auto">{{ focusMeta }}</div>
+                </div>
+                <div style="font-size:11.5px;color:#404040">Over time, inside this segment</div>
+                <div style="position:relative">
+                  <svg viewBox="0 0 640 170" style="width:100%;height:170px;display:block">
+                    <line x1="0" x2="640" y1="40" y2="40" stroke="#EDEEF2"></line>
+                    <line x1="0" x2="640" y1="100" y2="100" stroke="#EDEEF2"></line>
+                    <line x1="0" x2="640" y1="150" y2="150" stroke="#EDEEF2"></line>
+                    <text x="0" y="36" font-size="10" fill="#8C8C8C">90</text><text x="0" y="96" font-size="10" fill="#8C8C8C">70</text><text x="0" y="146" font-size="10" fill="#8C8C8C">50</text>
+                    <line x1="30" x2="630" y1="76" y2="76" stroke="#3F4987" stroke-width="1.3" stroke-dasharray="5 4"></line>
+                    <text x="34" y="70" font-size="10" font-weight="600" fill="#3F4987">REFERENCE {{ focusRef }}</text>
+                    <path style="transition:stroke-dashoffset .7s ease-out;stroke-dasharray:{{ focusLen }};stroke-dashoffset:{{ focusOffset }}" fill="none" stroke="#005BFF" stroke-width="2.4" stroke-linejoin="round" d="{{ focusPath }}"></path>
+                    <sc-for list="{{ focusPts }}" as="p" hint-placeholder-count="12">
+                      <g onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" style="cursor:pointer">
+                        <rect fill="transparent" y="4" height="150" width="52" x="{{ p.hitX }}"></rect>
+                        <circle style="transition:opacity .4s" opacity="{{ p.dotOpacity }}" r="{{ p.r }}" cx="{{ p.cx }}" cy="{{ p.cy }}" fill="#005BFF" stroke="#fff" stroke-width="1.6"></circle>
+                      </g>
+                    </sc-for>
+                    <text x="30" y="166" font-size="10" fill="#8C8C8C">Q1 19</text><text x="600" y="166" font-size="10" fill="#8C8C8C">Q4 21</text>
+                  </svg>
+                  <sc-if value="{{ focusTipOn }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;pointer-events:none;background:#020D5A;color:#fff;font-size:10.5px;font-weight:600;line-height:1.45;padding:7px 10px;border-radius:8px;box-shadow:0 10px 24px rgba(1,7,55,.26);transform:translate(-50%,-115%);white-space:nowrap;animation:qiRise .12s both;left:{{ focusTipLeft }};top:{{ focusTipTop }}">{{ focusTipText }}</div>
+                  </sc-if>
+                </div>
+                <div style="font-size:11.5px;color:#404040;border-top:1px solid #EDEEF2;padding-top:10px">{{ focusNote }}</div>
+              </div>
+              <div style="width:330px;flex-shrink:0;background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:10px">
+                <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">Split this segment further</div>
+                <sc-for list="{{ splits }}" as="p" hint-placeholder-count="3">
+                  <div style="display:flex;align-items:center;gap:10px;border:1px solid #E1E3EA;border-radius:9px;padding:12px 13px;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .2s" onClick="{{ p.go }}" style-hover="{{ p.hoverStyle }}">
+                    <span style="flex:1;min-width:0">{{ p.name }}</span><span style="color:#005BFF">→</span>
+                  </div>
+                </sc-for>
+                <div style="font-size:11px;color:#8C8C8C;line-height:1.5;margin-top:auto;border-top:1px solid #E1E3EA;padding-top:12px">Each split narrows the reference group. The platform will say when a split can no longer be shown.</div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isNetwork }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Network / Overview" style="display:flex;flex-direction:column;gap:20px;animation:qiRise .34s both">
+            <div style="display:flex;gap:14px">
+              <sc-for list="{{ netStats }}" as="s" hint-placeholder-count="3">
+                <div style="flex:1;background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:16px 18px">
+                  <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">{{ s.label }}</div>
+                  <div style="font-size:24px;font-weight:600;margin-top:4px;color:{{ s.tone }}">{{ s.value }}</div>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:16px;box-shadow:0 2px 10px rgba(1,7,55,.05)">
+              <div style="display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap">
+                <div style="flex:1;min-width:280px">
+                  <div style="font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#005BFF">Question 6 — where does the whole network sit?</div>
+                  <div style="font-size:25px;font-weight:400;letter-spacing:-.018em;margin-top:4px">Every centre, ordered — <span style="font-weight:600;color:#020D5A">yours highlighted</span>, all others unlabelled</div>
+                </div>
+                <div style="display:flex;border:1px solid #E1E3EA;border-radius:8px;overflow:hidden">
+                  <div style="padding:9px 14px;font-size:11.5px;font-weight:600;cursor:pointer;transition:all .2s;background:{{ netRankedBg }};color:{{ netRankedFg }}" onClick="{{ netRanked }}">Ranked</div>
+                  <div style="padding:9px 14px;font-size:11.5px;font-weight:600;cursor:pointer;transition:all .2s;background:{{ netDistBg }};color:{{ netDistFg }}" onClick="{{ netDist }}">Distribution</div>
+                </div>
+              </div>
+
+              <sc-if value="{{ netProtected }}" hint-placeholder-val="{{ false }}">
+                <div style="border:1.2px dashed #8C8C8C;border-radius:11px;background:repeating-linear-gradient(45deg,#F6F7FA,#F6F7FA 5px,#EDEEF2 5px,#EDEEF2 10px);padding:26px;display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+                  <div style="font-size:9.5px;font-weight:700;letter-spacing:.1em;color:#8C8C8C">NOT SHOWN · NETWORK VIEW PROTECTED</div>
+                  <div style="font-size:15px;font-weight:600;color:#020D5A;text-wrap:pretty">Too few centres match the current filters to show the network without pointing at someone</div>
+                  <div style="font-size:11.5px;color:#404040;line-height:1.5;max-width:520px">Your own position is still available. The ordered view returns once the filters leave enough anonymous centres.</div>
+                  <div style="font-size:12px;font-weight:600;color:#005BFF;cursor:pointer" onClick="{{ netRecover }}">Remove the country filter to restore the network view →</div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ netShown }}" hint-placeholder-val="{{ true }}">
+              <div style="position:relative;height:230px;display:flex;align-items:flex-end;gap:2px;padding-top:26px">
+                <div style="position:absolute;left:0;right:0;border-top:1.3px dashed #3F4987;transition:top .5s,opacity .3s;opacity:{{ netMedianOpacity }};top:{{ netMedianTop }}"></div>
+                <div style="position:absolute;left:0;font-size:10px;font-weight:700;color:#3F4987;transition:top .5s,opacity .3s;opacity:{{ netMedianOpacity }};top:{{ netMedianLabelTop }}">NETWORK MEDIAN 74.0</div>
+                <sc-if value="{{ netTipOn }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute;top:0;z-index:8;background:#020D5A;color:#fff;font-size:10.5px;font-weight:600;line-height:1.5;padding:7px 11px;border-radius:8px;max-width:280px;box-shadow:0 10px 24px rgba(1,7,55,.26);animation:qiRise .12s both;left:{{ netTipLeft }};transform:translateX(-50%)">{{ netTipText }}</div>
+                </sc-if>
+                <sc-for list="{{ netBars }}" as="b" hint-placeholder-count="40">
+                  <div style="flex:1;position:relative;border-radius:2px 2px 0 0;transition:height .56s cubic-bezier(.2,.9,.2,1),background .3s,transform .18s;height:{{ b.h }};background:{{ b.bg }};transition-delay:{{ b.delay }}" onMouseEnter="{{ b.tipEnter }}" onMouseLeave="{{ b.tipLeave }}" style-hover="{{ b.hoverStyle }}">
+                    <sc-if value="{{ b.isSelf }}" hint-placeholder-val="{{ false }}">
+                      <div style="position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:7px;background:#005BFF;color:#fff;font-size:10px;font-weight:700;padding:5px 8px;border-radius:6px;white-space:nowrap;animation:qiRise .4s .5s both">YOUR CENTRE · {{ netSelfLabel }}</div>
+                    </sc-if>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="font-size:10px;font-weight:600;letter-spacing:.06em;color:#8C8C8C;margin-top:-4px">{{ netAxisLabel }}</div>
+              <div style="display:flex;justify-content:space-between;font-size:10.5px;color:#8C8C8C;border-top:1px solid #EDEEF2;padding-top:9px">
+                <span>{{ netCaption }}</span><span>no centre is identifiable</span>
+              </div>
+              </sc-if>
+            </div>
+
+            <div style="background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 10px rgba(1,7,55,.05)">
+              <div>
+                <div style="font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#005BFF">Question 7 — is the network itself moving?</div>
+                <div style="font-size:25px;font-weight:400;letter-spacing:-.018em;margin-top:4px">Your centre against the <span style="font-weight:600;color:#020D5A">network median</span>, by quarter</div>
+              </div>
+              <div style="position:relative">
+                <svg viewBox="0 0 640 172" style="width:100%;height:172px;display:block">
+                  <line x1="0" x2="640" y1="22" y2="22" stroke="#EDEEF2"></line>
+                  <line x1="0" x2="640" y1="60" y2="60" stroke="#EDEEF2"></line>
+                  <line x1="0" x2="640" y1="98" y2="98" stroke="#EDEEF2"></line>
+                  <line x1="0" x2="640" y1="136" y2="136" stroke="#EDEEF2"></line>
+                  <text x="0" y="18" font-size="10" fill="#8C8C8C">85</text><text x="0" y="56" font-size="10" fill="#8C8C8C">75</text><text x="0" y="94" font-size="10" fill="#8C8C8C">65</text><text x="0" y="132" font-size="10" fill="#8C8C8C">55</text>
+                  <path style="transition:stroke-dashoffset .7s ease-out;stroke-dasharray:{{ q7Len }};stroke-dashoffset:{{ q7Offset }}" fill="none" stroke="#3F4987" stroke-width="2" stroke-dasharray="6 4" d="{{ q7NetPath }}"></path>
+                  <path style="transition:stroke-dashoffset .7s ease-out;stroke-dasharray:{{ q7Len }};stroke-dashoffset:{{ q7Offset }}" fill="none" stroke="#005BFF" stroke-width="2.4" stroke-linejoin="round" d="{{ q7Path }}"></path>
+                  <text style="transition:opacity .4s .3s;opacity:{{ q7Anim }}" x="596" y="30" font-size="10" font-weight="700" fill="#3F4987" text-anchor="end">NETWORK 76.1</text>
+                  <text style="transition:opacity .4s .3s;opacity:{{ q7Anim }}" x="596" y="104" font-size="10" font-weight="700" fill="#005BFF" text-anchor="end">YOURS {{ q7YoursEnd }}</text>
+                  <sc-for list="{{ q7Pts }}" as="p" hint-placeholder-count="12">
+                    <g onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" style="cursor:pointer">
+                      <rect fill="transparent" y="4" height="150" width="52" x="{{ p.hitX }}"></rect>
+                      <circle style="transition:opacity .3s" opacity="{{ p.op }}" r="{{ p.rY }}" cx="{{ p.cx }}" cy="{{ p.cyY }}" fill="#005BFF" stroke="#fff" stroke-width="1.6"></circle>
+                      <circle style="transition:opacity .3s" opacity="{{ p.op }}" r="{{ p.rN }}" cx="{{ p.cx }}" cy="{{ p.cyN }}" fill="#fff" stroke="#3F4987" stroke-width="1.6"></circle>
+                    </g>
+                  </sc-for>
+                  <text x="24" y="168" font-size="10" fill="#8C8C8C">Q1 19</text><text x="616" y="168" font-size="10" fill="#8C8C8C" text-anchor="end">Q4 21</text>
+                </svg>
+                <sc-if value="{{ q7TipOn }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute;pointer-events:none;background:#020D5A;color:#fff;font-size:10.5px;font-weight:600;line-height:1.5;padding:7px 10px;border-radius:8px;box-shadow:0 10px 24px rgba(1,7,55,.26);transform:translate(-50%,-115%);white-space:nowrap;animation:qiRise .12s both;left:{{ q7TipLeft }};top:22%">{{ q7TipText }}</div>
+                </sc-if>
+              </div>
+              <div style="font-size:11.5px;color:#404040;border-top:1px solid #EDEEF2;padding-top:10px">The network median rose over the period; your own series stayed close to flat. A difference was observed — it is a comparison, not an assessment.</div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+              <div style="background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:10px">
+                <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">Patterns in the network</div>
+                <sc-for list="{{ patterns }}" as="p" hint-placeholder-count="3">
+                  <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #F6F7FA">
+                    <div style="width:24px;height:24px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:{{ p.bg }};color:{{ p.tone }}">{{ p.mark }}</div>
+                    <div><div style="font-size:12.5px;font-weight:600">{{ p.title }}</div><div style="font-size:11px;color:#8C8C8C;line-height:1.45;margin-top:2px">{{ p.detail }}</div></div>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="border:1.4px solid #B9CCFF;background:#F6F9FF;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:11px">
+                <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#005BFF">How the network view stays anonymous</div>
+                <sc-for list="{{ netRules }}" as="a" hint-placeholder-count="3">
+                  <div style="display:flex;gap:10px;align-items:flex-start;font-size:11.5px;line-height:1.5;color:#404040">
+                    <div style="width:17px;height:17px;border-radius:5px;color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;background:{{ a.bg }}">{{ a.mark }}</div>
+                    <span>{{ a.text }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isSaved }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Saved Analyses / List" style="display:flex;flex-direction:column;gap:20px;animation:qiRise .34s both">
+            <div style="background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;align-items:flex-end;gap:14px">
+                <div>
+                  <div style="font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#005BFF">Saved analyses</div>
+                  <div style="font-size:25px;font-weight:400;letter-spacing:-.018em;margin-top:3px">Everything you can come back to</div>
+                </div>
+                <div style="margin-left:auto;background:#005BFF;color:#fff;font-size:13px;font-weight:600;padding:12px 16px;border-radius:9px;cursor:pointer;display:flex;align-items:center;gap:9px;transition:transform .16s,box-shadow .2s" onClick="{{ openModal }}" style-hover="{{ primaryHover }}"><span style="font-size:15px;line-height:1">+</span>Add question</div>
+              </div>
+              <sc-for list="{{ savedList }}" as="s" hint-placeholder-count="4">
+                <div style="display:flex;align-items:center;gap:16px;border:1px solid #E1E3EA;border-radius:11px;padding:15px 17px;cursor:pointer;transition:all .22s" onClick="{{ s.open }}" style-hover="{{ s.hoverStyle }}">
+                  <div style="width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:{{ s.bg }}">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke="{{ s.tone }}"><path d="{{ s.icon }}"></path></svg>
+                  </div>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:14.5px;font-weight:600">{{ s.title }}</div>
+                    <div style="font-size:11.5px;color:#8C8C8C;margin-top:2px">{{ s.meta }}</div>
+                  </div>
+                  <div style="font-size:9.5px;font-weight:700;letter-spacing:.08em;padding:5px 8px;border-radius:6px;background:{{ s.tagBg }};color:{{ s.tagFg }}">{{ s.tag }}</div>
+                  <div style="color:#C9CCDD;font-size:14px">→</div>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+                <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">Panel states — demonstration</div>
+                <div style="font-size:11px;color:#8C8C8C">Loading and the protected state are also reachable from real filter changes.</div>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <sc-for list="{{ stateChips }}" as="c" hint-placeholder-count="6">
+                  <div style="padding:8px 12px;border-radius:8px;font-size:11.5px;font-weight:600;cursor:pointer;transition:all .18s;background:{{ c.bg }};color:{{ c.fg }};border:1px solid {{ c.border }}" onClick="{{ c.go }}" style-hover="{{ addHover }}">{{ c.label }}</div>
+                </sc-for>
+              </div>
+              <sc-if value="{{ stateDemoOn }}" hint-placeholder-val="{{ false }}">
+                <div style="border:1.4px solid {{ demoAccent }};border-radius:11px;overflow:hidden;animation:qiRise .28s var(--qi-ease) both">
+                  <div style="background:{{ demoHeadBg }};padding:12px 18px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ demoHeadFg }}">{{ demoKicker }}</div>
+                  <div style="padding:22px 24px;display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+                    <sc-if value="{{ demoIsLoading }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:flex;align-items:center;gap:14px">
+                        <div style="width:150px;height:8px;border-radius:4px;background:linear-gradient(90deg,#EDEEF2,#C9DDFF,#EDEEF2);background-size:420px 100%;animation:qiShimmer 1.1s linear infinite"></div>
+                        <div style="font-size:12.5px;font-weight:600;color:#404040">Building the comparison — 1,284 procedures</div>
+                      </div>
+                    </sc-if>
+                    <sc-if value="{{ demoHasValue }}" hint-placeholder-val="{{ false }}">
+                      <div style="font-size:34px;font-weight:300;color:#005BFF;letter-spacing:-.02em">28.4</div>
+                      <div style="font-size:11px;font-weight:600;letter-spacing:.1em;color:#8C8C8C">REFERENCE NOT SHOWN · TOO FEW PROCEDURES IN THE GROUP</div>
+                    </sc-if>
+                    <sc-if value="{{ demoHasChips }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:flex;gap:8px;flex-wrap:wrap">
+                        <div style="border:1px solid #FFC2D2;background:#FFEBF0;color:#A8002D;padding:6px 10px;border-radius:8px;font-size:11.5px;font-weight:600">Mapping system · none ✕</div>
+                        <div style="border:1px solid #FFC2D2;background:#FFEBF0;color:#A8002D;padding:6px 10px;border-radius:8px;font-size:11.5px;font-weight:600">Catheter · Biosense mapping ✕</div>
+                      </div>
+                    </sc-if>
+                    <div style="font-size:16px;font-weight:600;color:#020D5A;text-wrap:pretty">{{ demoTitle }}</div>
+                    <div style="font-size:12px;color:#404040;line-height:1.55;max-width:560px;text-wrap:pretty">{{ demoBody }}</div>
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:2px">
+                      <sc-for list="{{ demoActions }}" as="a" hint-placeholder-count="2">
+                        <div style="padding:9px 13px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:all .18s;background:{{ a.bg }};color:{{ a.fg }};border:1px solid {{ a.border }}" onClick="{{ a.go }}" style-hover="{{ ghostHover }}">{{ a.label }}</div>
+                      </sc-for>
+                    </div>
+                    <sc-if value="{{ demoIsError }}" hint-placeholder-val="{{ false }}">
+                      <div style="font-size:11px;color:#8C8C8C;line-height:1.5;border-top:1px solid #E1E3EA;padding-top:10px;margin-top:4px">If the problem is not in the filters, the panel shows a retry instead: <b>Could not load this comparison · Try again</b>.</div>
+                    </sc-if>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;inset:0;background:rgba(246,247,250,.72);backdrop-filter:blur(1.5px);display:flex;align-items:flex-start;justify-content:center;padding-top:120px;z-index:20">
+            <div style="background:#fff;border:1px solid #E1E3EA;border-radius:12px;padding:18px 22px;display:flex;align-items:center;gap:14px;box-shadow:0 18px 44px rgba(1,7,55,.16);animation:qiRise .2s both">
+              <div style="width:150px;height:8px;border-radius:4px;background:linear-gradient(90deg,#EDEEF2,#C9DDFF,#EDEEF2);background-size:420px 100%;animation:qiShimmer 1.1s linear infinite"></div>
+              <div style="font-size:12.5px;font-weight:600;color:#404040">{{ loadingLabel }}</div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:40px">
+      <div onClick="{{ closeModal }}" style="position:absolute;inset:0;background:rgba(2,13,90,.72);animation:qiRise .2s both"></div>
+      <div style="position:relative;width:960px;max-height:88vh;overflow:auto;background:#fff;border-radius:16px;box-shadow:0 40px 90px rgba(1,7,55,.4);animation:qiRise .3s cubic-bezier(.2,.9,.2,1) both">
+
+        <div style="padding:22px 28px 18px;border-bottom:1px solid #E1E3EA;display:flex;align-items:flex-start;gap:16px">
+          <div style="flex:1;min-width:0">
+            <div style="font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#005BFF">{{ modalKicker }}</div>
+            <div style="font-size:24px;font-weight:600;letter-spacing:-.018em;margin-top:5px;text-wrap:pretty">{{ modalTitle }}</div>
+          </div>
+          <sc-if value="{{ isStep2 }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:12px;font-weight:600;color:#005BFF;cursor:pointer;white-space:nowrap;margin-top:4px" onClick="{{ modalChange }}" style-hover="{{ ghostHover }}">Change question</div>
+          </sc-if>
+          <div style="width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#8C8C8C;font-size:14px;transition:all .18s" onClick="{{ closeModal }}" style-hover="{{ ghostHover }}">✕</div>
+        </div>
+
+        <sc-if value="{{ isStep1 }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:22px 28px 26px;display:flex;flex-direction:column;gap:18px">
+            <div style="border:1.4px solid #E1E3EA;border-radius:11px;padding:15px 17px;font-size:14px;color:#8C8C8C;cursor:text;transition:border-color .2s,box-shadow .2s" onClick="{{ searchTap }}" style-hover="{{ inputHover }}">Type it how you'd say it — “are we slower than the others?”</div>
+            <div style="display:flex;gap:8px">
+              <sc-for list="{{ libTabs }}" as="t" hint-placeholder-count="5">
+                <div style="padding:8px 13px;border-radius:8px;font-size:11.5px;font-weight:600;cursor:pointer;transition:all .2s;background:{{ t.bg }};color:{{ t.fg }}" onClick="{{ t.go }}">{{ t.name }}</div>
+              </sc-for>
+            </div>
+            <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#0DBA5E">Answerable with the data you have right now</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <sc-for list="{{ candidates }}" as="c" hint-placeholder-count="4">
+                <div style="border:1.4px solid #E1E3EA;border-radius:11px;padding:15px 16px;cursor:pointer;display:flex;flex-direction:column;gap:8px;transition:all .22s;border-color:{{ c.borderColor }};background:{{ c.bg }}" onClick="{{ c.pick }}" style-hover="{{ c.hoverStyle }}">
+                  <div style="display:flex;align-items:center;gap:10px">
+                    <div style="width:44px;height:26px;border-radius:6px;background:#F6F9FF;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                      <svg width="30" height="16" viewBox="0 0 40 24" fill="none"><path stroke="#005BFF" stroke-width="2.2" stroke-linecap="round" d="{{ c.spark }}"></path></svg>
+                    </div>
+                    <div style="font-size:13.5px;font-weight:600;line-height:1.3">{{ c.title }}</div>
+                  </div>
+                  <div style="font-size:11.5px;line-height:1.5;color:#404040">{{ c.desc }}</div>
+                  <div style="display:flex;gap:8px;align-items:center;margin-top:2px">
+                    <div style="font-size:10px;font-weight:700;letter-spacing:.08em;background:#F2F3F7;color:#404040;padding:4px 7px;border-radius:5px">{{ c.tag }}</div>
+                    <div style="font-size:10px;font-weight:700;letter-spacing:.08em;background:#EAFBF2;color:#0A8B48;padding:4px 7px;border-radius:5px">DATA READY</div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">Everything else</div>
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <sc-for list="{{ library }}" as="l" hint-placeholder-count="4">
+                <div style="display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:9px;cursor:pointer;transition:background .18s;background:{{ l.bg }};opacity:{{ l.opacity }}" onClick="{{ l.tap }}" style-hover="{{ addHover }}">
+                  <div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:600">{{ l.title }}</div><div style="font-size:11px;color:#8C8C8C">{{ l.meta }}</div></div>
+                  <sc-if value="{{ l.locked }}" hint-placeholder-val="{{ false }}">
+                    <div style="font-size:10px;font-weight:700;letter-spacing:.06em;background:#FFEBF0;color:#A8002D;padding:4px 7px;border-radius:5px">NOT ENOUGH CENTRES</div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+            <div style="font-size:11.5px;line-height:1.55;color:#404040;background:#F6F7FA;border-radius:9px;padding:12px 14px">Greyed-out questions aren't missing — after your filters fewer than 20 centres are left, and showing that would point at someone.</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isStep2 }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:22px 28px 26px;display:flex;gap:24px">
+            <div style="width:420px;flex-shrink:0;display:flex;flex-direction:column;gap:16px">
+              <sc-for list="{{ fields }}" as="f" hint-placeholder-count="4">
+                <div style="display:flex;flex-direction:column;gap:7px">
+                  <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8C8C8C">{{ f.label }}</div>
+                  <sc-if value="{{ f.isSelect }}" hint-placeholder-val="{{ true }}">
+                    <div style="border:1.4px solid #E1E3EA;border-radius:9px;padding:12px 14px;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:all .2s" onClick="{{ f.tap }}" style-hover="{{ inputHover }}">{{ f.value }}<span style="color:#8C8C8C">▾</span></div>
+                  </sc-if>
+                  <sc-if value="{{ f.isSegmented }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;gap:7px;flex-wrap:wrap">
+                      <sc-for list="{{ f.options }}" as="o" hint-placeholder-count="3">
+                        <div style="border:1.4px solid #E1E3EA;border-radius:8px;padding:9px 12px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;background:{{ o.bg }};color:{{ o.fg }};border-color:{{ o.border }}" onClick="{{ o.pick }}">{{ o.label }}</div>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ f.hasHint }}" hint-placeholder-val="{{ true }}">
+                    <div style="font-size:11px;color:#8C8C8C;line-height:1.45">{{ f.hint }}</div>
+                  </sc-if>
+                </div>
+              </sc-for>
+              <div style="display:flex;gap:11px;align-items:flex-start;border:1.4px solid #B9E6C9;background:#F1FBF5;border-radius:10px;padding:13px 15px">
+                <div style="width:18px;height:18px;border-radius:5px;background:#0DBA5E;color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">✓</div>
+                <div style="font-size:11.5px;line-height:1.5;color:#404040">{{ refCount }} centres left after your filters — still enough to keep everyone anonymous. Add one more filter and I may have to hide it.</div>
+              </div>
+            </div>
+
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:12px">
+              <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C8C8C">This is what it will look like</div>
+              <div style="border:1px solid #E1E3EA;border-radius:11px;padding:18px;background:#F6F7FA;display:flex;flex-direction:column;gap:14px">
+                <div>
+                  <div style="font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#005BFF">Question 5 — {{ previewTitle }}</div>
+                  <div style="font-size:17px;font-weight:600;margin-top:4px">{{ previewUnit }}</div>
+                  <div style="font-size:10px;color:#8C8C8C;margin-top:3px">{{ previewSplitNote }}</div>
+                </div>
+                <div style="display:flex;gap:16px;font-size:10px;font-weight:500;color:#404040">
+                  <div style="display:flex;align-items:center;gap:6px"><div style="width:3px;height:12px;background:#005BFF"></div>Your centre</div>
+                  <div style="display:flex;align-items:center;gap:6px"><div style="width:24px;height:9px;border:1.1px solid #3F4987;background:linear-gradient(90deg,#3F4987,#ACB1D8)"></div>Middle half of centres</div>
+                  <div style="display:flex;align-items:center;gap:6px"><div style="width:24px;height:3px;background:#C9CCDD"></div>Full spread</div>
+                </div>
+                <sc-for list="{{ previewRows }}" as="p" hint-placeholder-count="3">
+                  <div style="display:flex;align-items:center;gap:14px;position:relative;border-radius:6px;transition:background .16s" onMouseEnter="{{ p.tipEnter }}" onMouseLeave="{{ p.tipLeave }}" style-hover="{{ p.hoverStyle }}">
+                    <sc-if value="{{ p.tipOn }}" hint-placeholder-val="{{ false }}">
+                      <div style="position:absolute;left:100px;top:-4px;transform:translateY(-100%);z-index:6;background:#020D5A;color:#fff;font-size:10px;font-weight:600;line-height:1.45;padding:6px 10px;border-radius:8px;max-width:280px;box-shadow:0 10px 24px rgba(1,7,55,.26);animation:qiRise .1s both">{{ p.tipText }}</div>
+                    </sc-if>
+                    <div style="width:86px;font-size:12px;font-weight:600">{{ p.label }}</div>
+                    <div style="flex:1;height:26px;position:relative">
+                      <div style="position:absolute;top:11px;height:4px;background:#C9CCDD;border-radius:2px;transition:width .52s,left .52s;left:{{ p.aLeft }};width:{{ p.aW }}"></div>
+                      <div style="position:absolute;top:5px;height:16px;border:1.2px solid #3F4987;background:linear-gradient(90deg,rgba(63,73,135,.5),rgba(172,177,216,.45));transition:width .52s,left .52s;left:{{ p.bLeft }};width:{{ p.bW }}"></div>
+                      <div style="position:absolute;top:2px;width:3px;height:22px;background:#005BFF;transition:left .52s;left:{{ p.oLeft }}"></div>
+                    </div>
+                    <div style="width:56px;text-align:right"><div style="font-size:13px;font-weight:600">{{ p.pct }}</div><div style="font-size:8.5px;font-weight:600;letter-spacing:.1em;color:#8C8C8C">PERCENTILE</div></div>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="font-size:11px;color:#8C8C8C;line-height:1.5">It goes to the end of the Overview and follows whatever scope is set at the top. If you want it frozen on this exact cut, pin it later from the panel's “···” menu.</div>
+            </div>
+          </div>
+        </sc-if>
+
+        <div style="padding:16px 28px 20px;border-top:1px solid #E1E3EA;display:flex;align-items:center;gap:14px">
+          <sc-if value="{{ isStep2 }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:11.5px;color:#404040" onClick="{{ toggleShare }}">
+              <div style="width:16px;height:16px;border-radius:4px;border:1.6px solid {{ shareBorder }};background:{{ shareBg }};display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px">{{ shareMark }}</div>
+              Keep this one for everyone at my centre too
+            </div>
+          </sc-if>
+          <div style="font-size:11.5px;color:#8C8C8C">{{ modalFootNote }}</div>
+          <div style="margin-left:auto;display:flex;gap:10px">
+            <div style="border:1px solid #E1E3EA;padding:12px 16px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;transition:all .18s" onClick="{{ modalBack }}" style-hover="{{ ghostHover }}">{{ modalBackLabel }}</div>
+            <div style="background:#005BFF;color:#fff;padding:12px 18px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;transition:transform .16s,box-shadow .2s,opacity .2s;opacity:{{ modalNextOpacity }}" onClick="{{ modalNext }}" style-hover="{{ primaryHover }}">{{ modalNextLabel }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ toastOn }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;left:50%;bottom:36px;z-index:80;background:#020D5A;color:#fff;padding:14px 20px;border-radius:11px;font-size:13px;font-weight:600;box-shadow:0 20px 50px rgba(1,7,55,.34);display:flex;align-items:center;gap:12px;animation:qiToast .28s cubic-bezier(.2,.9,.2,1) both">
+      <div style="width:20px;height:20px;border-radius:6px;background:#00FFB9;color:#010737;font-size:11px;display:flex;align-items:center;justify-content:center">✓</div>
+      {{ toast }}
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1680,&quot;height&quot;:1120},&quot;reduceMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behaviour&quot;},&quot;showAnonymityGuards&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behaviour&quot;}}">
+class Component extends DCLogic {
+  state = {
+    screen: "overview",
+    filters: [
+      { id: "period", label: "Period", value: "Q1 2019 – Q4 2021", removable: false, narrow: 1 },
+      { id: "proc", label: "Procedure", value: "AF Ablation", removable: true, narrow: 1 },
+      { id: "tech", label: "Technique", value: "Paroxysmal", removable: true, narrow: 1 },
+      { id: "cath", label: "Catheter", value: "Biosense", removable: true, narrow: 1 }
+    ],
+    lastValidFilters: null,
+    ownOnly: false,
+    addOpen: false,
+    mode: "all",
+    ladderSort: "difference",
+    sel: 1,
+    layers: { cl: true, band: true, out: false },
+    hover: -1,
+    rowHover: -1,
+    ladderHover: -1,
+    histoHover: false,
+    segHover: -1,
+    focusHover: -1,
+    netHover: -1,
+    q7Hover: -1,
+    miniHover: -1,
+    modal: null,
+    modalPick: 0,
+    modalMetric: "Procedure Time (min)",
+    modalSplit: "Technique",
+    modalShare: false,
+    libTab: "All · 18",
+    libQuery: "",
+    segTab: "Catheter",
+    segFocus: 1,
+    netMode: "ranked",
+    stateDemo: null,
+    eventModal: null,
+    addedQuestions: [],
+    qHover: -1,
+    previewHover: -1,
+    scrolled: false,
+    savedFlag: false,
+    loading: false,
+    anim: 0,
+    procDisp: 0,
+    refDisp: 42,
+    heroDisp: 0,
+    toast: ""
+  };
+
+  ADDABLE = [
+    { id: "country", label: "Country", value: "Netherlands", narrow: 0.33, flagged: true, effect: "Cuts the group to a single country — narrows it the most", tag: "−67%" },
+    { id: "model", label: "Catheter model", value: "specific model", narrow: 0.62, flagged: true, effect: "One device model instead of the whole brand", tag: "−38%" },
+    { id: "profile", label: "Patient profile", value: "65+, first ablation", narrow: 0.79, flagged: false, effect: "Keeps most centres contributing", tag: "−21%" }
+  ];
+
+  INDICATORS = [
+    { key: "success", name: "Single Procedure Success Rate", dir: "% of procedures · higher is further right", d: [82, 100], own: 96.4, q: [88, 91.5, 93.8, 95.6, 97.2], pct: "87th", flag: false, ref: 93.8, unit: "pp", diff: 2.6, meta: "% of procedures · n 1,284 vs 18,940", clamp: [70, 99.6] },
+    { key: "fpvi", name: "First Pass PV Isolation", dir: "% of patients · higher is further right", d: [50, 92], own: 64.7, q: [58, 66, 74, 81, 87], pct: "22nd", flag: true, ref: 74.0, unit: "pp", diff: -9.3, meta: "% of patients · n 1,284 vs 18,940", clamp: [24, 98] },
+    { key: "ptime", name: "Procedure Time", dir: "minutes · lower is further left", d: [50, 115], own: 71.0, q: [58, 66, 78, 92, 104], pct: "24th", flag: false, ref: 78.0, unit: "min", diff: -7.0, meta: "minutes · n 1,284 vs 18,940", clamp: [38, 175] },
+    { key: "fluoro", name: "Fluoroscopy Time", dir: "minutes · lower is further left", d: [5, 38], own: 26.1, q: [9, 14, 19, 25, 32], pct: "78th", flag: true, ref: 19.0, unit: "min", diff: 7.1, meta: "minutes · n 1,284 vs 18,940", clamp: [3, 55] },
+    { key: "compl", name: "Complications", dir: "% of procedures · lower is further left", d: [0, 9], own: 4.7, q: [1.8, 2.9, 4.1, 5.4, 7.0], pct: "61st", flag: false, ref: 4.1, unit: "pp", diff: 0.6, meta: "% of procedures · n 1,284 vs 18,940", clamp: [0.4, 13] },
+    { key: "lost", name: "Patients Lost to Follow-up", dir: "% of patients · lower is further left", d: [3, 33], own: 19.1, q: [6, 10, 15, 22, 29], pct: "66th", flag: false, ref: 15.0, unit: "pp", diff: 4.1, meta: "% of patients · n 1,284 vs 18,940", clamp: [2, 44] }
+  ];
+
+  // Deterministic scope model — each filter shifts your values, the reference median, the group spread and n.
+  FX = {
+    country: { nMul: 0.34, tighten: 0.80, evt: -1.9, own: { success: 0.9, fpvi: 2.4, ptime: -6.5, fluoro: -3.4, compl: -0.5, lost: -5.6 }, med: { success: 0.4, fpvi: 1.1, ptime: -2.2, fluoro: -1.3, compl: -0.2, lost: -2.0 } },
+    model:   { nMul: 0.46, tighten: 0.72, evt: 1.6, own: { success: -1.3, fpvi: -7.2, ptime: 3.8, fluoro: 2.6, compl: 0.35, lost: 1.1 }, med: { success: -0.3, fpvi: -0.9, ptime: 0.8, fluoro: 0.6, compl: 0.1, lost: 0.3 } },
+    profile: { nMul: 0.62, tighten: 0.90, evt: -0.6, own: { success: -2.0, fpvi: -1.6, ptime: 4.6, fluoro: 1.2, compl: 1.0, lost: 2.7 }, med: { success: -0.6, fpvi: -0.5, ptime: 1.4, fluoro: 0.4, compl: 0.3, lost: 0.8 } }
+  };
+  WIDEN = { proc: 2.4, tech: 1.9, cath: 1.7 };
+
+  SERIES = [34.2, 33.1, 31.4, 32.0, 29.3, 28.1, 27.4, 29.0, 26.3, 25.4, 26.0, 26.1];
+  NS = [38, 41, 12, 44, 47, 45, 5, 49, 52, 48, 50, 46];
+  QL = ["Q1 19", "Q2 19", "Q3 19", "Q4 19", "Q1 20", "Q2 20", "Q3 20", "Q4 20", "Q1 21", "Q2 21", "Q3 21", "Q4 21"];
+  BASE_N = 1284;
+  BASE_REF_PROCS = 18940;
+
+  ord(n) {
+    n = Math.max(1, Math.min(99, Math.round(n)));
+    const v = n % 100;
+    if (v >= 11 && v <= 13) return n + "th";
+    return n + (["th", "st", "nd", "rd"][n % 10] || "th");
+  }
+
+  pctOf(v, q) {
+    if (v <= q[0]) return 4;
+    if (v >= q[4]) return 96;
+    const segs = [[q[0], q[1], 2, 25], [q[1], q[2], 25, 50], [q[2], q[3], 50, 75], [q[3], q[4], 75, 98]];
+    for (const [a, b, pa, pb] of segs) { if (v <= b) return pa + (pb - pa) * (v - a) / ((b - a) || 1); }
+    return 50;
+  }
+
+  // Everything the screens read is derived deterministically from state.filters.
+  computeScope() {
+    const s = this.state;
+    const has = id => s.filters.some(f => f.id === id);
+    const added = ["country", "model", "profile"].filter(has);
+    const removedBase = ["proc", "tech", "cath"].filter(id => !has(id));
+    const isBaseline = added.length === 0 && removedBase.length === 0;
+
+    let nMul = 1, tighten = 1;
+    const ownD = {}, medD = {};
+    added.forEach(id => {
+      const fx = this.FX[id];
+      nMul *= fx.nMul; tighten *= fx.tighten;
+      for (const k in fx.own) { ownD[k] = (ownD[k] || 0) + fx.own[k]; medD[k] = (medD[k] || 0) + fx.med[k]; }
+    });
+    let widenPull = 0;
+    removedBase.forEach(id => { nMul *= this.WIDEN[id]; widenPull += 0.22; tighten *= 1.16; });
+    widenPull = Math.min(widenPull, 0.6);
+
+    const refN = this.refCentres();
+    const yourN = Math.max(35, Math.round(this.BASE_N * nMul));
+    const refProcs = Math.round(this.BASE_REF_PROCS * (refN / 42) * (0.7 + 0.3 * nMul));
+
+    const indicators = this.INDICATORS.map(base => {
+      const k = base.key;
+      const nMeta = base.dir.split(" · ")[0] + " · n " + yourN.toLocaleString("en-US") + " vs " + refProcs.toLocaleString("en-US");
+      if (isBaseline) return { ...base, pctNum: this.pctOf(base.own, base.q), meta: nMeta, yourN, refN, refProcs };
+      const [lo, hi] = base.clamp;
+      let med = base.ref + (medD[k] || 0);
+      let own = base.own + (ownD[k] || 0);
+      own = own + (med - own) * widenPull;
+      med = Math.max(lo, Math.min(hi, med));
+      own = Math.max(lo, Math.min(hi, own));
+      const q = base.q.map(qv => Math.max(lo, Math.min(hi, med + (qv - base.ref) * tighten)));
+      const pctNum = this.pctOf(own, q);
+      const diff = +(own - med).toFixed(1);
+      const flag = (k === "fpvi" && own < med - 3.5) || (k === "fluoro" && own > med + 3) ||
+        (Math.abs(pctNum - 50) > 33 && Math.abs(diff) >= (base.unit === "pp" ? 3 : 4));
+      const d0 = Math.min(base.d[0], q[0] - 3, own - 4);
+      const d1 = Math.max(base.d[1], q[4] + 3, own + 4);
+      return {
+        ...base, own: +own.toFixed(1), ref: +med.toFixed(1),
+        q: q.map(x => +x.toFixed(1)), pct: this.ord(pctNum), pctNum,
+        diff, flag, meta: nMeta, d: [+d0.toFixed(1), +d1.toFixed(1)], yourN, refN, refProcs
+      };
+    });
+
+    // Q3 fluoroscopy series: the scope shifts its level, reshapes its quarterly spread,
+    // and moves the observed before/after-event step — so Question 2 (largest movement) actually moves.
+    const fBase = this.INDICATORS[3];
+    const fShift = isBaseline ? 0 : (indicators[3].own - fBase.own);
+    const evtExtra = isBaseline ? 0 : added.reduce((a, id) => a + (this.FX[id].evt || 0), 0) * 1.8 + removedBase.length * 1.6;
+    const spreadMul = isBaseline ? 1 : Math.max(0.45, 1 + added.length * 0.45 - widenPull * 0.7);
+    // a deterministic wobble that re-timbres the curve per filter combination
+    const wob = isBaseline ? 0 : (added.length * 1.7 + removedBase.length * 1.1);
+    const SMEAN = 29.4;
+    const series = this.SERIES.map((v, i) => {
+      const dev = (v - SMEAN) * spreadMul;
+      const post = i >= 4 ? evtExtra : 0;           // only quarters after the Mar-2020 event move
+      const rip = wob * Math.sin(i * 1.3 + added.length * 2 + removedBase.length);
+      return +Math.max(2, SMEAN + fShift + dev + post + rip).toFixed(1);
+    });
+    const seriesNs = this.NS.map(n => Math.max(2, Math.round(n * nMul)));
+    const mean = a => a.reduce((x, y) => x + y, 0) / a.length;
+    const hero = {
+      before: +mean(series.slice(0, 4)).toFixed(1),
+      after: +mean(series.slice(4)).toFixed(1)
+    };
+    hero.diff = +(hero.after - hero.before).toFixed(1);
+
+    const netPct = isBaseline ? 22 : Math.max(1, Math.min(99, Math.round(indicators[1].pctNum)));
+
+    return { isBaseline, yourN, refN, refProcs, nMul, tighten, widenPull, indicators, series, seriesNs, hero, netPct, ownD, fShift };
+  }
+
+  componentDidMount() {
+    this.timers = [];
+    // Collapse the scope bar to a slim version once the user scrolls past the summary cards.
+    // Hysteresis so it doesn't flicker right at the threshold.
+    this._onScroll = () => {
+      const y = window.scrollY || window.pageYOffset || 0;
+      if (!this.state.scrolled && y > 120) this.setState({ scrolled: true });
+      else if (this.state.scrolled && y < 70) this.setState({ scrolled: false });
+    };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    const sc = this.computeScope();
+    if (this.props.reduceMotion) {
+      this.setState({ anim: 1, procDisp: sc.yourN, refDisp: sc.refN, heroDisp: sc.hero.diff });
+      return;
+    }
+    this.reveal();
+    this.tween("procDisp", 0, sc.yourN, 900);
+    this.tween("heroDisp", 0, sc.hero.diff, 900, 1);
+  }
+
+  componentWillUnmount() {
+    (this.timers || []).forEach(clearTimeout);
+    if (this.raf) cancelAnimationFrame(this.raf);
+    if (this._onScroll) window.removeEventListener("scroll", this._onScroll);
+  }
+
+  reveal() {
+    if (this.props.reduceMotion) { this.setState({ anim: 1 }); return; }
+    this.setState({ anim: 0 });
+    this.timers.push(setTimeout(() => this.setState({ anim: 1 }), 90));
+  }
+
+  tween(key, from, to, ms, dec) {
+    if (this.props.reduceMotion) { this.setState({ [key]: dec ? Math.round(to * 10) / 10 : Math.round(to) }); return; }
+    const t0 = performance.now();
+    const step = (now) => {
+      const p = Math.min(1, (now - t0) / ms);
+      const e = 1 - Math.pow(1 - p, 3);
+      const v = from + (to - from) * e;
+      this.setState({ [key]: dec ? Math.round(v * 10) / 10 : Math.round(v) });
+      if (p < 1) this.raf = requestAnimationFrame(step);
+    };
+    this.raf = requestAnimationFrame(step);
+  }
+
+  refCentres(filters) {
+    return Math.max(4, Math.round((filters || this.state.filters).reduce((a, f) => a * (f.narrow || 1), 42)));
+  }
+
+  isProtected() { return this.refCentres() < 20; }
+
+  recompute(nextFilters) {
+    const beforeRef = this.refCentres();
+    const beforeSc = this.computeScope();
+    // Snapshot the scope we're leaving while it is still a valid (non-protected) comparison.
+    const lastValid = beforeRef >= 20 ? this.state.filters.slice() : this.state.lastValidFilters;
+    if (this.props.reduceMotion) {
+      this.setState({ filters: nextFilters, lastValidFilters: lastValid, ownOnly: false, addOpen: false, loading: false, anim: 1 });
+      const sc = this.computeScope();
+      this.setState({ refDisp: sc.refN, procDisp: sc.yourN, heroDisp: sc.hero.diff });
+      return;
+    }
+    this.setState({ filters: nextFilters, lastValidFilters: lastValid, ownOnly: false, addOpen: false, loading: true, anim: 0 });
+    this.timers.push(setTimeout(() => {
+      const sc = this.computeScope();
+      this.setState({ loading: false });
+      this.tween("refDisp", beforeRef, sc.refN, 620);
+      this.tween("procDisp", beforeSc.yourN, sc.yourN, 620);
+      this.tween("heroDisp", beforeSc.hero.diff, sc.hero.diff, 620, 1);
+      this.timers.push(setTimeout(() => this.setState({ anim: 1 }), 60));
+    }, 680));
+  }
+
+  // Three fixed recovery routes out of the protected state (brief §4 P0.3 / criterion 2).
+  recover(kind) {
+    let f = this.state.filters.slice();
+    if (kind === "removeCountry") {
+      f = f.filter((x) => x.id !== "country");
+      this.notify("Country filter removed — multi-country reference group restored");
+    } else if (kind === "widenCatheter") {
+      f = f.filter((x) => x.id !== "model" && x.id !== "country");
+      this.notify("Catheter widened from one model to the whole brand");
+    } else if (kind === "extendPeriod") {
+      f = f.filter((x) => x.id !== "model" && x.id !== "country")
+           .map((x) => x.id === "period" ? { ...x, value: "Q1 2019 – Q4 2021" } : x);
+      this.notify("Period extended to 2019 – 2021");
+    }
+    this.recompute(f);
+  }
+
+  restoreValid() {
+    if (!this.state.lastValidFilters) { this.notify("No earlier valid comparison to restore"); return; }
+    this.recompute(this.state.lastValidFilters.slice());
+    this.notify("Restored the last valid comparison");
+  }
+
+  seeOwnOnly() { this.setState({ ownOnly: true }); this.notify("Showing your own results — the reference comparison stays hidden"); }
+
+  go(screen) { this.setState({ screen, addOpen: false, stateDemo: null }); this.reveal(); }
+  notify(msg) {
+    this.setState({ toast: msg });
+    this.timers.push(setTimeout(() => this.setState({ toast: "" }), 2400));
+  }
+
+  hoverStyle(bg) { return { background: bg }; }
+
+  renderVals() {
+    const s = this.state;
+    const motion = this.props.reduceMotion ? 1 : s.anim;
+    const ref = this.refCentres();
+    const prot = this.isProtected();
+    const guards = this.props.showAnonymityGuards !== false;
+    const protGuards = prot && guards;
+    const scope = this.computeScope();
+    const analysisLabel = [
+      (s.filters.find(f => f.id === "tech") || {}).value,
+      (s.filters.find(f => f.id === "cath") || {}).value,
+      (s.filters.find(f => f.id === "country") || {}).value,
+      (s.filters.find(f => f.id === "model") ? "specific model" : null)
+    ].filter(Boolean).join(" · ");
+    const IND = scope.indicators;      // indicators for the current scope
+    const SER = scope.series;          // Q3 fluoroscopy series for the current scope
+    const SNS = scope.seriesNs;        // per-quarter n for the current scope
+    const sel = IND[s.sel];
+    const widenLink = () => this.recover("removeCountry");
+
+    // The left rail is 3PH Cloud's product switcher — Quality Improvement is one module (index 2).
+    // It stays fixed here regardless of which QI tab is open; QI's own screens are the topbar tabs.
+    const railIcons = [
+      { name: "3PH Cloud · Home", key: "home", path: "M3 11l9-8 9 8M5 9v11h5v-6h4v6h5V9" },
+      { name: "3PH Cloud · Registry", key: "registry", path: "M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3zM4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" },
+      { name: "Quality Improvement", key: "qi", path: "M3 17l5-6 4 3 5-8 4 4" },
+      { name: "3PH Cloud · Benchmarking", key: "benchmarking", path: "M12 3v6m0 6v6M5 7l7 5 7-5M5 17l7-5 7 5" },
+      { name: "3PH Cloud · Settings", key: "settings", path: "M4 8h9M17 8h3M4 16h3M11 16h9M14 6v4M8 14v4" }
+    ];
+    const railIdx = 2; // Quality Improvement — always active while inside this app
+
+    const tabDefs = [
+      { name: "Overview", key: "overview" },
+      { name: "Comparison", key: "comparison" },
+      { name: "Investigation", key: "investigation" },
+      { name: "QI Network", key: "network" },
+      { name: "Saved", key: "saved" }
+    ];
+
+    const chips = s.filters.map(f => {
+      const added = this.ADDABLE.some(a => a.id === f.id);
+      return {
+        label: f.label, value: f.value, removable: f.removable !== false, flagged: !!f.flagged,
+        bg: f.id === "period" ? "#005BFF" : added ? "#FFF7EB" : "#FFFFFF",
+        fg: f.id === "period" ? "#FFFFFF" : "#010737",
+        border: f.id === "period" ? "1px solid #005BFF" : added ? "1px solid #FFE0B2" : "1px solid #E1E3EA",
+        xHover: { opacity: 1, transform: "scale(1.25)" },
+        remove: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.recompute(s.filters.filter(x => x.id !== f.id)); }
+      };
+    });
+
+    const addables = this.ADDABLE.filter(a => !s.filters.some(f => f.id === a.id)).map(a => ({
+      label: a.label, value: a.value, effect: a.effect, tag: a.tag,
+      tagBg: a.flagged ? "#FFF7EB" : "#F2F3F7", tagFg: a.flagged ? "#A86200" : "#404040",
+      hoverStyle: { background: "#F6F9FF" },
+      add: () => this.recompute(s.filters.concat([{ id: a.id, label: a.label, value: a.value, removable: true, narrow: a.narrow, flagged: a.flagged }]))
+    }));
+
+    const shown = s.mode === "flagged" ? IND.filter(r => r.flag) : IND;
+    const rows = shown.map((r) => {
+      const i = IND.indexOf(r);
+      const x = v => ((v - r.d[0]) / (r.d[1] - r.d[0])) * 100;
+      const a0 = x(r.q[0]), a1 = x(r.q[4]), b0 = x(r.q[1]), b1 = x(r.q[3]);
+      return {
+        name: r.name, dir: r.dir, pct: protGuards ? "—" : r.pct, flag: r.flag, own: r.own.toFixed(1), anim: motion,
+        showRef: !protGuards, blocked: protGuards,
+        tipOn: s.rowHover === i,
+        tipText: protGuards
+          ? "Your value " + r.own.toFixed(1) + " · n " + scope.yourN.toLocaleString("en-US") + " · reference withheld to protect anonymity"
+          : "Your value " + r.own.toFixed(1) + " · n " + scope.yourN.toLocaleString("en-US") + " · reference median " + r.ref.toFixed(1) + " · " + r.pct + " percentile",
+        rowEnter: () => this.setState({ rowHover: i }),
+        rowLeave: () => this.setState({ rowHover: -1 }),
+        aLeft: a0.toFixed(1) + "%", aW: ((a1 - a0) * motion).toFixed(1) + "%",
+        bLeft: b0.toFixed(1) + "%", bW: ((b1 - b0) * motion).toFixed(1) + "%",
+        mLeft: x(r.q[2]).toFixed(1) + "%",
+        oLeft: x(r.own).toFixed(1) + "%",
+        dotLeft: "calc(" + x(r.own).toFixed(1) + "% - 4px)",
+        labelLeft: x(r.own).toFixed(1) + "%",
+        hoverStyle: { background: "#F6F9FF", transform: "translateX(3px)" },
+        open: () => { if (protGuards) { this.notify("Open the Comparison screen to recover this comparison"); return; } this.setState({ sel: i, screen: "comparison" }); this.reveal(); },
+        widen: (e) => { if (e && e.stopPropagation) e.stopPropagation(); widenLink(); }
+      };
+    });
+
+    const famMax = {
+      pp: Math.max(1, ...IND.filter(l => l.unit === "pp").map(l => Math.abs(l.diff))),
+      min: Math.max(1, ...IND.filter(l => l.unit === "min").map(l => Math.abs(l.diff)))
+    };
+    const famMaxLbl = { pp: (Math.round(famMax.pp * 10) / 10), min: (Math.round(famMax.min * 10) / 10) };
+    const ladderOrder = IND.map((l, idx) => ({ l, idx })).sort((a, b) => {
+      if (s.ladderSort === "family" && a.l.unit !== b.l.unit) return a.l.unit === "pp" ? -1 : 1;
+      return Math.abs(b.l.diff) - Math.abs(a.l.diff);
+    });
+    const ladder = ladderOrder.map(({ l, idx }) => {
+      const i = idx;
+      const w = (Math.abs(l.diff) / famMax[l.unit]) * 46;
+      return {
+        name: l.name, meta: s.ladderSort === "family" ? (l.unit === "pp" ? "percentage points · " : "minutes · ") + l.meta.split(" · ").pop() : l.meta,
+        own: l.own.toFixed(1), ref: l.ref.toFixed(1),
+        notBlocked: true, blocked: false,
+        barLeft: (l.diff < 0 ? 50 - w * motion : 50) + "%",
+        barW: (w * motion) + "%",
+        barBg: l.diff < 0 ? "linear-gradient(90deg,#00DAFF,#005BFF)" : "linear-gradient(90deg,#005BFF,#00DAFF)",
+        diffLabel: (l.diff > 0 ? "+" : "") + l.diff.toFixed(1) + " " + l.unit,
+        diffColor: l.flag ? "#A86200" : "#010737",
+        dirLabel: l.diff > 0 ? "▲ above reference" : "▼ below reference",
+        dirColor: l.flag ? "#A86200" : "#8C8C8C",
+        ownColor: "#005BFF",
+        selBg: i === s.sel ? "#F6F9FF" : "transparent",
+        hoverStyle: { background: "#F6F9FF" },
+        select: () => { this.setState({ sel: i }); this.reveal(); },
+        tipOn: s.ladderHover === i,
+        tipText: "Your centre " + l.own.toFixed(1) + " vs reference median " + l.ref.toFixed(1) + " — a difference of " + (l.diff > 0 ? "+" : "") + l.diff.toFixed(1) + " " + l.unit + " " + (l.diff > 0 ? "above" : "below") + " the reference. Bar length is scaled within the " + (l.unit === "pp" ? "percentage-point" : "minutes") + " family (widest = " + famMaxLbl[l.unit] + " " + l.unit + "), not per row.",
+        tipEnter: () => this.setState({ ladderHover: i }),
+        tipLeave: () => this.setState({ ladderHover: -1 })
+      };
+    }).concat([{
+      name: "Repeat Procedure within 12 months", meta: "comparison limited to protect anonymity",
+      own: "—", ref: "—", notBlocked: false, blocked: true, barLeft: "50%", barW: "0%",
+      barBg: "transparent", diffLabel: "—", diffColor: "#8C8C8C", dirLabel: "protected", dirColor: "#8C8C8C",
+      ownColor: "#8C8C8C", selBg: "transparent", hoverStyle: { background: "#F6F7FA" },
+      select: () => this.notify("This indicator is protected in the current scope"),
+      tipOn: s.ladderHover === 99,
+      tipText: "This comparison is withheld in the current scope — splitting the reference group here would leave too few centres to keep participants anonymous. Widen the group to see it.",
+      tipEnter: () => this.setState({ ladderHover: 99 }),
+      tipLeave: () => this.setState({ ladderHover: -1 })
+    }]);
+
+    // Reference distribution shape follows the selected indicator's current median + spread.
+    const histAxis = sel.d[1] - sel.d[0];
+    const histCenter = ((sel.ref - sel.d[0]) / histAxis) * 26;
+    const histSD = Math.max(2.4, ((sel.q[4] - sel.q[0]) / histAxis) * 26 / 3.3);
+    const histRaw = Array.from({ length: 26 }, (_, i) => Math.exp(-Math.pow(i - histCenter, 2) / (2 * histSD * histSD)));
+    const histSum = histRaw.reduce((a, b) => a + b, 0);
+    const histogram = histRaw.map((raw, i) => {
+      const h = Math.max(5, raw / Math.max(...histRaw) * 100 * 0.95);
+      const lo = sel.d[0] + (i / 26) * histAxis;
+      const hi = sel.d[0] + ((i + 1) / 26) * histAxis;
+      const cnt = Math.round((raw / histSum) * ref);
+      const hasYou = sel.own >= lo && sel.own < hi;
+      const hasRef = sel.ref >= lo && sel.ref < hi;
+      return {
+        h: (h * motion).toFixed(1) + "%",
+        bg: s.histoHover === i ? "#8C90C0" : Math.abs(i - histCenter) < 3.6 ? "#ACB1D8" : "#DCDFEC",
+        delay: (i * 14) + "ms",
+        tipEnter: () => this.setState({ histoHover: i }),
+        tipLeave: () => this.setState({ histoHover: -1 }),
+        _tip: "≈" + cnt + " reference centre" + (cnt === 1 ? "" : "s") + " score between " + lo.toFixed(0) + " and " + hi.toFixed(0)
+          + (hasYou ? " — your centre (" + sel.own.toFixed(1) + ") sits here, " + sel.pct + " percentile" : "")
+          + (hasRef ? " — the reference median (" + sel.ref.toFixed(1) + ") sits here" : ""),
+        _left: ((i + 0.5) / 26 * 100).toFixed(1) + "%"
+      };
+    });
+    const selX = v => (((v - sel.d[0]) / (sel.d[1] - sel.d[0])) * 100).toFixed(1) + "%";
+
+    const tL = 46, tRight = 830, top = 20, bottom = 260;
+    const step = (tRight - tL) / 11;
+    // Y-axis follows the current series + control limits so a shifted scope stays framed.
+    const ucl = 38.4 + scope.fShift, cl = 29.0 + scope.fShift, lcl = 19.6 + scope.fShift;
+    const axLo = Math.floor((Math.min(15 + scope.fShift, lcl, ...SER) - 3) / 5) * 5;
+    const axHi = Math.ceil((Math.max(40 + scope.fShift, ucl, ...SER) + 2) / 5) * 5;
+    const yv = v => +(bottom - ((v - axLo) / (axHi - axLo)) * (bottom - top)).toFixed(1);
+    const xi = i => +(tL + i * step).toFixed(1);
+    const gridVals = [];
+    for (let g = axLo; g <= axHi + 0.1; g += 5) gridVals.push(g);
+    const trendPath = SER.map((v, i) => (i ? "L" : "M") + xi(i) + " " + yv(v)).join(" ");
+    const trendLen = 1400;
+    const trendPts = SER.map((v, i) => {
+      const low = SNS[i] < 20;
+      const outlier = v > 25 || v < 14; // outside the reference band (middle half of reference centres)
+      return {
+        cx: xi(i), cy: yv(v), r: s.hover === i ? 7 : low ? 4.8 : 4.4,
+        fill: low ? "#FFFFFF" : "#005BFF", stroke: low ? "#8C8C8C" : "#FFFFFF",
+        dash: low ? "2 2" : "0", label: this.QL[i], nLabel: "n=" + SNS[i],
+        labelColor: s.hover === i ? "#005BFF" : i === 4 ? "#005BFF" : "#404040",
+        labelWeight: s.hover === i ? 700 : 400,
+        hitX: xi(i) - 32,
+        outR: (s.hover === i ? 7 : 4.6) + 4,
+        outOpacity: (s.layers.out && outlier) ? motion : 0,
+        enter: () => this.setState({ hover: i }),
+        leave: () => this.setState({ hover: -1 })
+      };
+    });
+
+    const mx = i => +((i / 11) * 378).toFixed(1);
+    // Fixed domain so a scope that lifts or drops fluoroscopy visibly moves the whole line.
+    const mD0 = 12, mD1 = 42;
+    const my = v => +(62 - ((Math.max(mD0, Math.min(mD1, v)) - mD0) / (mD1 - mD0)) * 56 - 2).toFixed(1);
+    const miniPath = SER.map((v, i) => (i ? "L" : "M") + mx(i) + " " + my(v)).join(" ");
+    const miniPts = SER.map((v, i) => ({
+      cx: mx(i), cy: my(v), r: s.miniHover === i ? 3.6 : 2.4, op: s.miniHover === i ? 1 : 0,
+      hitX: mx(i) - 17,
+      enter: () => this.setState({ miniHover: i }),
+      leave: () => this.setState({ miniHover: -1 })
+    }));
+
+    const selfFpvi = IND[1].own;
+    const netPctN = scope.netPct;
+    const netVals = Array.from({ length: 86 }, (_, i) => 52 + (i / 85) * 40 + Math.sin(i * 1.7) * 1.4);
+    const selfIdx = Math.max(0, Math.min(85, Math.round(netPctN / 100 * 85)));
+    const selfH = ((selfFpvi - 48) / 48) * 100;
+    const rankedBars = netVals.map((v, i) => ({
+      h: ((i === selfIdx ? selfH : (v - 48) / 48 * 100) * motion).toFixed(1) + "%",
+      bg: i === selfIdx ? "#005BFF" : "linear-gradient(180deg,#ACB1D8,#3F4987)",
+      isSelf: i === selfIdx,
+      delay: (i * 7) + "ms",
+      hoverStyle: { transform: "scaleY(1.04)", background: i === selfIdx ? "#005BFF" : "#3F4987" },
+      tipEnter: () => this.setState({ netHover: i }),
+      tipLeave: () => this.setState({ netHover: -1 }),
+      _tip: i === selfIdx
+        ? "Your centre — First Pass PV Isolation " + selfFpvi.toFixed(1) + "% · " + this.ord(netPctN) + " percentile of the network. Every other bar is one anonymous centre, ordered low to high."
+        : "One anonymous centre · First Pass PV Isolation ≈ " + v.toFixed(1) + "% · rank " + (i + 1) + " of 86. No bar can be traced to a centre, country or specialist.",
+      _left: ((i + 0.5) / 86 * 100).toFixed(1) + "%"
+    }));
+    // Distribution mode: 16 value buckets, bar height = how many anonymous centres fall in the bucket.
+    const NBINS = 16, bMin = 50, bMax = 94, bW = (bMax - bMin) / NBINS;
+    const selfVal = selfFpvi, selfBin = Math.min(NBINS - 1, Math.max(0, Math.floor((selfVal - bMin) / bW)));
+    const counts = Array.from({ length: NBINS }, () => 0);
+    netVals.forEach(v => { const k = Math.min(NBINS - 1, Math.max(0, Math.floor((v - bMin) / bW))); counts[k]++; });
+    const maxCount = Math.max(...counts);
+    const distBars = counts.map((c, i) => ({
+      h: ((c / maxCount) * 100 * motion).toFixed(1) + "%",
+      bg: i === selfBin ? "#005BFF" : "linear-gradient(180deg,#ACB1D8,#3F4987)",
+      isSelf: i === selfBin,
+      delay: (i * 22) + "ms",
+      hoverStyle: { transform: "scaleY(1.03)", background: i === selfBin ? "#005BFF" : "#3F4987" },
+      tipEnter: () => this.setState({ netHover: i }),
+      tipLeave: () => this.setState({ netHover: -1 }),
+      _tip: (i === selfBin ? "Your band — " : "") + c + " centre" + (c === 1 ? "" : "s") + " with First Pass PV Isolation between " + (bMin + i * bW).toFixed(0) + "% and " + (bMin + (i + 1) * bW).toFixed(0) + "%" + (i === selfBin ? ". Your centre (" + selfFpvi.toFixed(1) + "%) falls here." : "."),
+      _left: ((i + 0.5) / NBINS * 100).toFixed(1) + "%"
+    }));
+
+    // Question 7 — is the network itself moving? (yours tracks your current FPVI; network median rises to 76.1)
+    const q7Shift = +(selfFpvi - 64.7).toFixed(1);
+    const q7Yours = [63.8, 64.2, 63.5, 64.0, 64.8, 64.1, 64.9, 65.2, 64.4, 65.0, 64.6, 64.7].map(v => +(v + q7Shift).toFixed(1));
+    const q7Net = [73.0, 73.4, 73.9, 74.2, 74.6, 74.9, 75.2, 75.4, 75.7, 75.9, 76.0, 76.1];
+    const q7x = i => +(24 + (i / 11) * 592).toFixed(1);
+    const q7y = v => +(150 - ((v - 55) / 34) * 128).toFixed(1);
+    const q7Path = q7Yours.map((v, i) => (i ? "L" : "M") + q7x(i) + " " + q7y(v)).join(" ");
+    const q7NetPath = q7Net.map((v, i) => (i ? "L" : "M") + q7x(i) + " " + q7y(v)).join(" ");
+    const q7Pts = q7Yours.map((v, i) => ({
+      cx: q7x(i), cyY: q7y(v), cyN: q7y(q7Net[i]),
+      rY: s.q7Hover === i ? 4.6 : 3, rN: s.q7Hover === i ? 4.6 : 3,
+      op: (s.q7Hover === i ? 1 : 0) ,
+      hitX: q7x(i) - 26,
+      enter: () => this.setState({ q7Hover: i }),
+      leave: () => this.setState({ q7Hover: -1 })
+    }));
+
+    // Question 5 segments = First Pass PV Isolation split by catheter — they track the indicator's
+    // own/reference shift and the cohort size for the current scope.
+    const segOwnShift = +(IND[1].own - 64.7).toFixed(1);
+    const segRefShift = +(IND[1].ref - 74.0).toFixed(1);
+    const segN = n => Math.max(1, Math.round(n * scope.nMul));
+    const segRow = (name, bOv, bRv, bNy, bNr) => {
+      const ov = +(bOv + segOwnShift).toFixed(1), rv = +(bRv + segRefShift).toFixed(1);
+      const d = +(ov - rv).toFixed(1);
+      const flag = d < -8;
+      return {
+        name, meta: "n " + segN(bNy).toLocaleString("en-US") + " yours · " + segN(bNr).toLocaleString("en-US") + " reference",
+        own: ov.toFixed(1), ref: rv.toFixed(1), ov, rv,
+        diff: (d > 0 ? "+" : "−") + Math.abs(d).toFixed(1) + " pp",
+        dir: flag ? "▲ LOOK" : Math.abs(d) < 3 ? "▼ close to reference" : (d < 0 ? "▼ below reference" : "▲ above reference"),
+        flag
+      };
+    };
+    // Each segment tab is a different way to split "First Pass PV Isolation".
+    const SEG_SETS = {
+      "Catheter": { rows: [["Biosense · model A", 72.9, 74.6, 612, 8410], ["Biosense · model B", 54.1, 73.2, 494, 6120], ["Other brands", 70.4, 72.8, 178, 4410]], blocked: ["Biosense · model C", 22] },
+      "Patient profile": { rows: [["Under 65", 72.1, 76.0, 388, 5900], ["65–74 · first ablation", 66.4, 74.9, 402, 5210], ["65–74 · redo ablation", 58.6, 72.0, 214, 3120]], blocked: ["75 and over", 18] },
+      "Technique": { rows: [["Paroxysmal", 74.3, 76.1, 640, 9200], ["Persistent", 57.8, 72.6, 386, 4800], ["Long-standing persistent", 62.4, 68.7, 190, 2400]], blocked: ["Redo procedure", 21] },
+      "Period": { rows: [["2019", 61.8, 73.9, 405, 6100], ["2020", 65.7, 74.1, 447, 6300], ["2021", 68.6, 74.2, 410, 6200]], blocked: ["Q3 2020", 19] }
+    };
+    const segSet = SEG_SETS[s.segTab] || SEG_SETS["Catheter"];
+    const segRows = segSet.rows.map(r => segRow(r[0], r[1], r[2], r[3], r[4])).concat([
+      { name: segSet.blocked[0], meta: "n " + segN(segSet.blocked[1]) + " yours · reference not shown", own: "—", ref: "—", diff: "—", dir: "protected", blocked: true }
+    ]);
+    // Which visible segment carries the biggest gap from its reference?
+    let segGapIdx = 0, segGapMax = -1;
+    segRows.forEach((r, i) => { if (!r.blocked && Math.abs(r.ov - r.rv) > segGapMax) { segGapMax = Math.abs(r.ov - r.rv); segGapIdx = i; } });
+    const segGapName = segRows[segGapIdx].name;
+    const segFocusIdx = Math.min(s.segFocus, segRows.length - 2);
+    const segReading = protGuards
+      ? "Segment comparisons are withheld in this scope — splitting the reference group here would leave too few centres. Your own segment values are shown; widen the group to compare."
+      : "The difference concentrates in one segment. " + segGapName + " accounts for most of the gap seen at indicator level; the other segments sit closer to their reference. A difference was observed — the data do not establish why. Explore the other splits inside this segment before drawing a conclusion.";
+    const sx = v => (((v - 50) / 42) * 100).toFixed(1) + "%";
+    const segments = segRows.map((r0, i) => {
+      const r = protGuards ? { ...r0, blocked: true, ref: "—", diff: "—", dir: "protected", own: r0.own } : r0;
+      return {
+      name: r.name, meta: r.meta, own: r.own, ref: r.ref, diff: r.diff, dir: r.dir,
+      notBlocked: !r.blocked, blocked: !!r.blocked,
+      ownLeft: r.blocked ? "0%" : sx(r.ov), dotLeft: r.blocked ? "0%" : "calc(" + sx(r.ov) + " - 4px)",
+      refLeft: r.blocked ? "0%" : "calc(" + sx(r.rv) + " - 8px)",
+      ownColor: r.blocked ? "#8C8C8C" : "#005BFF",
+      diffColor: r.flag ? "#A86200" : r.blocked ? "#8C8C8C" : "#010737",
+      dirColor: r.flag ? "#A86200" : "#8C8C8C",
+      selBg: i === s.segFocus ? "#F6F9FF" : "transparent",
+      hoverStyle: { background: "#F6F9FF" },
+      focus: () => { this.setState({ segFocus: i }); this.reveal(); },
+      tipOn: s.segHover === i,
+      tipText: r.blocked
+        ? r0.name + ": only " + (r0.meta.match(/n (\d+)/) || [, "22"])[1] + " of your procedures fall in this segment — too few to compare without risking identification. Your own value is kept; the reference is withheld."
+        : r0.name + ": your centre " + r0.own + "% vs reference centres in the same segment " + r0.ref + "% — " + r0.diff + " " + r0.dir.replace("▲ LOOK", "worth a look").replace(/[▲▼]\s*/, "") + ". Based on " + r0.meta + ".",
+      tipEnter: () => this.setState({ segHover: i }),
+      tipLeave: () => this.setState({ segHover: -1 })
+    };
+    });
+    const focus = segRows[segFocusIdx];
+    const focusNy = parseInt(((focus.meta || "").match(/n ([\d,]+) yours/) || [, "0"])[1].replace(/,/g, "")) || 0;
+    const focusRefV = focus.blocked ? 0 : focus.rv;
+    const fCenter = focus.blocked ? 60 : focus.ov;
+    const fSeries = Array.from({ length: 12 }, (_, i) =>
+      +(fCenter + Math.sin(i * 0.9 + segFocusIdx * 1.7) * 1.4 + (i - 5.5) * -0.14).toFixed(1));
+    const fLo = Math.min(...fSeries, focusRefV || 999) - 4, fHi = Math.max(...fSeries, focusRefV || 0) + 4;
+    const fy = v => +(150 - ((v - fLo) / ((fHi - fLo) || 1)) * 120).toFixed(1);
+    const fx = i => +(30 + i * 54.5).toFixed(1);
+    const focusPath = fSeries.map((v, i) => (i ? "L" : "M") + fx(i) + " " + fy(v)).join(" ");
+    const focusPts = fSeries.map((v, i) => ({
+      cx: fx(i), cy: fy(v), r: s.focusHover === i ? 5 : 3.4, dotOpacity: (s.focusHover === i ? 1 : 0.55) * motion,
+      hitX: fx(i) - 26,
+      enter: () => this.setState({ focusHover: i }),
+      leave: () => this.setState({ focusHover: -1 })
+    }));
+
+    const candidates = [
+      { title: "Am I an outlier, or is this normal spread?", desc: "Your number against where all the other centres actually fall. Shows n, so you can see whether the gap is real.", tag: "DISTRIBUTION", spark: "M2 18 L14 12 L26 14 L38 6" },
+      { title: "Did we actually get better?", desc: "Quarter by quarter, with the reference band behind it. The unfrozen quarter is marked so you don't read a dip that isn't there.", tag: "EVOLUTION", spark: "M2 20 L12 13 L22 15 L38 4" },
+      { title: "Is one group of my cases dragging the average?", desc: "Split your own cases in two — technique, catheter, period — and see which side carries the number.", tag: "COMPARISON", spark: "M2 12 L14 12 M20 6 L38 6 M20 18 L38 18" },
+      { title: "Did the change we made in 2020 do anything?", desc: "Mark the month something changed — new lab, new protocol, new hire — and compare before and after.", tag: "EVENT", spark: "M2 18 L14 15 L20 15 L26 8 L38 6" }
+    ].map((c, i) => ({
+      ...c,
+      borderColor: i === s.modalPick ? "#005BFF" : "#E1E3EA",
+      bg: i === s.modalPick ? "#F6F9FF" : "#FFFFFF",
+      hoverStyle: { borderColor: "#005BFF", transform: "translateY(-2px)", boxShadow: "0 10px 24px rgba(1,7,55,.10)" },
+      pick: () => this.setState({ modalPick: i })
+    }));
+
+    // Live preview — reacts to the "Split it by" choice (brief §4 P2.12).
+    const PREVIEW_SETS = {
+      None: [{ label: "All cases", a: [8, 92], b: [34, 72], o: 44, pct: "41st" }],
+      Technique: [
+        { label: "Paroxysmal", a: [8, 92], b: [37, 69], o: 47, pct: "38th" },
+        { label: "Persistent", a: [13, 85], b: [47, 77], o: 77, pct: "71st" },
+        { label: "Redo", a: [4, 96], b: [30, 68], o: 33, pct: "22nd" }
+      ],
+      Catheter: [
+        { label: "Model A", a: [10, 90], b: [40, 72], o: 55, pct: "52nd" },
+        { label: "Model B", a: [6, 88], b: [33, 63], o: 24, pct: "18th" },
+        { label: "Other brands", a: [12, 92], b: [44, 74], o: 61, pct: "58th" }
+      ],
+      Year: [
+        { label: "2019", a: [9, 90], b: [36, 68], o: 40, pct: "34th" },
+        { label: "2020", a: [10, 91], b: [39, 71], o: 49, pct: "44th" },
+        { label: "2021", a: [11, 92], b: [42, 73], o: 52, pct: "49th" }
+      ]
+    };
+    const METRICS = ["Procedure Time (min)", "Fluoroscopy Time (min)", "First Pass PV Isolation (%)", "Single Procedure Success Rate (%)"];
+    const metricUnit = /\(min\)/.test(s.modalMetric) ? "minutes" : "% of patients";
+    const previewRows = (PREVIEW_SETS[s.modalSplit] || PREVIEW_SETS.Technique).map((p, pi) => ({
+      label: p.label, pct: p.pct,
+      aLeft: p.a[0] + "%", aW: ((p.a[1] - p.a[0]) * motion) + "%",
+      bLeft: p.b[0] + "%", bW: ((p.b[1] - p.b[0]) * motion) + "%",
+      oLeft: p.o + "%",
+      hoverStyle: { background: "#EEF2FF" },
+      tipOn: s.previewHover === pi,
+      tipText: p.label + " · this split would place your centre at the " + p.pct + " percentile of reference centres for " + s.modalMetric.replace(/\s*\([^)]*\)/, "").toLowerCase() + ".",
+      tipEnter: () => this.setState({ previewHover: pi }),
+      tipLeave: () => this.setState({ previewHover: -1 })
+    }));
+    const cycleMetric = () => {
+      const next = METRICS[(METRICS.indexOf(s.modalMetric) + 1) % METRICS.length];
+      this.setState({ modalMetric: next }); this.notify("Metric set to " + next);
+    };
+
+    const fields = [
+      { label: "Metric", isSelect: true, isSegmented: false, value: s.modalMetric, hint: "Only what the Real AF form actually collects. Procedure Time = skin to skin, 94% complete.", hasHint: true, tap: cycleMetric },
+      { label: "Reference group", isSelect: true, isSegmented: false, value: "Every Real AF centre · " + ref, hint: "You never see who is who — only where they fall.", hasHint: true, tap: () => this.notify("Reference group: every Real AF centre in scope") },
+      { label: "Which cases", isSelect: false, isSegmented: true, hasHint: false, hint: "", options: ["Same as the top of the page", "Its own cut"].map((o, i) => ({ label: o, bg: i === 0 ? "#005BFF" : "#fff", fg: i === 0 ? "#fff" : "#404040", border: i === 0 ? "#005BFF" : "#E1E3EA", pick: () => this.notify("Scope source changed to “" + o + "”") })) },
+      { label: "Split it by", isSelect: false, isSegmented: true, hasHint: true, hint: "One row per split. Rows with fewer than 10 cases get hidden.", options: ["None", "Technique", "Catheter", "Year"].map((o) => ({ label: o, bg: s.modalSplit === o ? "#005BFF" : "#fff", fg: s.modalSplit === o ? "#fff" : "#404040", border: s.modalSplit === o ? "#005BFF" : "#E1E3EA", pick: () => { this.setState({ modalSplit: o }); this.reveal(); } })) }
+    ];
+
+    const primaryHover = { transform: "translateY(-1px)", boxShadow: "0 10px 22px rgba(0,91,255,.32)", background: "#0050E0" };
+    const ghostHover = { background: "#F6F9FF", borderColor: "#B9CCFF", color: "#005BFF" };
+    const addHover = { borderColor: "#005BFF", color: "#005BFF", background: "#F6F9FF" };
+
+    return {
+      rootClass: this.props.reduceMotion ? "qi-reduce" : "",
+      rail: railIcons.map((r, i) => ({
+        name: r.name, path: r.path, stroke: i === railIdx ? "#005BFF" : "#8C8C8C",
+        hoverStyle: { background: "#F6F9FF" },
+        go: () => { if (i === railIdx) { this.go("overview"); } else { this.notify(r.name + " — not part of Quality Improvement"); } }
+      })),
+      railTransform: "translateY(" + (62 + railIdx * 48) + "px)",
+      tabs: tabDefs.map(t => ({
+        name: t.name, color: t.key === s.screen ? "#005BFF" : "#404040",
+        underline: t.key === s.screen ? "scaleX(1)" : "scaleX(0)",
+        hoverStyle: { color: "#005BFF" }, go: () => this.go(t.key)
+      })),
+      chips, addables, addOpen: s.addOpen, addHover,
+      addLabel: s.addOpen ? "✕ Close" : "+ Add filter",
+      toggleAdd: () => this.setState({ addOpen: !s.addOpen }),
+      procDisplay: s.procDisp.toLocaleString("en-US"),
+      refDisplay: s.refDisp,
+      refCount: ref,
+      refColor: prot ? "#A8002D" : "#010737",
+      guardBg: !guards ? "#fff" : prot ? "#FFEBF0" : "#F1FBF5",
+      guardFg: prot ? "#A8002D" : "#0A8B48",
+      guardIconBg: prot ? "#FF0144" : "#0DBA5E",
+      guardPulse: protGuards ? "qiPulse .6s cubic-bezier(.2,.9,.2,1) 1 both" : "none",
+      guardIconPath: prot
+        ? "M12 8v5M12 16.5v.01M10.3 4.3 2.5 18a1.5 1.5 0 0 0 1.3 2.2h16.4a1.5 1.5 0 0 0 1.3-2.2L13.7 4.3a1.5 1.5 0 0 0-2.6 0z"
+        : "M7 11V8a5 5 0 0 1 10 0v3M5.5 11h13a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-13a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1z",
+      guardTitle: prot ? "Too small to show" : "Group large enough",
+      guardSub: prot ? "now: too few centres" : "to stay anonymous",
+      scopeFull: !s.scrolled,
+      scopeCompact: s.scrolled,
+      scopePad: s.scrolled ? "8px 26px" : "14px 26px 16px",
+      scopeGap: s.scrolled ? "0px" : "12px",
+
+      isOverview: s.screen === "overview",
+      isComparison: s.screen === "comparison",
+      isInvestigation: s.screen === "investigation",
+      isNetwork: s.screen === "network",
+      isSaved: s.screen === "saved",
+      isProtected: prot,
+      protGuards,
+      notProtected: !prot,
+      comparisonNormal: !prot,
+      loading: s.loading,
+      loadingLabel: "Rebuilding the comparison — " + scope.yourN.toLocaleString("en-US") + " procedures",
+      anim: motion,
+
+      mode: s.mode,
+      modeAll: () => { this.setState({ mode: "all" }); this.reveal(); },
+      modeFlagged: () => { this.setState({ mode: "flagged" }); this.reveal(); },
+      modeAllBg: s.mode === "all" ? "#005BFF" : "#fff",
+      modeAllFg: s.mode === "all" ? "#fff" : "#404040",
+      modeFlagBg: s.mode === "flagged" ? "#005BFF" : "#fff",
+      modeFlagFg: s.mode === "flagged" ? "#fff" : "#404040",
+      rows,
+
+      heroDisplay: (s.heroDisp > 0 ? "+" : "−") + Math.abs(s.heroDisp).toFixed(1),
+      heroDirLabel: scope.hero.diff <= 0 ? "▼ observed decrease" : "▲ observed increase",
+      heroDirColor: scope.hero.diff <= 0 ? "#00FFB9" : "#FFC98A",
+      heroBefore: scope.hero.before.toFixed(1), heroAfter: scope.hero.after.toFixed(1),
+      heroBeforeN: Math.max(8, Math.round(135 * scope.nMul)), heroAfterN: Math.max(12, Math.round(342 * scope.nMul)),
+      miniPath, miniArea: miniPath + " L378 62 L0 62 Z", miniPts,
+      miniLen: 460, miniOffset: motion ? 0 : 460, miniEventX: mx(4),
+      miniTipOn: s.miniHover >= 0,
+      miniTipLeft: s.miniHover >= 0 ? (mx(s.miniHover) / 386 * 100).toFixed(1) + "%" : "50%",
+      miniTipText: s.miniHover >= 0 ? this.QL[s.miniHover] + " · Fluoroscopy Time " + SER[s.miniHover].toFixed(1) + " min · n=" + SNS[s.miniHover] + (s.miniHover >= 4 ? " · after the event" : " · before the event") : "",
+
+      signalCount: 3,
+      signals: [
+        { mark: "▲", tone: "#A86200", bg: "#FFF7EB", title: "Fluoroscopy Time " + (IND[3].diff >= 0 ? "above" : "below") + " reference", detail: IND[3].pct + " percentile · widened over the last 3 quarters", hoverStyle: { background: "#F6F9FF" }, go: () => { this.setState({ sel: 3, screen: "comparison" }); this.reveal(); } },
+        { mark: "▼", tone: "#A8002D", bg: "#FFEBF0", title: "First Pass PV Isolation " + (IND[1].diff >= 0 ? "above" : "below") + " reference", detail: IND[1].pct + " percentile · stable across the period", hoverStyle: { background: "#F6F9FF" }, go: () => { this.setState({ sel: 1, screen: "comparison" }); this.reveal(); } },
+        { mark: "◆", tone: "#00527A", bg: "#F2FDFF", title: "Complications differ by catheter", detail: "Two catheter groups behave differently — open breakdown", hoverStyle: { background: "#F6F9FF" }, go: () => this.go("investigation") }
+      ],
+      goInvestigation: () => this.go("investigation"),
+      saveView: () => this.notify("View saved to “Saved analyses”"),
+      primaryHover, ghostHover,
+      cyanHover: { transform: "translateY(-1px)", filter: "brightness(1.06)" },
+      inputHover: { borderColor: "#005BFF", boxShadow: "0 0 0 3px rgba(0,91,255,.10)" },
+
+      selName: sel.name, selMeta: sel.meta, selOwn: sel.own.toFixed(1), selRef: sel.ref.toFixed(1),
+      selPct: sel.pct, selMin: sel.d[0], selMax: sel.d[1],
+      histogram, selfMarkLeft: selX(sel.own), refMarkLeft: selX(sel.ref),
+      histoTipOn: s.histoHover >= 0,
+      histoTipText: s.histoHover >= 0 ? (histogram[s.histoHover] || {})._tip : "",
+      histoTipLeft: s.histoHover >= 0 ? (histogram[s.histoHover] || {})._left : "50%",
+
+      layerToggles: [
+        { name: "Control limits", key: "cl" },
+        { name: "Reference band", key: "band" },
+        { name: "Outliers", key: "out" }
+      ].map(l => ({
+        name: l.name, bg: s.layers[l.key] ? "#005BFF" : "#fff", fg: s.layers[l.key] ? "#fff" : "#404040",
+        toggle: () => this.setState({ layers: { ...s.layers, [l.key]: !s.layers[l.key] } })
+      })),
+      clOpacity: s.layers.cl ? motion : 0,
+      bandOpacity: (s.layers.band && !protGuards) ? motion : 0,
+
+      gridLines: gridVals.map(v => ({ x1: tL, x2: tRight, y: yv(v), lx: tL - 10, ly: yv(v) + 4, label: Math.round(v) + "" })),
+      trendPath, trendArea: trendPath + " L" + xi(11) + " " + bottom + " L" + tL + " " + bottom + " Z",
+      trendLen, trendOffset: motion ? 0 : trendLen,
+      trendPts, tL, tL2: tL + 6, tRight, tRight2: tRight + 12, trackW: tRight - tL,
+      beforeW: (xi(4) - tL).toFixed(1), eventX: xi(4), afterLabelX: (xi(4) + 8).toFixed(1),
+      refBandY: yv(IND[3].q[3]), refBandH: Math.abs(yv(IND[3].q[1]) - yv(IND[3].q[3])).toFixed(1), refBandLabelY: yv(IND[3].q[3]) - 7,
+      uclY: yv(ucl), uclY2: yv(ucl) - 5, clY: yv(cl), clY2: yv(cl) - 5, lclY: yv(lcl), lclY2: yv(lcl) + 14,
+      uclLbl: ucl.toFixed(1), clLbl: cl.toFixed(1), lclLbl: lcl.toFixed(1),
+
+      tipOn: s.hover >= 0,
+      tipLeft: s.hover >= 0 ? (xi(s.hover) / 900 * 100).toFixed(2) + "%" : "0%",
+      tipTop: s.hover >= 0 ? (yv(SER[s.hover]) / 300 * 100).toFixed(2) + "%" : "0%",
+      tipQuarter: s.hover >= 0 ? this.QL[s.hover] : "",
+      tipValue: s.hover >= 0 ? SER[s.hover].toFixed(1) : "",
+      tipN: s.hover >= 0 ? SNS[s.hover] : "",
+      tipNote: s.hover >= 0 ? (SNS[s.hover] < 20 ? "few procedures — read with care" : s.hover >= 4 ? "after the event" : "before the event") : "",
+
+      nextSteps: [
+        { name: "Break down by catheter", go: () => this.go("investigation") },
+        { name: "Compare with control group", go: () => this.notify("Control group added to the comparison") },
+        { name: "See all indicators side by side", go: () => this.go("comparison") }
+      ].map(n => ({ ...n, hoverStyle: { borderColor: "#B9CCFF", background: "#F6F9FF", transform: "translateY(-1px)" } })),
+
+      saved: [
+        { tone: "#005BFF", title: "Paroxysmal · Biosense · 2019–2021", meta: "6 indicators · reference " + ref + " centres" },
+        { tone: "#3F4987", title: "Before / after mapping system change", meta: "Event split · Mar 2020" },
+        { tone: "#00DAFF", title: "Own centre vs control group", meta: "Control: same technique, other catheter" }
+      ].map(x => ({ ...x, hoverStyle: { background: "#F6F9FF" }, open: () => this.go("saved") })),
+      recent: [
+        { title: "Fluoroscopy Time by quarter", meta: "Opened 2 days ago", tag: "CHANGE FOUND", tone: "#A86200", bg: "#FFF7EB" },
+        { title: "Success rate vs QI Network", meta: "Opened 5 days ago", tag: "NO CHANGE", tone: "#404040", bg: "#F2F3F7" },
+        { title: "Complications · 4 filters", meta: "Opened 6 days ago", tag: "PROTECTED", tone: "#A8002D", bg: "#FFEBF0" }
+      ].map(x => ({ ...x, hoverStyle: { background: "#F6F9FF" }, open: () => this.go("saved") })),
+
+      anonTitle: prot ? "One comparison on this screen is being withheld" : "Every comparison on this screen is protected",
+      anonRules: [
+        { mark: "✓", bg: "#0DBA5E", text: ref + " centres contribute to the reference group" },
+        { mark: "✓", bg: "#0DBA5E", text: "No centre or specialist is identifiable" },
+        { mark: "!", bg: "#FF9300", text: "More filters may reduce the group below what the platform can show" }
+      ],
+      howProtection: () => this.notify("Participation rules opened"),
+      analysisName: [
+        (s.filters.find(f => f.id === "tech") || {}).value,
+        (s.filters.find(f => f.id === "cath") || {}).value,
+        "2019–2021"
+      ].filter(Boolean).join(" · "),
+      questionCount: 3 + s.addedQuestions.length,
+
+      addedPanels: s.addedQuestions.map((q, qi) => ({
+        kicker: "Question " + (7 + qi) + " — " + q.title.replace(/\?$/, "").toLowerCase(),
+        metricLabel: q.metricLabel,
+        splitNote: q.split === "None" ? "your whole scope" : "by " + q.split.toLowerCase(),
+        tag: q.shared ? "SHARED WITH CENTRE" : "PRIVATE TO YOU",
+        tagBg: q.shared ? "#EFF5FF" : "#F2F3F7",
+        tagFg: q.shared ? "#005BFF" : "#404040",
+        menu: () => this.notify("Panel menu — pin to this exact scope, duplicate, or move"),
+        remove: () => { this.setState({ addedQuestions: s.addedQuestions.filter((_, k) => k !== qi) }); this.notify("Question removed from your Overview"); },
+        foot: "Added from the question library · follows the scope set at the top of the page · " + q.rows.length + " row" + (q.rows.length === 1 ? "" : "s") + " per split.",
+        rows: q.rows.map((p, ri) => ({
+          label: p.label, pct: p.pct,
+          aLeft: p.a[0] + "%", aW: ((p.a[1] - p.a[0]) * motion).toFixed(1) + "%",
+          bLeft: p.b[0] + "%", bW: ((p.b[1] - p.b[0]) * motion).toFixed(1) + "%",
+          oLeft: p.o + "%", dotLeft: "calc(" + p.o + "% - 4px)",
+          hoverStyle: { background: "#F6F9FF" },
+          tipOn: s.qHover === qi * 10 + ri,
+          tipText: p.label + " · your centre sits at the " + p.pct + " percentile of reference centres for " + q.metricLabel.toLowerCase() + " in this segment.",
+          tipEnter: () => this.setState({ qHover: qi * 10 + ri }),
+          tipLeave: () => this.setState({ qHover: -1 })
+        }))
+      })),
+
+      groups: [
+        { kicker: "Group A · your centre", title: "Site 14 — Dr. G. Schrappe", meta: scope.yourN.toLocaleString("en-US") + " procedures · " + analysisLabel, tone: "#005BFF", border: "1.4px solid #B9CCFF", bg: "#F6F9FF", hasAction: false },
+        { kicker: "Group B · reference, anonymous", title: ref + " centres with a similar profile", meta: scope.refProcs.toLocaleString("en-US") + " procedures · same filters applied", tone: "#3F4987", border: "1.4px solid #D6D9EC", bg: "#FFFFFF", hasAction: false },
+        { kicker: "Group C · control, optional", title: "Not selected", meta: "Add a control group to isolate one variable", tone: "#8C8C8C", border: "1px dashed #C9CCDD", bg: "#FFFFFF", hasAction: true, act: () => this.notify("Control group added — same technique, other catheter") }
+      ],
+      ladder,
+      ladderKicker: s.ladderSort === "family" ? "Grouped by unit family" : "Ordered by size of difference",
+      sortDiffBg: s.ladderSort === "difference" ? "#005BFF" : "#fff",
+      sortDiffFg: s.ladderSort === "difference" ? "#fff" : "#404040",
+      sortFamBg: s.ladderSort === "family" ? "#005BFF" : "#fff",
+      sortFamFg: s.ladderSort === "family" ? "#fff" : "#404040",
+      sortByDiff: () => { this.setState({ ladderSort: "difference" }); this.reveal(); },
+      sortByFam: () => { this.setState({ ladderSort: "family" }); this.reveal(); },
+      downloadImage: () => this.notify("Preparing image export…"),
+      reviewFilters: () => { this.setState({ addOpen: true }); this.notify("Review the filters in the analysis scope at the top of the page"); },
+      deeper: [
+        { name: "See this indicator over time", go: () => this.go("overview") },
+        { name: "Break down by catheter", go: () => this.go("investigation") },
+        { name: "Break down by patient profile", go: () => this.go("investigation") },
+        { name: "Add a control group", go: () => this.notify("Control group added to the comparison") }
+      ].map(d => ({ ...d, hoverStyle: { borderColor: "#B9CCFF", background: "#F6F9FF", transform: "translateX(3px)" } })),
+
+      recovery: [
+        { n: 1, kind: "removeCountry", title: "Remove “Country · Netherlands”", detail: "Restores the multi-country reference group. This filter narrowed the group the most.", action: "Remove filter", primary: true },
+        { n: 2, kind: "widenCatheter", title: "Widen “Catheter” from one model to the whole brand", detail: "Keeps the device question, with more centres contributing.", action: "Widen", primary: false },
+        { n: 3, kind: "extendPeriod", title: "Extend the period to 2019 – 2021", detail: "More procedures per centre, same segmentation.", action: "Extend", primary: false }
+      ].map(v => ({
+        ...v,
+        rowBorder: v.primary ? "1.6px solid #005BFF" : "1px solid #E1E3EA",
+        rowBg: v.primary ? "#F6F9FF" : "#FFFFFF",
+        hoverStyle: { borderColor: "#B9CCFF", background: "#F6F9FF" },
+        act: () => this.recover(v.kind)
+      })),
+      restoreValidAct: () => this.restoreValid(),
+      seeOwnAct: () => this.seeOwnOnly(),
+      readRules: () => this.notify("Participation rules opened"),
+      protHeroBody: "With the current combination of filters the reference group became small enough that an individual centre or specialist could be identified indirectly. The result is not hidden because of an error — protecting participants is how the platform stays usable for everyone.",
+      filterImpact: [
+        { label: "Procedure · technique", note: "wide group", w: "100%", bar: "linear-gradient(90deg,#3F4987,#ACB1D8)", fg: "#010737", mark: "" },
+        { label: "Patient profile", note: "still wide", w: "76%", bar: "linear-gradient(90deg,#3F4987,#ACB1D8)", fg: "#010737", mark: "" },
+        { label: "Catheter model", note: "much narrower", w: "38%", bar: "linear-gradient(90deg,#FF9300,#FFD08A)", fg: "#A86200", mark: "▲ " },
+        { label: "Country", note: "below what can be shown", w: "14%", bar: "linear-gradient(90deg,#FF0144,#FFA3BC)", fg: "#A8002D", mark: "▲ " }
+      ],
+
+      crumbs: [
+        { name: "Overview · 6 indicators", act: () => this.go("overview"), arrow: true, cur: false },
+        { name: "Comparison · vs " + ref + " centres", act: () => { this.setState({ screen: "comparison" }); this.reveal(); }, arrow: true, cur: false },
+        { name: "First Pass PV Isolation", act: () => { this.setState({ screen: "comparison", sel: 1 }); this.reveal(); }, arrow: true, cur: false },
+        { name: "Segments · by " + s.segTab.toLowerCase(), act: () => {}, arrow: false, cur: true }
+      ].map((c) => ({
+        name: c.name, arrow: c.arrow,
+        bg: c.cur ? "#005BFF" : "#F2F3F7", fg: c.cur ? "#fff" : "#404040",
+        cursor: c.cur ? "default" : "pointer",
+        hoverStyle: c.cur ? {} : { background: "#E6EDFF", color: "#005BFF" },
+        go: c.act
+      })),
+      saveAnalysis: () => { if (s.savedFlag) { this.notify("Analysis already saved"); return; } this.setState({ savedFlag: true }); this.notify("Analysis saved · “Segments by catheter”"); },
+      segRecover: () => this.recover("removeCountry"),
+      savedBadgeBg: s.savedFlag ? "#EAFBF2" : "#FFF7EB",
+      savedBadgeFg: s.savedFlag ? "#0A8B48" : "#A86200",
+      savedBadgeLabel: s.savedFlag ? "Saved analysis" : "Unsaved analysis",
+      saveBtnLabel: s.savedFlag ? "Saved" : "Save analysis",
+      saveBtnOpacity: s.savedFlag ? 0.55 : 1,
+      tabName: s.segTab.toLowerCase(),
+      segReading,
+      segTabs: ["Catheter", "Patient profile", "Technique", "Period"].map(t => ({
+        name: t, bg: s.segTab === t ? "#005BFF" : "#fff", fg: s.segTab === t ? "#fff" : "#404040",
+        go: () => { this.setState({ segTab: t, segFocus: 1 }); this.reveal(); }
+      })),
+      segments,
+      focusName: focus.name,
+      focusMeta: focus.blocked
+        ? "n " + focusNy + " of your " + scope.yourN.toLocaleString("en-US") + " procedures · reference withheld"
+        : focusNy.toLocaleString("en-US") + " of your " + scope.yourN.toLocaleString("en-US") + " procedures · " + Math.round(focusNy / Math.max(scope.yourN, 1) * 100) + "%",
+      focusRef: focus.blocked ? "—" : focus.ref, focusPath, focusPts, focusLen: 900, focusOffset: motion ? 0 : 900,
+      focusTipOn: s.focusHover >= 0,
+      focusTipLeft: s.focusHover >= 0 ? (focusPts[s.focusHover].cx / 640 * 100).toFixed(1) + "%" : "50%",
+      focusTipTop: s.focusHover >= 0 ? (focusPts[s.focusHover].cy / 170 * 100).toFixed(1) + "%" : "0%",
+      focusTipText: s.focusHover >= 0 ? this.QL[s.focusHover] + " · this segment " + fSeries[s.focusHover].toFixed(1) + "% · segment reference " + focusRefV.toFixed(1) + "%" : "",
+      focusNote: focus.blocked ? "This segment is withheld — too few procedures to compare." : (focus.ov < focus.rv - 2 ? "Below its reference across the whole period" : Math.abs(focus.ov - focus.rv) <= 2 ? "Tracks its reference across the whole period" : "Above its reference across the whole period"),
+      splits: [
+        { name: "By patient profile", go: () => this.notify("Split by patient profile — reference group narrowed") },
+        { name: "By technique", go: () => this.notify("Split by technique — reference group narrowed") },
+        { name: "Before / after an event", go: () => this.go("overview") }
+      ].map(p => ({ ...p, hoverStyle: { borderColor: "#B9CCFF", background: "#F6F9FF", transform: "translateX(3px)" } })),
+
+      netStats: [
+        { label: "Centres in network", value: "118", tone: "#010737" },
+        { label: "In this scope", value: (86 - Math.round((42 - ref) * 1.6)) + "", tone: "#010737" },
+        { label: "Your position", value: this.ord(scope.netPct) + " percentile", tone: "#005BFF" }
+      ],
+      netMode: s.netMode,
+      netRanked: () => { this.setState({ netMode: "ranked" }); this.reveal(); },
+      netDist: () => { this.setState({ netMode: "dist" }); this.reveal(); },
+      netRankedBg: s.netMode === "ranked" ? "#005BFF" : "#fff",
+      netRankedFg: s.netMode === "ranked" ? "#fff" : "#404040",
+      netDistBg: s.netMode === "dist" ? "#005BFF" : "#fff",
+      netDistFg: s.netMode === "dist" ? "#fff" : "#404040",
+      netBars: s.netMode === "ranked" ? rankedBars : distBars,
+      netTipOn: s.netHover >= 0,
+      netTipText: s.netHover >= 0 ? ((s.netMode === "ranked" ? rankedBars : distBars)[s.netHover] || {})._tip : "",
+      netTipLeft: s.netHover >= 0 ? ((s.netMode === "ranked" ? rankedBars : distBars)[s.netHover] || {})._left : "50%",
+      netProtected: protGuards,
+      netShown: !protGuards,
+      netRecover: () => this.recover("removeCountry"),
+      netMedianTop: "38%", netMedianLabelTop: "31%",
+      netMedianOpacity: s.netMode === "ranked" ? 1 : 0,
+      netAxisLabel: s.netMode === "ranked" ? "First Pass PV Isolation · % of patients" : "Centres per value band · x-axis 50 → 94",
+      q7Path, q7NetPath, q7Pts, q7Len: 640, q7Offset: motion ? 0 : 640, q7Anim: motion,
+      q7YoursEnd: q7Yours[q7Yours.length - 1].toFixed(1),
+      netSelfLabel: selfFpvi.toFixed(1) + " · " + this.ord(netPctN),
+      fpviLine: "Your centre " + IND[1].own.toFixed(1) + " vs reference " + IND[1].ref.toFixed(1) + " · " + (IND[1].diff > 0 ? "+" : "") + IND[1].diff.toFixed(1) + " pp",
+      q7TipOn: s.q7Hover >= 0,
+      q7TipLeft: s.q7Hover >= 0 ? (q7x(s.q7Hover) / 640 * 100).toFixed(1) + "%" : "50%",
+      q7TipText: s.q7Hover >= 0 ? this.QL[s.q7Hover] + " · yours " + q7Yours[s.q7Hover].toFixed(1) + " · network median " + q7Net[s.q7Hover].toFixed(1) + " · gap " + (q7Yours[s.q7Hover] - q7Net[s.q7Hover]).toFixed(1) : "",
+      netCaption: s.netMode === "ranked" ? "86 centres, ordered low to high · each bar is one anonymous centre" : "86 centres grouped into value bands · each bar counts anonymous centres · your band highlighted",
+      patterns: [
+        { mark: "◆", bg: "#F2FDFF", tone: "#00527A", title: "Higher-volume centres cluster above the median", detail: "Observed association across 86 centres — not a causal claim" },
+        { mark: "▲", bg: "#FFF7EB", tone: "#A86200", title: "The spread narrowed over the period", detail: "Distance between the lowest and highest quartile decreased" },
+        { mark: "◇", bg: "#F2F3F7", tone: "#404040", title: "32 centres are outside this scope", detail: "They have no procedures matching the current filters" }
+      ],
+      netRules: [
+        { mark: "✓", bg: "#0DBA5E", text: "Only your own bar is labelled — all others carry no identity" },
+        { mark: "✓", bg: "#0DBA5E", text: "Bars cannot be clicked through to a centre, country or specialist" },
+        { mark: "!", bg: "#FF9300", text: "Filters that would leave too few centres switch this view to the protected state" }
+      ],
+
+      savedList: [
+        { title: "Paroxysmal · Biosense · 2019–2021", meta: "6 indicators · reference " + ref + " centres · opened 2 days ago", tag: "ACTIVE", tagBg: "#EFF5FF", tagFg: "#005BFF", bg: "#EFF5FF", tone: "#005BFF", icon: "M6 20V9M12 20V4M18 20v-8" },
+        { title: "Before / after mapping system change", meta: "Event split · Mar 2020 · −5.5 min", tag: "CHANGE FOUND", tagBg: "#FFF7EB", tagFg: "#A86200", bg: "#FFF7EB", tone: "#A86200", icon: "M3 17l5-6 4 3 5-8 4 4" },
+        { title: "Own centre vs control group", meta: "Control: same technique, other catheter", tag: "NO CHANGE", tagBg: "#F2F3F7", tagFg: "#404040", bg: "#F2F3F7", tone: "#404040", icon: "M12 3v6m0 6v6M5 7l7 5 7-5" },
+        { title: "Complications · 4 filters", meta: "Reference group below the threshold", tag: "PROTECTED", tagBg: "#FFEBF0", tagFg: "#A8002D", bg: "#FFEBF0", tone: "#A8002D", icon: "M7 4h10v16l-5-4-5 4z" }
+      ].map(x => ({ ...x, hoverStyle: { borderColor: "#B9CCFF", background: "#F6F9FF", transform: "translateY(-2px)", boxShadow: "0 10px 24px rgba(1,7,55,.08)" }, open: () => this.go("comparison") })),
+
+      modalOpen: !!s.modal,
+      isStep1: s.modal === "step1",
+      isStep2: s.modal === "step2",
+      modalKicker: s.modal === "step2" ? "Step 2 of 2 · configuration" : "Step 1 of 2 · library",
+      modalTitle: s.modal === "step2" ? candidates[s.modalPick].title : "What do you want to know?",
+      modalFootNote: s.modal === "step2" ? "Nobody else sees this panel until you share it" : "Say it how you'd say it — the platform checks whether the data can answer it",
+      modalBackLabel: s.modal === "step2" ? "Back" : "Cancel",
+      modalNextLabel: s.modal === "step2" ? "Add to Overview" : "Continue",
+      modalNextOpacity: 1,
+      modalChange: () => { this.setState({ modal: "step1" }); this.reveal(); },
+      previewTitle: candidates[s.modalPick].title,
+      previewUnit: s.modalMetric.replace(/\s*\([^)]*\)/, "") + " · " + metricUnit,
+      previewSplitNote: s.modalSplit === "None" ? "One row · your whole scope" : "One row per " + s.modalSplit.toLowerCase(),
+      modalShareOn: s.modalShare,
+      shareMark: s.modalShare ? "✓" : "",
+      shareBg: s.modalShare ? "#005BFF" : "#fff",
+      shareBorder: s.modalShare ? "#005BFF" : "#C9CCDD",
+      toggleShare: () => this.setState({ modalShare: !s.modalShare }),
+      openModal: () => this.setState({ modal: "step1" }),
+      closeModal: () => this.setState({ modal: null }),
+      modalBack: () => { this.setState({ modal: s.modal === "step2" ? "step1" : null }); if (s.modal === "step2") this.reveal(); },
+      modalNext: () => {
+        if (s.modal === "step1") { this.setState({ modal: "step2" }); this.reveal(); return; }
+        const q = {
+          title: candidates[s.modalPick].title,
+          metricLabel: s.modalMetric.replace(/\s*\([^)]*\)/, ""),
+          unit: metricUnit,
+          split: s.modalSplit,
+          shared: s.modalShare,
+          rows: (PREVIEW_SETS[s.modalSplit] || PREVIEW_SETS.Technique).map(p => ({ label: p.label, a: p.a, b: p.b, o: p.o, pct: p.pct }))
+        };
+        this.setState({ addedQuestions: this.state.addedQuestions.concat([q]), modal: null, screen: "overview" });
+        this.reveal();
+        this.notify(s.modalShare ? "Question added to your Overview and shared with your centre" : "Question added to the end of your Overview");
+      },
+      libTabs: ["All · 18", "Comparison", "Evolution", "Distribution", "Event"].map(t => ({
+        name: t, bg: s.libTab === t ? "#005BFF" : "#F2F3F7", fg: s.libTab === t ? "#fff" : "#404040",
+        go: () => { this.setState({ libTab: t }); this.notify(t === "All · 18" ? "Showing all 18 questions" : "Filtered to " + t + " questions"); }
+      })),
+      searchTap: () => this.notify("Type a question — the platform checks whether the data can answer it"),
+      candidates,
+      library: [
+        { title: "How do our own operators differ? (blinded inside the centre)", meta: "internal only · needs 5+ cases per operator", locked: false },
+        { title: "Do our patients come back within a year?", meta: "needs 12-month follow-up · 61% complete", locked: true },
+        { title: "Does the catheter we picked cost us fluoro time?", meta: "42 centres · not risk-adjusted", locked: false },
+        { title: "Are we busier or quieter than the rest?", meta: "42 centres · counts only", locked: false }
+      ].map(l => ({
+        ...l, bg: l.locked ? "#F8F8F8" : "#fff", opacity: l.locked ? 0.55 : 1,
+        tap: () => this.notify(l.locked ? "“" + l.title + "” — not enough centres after your filters to show this" : "“" + l.title + "” needs its own configuration — start from Step 2")
+      })),
+      fields, previewRows,
+
+      comparePeriods: () => this.go("investigation"),
+      editEvent: () => this.notify("Event editor opened — “Mapping system changed”, 14 Mar 2020"),
+
+      // States demonstration gallery (brief §6)
+      stateChips: [
+        { key: "loading", label: "Loading" },
+        { key: "nodata", label: "No data available" },
+        { key: "noresult", label: "No result for filters" },
+        { key: "toosmall", label: "Sample too small" },
+        { key: "incompatible", label: "Incompatible filters" },
+        { key: "nochange", label: "No relevant change" }
+      ].map(c => ({
+        label: c.label,
+        bg: s.stateDemo === c.key ? "#005BFF" : "#F2F3F7",
+        fg: s.stateDemo === c.key ? "#fff" : "#404040",
+        border: s.stateDemo === c.key ? "#005BFF" : "#E1E3EA",
+        go: () => this.setState({ stateDemo: s.stateDemo === c.key ? null : c.key })
+      })),
+      stateDemoOn: !!s.stateDemo,
+      demoIsLoading: s.stateDemo === "loading",
+      demoHasValue: s.stateDemo === "toosmall",
+      demoHasChips: s.stateDemo === "incompatible",
+      demoIsError: s.stateDemo === "incompatible",
+      demoAccent: s.stateDemo === "incompatible" ? "#FFC2D2" : s.stateDemo === "toosmall" ? "#FFE0B2" : s.stateDemo === "nochange" ? "#B9E6C9" : "#E1E3EA",
+      demoHeadBg: s.stateDemo === "incompatible" ? "#FFEBF0" : s.stateDemo === "toosmall" ? "#FFF7EB" : s.stateDemo === "nochange" ? "#EAFBF2" : "#F6F7FA",
+      demoHeadFg: s.stateDemo === "incompatible" ? "#A8002D" : s.stateDemo === "toosmall" ? "#A86200" : s.stateDemo === "nochange" ? "#0A8B48" : "#8C8C8C",
+      demoKicker: ({ loading: "Loading", nodata: "No data available", noresult: "No result for these filters", toosmall: "Sample too small to compare", incompatible: "Incompatible filters · error", nochange: "No relevant change · incomplete period" })[s.stateDemo] || "",
+      demoTitle: ({
+        loading: "Building the comparison",
+        nodata: "No data for this indicator yet",
+        noresult: "No procedures match all six filters",
+        toosmall: "The available data are not sufficient for this comparison",
+        incompatible: "Two filters cannot be combined",
+        nochange: "No relevant change was observed in this period"
+      })[s.stateDemo] || "",
+      demoBody: ({
+        loading: "The comparison is being rebuilt for the current scope.",
+        nodata: "This indicator has not been collected for your centre in the selected period. It will appear once procedures are recorded with this field.",
+        noresult: "The combination is valid but returns nothing for your centre in this period.",
+        toosmall: "Your own value is shown. The reference is withheld until the group has enough procedures.",
+        incompatible: "“Mapping system · none” excludes every procedure kept by “Catheter · Biosense mapping”. Adjust one of them.",
+        nochange: "The series stays inside its usual range. The last quarter is still being collected and is shown as incomplete."
+      })[s.stateDemo] || "",
+      demoActions: (({
+        loading: [],
+        nodata: [{ label: "Choose another indicator", primary: false }],
+        noresult: [{ label: "Remove last filter", primary: true }, { label: "Reset scope", primary: false }],
+        toosmall: [{ label: "Widen the group", primary: true }],
+        incompatible: [{ label: "Keep catheter filter", primary: true }, { label: "Keep mapping filter", primary: false }],
+        nochange: [{ label: "Extend period", primary: false }, { label: "Try another indicator", primary: false }]
+      })[s.stateDemo] || []).map(a => ({
+        label: a.label,
+        bg: a.primary ? "#005BFF" : "#fff", fg: a.primary ? "#fff" : "#404040", border: a.primary ? "#005BFF" : "#E1E3EA",
+        go: () => this.notify("“" + a.label + "” — demonstration state")
+      })),
+
+      toastOn: !!s.toast,
+      toast: s.toast
+    };
+  }
+}
+</script>
+</body>
+</html>

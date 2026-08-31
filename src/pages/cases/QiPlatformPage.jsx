@@ -7,12 +7,14 @@ import { useLanguage } from '../../context/LanguageContext'
 import ptContent from '../../content/pt/case-qi-platform'
 import enContent from '../../content/en/case-qi-platform'
 import styles from './QiPlatformPage.module.css'
-import headOfDesignRoleImg from '../../media/cases/qi-platform/head-of-design-role.png'
 import qiMiroCocreationImg from '../../media/cases/qi-platform/QI-Miro-Cocreation.png'
 
-import heroTabletImg from '../../media/cases/qi-platform/qi-platform-tablet.webp'
-import comparisonImg from '../../media/cases/qi-platform/comparar-sem-expor.png'
-import evolutionImg from '../../media/cases/qi-platform/emr-evolution-charts.webp'
+import heroOverviewImg from '../../media/cases/qi-platform/figma-home-overview.png'
+import networkImg from '../../media/cases/qi-platform/figma-network.png'
+import comparisonImg from '../../media/cases/qi-platform/figma-anonymity-protected.png'
+import comparisonDetailImg from '../../media/cases/qi-platform/figma-comparison.png'
+import evolutionImg from '../../media/cases/qi-platform/figma-investigation.png'
+import aiExplorationImg from '../../media/cases/qi-platform/figma-add-question.png'
 import myEvolutionIcon from '../../media/cases/qi-platform/evolucao.svg'
 import groupsIcon from '../../media/cases/qi-platform/grupos-preferencia.svg'
 import networkIcon from '../../media/cases/qi-platform/visao-rede.svg'
@@ -102,7 +104,7 @@ export default function QiPlatformPage() {
             <div className={styles.metaLayout}>
               <figure className={`${styles.figure} ${styles.metaImage}`}>
                 <img
-                  src={heroTabletImg}
+                  src={heroOverviewImg}
                   alt={c.metadata.imageAlt}
                   className={styles.metaImg}
                 />
@@ -136,6 +138,7 @@ export default function QiPlatformPage() {
         <RevealSection as="section" className={styles.problemSection}>
           <h2>{c.problem.title}</h2>
           <div className={styles.bodyText}>
+            <h3 className={styles.problemLead}>{c.problem.lead}</h3>
             {c.problem.paragraphs.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
@@ -156,6 +159,9 @@ export default function QiPlatformPage() {
               alt={c.discovery.imgAlt}
               className={`${styles.imageCover} ${styles.miroImage}`}
             />
+            {c.discovery.caption && (
+              <figcaption className={styles.caption}>{c.discovery.caption}</figcaption>
+            )}
           </figure>
           <div className={styles.bodyText}>
             {c.discovery.paragraphs.map((paragraph, index) => (
@@ -193,6 +199,50 @@ export default function QiPlatformPage() {
             <br />
             {c.product.noteLines[1]}
           </p>
+
+          <figure className={`${styles.figure} ${styles.productFigure}`}>
+            <img
+              src={networkImg}
+              alt={c.product.imgAlt}
+              className={styles.productImage}
+            />
+            <figcaption className={styles.caption}>{c.product.caption}</figcaption>
+          </figure>
+        </RevealSection>
+
+        <RevealSection as="section" className={styles.aiSection}>
+          <div className={styles.aiIntro}>
+            <h2>{c.ai.title}</h2>
+            <p>{c.ai.intro}</p>
+          </div>
+
+          <div className={styles.aiGrid}>
+            {c.ai.items.map((item, index) => (
+              <article key={item.title} className={styles.aiCard}>
+                <p className={styles.aiNumber}>{String(index + 1).padStart(2, '0')}</p>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+
+          <figure className={`${styles.figure} ${styles.aiFigure}`}>
+            <img
+              src={aiExplorationImg}
+              alt={c.ai.imgAlt}
+              className={styles.aiImage}
+            />
+            <figcaption className={styles.caption}>{c.ai.caption}</figcaption>
+          </figure>
+
+          {c.ai.prototype && (
+            <div className={styles.prototypeCta}>
+              <a href={c.ai.prototype.href} target="_blank" rel="noreferrer">
+                {c.ai.prototype.label}
+              </a>
+              <p>{c.ai.prototype.note}</p>
+            </div>
+          )}
         </RevealSection>
 
         <RevealSection as="section"
@@ -212,9 +262,9 @@ export default function QiPlatformPage() {
           <div className={styles.comparisonContent}>
             <h2>{c.comparison.title}</h2>
             <div className={styles.bodyText}>
-              <p>
-                {c.comparison.body}
-              </p>
+              {c.comparison.paragraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
             </div>
           </div>
         </RevealSection>
@@ -226,10 +276,13 @@ export default function QiPlatformPage() {
 
           <figure className={`${styles.figure} ${styles.storyFigure}`}>
             <img
-              src={headOfDesignRoleImg}
+              src={comparisonDetailImg}
               alt={c.role.imgAlt}
               className={`${styles.imageCover} ${styles.roleImage}`}
             />
+            {c.role.caption && (
+              <figcaption className={styles.caption}>{c.role.caption}</figcaption>
+            )}
           </figure>
 
           <div className={styles.bodyText}>

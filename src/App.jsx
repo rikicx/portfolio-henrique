@@ -6,12 +6,13 @@ import ContactPage from './pages/ContactPage'
 import DesignSystemPage from './pages/DesignSystemPage'
 import NotFoundPage from './pages/NotFoundPage'
 import QiPlatformPage from './pages/cases/QiPlatformPage'
+import QiPrototypePage from './pages/cases/QiPrototypePage'
 import EmrIntegrationPage from './pages/cases/EmrIntegrationPage'
 import GerdauStoreroomPage from './pages/cases/GerdauStoreroomPage'
 import GerdauSmartlogPage from './pages/cases/GerdauSmartlogPage'
 import ItauEmpreendedorPage from './pages/cases/ItauEmpreendedorPage'
 import ThreePHHrcrsPage from './pages/cases/ThreePHHrcrsPage'
-import FloatingActions from './components/FloatingActions'
+import BackToTopButton from './components/BackToTopButton'
 import ScrollToTop from './components/ScrollToTop'
 import RouteTransitionLoader from './components/RouteTransitionLoader'
 import CustomCursor from './components/CustomCursor'
@@ -36,6 +37,8 @@ export default function App() {
           <Route path="/en/contact" element={<ContactPage />} />
           <Route path="/trabalhos/qi-platform" element={<QiPlatformPage />} />
           <Route path="/en/work/qi-platform" element={<QiPlatformPage />} />
+          <Route path="/trabalhos/qi-platform/prototipo" element={<QiPrototypePage />} />
+          <Route path="/en/work/qi-platform/prototype" element={<QiPrototypePage />} />
           <Route path="/trabalhos/emr-integration" element={<EmrIntegrationPage />} />
           <Route path="/en/work/emr-integration" element={<EmrIntegrationPage />} />
           <Route path="/trabalhos/gerdau-storeroom" element={<GerdauStoreroomPage />} />
@@ -51,7 +54,7 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
 
-        <FloatingActions />
+        <BackToTopButton />
       </LanguageProvider>
     </BrowserRouter>
   )
