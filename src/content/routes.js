@@ -5,6 +5,11 @@ export const ROUTE_PAIRS = [
   { pt: '/contato', en: '/en/contact', enabled: true },
   { pt: '/trabalhos/qi-platform', en: '/en/work/qi-platform', enabled: true },
   {
+    pt: '/trabalhos/qi-platform/prototipo',
+    en: '/en/work/qi-platform/prototype',
+    enabled: true,
+  },
+  {
     pt: '/trabalhos/emr-integration',
     en: '/en/work/emr-integration',
     enabled: true,
