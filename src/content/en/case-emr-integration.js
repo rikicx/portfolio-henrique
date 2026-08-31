@@ -171,9 +171,9 @@ export default {
       'The query starts with a reason, message, and field evidence attached. Demonstration data.',
   },
   demo: {
-    href: null,
-    label: 'Functional demo — Coming soon',
-    note: 'The navigable experience will be added here.',
+    href: '/en/work/emr-integration/prototype',
+    label: 'Explore the functional demo',
+    note: 'Interactive prototype with demonstration data. Opens in a new tab.',
   },
   impact: {
     title: 'Less time reconciling. More time for the study.',

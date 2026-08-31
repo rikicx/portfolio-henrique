@@ -8,6 +8,7 @@ import NotFoundPage from './pages/NotFoundPage'
 import QiPlatformPage from './pages/cases/QiPlatformPage'
 import QiPrototypePage from './pages/cases/QiPrototypePage'
 import EmrIntegrationPage from './pages/cases/EmrIntegrationPage'
+import EmrPrototypePage from './pages/cases/EmrPrototypePage'
 import GerdauStoreroomPage from './pages/cases/GerdauStoreroomPage'
 import GerdauSmartlogPage from './pages/cases/GerdauSmartlogPage'
 import ItauEmpreendedorPage from './pages/cases/ItauEmpreendedorPage'
@@ -41,6 +42,8 @@ export default function App() {
           <Route path="/en/work/qi-platform/prototype" element={<QiPrototypePage />} />
           <Route path="/trabalhos/emr-integration" element={<EmrIntegrationPage />} />
           <Route path="/en/work/emr-integration" element={<EmrIntegrationPage />} />
+          <Route path="/trabalhos/emr-integration/prototipo" element={<EmrPrototypePage />} />
+          <Route path="/en/work/emr-integration/prototype" element={<EmrPrototypePage />} />
           <Route path="/trabalhos/gerdau-storeroom" element={<GerdauStoreroomPage />} />
           <Route path="/en/work/gerdau-storeroom" element={<GerdauStoreroomPage />} />
           <Route path="/trabalhos/gerdau-smartlog" element={<GerdauSmartlogPage />} />

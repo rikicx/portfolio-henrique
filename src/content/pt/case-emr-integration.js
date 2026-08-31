@@ -171,9 +171,9 @@ export default {
       'A query já nasce com motivo, mensagem e evidências do campo. Dados demonstrativos.',
   },
   demo: {
-    href: null,
-    label: 'Demo funcional — Em breve',
-    note: 'A versão navegável será adicionada aqui.',
+    href: '/trabalhos/emr-integration/prototipo',
+    label: 'Explorar a demo funcional',
+    note: 'Protótipo navegável com dados demonstrativos. Abre em uma nova aba.',
   },
   impact: {
     title: 'Menos tempo reconciliando. Mais tempo para o estudo.',
