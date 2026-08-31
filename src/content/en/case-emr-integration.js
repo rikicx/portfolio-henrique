@@ -2,132 +2,198 @@ export default {
   seo: {
     title: 'EMR Integration — Product Design Case Study | Henrique Silva',
     description:
-      'Case study on integrating electronic medical records with clinical data capture, cutting the SLA from 22 to 3 hours and queries from 37% to 18%.',
+      'How we prioritized and designed an EMR–EDC integration that reduced the average time to conclude a query from 22 to 3 hours.',
     path: '/en/work/emr-integration',
     lang: 'en',
-    robots: 'noindex, follow',
+    robots: 'index, follow',
   },
   hero: {
     titleLines: ['EMR', 'Integration'],
-    kicker: 'EMR–EDC integration · Product strategy',
+    kicker: 'EMR–EDC integration · Product strategy · Applied AI',
     description:
-      'An experience created to reconcile data between EMR and EDC, bringing together discrepancies, history and evidence so Data Managers could make decisions with more speed and traceability.',
+      'How we prioritized a quick win at the core of 3PH Cloud and turned manual synchronization into an experience supported by history, statistics, and human judgment.',
   },
   metadata: {
     ariaLabel: 'Project information',
-    imageAlt: 'EMR Integration platform interface with a data reconciliation panel',
-    topFields: [
+    imageAlt:
+      'EMR Integration field evidence screen comparing an incoming value with historical distributions',
+    imageCaption:
+      'Evidence sits beside the decision: source history, distribution, and paths to approve, keep, or open a query. Demonstration data.',
+    items: [
       { label: 'Company', value: '3PH Alliance' },
       { label: 'Year', value: '2024' },
       { label: 'Role', value: 'Head of Design' },
-    ],
-    blocks: [
-      {
-        label: 'Measured Impact',
-        value: '22h → 3h in the average time to resolve discrepancies',
-      },
-      {
-        label: 'Scale',
-        value: '3,400 forms processed in 12 months',
-      },
+      { label: 'Product', value: 'Core feature of the 3PH Cloud EDC' },
+      { label: 'Team led', value: '3 UX Designers' },
       {
         label: 'Contribution',
         value:
-          'Product strategy · Discovery · Design leadership · Experience definition',
+          'Product strategy · Discovery · Prioritization · Design leadership · Applied AI · Validation',
       },
     ],
   },
   problem: {
-    label: 'The problem',
+    title: 'The problem',
+    lead: 'Two systems. One clinical database that had to remain trustworthy.',
     paragraphs: [
-      'The data collected in the EMR had to be synchronized with the EDC, but the two systems frequently showed different information for the same patient or procedure.',
-      'Without a structured reconciliation flow, Data Managers had to compare the sources manually, look for information in other forms and open between two and four queries per field.',
-      'Part of these decisions still happened through messages and conversations outside the platform. The process was slow, hard to trace and highly dependent on operational effort.',
+      'The EDC collected clinical-trial data. Hospitals also maintained information in their EMR and had to keep both systems synchronized manually.',
+      'Typing errors, updates made at different times, and other inconsistencies caused the same patient or procedure to appear with conflicting values. Collecting data was not enough: the operation had to trust the database.',
+      'Data Managers compared forms, searched for evidence, and opened queries before reaching a conclusion. The cost appeared as hours of work, rework, and decisions scattered outside the platform.',
     ],
   },
   centralQuestion: {
-    ariaLabel: 'Central question of the project',
     label: 'The question that guided the work:',
-    text: 'How could we turn discrepancies between EMR and EDC into faster, traceable decisions supported by evidence?',
+    text: 'How could we reduce the cost of reconciliation without automating a decision that needed to remain in professional hands?',
   },
-  decide: {
-    title: 'Deciding without starting from scratch',
+  strategy: {
+    title: 'Why EMR came before other projects',
     paragraphs: [
-      'Showing that two values were different did not solve the problem.',
-      'Users needed to understand which one seemed more reliable before approving any change. So the platform gathered the information needed to support the decision:',
+      'The company was evaluating other product initiatives, but they required broader discovery and much longer development cycles.',
+      'EMR–EDC integration addressed a known friction point, sat closer to the product core, and offered a faster return in operational time and data quality.',
     ],
-    evidenceList: [
-      'Change history;',
-      'Values recorded in related forms;',
-      'Source and date of each piece of information;',
-      'Related previous records;',
-      'Consistency of the new value against the available history.',
-    ],
-    roleNote:
-      'As Head of Design, I translated the understanding of the operation into product and experience decisions, guiding the structure of the flow, the information needed for the decision and the validation of the solution with the areas involved.',
+    decisionLabel: 'Portfolio decision',
+    decision:
+      'Prioritize a quick win with measurable impact while keeping the remaining opportunities on the product horizon.',
   },
-  experience: {
-    imgAlt: 'Platform interface showing data reconciliation between EMR and EDC',
-    caption:
-      'Structure of the experience created to support data reconciliation between EMR and EDC.',
-    title: 'How the experience was organized',
+  discovery: {
+    title: 'Lean discovery to reach a V1',
+    intro:
+      'Speed did not remove discovery. It changed its scale and focused the team on the first workflow that needed to be solved.',
+    imageAlt:
+      'Main EMR Integration V1 screen showing the participant form and reconciliation queue',
+    imageCaption:
+      'The V1 brought reconciliation into the participant form. Demonstration data.',
+    items: [
+      {
+        title: 'Understand the real workflow',
+        text: 'We mapped manual synchronization and interviewed professionals involved in the operation.',
+      },
+      {
+        title: 'Define the first version',
+        text: 'Design workshops and lean co-creation turned that understanding into a prioritized V1.',
+      },
+      {
+        title: 'Validate strategy and use',
+        text: 'We iterated on both the problem we were solving and usability through tests with Data Managers.',
+      },
+    ],
+    roleTitle: 'My leadership',
+    roleParagraphs: [
+      'I led experience decisions and prioritization with three UX Designers, stakeholders, and users.',
+      'Weekly stakeholder meetings, design critiques, and mentoring kept the team aligned. Technology established time and feasibility boundaries that protected the V1 scope.',
+    ],
+  },
+  ai: {
+    title: 'AI increased the pace. Prioritization preserved the focus.',
+    paragraphs: [
+      'AI adoption allowed Design and Product to explore and iterate on possibilities faster than the organization could implement them.',
+      'The risk shifted from having too few ideas to creating an oversized backlog. Every possibility had to pass through the V1 strategy, operational value, and the constraints brought by Technology.',
+    ],
+    note:
+      'The advantage was not producing more screens. It was deciding clearly which ones deserved to become product.',
+  },
+  model: {
+    title: 'Reliability without removing human judgment',
+    paragraphs: [
+      'The feature used history and a mathematical and statistical model to indicate which value appeared more reliable. The distribution showed where the incoming data sat against previous records.',
+      'An expected weight of 82 kg entered as 892 kg could be flagged as an obvious error. In less clear situations, the platform organized the evidence while keeping the decision with the user.',
+    ],
+    principles: [
+      {
+        title: 'Source history',
+        text: 'Correction frequency and consistency across previous records.',
+      },
+      {
+        title: 'Statistical context',
+        text: 'Distribution, median, and plausible range made the discrepancy visible.',
+      },
+      {
+        title: 'Human agency',
+        text: 'Approve the value, keep the study data, or open a query.',
+      },
+    ],
+    overviewAlt:
+      'Participant form showing EMR-populated fields, discrepancies, and evidence for a decision',
+    overviewCaption:
+      'The reconciliation queue took users from the form to the field that needed a decision. Demonstration data.',
+  },
+  journey: {
+    title: 'From discrepancy to a recorded decision',
+    intro:
+      'The flow brought context to the decision point without forcing users to reconstruct the case across other screens.',
     steps: [
       {
-        key: 'identificar',
-        title: '1. Identify the discrepancy',
-        description: 'The values coming from the EMR and the EDC were presented side by side.',
+        number: '01',
+        title: 'Synchronize',
+        text: 'Data already present in the EMR appeared inside EDC forms.',
       },
       {
-        key: 'reunir',
-        title: '2. Gather the evidence',
-        description:
-          'The platform retrieved the history and related records to explain why that value might be incorrect.',
+        number: '02',
+        title: 'Compare',
+        text: 'Discrepancies, history, and distribution came together in one context.',
       },
       {
-        key: 'apoiar',
-        title: '3. Support the decision',
-        description:
-          'With the context already available, the user could approve the update, reject the suggestion or keep the query open for investigation.',
+        number: '03',
+        title: 'Decide',
+        text: 'Users could approve, keep the study value, or start a query.',
       },
       {
-        key: 'registrar',
-        title: '4. Record the action',
-        description:
-          'The decision stayed inside the platform, increasing traceability and reducing side conversations.',
+        number: '04',
+        title: 'Record',
+        text: 'Author, time, previous value, and new value remained in the audit log.',
       },
     ],
   },
-  changed: {
-    title: 'What changed',
+  queries: {
+    title: 'The query became part of the flow, not a side conversation',
     paragraphs: [
-      'Before, a large part of the time was spent trying to find out what had happened and which source should be considered more reliable. With the solution, users reached the moment of decision with the conflict identified and the main evidence already organized.',
-      'The manual work did not disappear completely. It became directed at the cases that truly required human judgment.',
+      'When the evidence was not sufficient, technicians, Data Managers, and researchers could open a query and talk with the clinical site without losing the field context.',
+      'The answer returned to the same workflow, where it could be accepted, closed without changing the value, or escalated. The evidence behind the decision remained visible.',
     ],
-    footerParagraphs: [
-      'The reduction in queries did not come from hiding the conflicts.',
-      'It came from presenting enough context so that more decisions could be made inside the platform itself.',
+    listAlt: 'List of open queries and their states in EMR Integration',
+    listCaption:
+      'A list organized by state, subject, form, and query age. Demonstration data.',
+    threadAlt: 'Query thread showing values, the site response, and closure actions',
+    threadCaption:
+      'The conversation preserves values, the response, attached evidence, and next actions. Demonstration data.',
+  },
+  governance: {
+    title: 'Permission, privacy, and traceability',
+    paragraphs: [
+      'Each hospital accessed its own patient list. Technicians, Data Managers, and researchers received permissions aligned with their role; privacy and HIPAA rules also applied to access and exports.',
+      'A decision never erased history. The audit log preserved who acted, when, the previous value, and the new value.',
     ],
-    impactTitle: 'Impact & Scale',
+    auditAlt: 'Audit log recording synchronizations, approvals, rejections, and queries',
+    auditCaption:
+      'The history is immutable and tied to the person making the decision. Demonstration data.',
+    modalAlt: 'Modal for opening a query and sending context to the clinical site',
+    modalCaption:
+      'The query starts with a reason, message, and field evidence attached. Demonstration data.',
+  },
+  demo: {
+    href: null,
+    label: 'Functional demo — Coming soon',
+    note: 'The navigable experience will be added here.',
+  },
+  impact: {
+    title: 'Less time reconciling. More time for the study.',
     stats: [
       {
         value: '22h → 3h',
-        label: 'Average time to resolve discrepancies',
-        wide: true,
+        label: 'Average time to reach a query conclusion',
       },
       {
-        value: '3,400 forms',
-        label: 'Processed in 12 months',
-        wide: true,
+        value: '3,400',
+        label: 'Forms processed by the integration in 12 months',
       },
       {
         value: '37% → 18%',
         label: 'Query opening rate',
-        wide: false,
       },
     ],
-    imgAlt:
-      'Professional using the EMR Integration platform in a clinical data reconciliation context',
-    caption:
-      'The solution in operational use, reducing manual steps and centralizing data checks.',
+    paragraphs: [
+      'The integration reduced the work required to keep EMR and EDC data consistent. Data Managers spent less time reconstructing evidence and more time on other parts of the study.',
+      'For the business, the quick win demonstrated value through a leaner scope and measurable impact on time, operating cost, and data quality.',
+    ],
   },
 }

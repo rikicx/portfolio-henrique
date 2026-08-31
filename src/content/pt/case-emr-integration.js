@@ -2,132 +2,198 @@ export default {
   seo: {
     title: 'EMR Integration — Case de Product Design | Henrique Silva',
     description:
-      'Case de integração entre prontuários eletrônicos e captura de dados clínicos, reduzindo o SLA de 22 para 3 horas e as queries de 37% para 18%.',
+      'Como priorizamos e desenhamos uma integração entre EMR e EDC que reduziu de 22 para 3 horas o tempo médio para concluir uma query.',
     path: '/trabalhos/emr-integration',
     lang: 'pt',
     robots: 'index, follow',
   },
   hero: {
     titleLines: ['EMR', 'Integration'],
-    kicker: 'Integração entre EMR e EDC · Estratégia de produto',
+    kicker: 'Integração EMR–EDC · Estratégia de produto · AI aplicada',
     description:
-      'Uma experiência criada para reconciliar dados entre EMR e EDC, reunindo divergências, histórico e evidências para que Data Managers tomassem decisões com mais rapidez e rastreabilidade.',
+      'Como priorizamos um quick win no núcleo do 3PH Cloud e transformamos uma sincronização manual em uma experiência sustentada por histórico, estatística e decisão humana.',
   },
   metadata: {
     ariaLabel: 'Informações do projeto',
-    imageAlt: 'Interface da plataforma EMR Integration com painel de reconciliação de dados',
-    topFields: [
+    imageAlt:
+      'Tela de evidências de campo do EMR Integration comparando um valor recebido com distribuições históricas',
+    imageCaption:
+      'A evidência aparece ao lado da decisão: histórico da fonte, distribuição e caminhos para aprovar, manter ou abrir uma query. Dados demonstrativos.',
+    items: [
       { label: 'Empresa', value: '3PH Alliance' },
       { label: 'Ano', value: '2024' },
       { label: 'Papel', value: 'Head of Design' },
-    ],
-    blocks: [
-      {
-        label: 'Impacto Medido',
-        value: '22h → 3h no tempo médio para resolução de divergências',
-      },
-      {
-        label: 'Escala',
-        value: '3.400 formulários processados em 12 meses',
-      },
+      { label: 'Produto', value: 'Funcionalidade central do 3PH Cloud EDC' },
+      { label: 'Time liderado', value: '3 UX Designers' },
       {
         label: 'Atuação',
         value:
-          'Estratégia de produto · Discovery · Liderança de design · Definição da experiência',
+          'Estratégia de produto · Discovery · Priorização · Liderança de design · AI aplicada · Validação',
       },
     ],
   },
   problem: {
-    label: 'O problema',
+    title: 'O problema',
+    lead: 'Dois sistemas. Uma base clínica que precisava continuar confiável.',
     paragraphs: [
-      'Os dados coletados no EMR precisavam ser sincronizados com o EDC, mas os dois sistemas frequentemente apresentavam informações diferentes para o mesmo paciente ou procedimento.',
-      'Sem um fluxo estruturado de reconciliação, Data Managers precisavam comparar as fontes manualmente, procurar informações em outros formulários e abrir entre duas e quatro queries por campo.',
-      'Parte dessas decisões ainda acontecia por mensagens e conversas fora da plataforma. O processo era lento, difícil de rastrear e muito dependente de esforço operacional.',
+      'O EDC era usado para coletar dados de estudos clínicos. Os hospitais também mantinham informações no EMR e precisavam sincronizar os dois sistemas manualmente.',
+      'Erros de digitação, atualizações em momentos diferentes e outras inconsistências faziam o mesmo paciente ou procedimento aparecer com valores divergentes. Não bastava coletar dados: a operação precisava confiar na base.',
+      'Data Managers comparavam formulários, procuravam evidências e abriam queries para chegar a uma conclusão. O custo aparecia em horas de trabalho, retrabalho e decisões espalhadas fora da plataforma.',
     ],
   },
   centralQuestion: {
-    ariaLabel: 'Pergunta central do projeto',
     label: 'A pergunta que orientou o trabalho:',
-    text: 'Como transformar divergências entre EMR e EDC em decisões mais rápidas, rastreáveis e sustentadas por evidências?',
+    text: 'Como reduzir o custo da reconciliação sem automatizar uma decisão que precisava continuar nas mãos dos profissionais?',
   },
-  decide: {
-    title: 'Decidir sem começar do zero',
+  strategy: {
+    title: 'Por que EMR veio antes de outros projetos',
     paragraphs: [
-      'Mostrar que dois valores eram diferentes não resolvia o problema.',
-      'O usuário precisava entender qual deles parecia mais confiável antes de aprovar qualquer alteração. Por isso, a plataforma reunia as informações necessárias para apoiar a decisão:',
+      'A empresa avaliava outras frentes de produto, mas elas exigiam discoveries mais amplos e ciclos de desenvolvimento muito maiores.',
+      'A integração EMR–EDC atacava uma fricção já conhecida, estava mais próxima do núcleo do produto e oferecia retorno mais rápido em tempo operacional e qualidade dos dados.',
     ],
-    evidenceList: [
-      'Histórico de alterações;',
-      'Valores registrados em formulários relacionados;',
-      'Origem e data de cada informação;',
-      'Registros anteriores relacionados;',
-      'Consistência do novo valor em relação ao histórico disponível.',
-    ],
-    roleNote:
-      'Como Head of Design, traduzi o entendimento da operação em decisões de produto e experiência, orientando a estrutura do fluxo, as informações necessárias para a decisão e a validação da solução com as áreas envolvidas.',
+    decisionLabel: 'Decisão de portfólio',
+    decision:
+      'Priorizar um quick win com impacto mensurável, mantendo as demais oportunidades no horizonte do produto.',
   },
-  experience: {
-    imgAlt: 'Interface da plataforma mostrando a reconciliação de dados entre EMR e EDC',
-    caption:
-      'Estrutura da experiência criada para apoiar a reconciliação de dados entre EMR e EDC.',
-    title: 'Como a experiência foi organizada',
+  discovery: {
+    title: 'Discovery enxuto para chegar a uma V1',
+    intro:
+      'A velocidade não eliminou o discovery. Ela mudou sua escala e concentrou o time no fluxo que precisava ser resolvido primeiro.',
+    imageAlt:
+      'Tela principal da V1 do EMR Integration com formulário do participante e fila de reconciliação',
+    imageCaption:
+      'A V1 concentrou a reconciliação no formulário do participante. Dados demonstrativos.',
+    items: [
+      {
+        title: 'Entender o fluxo real',
+        text: 'Mapeamos a sincronização manual e conduzimos entrevistas com profissionais envolvidos na operação.',
+      },
+      {
+        title: 'Definir a primeira versão',
+        text: 'Workshops de design e cocriação enxuta transformaram o entendimento em uma V1 priorizada.',
+      },
+      {
+        title: 'Validar estratégia e uso',
+        text: 'Iteramos tanto o problema que estávamos resolvendo quanto a usabilidade, com testes junto a Data Managers.',
+      },
+    ],
+    roleTitle: 'Minha liderança',
+    roleParagraphs: [
+      'Liderei as decisões de experiência e a priorização com três UX Designers, stakeholders e usuários.',
+      'Weekly meetings com stakeholders, design critiques e mentorias mantinham o time alinhado. Tecnologia atuava nos limites de tempo e viabilidade para proteger o escopo da V1.',
+    ],
+  },
+  ai: {
+    title: 'AI aumentou a velocidade. Priorização manteve o foco.',
+    paragraphs: [
+      'A adoção de AI permitia que Design e Produto explorassem e iterassem caminhos em uma velocidade maior do que a capacidade de implementação.',
+      'O risco deixou de ser falta de ideias e passou a ser criar um backlog grande demais. Cada possibilidade precisava atravessar a estratégia da V1, o valor para a operação e as limitações trazidas por Tecnologia.',
+    ],
+    note:
+      'A vantagem não estava em produzir mais telas, mas em decidir com clareza quais delas mereciam virar produto.',
+  },
+  model: {
+    title: 'Confiabilidade sem retirar o julgamento humano',
+    paragraphs: [
+      'A funcionalidade usava histórico e um modelo matemático e estatístico para indicar qual valor parecia mais confiável. A distribuição mostrava onde o dado recebido estava em relação aos registros anteriores.',
+      'Um peso esperado de 82 kg digitado como 892 kg podia ser sinalizado como um erro evidente. Em situações menos claras, a plataforma organizava as evidências, mas mantinha a decisão com o usuário.',
+    ],
+    principles: [
+      {
+        title: 'Histórico da fonte',
+        text: 'Frequência de correções e consistência dos registros anteriores.',
+      },
+      {
+        title: 'Contexto estatístico',
+        text: 'Distribuição, mediana e faixa plausível para tornar a diferença visível.',
+      },
+      {
+        title: 'Agência humana',
+        text: 'Aprovar o valor, manter o dado do estudo ou abrir uma query.',
+      },
+    ],
+    overviewAlt:
+      'Formulário de participante mostrando campos preenchidos pelo EMR, divergências e evidências para decisão',
+    overviewCaption:
+      'A fila de reconciliação levava o usuário do formulário ao campo que exigia decisão. Dados demonstrativos.',
+  },
+  journey: {
+    title: 'Da divergência à decisão registrada',
+    intro:
+      'O fluxo foi desenhado para levar contexto até o ponto de decisão, sem obrigar o usuário a reconstruir o caso em outras telas.',
     steps: [
       {
-        key: 'identificar',
-        title: '1. Identificar a divergência',
-        description: 'Os valores provenientes do EMR e do EDC eram apresentados lado a lado.',
+        number: '01',
+        title: 'Sincronizar',
+        text: 'Dados já informados no EMR apareciam nos formulários do EDC.',
       },
       {
-        key: 'reunir',
-        title: '2. Reunir as evidências',
-        description:
-          'A plataforma buscava o histórico e os registros relacionados para explicar por que aquele valor poderia estar incorreto.',
+        number: '02',
+        title: 'Comparar',
+        text: 'Divergências, histórico e distribuição eram reunidos no mesmo contexto.',
       },
       {
-        key: 'apoiar',
-        title: '3. Apoiar a decisão',
-        description:
-          'Com o contexto já disponível, o usuário podia aprovar a atualização, rejeitar a sugestão ou manter a query aberta para investigação.',
+        number: '03',
+        title: 'Decidir',
+        text: 'O usuário podia aprovar, manter o valor do estudo ou conversar por query.',
       },
       {
-        key: 'registrar',
-        title: '4. Registrar a ação',
-        description:
-          'A decisão permanecia dentro da plataforma, aumentando a rastreabilidade e reduzindo conversas paralelas.',
+        number: '04',
+        title: 'Registrar',
+        text: 'Autor, horário, valor anterior e novo valor permaneciam no audit log.',
       },
     ],
   },
-  changed: {
-    title: 'O que mudou',
+  queries: {
+    title: 'A query virou parte do fluxo, não uma conversa paralela',
     paragraphs: [
-      'Antes, boa parte do tempo era consumida tentando descobrir o que havia acontecido e qual fonte deveria ser considerada mais confiável. Com a solução, o usuário chegava ao momento da decisão com o conflito identificado e as principais evidências já organizadas.',
-      'O trabalho manual não desapareceu completamente. Ele passou a ser direcionado para os casos que realmente exigiam julgamento humano.',
+      'Quando a evidência não era suficiente, technicians, Data Managers e researchers podiam abrir uma query e conversar com o centro clínico sem perder o contexto do campo.',
+      'A resposta voltava para o mesmo fluxo, onde podia ser aceita, encerrada sem alteração ou escalada. A evidência usada na decisão continuava visível.',
     ],
-    footerParagraphs: [
-      'A redução de queries não veio de esconder os conflitos.',
-      'Veio de apresentar contexto suficiente para que mais decisões pudessem ser tomadas dentro da própria plataforma.',
+    listAlt: 'Lista de queries abertas e seus estados no EMR Integration',
+    listCaption:
+      'Lista priorizada por estado, assunto, formulário e idade da query. Dados demonstrativos.',
+    threadAlt: 'Thread de uma query com valores, resposta do centro e ações de encerramento',
+    threadCaption:
+      'A conversa preserva valores, resposta, evidência anexada e próximos passos. Dados demonstrativos.',
+  },
+  governance: {
+    title: 'Permissão, privacidade e rastreabilidade',
+    paragraphs: [
+      'Cada hospital acessava sua própria lista de pacientes. Technicians, Data Managers e researchers recebiam permissões compatíveis com sua atuação; regras de privacidade e HIPAA também se aplicavam aos acessos e exportações.',
+      'A decisão nunca apagava o histórico. O audit log preservava quem agiu, quando, o valor anterior e o novo valor.',
     ],
-    impactTitle: 'Impacto & Escala',
+    auditAlt: 'Audit log registrando sincronizações, aprovações, rejeições e queries',
+    auditCaption:
+      'O histórico é imutável e associado ao autor da decisão. Dados demonstrativos.',
+    modalAlt: 'Modal para abrir uma query e enviar contexto ao centro clínico',
+    modalCaption:
+      'A query já nasce com motivo, mensagem e evidências do campo. Dados demonstrativos.',
+  },
+  demo: {
+    href: null,
+    label: 'Demo funcional — Em breve',
+    note: 'A versão navegável será adicionada aqui.',
+  },
+  impact: {
+    title: 'Menos tempo reconciliando. Mais tempo para o estudo.',
     stats: [
       {
         value: '22h → 3h',
-        label: 'Tempo médio para resolução de divergências',
-        wide: true,
+        label: 'Tempo médio para chegar à conclusão de uma query',
       },
       {
-        value: '3.400 formulários',
-        label: 'Processados em 12 meses',
-        wide: true,
+        value: '3.400',
+        label: 'Formulários processados pela integração em 12 meses',
       },
       {
         value: '37% → 18%',
         label: 'Taxa de abertura de queries',
-        wide: false,
       },
     ],
-    imgAlt:
-      'Profissional utilizando a plataforma EMR Integration em contexto de reconciliação de dados clínicos',
-    caption:
-      'Uso da solução em contexto operacional, reduzindo etapas manuais e centralizando a conferência dos dados.',
+    paragraphs: [
+      'A integração reduziu o trabalho necessário para manter EMR e EDC consistentes. Data Managers passaram a investir menos tempo reconstruindo evidências e mais tempo em outras frentes do estudo.',
+      'Para o negócio, o quick win demonstrou valor com um escopo mais enxuto e impacto mensurável em tempo, custo operacional e qualidade dos dados.',
+    ],
   },
 }
