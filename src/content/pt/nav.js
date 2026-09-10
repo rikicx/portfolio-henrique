@@ -23,7 +23,7 @@ export default {
   sobreDescription: 'Perfil',
   kihonLabel: 'Kihon',
   kihonDescription: 'Design System',
-  kihonTo: '/design-system',
+  kihonTo: '/kihon',
   linkedinLabelDesktop: 'Linkedin',
   linkedinLabelMobile: 'LinkedIn',
   linkedinDescription: 'Rede',
@@ -31,5 +31,5 @@ export default {
   ctaTo: '/contato',
   openMenuAriaLabel: 'Abrir menu de navegação',
   closeMenuAriaLabel: 'Fechar menu de navegação',
-  copyright: '© 2026 Henrique M. Silva · v4.0. Todos os direitos reservados.',
+  copyright: '© 2026 Henrique M. Silva · v4.1. Todos os direitos reservados.',
 }

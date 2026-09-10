@@ -1,7 +1,7 @@
 export default {
-  title: 'Henrique Silva — Product Designer & Design Leader',
+  title: 'Henrique Silva — Design Leader, Product & Applied AI',
   description:
-    'Product Designer and Design Leader with 19 years of experience in digital products, strategy, research, experience design, and team development.',
+    'Design Leader with 19 years of experience, using AI in discovery, research, exploration and prototyping to turn complexity into clearer product decisions.',
   path: '/en',
   lang: 'en',
   robots: 'noindex, follow',

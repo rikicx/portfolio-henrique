@@ -4,13 +4,13 @@ export default {
   saibaMaisLabel: 'Learn more',
   saibaMaisTo: '/en/about',
   methodTitle: 'Method',
-  highlight: 'My work is bringing clarity to complex problems.',
+  highlight: 'Artificial Intelligence embedded in the design process.',
   bodyDesktop:
-    'I connect user needs, business goals and technical feasibility to guide decisions, structure experiences and follow solutions from discovery through implementation and evolution.',
+    'AI participates in almost every stage: it improves guides and supports synthesis in discovery, expands paths during exploration, turns hypotheses into testable prototypes and brings Design and Technology closer during handoff. Judgment, validation and decisions remain human.',
   bodyMobile:
-    'I connect users, business and technology to guide decisions, design experiences and follow their evolution from first understanding to a product running and scaling.',
+    'AI is embedded from discovery to handoff: improving guides, supporting synthesis, expanding paths and turning hypotheses into testable prototypes. Judgment, validation and decisions remain human.',
   curriculoLabel: 'View Resume',
   curriculoHref:
-    'https://docs.google.com/document/d/1PldfLYc2USyW2F70VKxvtkvLaQeTIUQl/edit?usp=drive_link&ouid=110536839809774461332&rtpof=true&sd=true',
+    'https://docs.google.com/document/d/1yQ__H94PeVee1uIa-sJXmbRj5MsRoiER',
   linkedinLabel: 'LinkedIn',
 }

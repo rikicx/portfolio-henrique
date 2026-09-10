@@ -2,7 +2,7 @@ export default {
   photoAlt: 'Photo of Henrique M. Silva',
   linksAriaLabel: 'Contact links',
   name: 'Henrique M. Silva',
-  role: 'Design Leader & Product Strategist',
+  role: 'Design Leader · Product + AI',
   ctaHeading: 'Got a complex challenge to solve?',
   ctaLabel: "Let's talk",
   ctaTo: '/en/contact',
@@ -10,9 +10,9 @@ export default {
   emailLabel: 'Email ↗︎︎',
   curriculoLabel: 'Resume ↗︎︎',
   curriculoHref:
-    'https://docs.google.com/document/d/1PldfLYc2USyW2F70VKxvtkvLaQeTIUQl/edit?usp=drive_link&ouid=110536839809774461332&rtpof=true&sd=true',
+    'https://docs.google.com/document/d/1yQ__H94PeVee1uIa-sJXmbRj5MsRoiER',
   designSystemLabel: 'Design System',
-  designSystemTo: '/en/design-system',
+  designSystemTo: '/en/kihon',
   copyright: '© 2026 Henrique M. Silva · São Paulo, Brazil',
-  version: 'Version 3.0',
+  version: 'Version 4.1',
 }

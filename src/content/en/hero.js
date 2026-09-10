@@ -1,5 +1,5 @@
 export default {
-  subtitle: 'Design Leader · Product Strategist',
-  body: 'I turn complex contexts into clearer digital experiences, combining data, research and product vision.',
+  subtitle: 'Design Leader · Product + AI',
+  body: 'AI embedded in Design. Deeper discovery, broader exploration and a shorter path from hypothesis to product.',
   ctaLabel: 'View selected work',
 }

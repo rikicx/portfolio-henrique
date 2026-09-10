@@ -1,8 +1,8 @@
 export default {
-  quoteText: 'Decidir o que não construir também é design.',
+  quoteText: 'AI amplia caminhos. Julgamento dá direção.',
   author: 'Henrique M. Silva',
   description:
-    'Uma reflexão sobre como decisões de produto, restrições e foco também fazem parte do trabalho de design.',
+    'Com AI, explorar ficou mais rápido. O valor continua em formular o problema, avaliar evidências e escolher o que merece avançar.',
   ctaLabel: 'Ler artigo',
   ctaAriaLabel: 'Ler artigo (em breve)',
 }

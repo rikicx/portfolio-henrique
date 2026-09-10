@@ -4,13 +4,13 @@ export default {
   saibaMaisLabel: 'Saiba mais',
   saibaMaisTo: '/sobre',
   methodTitle: 'Método',
-  highlight: 'Meu trabalho é dar clareza a problemas complexos.',
+  highlight: 'Inteligência Artificial embarcada no processo de Design.',
   bodyDesktop:
-    'Conecto necessidades dos usuários, objetivos de negócio e viabilidade técnica para orientar decisões, estruturar experiências e acompanhar as soluções da descoberta à implementação e evolução.',
+    'AI participa de quase todas as etapas: melhora roteiros e apoia sínteses no discovery, amplia caminhos na exploração, transforma hipóteses em protótipos testáveis e aproxima Design e Tecnologia no handoff. Julgamento, validação e decisões continuam humanos.',
   bodyMobile:
-    'Conecto usuários, negócio e tecnologia para orientar decisões, desenhar experiências e acompanhar sua evolução do primeiro entendimento ao produto em operação e escala.',
+    'AI está embarcada do discovery ao handoff: melhora roteiros, apoia sínteses, amplia caminhos e transforma hipóteses em protótipos testáveis. Julgamento, validação e decisões continuam humanos.',
   curriculoLabel: 'Ver Currículo',
   curriculoHref:
-    'https://docs.google.com/document/d/1H3rRz6IN_5NLHGYK8FqgWAFS8_DpEkbW/edit?usp=drive_link&ouid=110536839809774461332&rtpof=true&sd=true',
+    'https://docs.google.com/document/d/1SwQKYZ7q11B4fyVv5Or2h5RbuUsgKaz4',
   linkedinLabel: 'LinkedIn',
 }

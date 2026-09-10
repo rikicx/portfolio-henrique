@@ -6,7 +6,7 @@ export default {
       slug: 'qi-platform',
       to: '/en/work/qi-platform',
       title: 'QI Platform',
-      category: 'Healthcare · Head of Design',
+      category: 'Healthcare · Head of Design · Applied AI',
       imageAlts: ['QI Platform — clinical data platform'],
     },
     {

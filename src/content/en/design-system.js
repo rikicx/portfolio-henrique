@@ -1,9 +1,9 @@
 export default {
   seo: {
-    title: 'Design System — Henrique Silva',
+    title: 'Kihon Design System — Henrique Silva',
     description:
       "How this portfolio's design system connects product, code, and Figma: foundations, components, themes, and the decisions between them.",
-    path: '/en/design-system',
+    path: '/en/kihon',
     lang: 'en',
     robots: 'noindex, nofollow',
   },
@@ -299,7 +299,7 @@ export default {
         'Identity block — photo (159×159), name, and role',
         'Final CTA — a Display-scale heading and a pill button to /contact',
         'Contact links — LinkedIn, Email, and Resume, separated by dots, opening in a new tab with rel="noopener noreferrer"',
-        'A divider, then the copyright line with the site version (e.g. "Version 3.0") on the same line',
+        'A divider, then the copyright line with the site version (e.g. "Version 4.1") on the same line',
       ],
       behaviorTitle: 'Behavior',
       behaviorItems: [

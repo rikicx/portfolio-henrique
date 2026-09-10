@@ -1,9 +1,9 @@
 export default {
   seo: {
-    title: 'Design System — Henrique Silva',
+    title: 'Kihon Design System — Henrique Silva',
     description:
       'Como o sistema de design deste portfólio conecta produto, código e Figma: fundamentos, componentes, temas e as decisões entre eles.',
-    path: '/design-system',
+    path: '/kihon',
     lang: 'pt',
     robots: 'index, follow',
   },

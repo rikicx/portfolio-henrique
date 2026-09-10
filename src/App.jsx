@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import WorksPage from './pages/WorksPage'
@@ -52,8 +52,10 @@ export default function App() {
           <Route path="/en/work/itau-empreendedor" element={<ItauEmpreendedorPage />} />
           <Route path="/trabalhos/3ph-hrcrs-digital-ecosystem" element={<ThreePHHrcrsPage />} />
           <Route path="/en/work/3ph-hrcrs-digital-ecosystem" element={<ThreePHHrcrsPage />} />
-          <Route path="/design-system" element={<DesignSystemPage />} />
-          <Route path="/en/design-system" element={<DesignSystemPage />} />
+          <Route path="/kihon" element={<DesignSystemPage />} />
+          <Route path="/en/kihon" element={<DesignSystemPage />} />
+          <Route path="/design-system" element={<Navigate to="/kihon" replace />} />
+          <Route path="/en/design-system" element={<Navigate to="/en/kihon" replace />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
 

@@ -1,5 +1,5 @@
 export default {
-  subtitle: 'Design Leader · Product Strategist',
-  body: 'Transformo contextos complexos em experiências digitais mais claras, combinando dados, pesquisa e visão de produto.',
+  subtitle: 'Design Leader · Produto + AI',
+  body: 'AI embarcada no Design. Mais profundidade no discovery, mais caminhos na exploração e menos distância entre hipótese e produto.',
   ctaLabel: 'Ver projetos selecionados',
 }

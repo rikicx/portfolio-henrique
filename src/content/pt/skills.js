@@ -1,6 +1,6 @@
 export default {
-  titleBeforeBreak: 'Competências &',
-  titleAfterBreak: 'ferramentas',
+  titleBeforeBreak: 'Design, produto &',
+  titleAfterBreak: 'AI aplicada',
   items: [
     {
       key: 'estrategia',
@@ -14,9 +14,9 @@ export default {
       key: 'experiencia',
       title: 'Experiência e interface',
       subtitleDesktop:
-        'UX/UI Design · Arquitetura da informação · Fluxos · Prototipação · Testes de usabilidade · Design Systems',
+        'UX/UI Design · Arquitetura da informação · Fluxos · Prototipação funcional com AI · Testes de usabilidade · Design Systems',
       subtitleMobile:
-        'UX/UI Design · Arquitetura da informação · Fluxos · Prototipação · Testes de usabilidade · Design Systems',
+        'UX/UI Design · Arquitetura da informação · Fluxos · Prototipação funcional com AI · Testes de usabilidade · Design Systems',
     },
     {
       key: 'dados',
@@ -36,11 +36,11 @@ export default {
     },
     {
       key: 'ferramentas',
-      title: 'Ferramentas',
+      title: 'AI embarcada no Design',
       subtitleDesktop:
-        'Figma · Miro · Photoshop · Illustrator · PowerPoint · Jira · Azure · Google Analytics · Hotjar · Claude Code · VS Code',
+        'ChatGPT · Claude Code · MCP + Figma · Discovery e síntese · Exploração de alternativas · Prototipação funcional · Handoff assistido · Revisão humana',
       subtitleMobile:
-        'Figma · Miro · Photoshop · Illustrator · PowerPoint · Jira · Azure · Google Analytics · Hotjar · Claude Code · VS Code',
+        'ChatGPT · Claude Code · MCP + Figma · Discovery e síntese · Exploração de alternativas · Prototipação funcional · Handoff assistido · Revisão humana',
     },
   ],
 }
