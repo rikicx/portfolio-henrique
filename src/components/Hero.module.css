@@ -82,6 +82,18 @@ z-index: 1;
   display: block;
 }
 
+/* Camada de glitch (HeroGlitch): mesma geometria da foto, sem animação de entrada. */
+.glitch {
+  position: absolute;
+  height: 109.45%;
+  left: -16.53%;
+  top: -4.26%;
+  width: 134.53%;
+  max-width: none;
+  display: block;
+  pointer-events: none;
+}
+
 .photo.photoDark {
   display: none;
 }
