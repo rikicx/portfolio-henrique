@@ -1,5 +1,6 @@
 import BackToTopButton from './BackToTopButton'
 import { useLanguage } from '../context/LanguageContext'
+import { trackEvent } from '../utils/analytics'
 import styles from './FloatingActions.module.css'
 
 const WHATSAPP_NUMBER = '5511964101827'
@@ -34,6 +35,13 @@ export default function FloatingActions() {
         rel="noopener noreferrer"
         aria-label={labels.whatsappAria}
         title={labels.whatsapp}
+        onClick={() =>
+          trackEvent('whatsapp_click', {
+            link_location: 'floating_action',
+            page_path: window.location.pathname,
+            language: lang,
+          })
+        }
       >
         <svg
           className={styles.whatsappIcon}

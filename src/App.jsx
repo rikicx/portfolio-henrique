@@ -13,7 +13,7 @@ import GerdauStoreroomPage from './pages/cases/GerdauStoreroomPage'
 import GerdauSmartlogPage from './pages/cases/GerdauSmartlogPage'
 import ItauEmpreendedorPage from './pages/cases/ItauEmpreendedorPage'
 import ThreePHHrcrsPage from './pages/cases/ThreePHHrcrsPage'
-import BackToTopButton from './components/BackToTopButton'
+import FloatingActions from './components/FloatingActions'
 import ScrollToTop from './components/ScrollToTop'
 import RouteTransitionLoader from './components/RouteTransitionLoader'
 import CustomCursor from './components/CustomCursor'
@@ -59,7 +59,7 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
 
-        <BackToTopButton />
+        <FloatingActions />
       </LanguageProvider>
     </BrowserRouter>
   )
