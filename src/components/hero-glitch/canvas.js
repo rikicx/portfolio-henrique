@@ -45,3 +45,23 @@ export function buildSilhouette(img, width, height) {
   ctx.putImageData(data, 0, 0)
   return canvas
 }
+
+// Caixa da silhueta, em pixels do canvas.
+export function silhouetteBounds(silhouette) {
+  const { width, height } = silhouette
+  const data = silhouette.getContext('2d', { willReadFrequently: true }).getImageData(0, 0, width, height).data
+  let minX = width
+  let minY = height
+  let maxX = 0
+  let maxY = 0
+  for (let y = 0; y < height; y += 1) {
+    for (let x = 0; x < width; x += 1) {
+      if (!data[(y * width + x) * 4 + 3]) continue
+      if (x < minX) minX = x
+      if (x > maxX) maxX = x
+      if (y < minY) minY = y
+      if (y > maxY) maxY = y
+    }
+  }
+  return { x: minX, y: minY, w: maxX - minX, h: maxY - minY }
+}

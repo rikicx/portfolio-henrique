@@ -1,28 +1,28 @@
 import { useEffect, useRef } from 'react'
 import { useTheme } from '../context/ThemeContext'
-import { buildSilhouette, copyCanvas, createCanvas } from './hero-glitch/canvas'
-import { buildSketch } from './hero-glitch/sketch'
-import { buildWireframe } from './hero-glitch/wireframe'
+import mannequinUrl from '../media/home/hero/henrique-hero-v1-mannequin.svg'
+import comicUrl from '../media/home/hero/henrique-hero-v2-comic.svg'
+import { buildSilhouette, copyCanvas, createCanvas, silhouetteBounds } from './hero-glitch/canvas'
+import { buildDrawing, loadArt } from './hero-glitch/drawing'
 import { buildDesign } from './hero-glitch/design'
 import { buildCode, paintCell } from './hero-glitch/code'
 
 /* ─── HeroGlitch ───────────────────────────────────────────────────────────
    "Da hipótese ao produto", em looping sobre a foto do Hero.
    A foto buga em faixas (glitch) e atravessa as etapas do processo:
-   v1 hypothesis (estudo a lápis) → v2 exploration (wireframe) →
+   v1 hypothesis (manequim) → v2 exploration (HQ) →
    v3 design (Figma) → v4 prototype (código digitado) → v5 product (foto).
    O produto fica parado alguns segundos e o ciclo recomeça.
-   Todas as etapas são geradas da própria foto: a pose é sempre idêntica.
+   v1 e v2 são SVGs no enquadramento da foto; as demais saem da própria foto.
    Hover (mouse, com o produto parado): uma lente revela a camada de código.
    ───────────────────────────────────────────────────────────────────────── */
 
 const DPR_MAX = 2
-const NOTE_FONT = 'Caveat, "Bradley Hand", "Segoe Print", cursive'
 const CAPTION_FONT = 'ui-monospace, "SF Mono", Menlo, Consolas, monospace'
 
 const STAGES = [
-  { id: 'sketch', label: 'v1 · hypothesis', hold: 1300 },
-  { id: 'wireframe', label: 'v2 · exploration', hold: 1600 },
+  { id: 'mannequin', label: 'v1 · hypothesis', hold: 1300 },
+  { id: 'comic', label: 'v2 · exploration', hold: 1600 },
   { id: 'design', label: 'v3 · design', hold: 1000 },
   { id: 'code', label: 'v4 · prototype', hold: 3000, enter: 'codeEmpty' },
   { id: 'product', label: 'v5 · product' },
@@ -118,7 +118,7 @@ export default function HeroGlitch({ className, lightRef, darkRef, hoverRef }) {
 
     let disposed = false
     let ready = false
-    let noteFontReady = false
+    let art = null
     let layers = null
     let cycle = null
     let resting = false
@@ -166,28 +166,10 @@ export default function HeroGlitch({ className, lightRef, darkRef, hoverRef }) {
       const photo = createCanvas(W, H)
       photo.getContext('2d').drawImage(img, 0, 0, W, H)
 
-      const sketch = buildSketch({
-        img, silhouette, width, height, dpr,
-        ink: text,
-        paper,
-        inkIsLight: dark,
-        noteFont: noteFontReady ? NOTE_FONT : null,
-      })
-      const wireframe = buildWireframe({
-        silhouette, dpr, unit, visible,
-        ink: text,
-        paper,
-        fill: token('--color-bg-hover-subtle', dark ? '#242424' : '#e5e5e5'),
-        compact: width < 600,
-      })
+      const drawing = (source) => buildDrawing({ art: source, width: W, height: H, ink: text, paper })
       const design = buildDesign({
         photo,
-        box: {
-          x: sketch.bbox.x * dpr,
-          y: sketch.bbox.y * dpr,
-          w: sketch.bbox.w * dpr,
-          h: sketch.bbox.h * dpr,
-        },
+        box: silhouetteBounds(silhouette),
         visible,
         dpr,
         scale,
@@ -206,8 +188,8 @@ export default function HeroGlitch({ className, lightRef, darkRef, hoverRef }) {
         W, H, dpr, editor, blinkCell,
         rowStagger: TYPE_SPAN / Math.max(1, editor.plan.length),
         photo,
-        sketch: sketch.canvas,
-        wireframe,
+        mannequin: drawing(art.mannequin),
+        comic: drawing(art.comic),
         design,
         codeEmpty: copyCanvas(editor.empty),
         code: copyCanvas(editor.full),
@@ -458,22 +440,17 @@ export default function HeroGlitch({ className, lightRef, darkRef, hoverRef }) {
     })
 
     async function setup() {
-      const noteFont = document.fonts
-        ? Promise.race([
-          document.fonts.load('600 24px Caveat').then((faces) => faces.length > 0),
-          new Promise((resolve) => setTimeout(() => resolve(false), 2500)),
-        ]).catch(() => false)
-        : Promise.resolve(false)
-
       if (!img.complete) {
         await new Promise((resolve) => img.addEventListener('load', resolve, { once: true }))
       }
+      // As ilustrações só começam a baixar depois da foto: não disputam o LCP.
       try {
         await img.decode()
+        const [mannequin, comic] = await Promise.all([loadArt(mannequinUrl), loadArt(comicUrl)])
+        art = { mannequin, comic }
       } catch {
         return
       }
-      noteFontReady = await noteFont
       if (disposed) return
 
       ready = true
