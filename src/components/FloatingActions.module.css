@@ -1,7 +1,7 @@
 .actions {
   position: fixed;
-  right: 24px;
-  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  right: var(--floating-action-offset);
+  bottom: calc(var(--floating-action-offset) + env(safe-area-inset-bottom, 0px));
   z-index: 1000;
 
   display: flex;
@@ -14,8 +14,8 @@
   display: grid;
   place-items: center;
 
-  width: 48px;
-  height: 48px;
+  width: var(--floating-action-size);
+  height: var(--floating-action-size);
   color: var(--color-text-on-action-primary);
   background: var(--color-bg-action-primary);
   border: 1px solid var(--color-border-translucent-light);
@@ -27,6 +27,20 @@
     opacity 160ms ease,
     background-color 160ms ease,
     color 160ms ease;
+}
+
+/* O footer já tem os links de contato: com ele à vista, o WhatsApp sai de
+   cena. visibility (não display) mantém o voltar-ao-topo na mesma posição
+   e tira o link da ordem de tab. */
+:global(html[data-footer-revealed]) .whatsapp {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease,
+    visibility 0s linear 160ms;
 }
 
 body:has([role='dialog'][aria-modal='true']) .actions {
@@ -55,8 +69,6 @@ body:has([role='dialog'][aria-modal='true']) .actions {
 
 @media (max-width: 768px) {
   .actions {
-    right: 16px;
-    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
     gap: 10px;
   }
 }

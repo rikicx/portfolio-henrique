@@ -45,10 +45,20 @@ export default function Navbar() {
 
   const location = useLocation()
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isOverFooter, setIsOverFooter] = useState(false)
+  const headerRef = useRef(null)
 
   useEffect(() => {
     const updateScrolledState = () => {
       setIsScrolled(window.scrollY > 96)
+
+      // O footer mobile é mais alto que a tela: quando ele começa a passar
+      // sob o header, o header sai de cena em vez de cobrir o avatar.
+      const main = document.getElementById('conteudo')
+      const header = headerRef.current
+      if (main && header) {
+        setIsOverFooter(main.getBoundingClientRect().bottom < header.offsetHeight)
+      }
     }
 
     updateScrolledState()
@@ -56,9 +66,11 @@ export default function Navbar() {
     window.addEventListener('scroll', updateScrolledState, {
       passive: true,
     })
+    window.addEventListener('resize', updateScrolledState)
 
     return () => {
       window.removeEventListener('scroll', updateScrolledState)
+      window.removeEventListener('resize', updateScrolledState)
     }
   }, [])
 
@@ -207,9 +219,10 @@ export default function Navbar() {
   return (
     <>
       <header
+      ref={headerRef}
       className={`${styles.header}${
         isScrolled ? ` ${styles.headerScrolled}` : ''
-      }`}
+      }${isOverFooter && !isOpen ? ` ${styles.headerOverFooter}` : ''}`}
     >
       <div className={styles.inner}>
         <div className={styles.leftArea}>

@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Footer.module.css'
 import photoUrl from '../media/home/hero/henrique-footer.webp'
@@ -8,9 +9,40 @@ import en from '../content/en/footer'
 export default function Footer() {
   const { lang } = useLanguage()
   const c = lang === 'en' ? en : pt
+  const footerRef = useRef(null)
+  const [fitsViewport, setFitsViewport] = useState(true)
+
+  // A revelação sticky só funciona se o footer cabe na tela: mais alto que
+  // ela, o topo (avatar incluso) fica preso acima da viewport e nunca
+  // aparece. Nesse caso o footer volta ao fluxo normal da página.
+  useLayoutEffect(() => {
+    const footer = footerRef.current
+    if (!footer) return undefined
+
+    const update = () => {
+      setFitsViewport(footer.offsetHeight <= window.innerHeight)
+    }
+
+    update()
+
+    const resizeObserver = new ResizeObserver(update)
+    resizeObserver.observe(footer)
+    window.addEventListener('resize', update)
+
+    return () => {
+      resizeObserver.disconnect()
+      window.removeEventListener('resize', update)
+    }
+  }, [])
 
   return (
-    <footer id="contato" className={styles.footer} data-cursor-theme="light">
+    <footer
+      ref={footerRef}
+      id="contato"
+      className={styles.footer}
+      data-cursor-theme="light"
+      data-pinned={fitsViewport}
+    >
       <div className={styles.inner}>
         <div className={styles.profileCta}>
           <div className={styles.profile}>
@@ -67,7 +99,11 @@ export default function Footer() {
         <hr className={styles.divider} />
 
         <p className={styles.copyright}>
-          {c.copyright} · {c.version}
+          <span>{c.copyright}</span>
+          <span className={styles.copyrightSeparator} aria-hidden="true">
+            {' · '}
+          </span>
+          <span className={styles.copyrightVersion}>{c.version}</span>
         </p>
       </div>
     </footer>

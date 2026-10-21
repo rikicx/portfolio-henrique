@@ -31,6 +31,16 @@
   --page-padding-desktop: 48px;
   --page-padding: clamp(24px, 4vw, 48px);
 
+  /* Altura do header fixo. Usada por scroll-margin-top para que âncoras
+     (#projetos, links de sumário) não parem com o alvo escondido atrás
+     da barra. */
+  --header-height: 88px;
+
+  /* Botões flutuantes (WhatsApp, voltar ao topo). Tokens para que o
+     footer reserve exatamente o espaço que eles ocupam. */
+  --floating-action-size: 48px;
+  --floating-action-offset: 24px;
+
   --transition: 0.2s ease;
 
   /* Semantic tokens — V3 Design System Lite */
@@ -200,6 +210,41 @@ button {
 :focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --floating-action-offset: 16px;
+  }
+}
+
+/* Âncoras param abaixo do header fixo, não atrás dele. */
+:target,
+[id] {
+  scroll-margin-top: calc(var(--header-height) + 24px);
+}
+
+/* Skip link — primeiro tab da página, pula a navegação.
+   Fora da tela até receber foco. */
+.skipLink {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 10002;
+  padding: 12px 20px;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-action-primary);
+  color: var(--color-text-on-action-primary);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 160ms ease-out;
+}
+
+.skipLink:focus-visible {
+  transform: translateY(0);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -7,6 +7,11 @@
   color: var(--color-text-on-inverse);
 }
 
+/* Mais alto que a tela: sem sticky, senão o topo nunca fica visível. */
+.footer[data-pinned='false'] {
+  position: relative;
+}
+
 .inner {
 
   max-width: var(--max-width);
@@ -366,14 +371,19 @@
 @media (max-width: 768px) {
 
   .footer {
-    position: sticky;
-    bottom: 0;
     overflow: visible;
   }
 
+  /* padding-bottom reserva a coluna dos botões flutuantes (offset +
+     botão + space/16), para que o voltar-ao-topo pare abaixo do
+     copyright, nunca sobre ele. */
   .inner {
 
-    padding: 96px 24px 32px;
+    padding: 96px 24px
+      calc(
+        var(--floating-action-offset) + var(--floating-action-size) + 16px +
+          env(safe-area-inset-bottom, 0px)
+      );
 
   }
 
@@ -484,6 +494,19 @@
   .dot {
 
     display: none;
+
+  }
+
+  /* Duas linhas: autoria + cidade, depois a versão. */
+  .copyrightSeparator {
+
+    display: none;
+
+  }
+
+  .copyrightVersion {
+
+    display: block;
 
   }
 

@@ -1,4 +1,5 @@
 export default {
+  skipToContent: 'Pular para o conteúdo',
   brandAriaLabel: 'Henrique M. Silva — página inicial',
   logoTo: '/',
   navAriaLabel: 'Navegação principal',

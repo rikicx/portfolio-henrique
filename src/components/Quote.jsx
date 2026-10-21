@@ -1,7 +1,5 @@
 import { useInView } from '../hooks/useInView'
 import styles from './Quote.module.css'
-import quoteOpenImg from '../media/shared/quotes/quote-open.png'
-import quoteCloseImg from '../media/shared/quotes/quote-close.png'
 import { useLanguage } from '../context/LanguageContext'
 import pt from '../content/pt/quote'
 import en from '../content/en/quote'
@@ -14,22 +12,21 @@ export default function Quote() {
   return (
     <section className={styles.section} ref={sectionRef} data-visible={isVisible}>
       <div className={styles.inner}>
-        <img src={quoteOpenImg} alt="" aria-hidden="true" className={styles.quoteOpen} />
-
-        <blockquote className={styles.quoteText}>{c.quoteText}</blockquote>
-
-        <img src={quoteCloseImg} alt="" aria-hidden="true" className={styles.quoteClose} />
-
-        <p className={styles.author}>{c.author}</p>
-
-        <hr className={styles.divider} aria-hidden="true" />
+        <h2 className={styles.statement}>
+          <span className={styles.expand}>{c.statementLead}</span>{' '}
+          <span className={styles.direct}>{c.statementFocus}</span>
+        </h2>
 
         <p className={styles.description}>{c.description}</p>
 
-        <a href="#" className={styles.cta} aria-label={c.ctaAriaLabel}>
-          <span>{c.ctaLabel}</span>
-          <span aria-hidden="true">↗︎</span>
-        </a>
+        {c.ctaHref ? (
+          <a className={styles.cta} href={c.ctaHref} aria-label={c.ctaAriaLabel}>
+            <span>{c.ctaLabel}</span>
+            <span aria-hidden="true">↗︎</span>
+          </a>
+        ) : (
+          <p className={styles.ctaPending}>{c.ctaPendingLabel}</p>
+        )}
       </div>
     </section>
   )
